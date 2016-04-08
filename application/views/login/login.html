@@ -1,0 +1,106 @@
+<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+<div id="wrap" class="container-fluid">
+  
+  
+<!-- 登陆框 -->
+<div class="login_card card z_depth-1 container login_form">
+
+
+  
+    <form id="login" class="form-horizontal" action="./tmp_res/login.php?action=login" method="post" novalidate="" autocomplete="off">
+        <fieldset>
+          <legend>欢迎登录<div class="pull-right">没有账号？<a href="./?c=reg" id="gotoreg" class="btn btn-flat btn-default">立即注册</a></div></legend>
+
+          <label class="form-group">
+            <i class="material-icons"></i>
+            <input type="text" class="form-control" id="user_name" name="user_name" placeholder="请输入手机号" autocomplete="on" value="17000000001">
+            <!--<button class="btn cancel"><i class="material-icons"></i></button>-->
+            <p class="help-block"></p>
+          </label>
+          <label class="form-group">
+            <i class="material-icons"></i>
+            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="请输入密码" value="123456">
+            <p class="help-block"></p>
+          </label>
+          <label id="captchas_part" class="captcha form-group input-group" style="display: none;">
+            <i class="material-icons"></i>
+            <input type="text" id="captchas" name="captchas" class="form-control" placeholder="验证码" autocomplete="off" require_onced="">
+            <a class="change_captchas input-group-addon" title="换一张" href="javascript:void(0)"><img class="verifyimg change_code" alt="点击显示" src="./skin/res/img/captcha.png"></a>
+            <p class="help-block"></p>
+          </label>
+          <div class="form-group">
+            <label class="check"><input id="user_remember" name="user_remember" type="checkbox"> 记住我</label>
+            <a href="./?c=resetpassword" class="btn btn-flat btn-default pull-right">忘记密码</a>
+          </div>
+
+          <div class="form-group">
+              <div>
+                  <button id="btn-login" type="submit" class="btn btn-lg btn-primary btn-raised btn-block ink">登录</button>
+              </div>
+          </div>
+        </fieldset>
+    </form>
+
+    
+
+</div>
+    
+
+<!-- 登陆框 end -->
+  
+</div>
+
+
+
+
+
+<script>
+
+//进入页面，用户名框直接获取焦点
+$("#user_name").focus();
+
+
+//登陆
+$("#login").submit( function() {
+
+  var user_name = $("#user_name").val();
+  var pwd = $("#pwd").val();
+  
+  if ( !user_name ) {
+    $("#user_name").focus().parent().addClass("has-error").children(".help-block").html("不能为空，请输入11位手机号");
+    return false;
+  } else if ( !$("#user_name").val().match(/1\d{10,10}$/) ) {
+    $("#user_name").focus().parent().addClass("has-error").children(".help-block").html("请输入11位手机号");
+    return false;
+  } else {
+    $("#user_name").parent().removeClass("has-error").children(".help-block").html("");
+  }
+  
+  if ( !pwd ) {
+    $("#pwd").focus().parent().addClass("has-error").children(".help-block").html("密码不能为空");
+    return false;
+  } else if ( !$("#pwd").val().match(/[\w@.]{6,15}/) ) {
+    $("#pwd").focus().parent().addClass("has-error").children(".help-block").html("英文/数字/下划线，6-15个字符");
+    return false;
+  } else {
+    $("#pwd").parent().removeClass("has-error").children(".help-block").html("");
+  }
+  
+  
+  /*
+  完成登陆
+  */
+  
+
+});
+//登陆 end
+
+
+</script>
+
+
+
+
+
+
+<?php require_once TEMPLATE."/common/footer.php";?>

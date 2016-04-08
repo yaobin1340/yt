@@ -1,0 +1,173 @@
+<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+<div id="wrap" class="container-fluid">
+  
+  
+<!-- 注册框 -->
+<div id="reg_box" class="login_card card z_depth-1 container login_form">
+
+  <legend>欢迎注册<div class="pull-right">已有账号？<a href="./?c=login" id="gotoreg" class="btn btn-flat btn-default">立即登录</a></div></legend>
+
+  <div id="reg_step_1">
+    <div>注册为：</div>
+    <button id="reg_supplier_btn" class="btn btn-success btn-lg" title="注册为供应商"><i class="material-icons">&#xe558;</i><span>供应商</span></button>
+    <button id="reg_project_btn" class="btn btn-danger btn-lg" title="注册为项目方"><i class="material-icons">&#xe53f;</i><span>项目方</span></button>
+  </div>
+  
+        <div id="reg_tip_supplier" class="reg_tip">注册为：<b>供应商</b></div>
+        <div id="reg_tip_project" class="reg_tip">注册为：<b>项目方</b></div>
+        <div id="reg_tip_phone" class="reg_tip">注册手机号：<b>18945456587</b></div>
+  
+<!--  <form id="reg" class="form-horizontal" action="###" method="post" novalidate="" autocomplete="off">-->
+  <div id="reg_step_2">
+    <fieldset>
+
+        <!-- 注册用户类型，0 注册为供应商， 1 注册为项目方 -->
+        <input id="reg_type" name="reg_type" value="0">
+
+      <label class="form-group">
+        <i class="material-icons"></i>
+        <input type="text" class="form-control" id="user_name" name="user_name" placeholder="请输入11位手机号" autocomplete="on" value="">
+        <p class="help-block"></p>
+      </label>
+      <label id="captchas_part" class="captcha form-group input-group" style="">
+        <i class="material-icons">&#xe638;</i>
+        <input type="text" id="captchas" name="captchas" class="form-control" placeholder="短信验证码" autocomplete="off" require_onced="">
+        <a class="get_smscaptchas input-group-addon btn btn-info" title="获取验证码" href="javascript:void(0)">获取验证码</a>
+        <p class="help-block"></p>
+      </label>
+
+      <div class="form-group">
+          <div>
+              <button id="btn_reg_nextstep_1" type="button" class="btn btn-lg btn-primary btn-raised btn-block ink">下一步</button>
+          </div>
+      </div>
+
+    </fieldset>
+  </div>
+  
+  <div id="reg_step_3">
+    <fieldset>
+      <label class="form-group">
+        <i class="material-icons"></i>
+        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="请设置密码" value="">
+        <p class="help-block"></p>
+      </label>
+
+      <div class="form-group">
+          <div>
+              <button id="btn_reg_submit" type="submit" class="btn btn-lg btn-primary btn-raised btn-block ink">完成注册</button>
+          </div>
+      </div>
+
+    </fieldset>
+  </div>
+<!--  </form>-->
+
+    
+
+</div>
+    
+
+<!-- 注册框 end -->
+  
+</div>
+
+
+
+<script>
+
+//进入页面，用户名框直接获取焦点
+$("#user_name").focus();
+
+
+$("#reg_step_1 .btn").click(function(){
+  if( $(this).attr("id") == "reg_project_btn" ){
+    $("#reg_type").val( 1 );//1 注册为项目方
+    $("#reg_box").addClass( "reg_project" );
+  } else {
+    $("#reg_type").val( 0 );//0 注册为供应商
+    $("#reg_box").addClass( "reg_supplier" );
+  }
+  $("#reg_step_1").hide();
+  $("#reg_step_2").show();
+});
+
+
+//获取验证码
+$(".get_smscaptchas").click(function () {
+  //$(this).html("验证码已发送");
+});
+//获取验证码 end
+
+
+
+//第一步判断手机号
+$("#btn_reg_nextstep_1").click(function(){
+
+  
+  var user_name = $("#user_name").val();
+  
+  if ( !user_name ) {
+    $("#user_name").focus().parent().addClass("has-error").children(".help-block").html("不能为空，请输入11位手机号");
+    return false;
+  } else if ( !$("#user_name").val().match(/1\d{10,10}$/) ) {
+    $("#user_name").focus().parent().addClass("has-error").children(".help-block").html("请输入11位手机号");
+    return false;
+  } else {
+    $("#user_name").parent().removeClass("has-error").children(".help-block").html("");
+  }
+  
+  /*
+  判断手机号 是否在库内
+  $("#user_name").focus().parent().addClass("has-error").children(".help-block").html("该手机号码已注册");
+  
+  判断手机验证码
+  $("#user_name").focus().parent().addClass("has-error").children(".help-block").html("手机验证码不正确");
+  */
+
+  $("#reg_tip_phone b").text( $("#user_name").val() );
+  
+  $("#reg_box").addClass( "reg_phone_ok" );
+  $("#reg_step_2").hide();
+  $("#reg_step_3").show();
+
+});
+//第一步判断手机号 end
+
+
+//第二步完成注册。（此步仅在服务器端判断手机号，前端就不再判断了）
+//$("#reg").submit( function() {
+$("#btn_reg_submit").click(function() {
+
+
+  var pwd = $("#pwd").val();
+  
+  if ( !pwd ) {
+    $("#pwd").focus().parent().addClass("has-error").children(".help-block").html("密码不能为空");
+    return false;
+  } else if ( !$("#pwd").val().match(/[\w@.]{6,15}/) ) {
+    $("#pwd").focus().parent().addClass("has-error").children(".help-block").html("英文/数字/下划线，6-15个字符");
+    return false;
+  } else {
+    $("#pwd").parent().removeClass("has-error").children(".help-block").html("");
+  }
+  
+  
+  /*
+  完成注册
+  */
+  
+
+});
+//第二步完成注册 end
+
+
+</script>
+
+
+
+
+
+
+
+<?php require_once TEMPLATE."/common/footer.php";?>

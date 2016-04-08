@@ -1,0 +1,146 @@
+<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+<div id="wrap" class="container-fluid">
+
+<?php require_once TEMPLATE."/project/project_sider.php";?>
+  
+  
+<!-- 主体 -->
+  <div id="main">
+  
+    <!-- 面包屑导航 -->
+    <div id="breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Library</a></li>
+        <li class="active">Data</li>
+      </ol>
+    </div>
+    <!-- 面包屑导航 end -->
+  
+    <!-- 公告 -->
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>公告</strong> <span>裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始</span>
+    </div>
+    <!-- 公告 end -->
+<!---->
+    <div class="form_card card z_depth-1">
+      <h2 class="form_card_title">
+        <i class="material-icons"></i> <span>信息完善</span>
+      </h2>
+      <div class="form_card_box">
+      
+        <form class="form-horizontal" style="margin-bottom:40px;">
+					<div class="form-group">
+						<div class="col-sm-2 col-sm-offset-1">
+							<a href="#" class="btn btn-default disabled" role="button" style="color:#333">项目基本信息</a>
+						</div>
+						<div class="col-sm-2">
+							<button type="submit" class="btn btn-primary btn-raised" >导出数据</button>
+						</div>
+					</div>				
+					<div class="form-group">
+						<label for="xiangmumingcheng" class="col-sm-2 control-label">项目名称</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="xiangmumingcheng" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xiangmudizhi" class="col-sm-2 control-label">项目地址</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="xiangmudizhi">
+								<option>江苏省</option>
+								<option>浙江省</option>
+								<option>河南省</option>
+								<option>上海市</option>
+								<option>北京市</option>
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<select class="form-control" >
+								<option>南京市</option>
+								<option>无锡市</option>
+								<option>苏州市</option>
+								<option>扬州市</option>
+								<option>南通市</option>
+							</select>
+						</div>
+						<div class="col-sm-3"><input type="text" class="form-control" id="inputEmail3" placeholder="路牌号"></div>
+					</div>
+					<div class="form-group">
+						<label for="xiangmujine" class="col-sm-2 control-label">项目金额</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="xiangmujine" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xiangmujingli" class="col-sm-2 control-label">项目经理</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="xiangmujingli" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xiangmufuzeren" class="col-sm-2 control-label">项目负责人</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="xiangmufuzeren" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="fuzerenphone" class="col-sm-2 control-label">负责人电话</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="fuzerenphone" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="lianxiren" class="col-sm-2 control-label">联系人</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="lianxiren" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="phone" class="col-sm-2 control-label">联系电话</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="phone" >
+						</div>
+					</div>
+				</form>
+				<form class="form-horizontal">
+					<div class="form-group">
+						<div class="col-sm-2 col-sm-offset-1">
+							<a href="#" class="btn btn-default  disabled" role="button" style="color:#333">主要材料和数量</a>
+						</div>
+						<div class="col-sm-1">
+							<button class="btn btn-primary btn-raised"  type="submit">增加</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2"></div>		
+						<div class="col-sm-3">
+							<select class="form-control" id="xiangmudizhi">
+								<option>钢材</option>
+								<option>涂料</option>
+							</select>
+						</div>
+						<div class="col-sm-3" ><input type="text" class="form-control border_rnone" id="inputEmail3" placeholder="数字"></div>
+						<div class="col-sm-3" >
+							<select class="form-control border_lnone" >
+								<option>吨</option>
+								<option>桶</option>
+							</select>
+						</div>				
+					</div>
+					<div class="form-group" style="margin-right:0;">
+						<div class="col-sm-9 col-sm-offset-2">
+							<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink" >完成</button>
+						</div>
+					</div>
+				</form>
+      </div>
+    </div>
+  <!---->
+    
+  </div>
+<!-- 主体 end -->
+  
+</div>
+<?php require_once TEMPLATE."/common/footer.php";?>

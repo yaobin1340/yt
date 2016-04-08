@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+
+td.bloc .btn{
+	margin-right:5px;}
+td.bloc .btn:last-child{
+	margin-right:0;}
+thead.backbg{
+	background-color:rgba(16, 16, 16, 0.1);}

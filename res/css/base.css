@@ -1,0 +1,935 @@
+/** 打基础 **/
+
+
+html {
+	font-size: 100px;
+}
+
+body {
+	font-family: tahoma, "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+  background-color: #fafafa;
+  text-rendering: optimizeLegibility;
+  /*-webkit-text-stroke: 0.2px;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 0 1px;*/
+}
+
+ul, ol {
+/*  list-style-type: none;
+  margin: 0;
+  padding: 0;*/
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+/** 微调 BootStrap 栅格结构 **/
+
+.row {
+  margin-right: -5px;
+  margin-left: -5px;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.form-horizontal .form-group {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+
+
+
+/** Material Design 阴影层级 **/
+
+.z_depth-1, .z_depth-2, .z_depth-3, .z_depth-4, .z_depth-5 {
+    -webkit-transition: -webkit-box-shadow .2s cubic-bezier(.4,0,1,1),
+      background-color .2s cubic-bezier(.4,0,.2,1),
+      color .2s cubic-bezier(.4,0,.2,1),
+      -webkit-transform .2s cubic-bezier(.4,0,1,1);
+    transition: box-shadow .2s cubic-bezier(.4,0,1,1),
+      background-color .2s cubic-bezier(.4,0,.2,1),
+      color .2s cubic-bezier(.4,0,.2,1),
+      transform .2s cubic-bezier(.4,0,1,1);
+}
+
+.z_depth-0 {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.z_depth-0:hover, 
+.btn.z_depth-1,
+.z_depth-1 {
+/*  box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,0.24);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 2px rgba(43,59,93,0.29);*/
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.z_depth-1:hover, 
+.btn.z_depth-2,
+.z_depth-2 {
+/*  box-shadow: 0 3px 3px 0 rgba(0,0,0,.16),0 3px 3px 0 rgba(0,0,0,0.23);
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);*/
+  -webkit-box-shadow: 0 1px 2px rgba(43,59,93,0.29);
+  box-shadow: 0 1px 2px rgba(43,59,93,0.29);
+}
+.z_depth-2:hover, 
+.btn.z_depth-3,
+.z_depth-3 {
+/*  box-shadow: 0 10px 10px 0 rgba(0,0,0,.19),0 6px 3px 0 rgba(0,0,0,0.23);*/
+  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+/*.z_depth-3:hover, */
+.btn.z_depth-4,
+.z_depth-4 {
+/*  box-shadow: 0 14px 14px 0 rgba(0,0,0,.25),0 10px 5px 0 rgba(0,0,0,0.22);*/
+  -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+.z_depth-4:hover, 
+.btn.z_depth-5,
+.z_depth-5 {
+/*  box-shadow: 0 19px 19px 0 rgba(0,0,0,.3),0 15px 6px 0 rgba(0,0,0,0.22);*/
+  -webkit-box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  /*box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);*/
+}
+
+.z_depth-lift {
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.z_depth-lift:hover {
+  -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  -webkit-transform: translate3d(0, -2px, 0);
+  transform: translate3d(0, -2px, 0);
+}
+
+
+/** Material Design 卡片的定义 **/
+
+
+.card {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/** Material Design 按钮相关 **/
+
+.btn {
+    border: none;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    will-change: box-shadow,transform;
+    -webkit-transition: -webkit-box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+    transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+    vertical-align: middle;
+    /*background: rgba(158,158,158,.2);*/
+}
+.btn:hover,
+.btn:focus,
+.btn.focus {
+  /*background: rgba(158,158,158,.2);*/
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    background-color: rgba(0,0,0,.12);
+    color: rgba(0,0,0,.26);
+    /*-webkit-box-shadow: none;
+    box-shadow: none;*/
+}
+
+.btn-raised {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.btn.btn-flat {
+  background: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 600;
+  border-color: transparent;
+}
+.btn.btn-flat:hover {
+  color: #fff;
+}
+.btn.btn-flat, .btn-default.btn-flat {
+  color: #1565c0;
+}
+.btn-primary.btn-flat {
+  color: #d81b60;
+}
+.btn-success.btn-flat {
+  color: #4cae4c;
+}
+.btn-info.btn-flat {
+  color: #46b8da;
+}
+.btn-warning.btn-flat {
+  color: #eea236;
+}
+.btn-danger.btn-flat {
+  color: #d43f3a;
+}
+
+.btn.btn-flat:hover, .btn-default.btn-flat:hover {
+
+}
+.btn-default.btn-flat:hover {
+  background-color: #333;
+}
+.btn-primary.btn-flat:hover {
+  background-color: #d81b60;
+}
+.btn-success.btn-flat:hover {
+  background-color: #4cae4c;
+}
+.btn-info.btn-flat:hover {
+  background-color: #46b8da;
+}
+.btn-warning.btn-flat:hover {
+  background-color: #eea236;
+}
+.btn-danger.btn-flat:hover {
+  background-color: #d43f3a;
+}
+.btn-link.btn-flat:hover {
+  background-color: #337ab7;
+}
+
+
+
+.btn-default.disabled, .btn-default.disabled.active, .btn-default.disabled.focus, .btn-default.disabled:active, .btn-default.disabled:focus, .btn-default.disabled:hover, .btn-default[disabled], .btn-default[disabled].active, .btn-default[disabled].focus, .btn-default[disabled]:active, .btn-default[disabled]:focus, .btn-default[disabled]:hover, fieldset[disabled] .btn-default, fieldset[disabled] .btn-default.active, fieldset[disabled] .btn-default.focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:hover {
+  background-color: rgba(0,0,0,.12);
+  color: rgba(0,0,0,.26);
+}
+/*
+.btn-default {
+  color: #fff;
+  background-color: #1565c0;
+  border-color: #1565c0;
+}
+.btn-default:focus,
+.btn-default.focus {
+  color: #fff;
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+.btn-default:hover {
+  color: #fff;
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+.btn-default.active, .btn-default:active,
+.open>.dropdown-toggle.btn-default {
+  color: #fff;
+  background-color: #1565c0;
+  border-color: #1565c0;
+}
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+  color: #fff;
+  background-color: #1565c0;
+  border-color: #1565c0;
+}
+*/
+
+.btn-default {
+  background-color: #F3F3F3;
+}
+
+
+
+/*
+.btn-primary {
+  background-color: #d81b60;
+  border-color: #e91e63;
+}
+.btn-primary:focus, .btn-primary:hover {
+  background-color: #e91e63;
+  border-color: #e91e63;
+}
+
+.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #d81b60;
+  border-color: #d81b60;
+}
+
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+  color: #fff;
+  background-color: #d81b60;
+  border-color: #d81b60;
+}
+*/
+/*
+.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
+  color: rgba(255,255,255,.8);
+}
+*/
+
+
+/*
+.btn-link {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 600;
+}
+.btn-link:focus, .btn-link:hover {
+  background-color: rgba(158,158,158,.2);
+  text-decoration: none;
+}
+*/
+
+
+
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: rgba(0,0,0,.12);
+  color: rgba(0,0,0,.26);
+  border-color: #ccc;
+}
+
+.btn-success.disabled,
+.btn-success[disabled],
+fieldset[disabled] .btn-success,
+.btn-success.disabled:hover,
+.btn-success[disabled]:hover,
+fieldset[disabled] .btn-success:hover,
+.btn-success.disabled:focus,
+.btn-success[disabled]:focus,
+fieldset[disabled] .btn-success:focus,
+.btn-success.disabled.focus,
+.btn-success[disabled].focus,
+fieldset[disabled] .btn-success.focus,
+.btn-success.disabled:active,
+.btn-success[disabled]:active,
+fieldset[disabled] .btn-success:active,
+.btn-success.disabled.active,
+.btn-success[disabled].active,
+fieldset[disabled] .btn-success.active {
+  background-color: rgba(0,0,0,.12);
+  color: rgba(0,0,0,.26);
+  border-color: #ccc;
+}
+
+.btn-info.disabled,
+.btn-info[disabled],
+fieldset[disabled] .btn-info,
+.btn-info.disabled:hover,
+.btn-info[disabled]:hover,
+fieldset[disabled] .btn-info:hover,
+.btn-info.disabled:focus,
+.btn-info[disabled]:focus,
+fieldset[disabled] .btn-info:focus,
+.btn-info.disabled.focus,
+.btn-info[disabled].focus,
+fieldset[disabled] .btn-info.focus,
+.btn-info.disabled:active,
+.btn-info[disabled]:active,
+fieldset[disabled] .btn-info:active,
+.btn-info.disabled.active,
+.btn-info[disabled].active,
+fieldset[disabled] .btn-info.active {
+  background-color: rgba(0,0,0,.12);
+  color: rgba(0,0,0,.26);
+  border-color: #ccc;
+}
+
+.btn-warning.disabled,
+.btn-warning[disabled],
+fieldset[disabled] .btn-warning,
+.btn-warning.disabled:hover,
+.btn-warning[disabled]:hover,
+fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled:focus,
+.btn-warning[disabled]:focus,
+fieldset[disabled] .btn-warning:focus,
+.btn-warning.disabled.focus,
+.btn-warning[disabled].focus,
+fieldset[disabled] .btn-warning.focus,
+.btn-warning.disabled:active,
+.btn-warning[disabled]:active,
+fieldset[disabled] .btn-warning:active,
+.btn-warning.disabled.active,
+.btn-warning[disabled].active,
+fieldset[disabled] .btn-warning.active {
+  background-color: rgba(0,0,0,.12);
+  color: rgba(0,0,0,.26);
+  border-color: #ccc;
+}
+
+.btn-danger.disabled,
+.btn-danger[disabled],
+fieldset[disabled] .btn-danger,
+.btn-danger.disabled:hover,
+.btn-danger[disabled]:hover,
+fieldset[disabled] .btn-danger:hover,
+.btn-danger.disabled:focus,
+.btn-danger[disabled]:focus,
+fieldset[disabled] .btn-danger:focus,
+.btn-danger.disabled.focus,
+.btn-danger[disabled].focus,
+fieldset[disabled] .btn-danger.focus,
+.btn-danger.disabled:active,
+.btn-danger[disabled]:active,
+fieldset[disabled] .btn-danger:active,
+.btn-danger.disabled.active,
+.btn-danger[disabled].active,
+fieldset[disabled] .btn-danger.active {
+  background-color: rgba(0,0,0,.12);
+  color: rgba(0,0,0,.26);
+  border-color: #ccc;
+}
+
+.btn-link[disabled]:hover,
+fieldset[disabled] .btn-link:hover,
+.btn-link[disabled]:focus,
+fieldset[disabled] .btn-link:focus {
+  background-color: rgba(0,0,0,.12);
+  color: rgba(0,0,0,.26);
+  border-color: #ccc;
+}
+
+
+
+.btn-fab {
+    border-radius: 50%;
+    font-size: 24px;
+    height: 56px;
+    margin: auto;
+    min-width: 56px;
+    width: 56px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    line-height: normal;
+}
+
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Material Design 表单 **/
+
+
+.form-control {
+  color: #555;
+  background-color: #fff;/* transparent */
+  /*border: 1px solid transparent;
+  border-bottom: 1px solid #ccc;*/
+  
+  border: 1px solid #ccc;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn {
+  border-radius: 0;
+}
+
+
+
+.form-control:focus {
+  /*border-color: transparent;*/
+  border-color: #ccc;
+  outline: 0;
+  border-bottom: 1px solid #1565c0;
+  -webkit-box-shadow: inset 0 -1px 0 0 #1565c0;
+  box-shadow: inset 0 -1px 0 0 #1565c0;
+}
+
+.input-group-addon {
+  border-radius: 0;
+}
+
+
+
+.input-upload {
+  display: inline-block;
+  /*width: 100%;*/
+  vertical-align: middle;
+  /*overflow: hidden;*/
+  position: relative;
+}
+
+.input-upload input[type=text] {
+  display: inline-block;
+  width: 55%;
+  min-width: 100px;
+  vertical-align: middle;
+}
+.input-upload input[type=button] {
+  display: inline-block;
+  width: 40%;
+  max-width: 100px;
+}
+
+.input-upload input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: alpha(opacity:0);
+  opacity: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.form-inline .input-upload {
+  width: auto;
+}
+.form-inline .input-upload input[type=text] {
+  min-width: 0;
+}
+
+
+/*
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox label, .radio label {
+  padding-left: 26px;
+  line-height: 28px;
+}
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    margin-left: -26px;
+}
+*/
+
+
+
+.nav > li > a {
+/*  padding: 6px 15px;*/
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: rgba(255,255,255,0.9);
+}
+
+/** Material Design 切换标签 **/
+
+.nav-tabs {
+  border: none;
+}
+.nav-tabs > li {
+  margin-bottom: 0;
+}
+.nav-tabs>li>a {
+  color: #333;
+  border: none;
+  margin-right: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: #1565c0;
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom: 1px solid #1565c0;
+  border: none;
+  -webkit-box-shadow: 0 -4px 0 0 #1565c0;
+  box-shadow: inset 0 -4px 0 0 #1565c0;
+}
+
+
+.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:focus, .nav-tabs.nav-justified>.active>a:hover {
+  border-color: transparent;
+  border-bottom: 1px solid #1565c0;
+}
+
+
+.dropdown-menu {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.dropdown-menu>li>a {
+  /*line-height: 48px;*/
+  line-height: 40px;
+}
+
+
+
+
+.valign-wrapper {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+
+
+
+/** Material Design 列表 **/
+
+.list-group {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.list-group .list-group-item {
+  border-radius: 0;
+}
+.list-group-item:focus, .list-group-item:hover {
+  color: #555;
+  text-decoration: none;
+  background-color: #f9f9f9;
+}
+
+.list-img i {
+  background: rgba(0,0,0,.25);
+  border-radius: 100%;
+  text-align: center;
+  line-height: 56px;
+  /*font-size: 20px;*/
+  color: white;
+}
+
+.list-img [class^="mdi-"]::before,
+.list-img i.mdi::before {
+  left: 0 !important;
+}
+
+.list-img {
+/*  float: left;
+  display: inline-block;
+  padding-right: 16px;*/
+  position: absolute;
+}
+
+.list-img img, .list-img .material-icons, .list-img label {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.list-img.checkbox {
+  display: block;
+  width: 72px;
+  height: 56px;
+  text-align: center;
+}
+
+.list-group .list-group-item .list-content {
+  display: inline-block;
+  /*width: calc(100% - 95px);*/
+  width: 100%;
+  padding-left: 75px;
+  /*padding-top: 15px;*/
+  min-height: 66px;
+  color: #555;
+}
+
+
+
+.list-group .list-group-item .list-content .list-sub-content {
+  position: absolute;
+  right: 16px;
+  top: 4px;
+  color: rgba(0,0,0,.54);
+  font-size: 14px;
+}
+
+.list-group .list-group-item .list-content .list-sub-content .material-icons {
+  top: -2px;
+}
+
+
+.list-btn {
+  position: absolute;
+  top: 20px;
+  right: 2px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+  color: rgba(0,0,0,.25);
+}
+.list-btn.ink {
+  position: absolute;
+}
+
+.list-act {
+  color: rgba(0,0,0,.77);
+  cursor: pointer;
+}
+
+
+
+label.list-act {
+  display: block;
+  font-weight: 100;
+  margin-bottom: 0;
+}
+
+.list-img.checkbox input[type=checkbox] {
+  position: relative;
+  vertical-align: middle;
+  margin-left: 0;
+  width: 20px;
+  height: 20px;
+}
+
+
+
+
+/** 大的网格列表 **/
+
+.list-group.list-group-grid .list-group-item {
+  border: none;
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 0
+}
+.list-group.list-group-grid .list-group-item:last-child {
+  border-bottom: 0;
+}
+.list-group.list-group-grid .list-group-item-main:link, 
+.list-group.list-group-grid .list-group-item-main:visited {
+  display: block;
+  color: #333333;
+  text-decoration: none;
+}
+.list-group.list-group-grid .list-group-item-heading {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
+.list-group.list-group-grid .list-group-item-heading .material-icons {
+  font-size: 14px;
+  top: 2px;
+}
+.list-group.list-group-grid .list-group-item-heading .label {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.list-group.list-group-grid .list-group-item-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 12px;
+  color: #888;
+  /*text-align: right;*/
+  margin-bottom: 2px;
+  padding-left: 24px;
+}
+.list-group.list-group-grid .extra {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nowrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+
+/** tag 关键词标签 **/
+.label {
+  font-weight: 100;
+}
+
+
+/** Alerts 警告 **/
+.alert {
+  border-radius: 0;
+  border: none;
+  /*background-color: #fff;*/
+}
+/*
+.alert-success {
+  color: #fff;
+  background-color: #4caf50;
+}
+.alert-info {
+  color: #fff;
+  background-color: #809DAB;/*#03a9f4*/
+/*}
+.alert-warning {
+  color: #fff;
+  background-color: #FF9234;
+}
+.alert-danger {
+  color: #fff;
+  background-color: #f44336;
+}
+*/
+
+
+/** 模态框 **/
+
+.modal-content {
+  border: none;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.modal .modal-header {
+  color: #fff;
+  background-color: #337ab7;
+  border: none;
+}
+.modal-alert .modal-header {
+  color: #fff;
+  /*background-color: #FF9234;*/
+  background-color: #337ab7;
+  border: none;
+}
+
+
+
+/** 进度条 **/
+.progress {
+  height: 10px;
+  border-radius: 5px;
+  background-color: #E2E1E1;
+}
+
+
+
+
+/** Material Design 水波 **/
+
+.ink {
+/*padding:0; margin:0; box-sizing:border-box;*/
+  overflow: hidden;
+  position: relative;
+}
+
+.ripple {
+  position: absolute;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.99);
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+
+.ink-dark .ripple {
+  background-color: rgba(0, 0, 0, 0.2);
+} 
+.ripple-effect {
+  -webkit-animation: boom .5s ease-out;
+  animation: boom .5s ease-out;
+}
+
+
+
+@-webkit-keyframes boom {
+
+  0% {
+    -webkit-transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes boom {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

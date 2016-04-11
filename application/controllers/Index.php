@@ -48,7 +48,7 @@ class Index extends MY_Controller {
         if(!in_array($type,$types)){
             
         }
-        /*$this->cismarty->assign('type',$type);
+        $this->cismarty->assign('type',$type);
         if ($type=='admin'){
 
             $path="admin/admin_index.html";
@@ -56,9 +56,9 @@ class Index extends MY_Controller {
         else
         {
             $path="admin/{$type}.html";
-        }*/
-        redirect($type);
+        }
+       // redirect($type);
        // die($path);
-        //$this->cismarty->display($path);
+        $this->cismarty->display($path);
     }
 }

@@ -1,7 +1,7 @@
-{{include file="common/header.html"}}
+<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
 <div id="wrap" class="container-fluid">
-    {{include file="admin/admin_sider.php"}}
 
+<?php require_once TEMPLATE."/admin/admin_sider.php";?>
   
   
 <!-- 主体 -->
@@ -10,9 +10,9 @@
     <!-- 面包屑导航 -->
     <div id="breadcrumb">
       <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
+        <li class="active">首页</li>
+        <li class="active">数据维护</li>
+        <li class="active">材料类别</li>
       </ol>
     </div>
     <!-- 面包屑导航 end -->
@@ -35,7 +35,7 @@
 		<form class="form-horizontal">
 			<div class="form-group">
 				<div class="col-sm-1">
-					<a href="###" class="btn btn-primary btn-raised">新增</a>
+					<a href="./?c=admin_material_info" class="btn btn-primary btn-raised">新增</a>
 				</div>				
 				<div class="col-sm-6">
 					<input type="text" class="form-control" id="sousuo" >
@@ -48,7 +48,7 @@
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
-          
+          <th class=""></th>
           <th class="">标题</th>
 					<th class="">推送时间</th>
           <th class="">操作</th>
@@ -56,48 +56,48 @@
       </thead>
       <tbody>
         <tr>
-          
           <td class="">
-            <a href="###" class="table_card_a">
-               钢铁
-            </a>		
+            <div class="check">
+              <input type="checkbox" value="">
+            </div>		
           </td>
+          <td class="">钢铁</td>
           <td class="small">2016-03-10 15:39:33</td>
           <td class="">
 						<button type="button" class="btn btn-sm btn-danger">删除</button>
 					</td>
         </tr>
         <tr>
-          
           <td class="">
-            <a href="###" class="table_card_a">
-               钢铁
-            </a>		
+            <div class="check">
+              <input type="checkbox" value="">
+            </div>		
           </td>
+          <td class="">钢铁</td>
           <td class="small">2016-03-10 15:39:33</td>
           <td class="">
 						<button type="button" class="btn btn-sm btn-danger">删除</button>
 					</td>
         </tr>
         <tr>
-          
           <td class="">
-            <a href="###" class="table_card_a">
-               钢铁
-            </a>		
+            <div class="check">
+              <input type="checkbox" value="">
+            </div>		
           </td>
+          <td class="">钢铁</td>
           <td class="small">2016-03-10 15:39:33</td>
           <td class="">
 						<button type="button" class="btn btn-sm btn-danger">删除</button>
 					</td>
         </tr>
 				<tr>
-          
           <td class="">
-            <a href="###" class="table_card_a">
-               钢铁
-            </a>		
+            <div class="check">
+              <input type="checkbox" value="">
+            </div>		
           </td>
+          <td class="">钢铁</td>
           <td class="small">2016-03-10 15:39:33</td>
           <td class="">
 						<button type="button" class="btn btn-sm btn-danger">删除</button>
@@ -105,6 +105,10 @@
         </tr>
       </tbody>
 		</table>
+			<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default check">全选</button>
+					<button type="button" class="btn btn-danger">删除</button>
+				</div>
 	    <nav class="page clearfix">
       <ul class="pagination pull-right">
         <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
@@ -131,4 +135,4 @@
 <!-- 主体 end -->
   
 </div>
-{{include file="common/footer.html"}}
+<?php require_once TEMPLATE."/common/footer.php";?>

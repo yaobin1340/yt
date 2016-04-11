@@ -16,26 +16,26 @@
 <title>登陆</title>
 
 
-<link href="./res/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="./res/css/material-icons.css" rel="stylesheet">
-<link href="./res/css/base.css" rel="stylesheet">
-<link href="./res/css/style.css" rel="stylesheet">
+<link href="/res/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/res/css/material-icons.css" rel="stylesheet">
+<link href="/res/css/base.css" rel="stylesheet">
+<link href="/res/css/style.css" rel="stylesheet">
 
-<link href="./res/css/ys.css" rel="stylesheet">
+<link href="/res/css/ys.css" rel="stylesheet">
 
-<script src="./res/js/jquery.min.js?v=1.12.1"></script>
-<script async="async" src="./res/bootstrap/js/bootstrap.min.js"></script>
+<script src="/res/js/jquery.min.js?v=1.12.1"></script>
+<script async="async" src="/res/bootstrap/js/bootstrap.min.js"></script>
 
 
 <!--[if lt IE 9]>
-<script src="./res/js/html5shiv.min.js"></script>
-<script src="./res/js/respond.min.js"></script>
+<script src="/res/js/html5shiv.min.js"></script>
+<script src="/res/js/respond.min.js"></script>
 <![endif]-->
 </head>
 
 
 <?php if( $c=="login" || $c=="reg" || $c=="reg_supplier" || $c=="reg_project" || $c=="resetpassword" ) { ?>
-<body class="fixed_header login" style="background-image:url(./tmp_res/img/login_bg.jpg);background-color: #01375d;" >
+<body class="fixed_header login" style="background-image:url(/tmp_res/img/login_bg.jpg);background-color: #01375d;" >
 <?php } else { ?>
 <body class="fixed_header"  >
 <?php } ?>
@@ -51,22 +51,22 @@
 
     <ul id="header_userarea" class="pull-right">
       <li id="scroll_to_top"><a class="header_btn" data-toggle="tooltip" data-placement="bottom" title="返回顶部"><i class="material-icons">&#xe255;</i></a></li>
-      
-<?php if( !$islogin ) { ?>
+        <?php if( !$islogin ) { ?>
+
       <li><a href="./?c=login" class="header_btn">登录</a></li>
       <li id="header_reg"><a href="./?c=reg" class="header_btn">注册</a></li>
-<?php } else { ?>
+        <?php } else { ?>
       
       <li id="header_user">
-        <a class="header_btn" data-toggle="dropdown"><img id="header_avatar" class="img-circle" src="./tmp_res/img/avatar_demo02.jpg" alt="帅气的梦田君"> Admin</a>
+        <a class="header_btn" data-toggle="dropdown"><img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="帅气的梦田君"> Admin</a>
         <ul class="dropdown-menu">
           <!--<li><a href="#"><i class="material-icons">&#xe85d;</i>详细资料</a></li>
           <li role="separator" class="divider"></li>-->
           <li><a href="./?c=logout"><i class="material-icons">&#xe879;</i>退出</a></li>
         </ul>
       </li>
-      
-<?php } ?>
+        <?php } ?>
+
       
       <!--<li class="divider"></li>-->
       <li>

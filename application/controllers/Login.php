@@ -18,9 +18,28 @@ class Login extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('login_model');
+	}
 	public function index()
 	{
 		$this->display('login/login.html');
 //		$this->load->view('base_data');
+	}
+	public function check_login()
+	{
+         $res= $this->login_model->check_login();
+         if ($res!=1) {
+         	$this->session->set_userdata('username',$res['username']);
+
+         	redirect('index');
+
+         }
+         else{
+         	echo "登陆失败";
+         }
+         
 	}
 }

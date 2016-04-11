@@ -7,13 +7,13 @@
 
 
   
-    <form id="login" class="form-horizontal" action="./tmp_res/login.php?action=login" method="post" novalidate="" autocomplete="off">
+    <form id="login" class="form-horizontal" action="{{site_url url='login/check_login'}}" method="post" novalidate="" autocomplete="off">
         <fieldset>
           <legend>欢迎登录<div class="pull-right">没有账号？<a href="./?c=reg" id="gotoreg" class="btn btn-flat btn-default">立即注册</a></div></legend>
 
           <label class="form-group">
             <i class="material-icons"></i>
-            <input type="text" class="form-control" id="user_name" name="user_name" placeholder="请输入手机号" autocomplete="on" value="17000000001">
+            <input type="text"  class="form-control" id="user_name" name="user_name" placeholder="请输入手机号" autocomplete="on" value="11111111111">
             <!--<button class="btn cancel"><i class="material-icons"></i></button>-->
             <p class="help-block"></p>
           </label>

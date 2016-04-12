@@ -31,12 +31,12 @@
         <i class="material-icons"></i> <span>计量单位</span>
       </h2>
       <div class="form_card_box">    
-				<form class="form-horizontal">
+				<form class="form-horizontal" method="post" action="{{site_url url='admin/unit/add_unit'}}">
 					<div class="form-group">			
 						<div class="col-sm-6">
 							<input type="text" class="form-control" name="unit" id="unit" >
 						</div>
-						<button type="button" id="add" class="btn btn-primary btn-raised" for="zengjia">增加</button>
+						<button type="submit" id="add" class="btn btn-primary btn-raised" for="zengjia">增加</button>
 					</div>
 				</form>
       </div>
@@ -47,46 +47,8 @@
     
   </div>
 <!-- 主体 end -->
-  
+
 </div>
-<script language="JavaScript">
-    $(function(){
-       $("#add").click(function(){
-           var unit=$("#unit").val();
-           if($.trim(unit)!=""){
-               var path="{{site_url url='admin/add_unit/add'}}/"+unit;
-
-               $.ajax({
-                   url:path,
-                   dataType: 'text',
-                   type:'post',
-                   success:function(data){
-                       if (data==1)
-                       {
-                           alert('单位 '+unit+' 已存在！');
-                       }
-                       else if(data==2)
-                       {
-                           alert('存储失败！');
-                       }
-                       else
-                       {
-                           alert('单位 '+unit+' 存储成功！');
-                       }
-                   },
-                   error: function() {
-                       alert('NG');
-                   }
-               });
-           }
-           else
-           {
-               alert('请先维护需要新增的单位信息！');
-           }
-
-       })
-    });
 
 
-</script>
 {{include file="common/footer.html"}}

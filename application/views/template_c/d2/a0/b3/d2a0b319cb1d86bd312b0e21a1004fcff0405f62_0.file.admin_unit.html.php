@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-11 21:41:27
+<?php /* Smarty version 3.1.24, created on 2016-04-12 09:38:22
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:26940570ba98744b960_24140571%%*/
+/*%%SmartyHeaderCode:66570c518ec64b36_03667025%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,21 +9,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2a0b319cb1d86bd312b0e21a1004fcff0405f62' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html',
-      1 => 1460381918,
+      1 => 1460424953,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '26940570ba98744b960_24140571',
+  'nocache_hash' => '66570c518ec64b36_03667025',
+  'variables' => 
+  array (
+    'data' => 0,
+    'foo' => 0,
+    'pager' => 0,
+  ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570ba987502665_42961103',
+  'unifunc' => 'content_570c518ed186c1_41161623',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570ba987502665_42961103')) {
-function content_570ba987502665_42961103 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570c518ed186c1_41161623')) {
+function content_570c518ed186c1_41161623 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '26940570ba98744b960_24140571';
+$_smarty_tpl->properties['nocache_hash'] = '66570c518ec64b36_03667025';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -87,75 +93,43 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">吨</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="">
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">斤</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="">
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">公斤</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="">
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-				<tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">桶</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="">
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
+        <?php
+$_from = $_smarty_tpl->tpl_vars['data']->value['items'];
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['foo']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['foo']->value) {
+$_smarty_tpl->tpl_vars['foo']->_loop = true;
+$foreach_foo_Sav = $_smarty_tpl->tpl_vars['foo'];
+?>
+          <tr>
+              <td class="">
+                  <div class="check">
+                      <input type="checkbox" value="">
+                  </div>
+              </td>
+              <td class=""><?php echo $_smarty_tpl->tpl_vars['foo']->value['name'];?>
+</td>
+              <td class="small"><?php echo $_smarty_tpl->tpl_vars['foo']->value['cdate'];?>
+</td>
+              <td class="">
+                  <button type="button" class="btn btn-sm btn-danger">删除</button>
+              </td>
+          </tr>
+      <?php
+$_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
+}
+?>
       </tbody>
 		</table>
 		<div class="btn-group" role="group">
 					<button type="button" class="btn btn-default check">全选</button>
 					<button type="button" class="btn btn-danger">删除</button>
 				</div>   
-    <nav class="page clearfix">
-      <ul class="pagination pull-right">
-        <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-        <li class="previous disabled">
-          <a href="##" class="ink ink-dark"><span><</span></a>
-        </li>
-        <li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-        <li class="next">
-          <a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-        </li>
-        <li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-      </ul>
-    </nav>
+    <?php echo $_smarty_tpl->tpl_vars['pager']->value;?>
+
       
       </div>
     </div>

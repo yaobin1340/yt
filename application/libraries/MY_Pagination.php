@@ -26,14 +26,14 @@ class MY_Pagination extends CI_Pagination {
 		$config['next_tag_close'] = '</li>';
 		
 		$config['first_link'] = '首页';
-		$config['first_tag_open'] = '<li>';
-		$config['first_tag_close'] = '</li>';
+		$config['first_tag_open'] = '<li class="firstpage hidden-xs disabled"><span class="ink ink-dark">';
+		$config['first_tag_close'] = '</span></li>';
 		$config['last_link'] = '尾页';
-		$config['last_tag_open'] = '<li>';
-		$config['last_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="firstpage hidden-xs"><span class="ink ink-dark">';
+		$config['last_tag_close'] = '</span></li>';
 		
 		$this->initialize($config);
 		
-		return '共 ' . $total_rows . ' 条记录<div class="am-fr"><ul class="am-pagination">' . $this->create_links() . '</ul></div>';
+		return '共 ' . $total_rows . ' 条记录<div class="page clearfix"><ul class="pagination pull-right">' . $this->create_links() . '</ul></div>';
 	}
 }

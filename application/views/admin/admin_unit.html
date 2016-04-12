@@ -55,75 +55,27 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">吨</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="">
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">斤</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="">
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">公斤</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="">
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-				<tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">桶</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="">
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
+        {{foreach from=$data['items'] item=foo}}
+          <tr>
+              <td class="">
+                  <div class="check">
+                      <input type="checkbox" value="">
+                  </div>
+              </td>
+              <td class="">{{$foo['name']}}</td>
+              <td class="small">{{$foo['cdate']}}</td>
+              <td class="">
+                  <button type="button" class="btn btn-sm btn-danger">删除</button>
+              </td>
+          </tr>
+      {{/foreach}}
       </tbody>
 		</table>
 		<div class="btn-group" role="group">
 					<button type="button" class="btn btn-default check">全选</button>
 					<button type="button" class="btn btn-danger">删除</button>
 				</div>   
-    <nav class="page clearfix">
-      <ul class="pagination pull-right">
-        <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-        <li class="previous disabled">
-          <a href="##" class="ink ink-dark"><span><</span></a>
-        </li>
-        <li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-        <li class="next">
-          <a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-        </li>
-        <li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-      </ul>
-    </nav>
+    {{$pager}}
       
       </div>
     </div>

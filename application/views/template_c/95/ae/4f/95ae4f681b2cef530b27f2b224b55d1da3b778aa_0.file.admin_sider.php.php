@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-12 19:15:59
+<?php /* Smarty version 3.1.24, created on 2016-04-12 22:26:16
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_sider.php" */ ?>
 <?php
-/*%%SmartyHeaderCode:14577570cd8ef27d0b8_82001578%%*/
+/*%%SmartyHeaderCode:5553570d0588b56db1_80212657%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,25 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95ae4f681b2cef530b27f2b224b55d1da3b778aa' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_sider.php',
-      1 => 1460459310,
+      1 => 1460470883,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '14577570cd8ef27d0b8_82001578',
+  'nocache_hash' => '5553570d0588b56db1_80212657',
   'variables' => 
   array (
     'type' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570cd8ef4279b8_15867036',
+  'unifunc' => 'content_570d0588d016c4_77075295',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570cd8ef4279b8_15867036')) {
-function content_570cd8ef4279b8_15867036 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570d0588d016c4_77075295')) {
+function content_570d0588d016c4_77075295 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '14577570cd8ef27d0b8_82001578';
+$_smarty_tpl->properties['nocache_hash'] = '5553570d0588b56db1_80212657';
 ?>
 <!-- 侧栏 -->
   <div id="sider">
@@ -86,7 +86,8 @@ $_smarty_tpl->properties['nocache_hash'] = '14577570cd8ef27d0b8_82001578';
       <div class="sider_group_list list-group">
         <a href="<?php echo smarty_function_site_url(array('url'=>'admin/user'),$_smarty_tpl);?>
 " class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 11) {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="用户管理"><i class="material-icons">&#xe7fb;</i><span>用户管理</span></a>
-        <a href="?c=password" class="list-group-item " data-toggle="tooltip" data-placement="right" title="密码修改"><i class="material-icons">&#xe88d;</i><span>密码修改</span></a>
+        <a href="<?php echo smarty_function_site_url(array('url'=>'password'),$_smarty_tpl);?>
+" class="list-group-item " data-toggle="tooltip" data-placement="right" title="密码修改"><i class="material-icons">&#xe88d;</i><span>密码修改</span></a>
       </div>
     </div>
   </div>

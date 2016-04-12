@@ -32,19 +32,20 @@
       </h2>
       <div class="form_card_box">
       
-		<form class="form-horizontal" action="{{site_url url='admin/unit/select'}}">
+		<form class="form-horizontal" method="post" action="{{site_url url='admin/unit/select_unit'}}">
 			<div class="form-group">
 				<div class="col-sm-1">
 					<a href="{{site_url url='admin/add_unit'}}" class="btn btn-primary btn-raised">新增</a>
 				</div>				
 				<div class="col-sm-6">
-					<input type="text" class="form-control" name="sousuo" id="sousuo" >
+					<input type="text" class="form-control" name="sousuo" id="sousuo" value="" >
+                     <input type="hidden" name="title" value="{{$data['title']}}">
 				</div>
 				<button type="submit" name="select_unit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
 			</div>
 		</form>
       
-      
+      <form id="delete_form" method="post" action="{{site_url url='admin/unit/delete_unit'}}">
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
@@ -59,22 +60,23 @@
           <tr>
               <td class="">
                   <div class="check">
-                      <input type="checkbox" value="">
+                      <input type="checkbox" name="CB[]" id="CB[]" value="{{$foo['name']}}">
                   </div>
               </td>
-              <td class="">{{$foo['name']}}</td>
+              <td class=""><input type="hidden" name="unitname[]" value="{{$foo['name']}}">{{$foo['name']}}</td>
               <td class="small">{{$foo['cdate']}}</td>
               <td class="">
-                  <button type="button" class="btn btn-sm btn-danger">删除</button>
+                  <button type="submit" name="delete[]" value="{{$foo['name']}}" class="btn btn-sm btn-danger">删除</button>
               </td>
           </tr>
       {{/foreach}}
       </tbody>
 		</table>
 		<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default check">全选</button>
-					<button type="button" class="btn btn-danger">删除</button>
-				</div>   
+					<button type="button" class="btn btn-default check" id="allc">全选</button>
+					<button type="button" class="btn btn-danger" name="allD" id="allD">删除</button>
+				</div>
+          </form>
     {{$pager}}
       
       </div>
@@ -88,3 +90,33 @@
   
 </div>
 {{include file="common/footer.html"}}
+<script language="JavaScript">
+$(function(){
+    $("#allD").click(function () {
+                 var check=false;
+               $("[name='CB[]']").each(function () {
+
+                   if($(this).is(':checked'))
+                   {
+                       check=true;
+                   }
+                })
+                if(!check){
+                    alert('请先选择需要删除的单位！');
+                }
+        else
+                {
+                    $("#delete_form").submit();
+                }
+            });
+    $("#allc").click(function () {
+
+        $("[name='CB[]']").each(function () {
+                    $(this).attr("checked",'true');
+                })
+    });
+    $("#page_id").click(function () {
+        
+    })
+})
+</script>

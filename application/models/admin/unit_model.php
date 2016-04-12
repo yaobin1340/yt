@@ -17,9 +17,30 @@ class Unit_model extends MY_Model
     function delete_unit()
     {
         $unit='';
+        if ($this->input->post('delete'))
+        {
+            $unit=$this->input->post('delete');
+            $res=$this->db->delete('unit',array('name' => $unit[0]));
+            return $res;
+        }
+        else
+        {
+            if ($this->input->post('CB')){
+                $unit=$this->input->post('CB');
+                foreach ($unit as $item)
+                {
+                    $res=$this->db->delete('unit',array('name' => $item));
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-        $res=$this->db->where('name',$unit)->delete('unit');
-        return $res;
+        }
+
+
     }
     function add_unit()
     {
@@ -49,13 +70,14 @@ class Unit_model extends MY_Model
     }
     public function list_task($page)
     {
+        $title=$this->input->post('sousuo');
         //$user_info = $this->session->userdata('user_info');
         $limit=4;
         $data['limit'] = 4;
         //获取总记录数
         $this->db->select('count(1) num')->from('unit');
-        if($this->input->post('title')){
-            $this->db->like('name',$this->input->post('title'));
+        if($title!=''){
+            $this->db->like('name',$title);
         }
         $num = $this->db->get()->row();
         $data['total'] = $num->num;
@@ -64,9 +86,9 @@ class Unit_model extends MY_Model
         //获取详细列
         $this->db->select()->from('unit');
 
-        if($this->input->post('title')){
-            $this->db->like('name',$this->input->post('title'));
-            $data['title'] = $this->input->post('title');
+        if($title!=''){
+            $this->db->like('name',$title);
+            $data['title'] = $title;
         }
 
         $this->db->order_by('cdate','desc');

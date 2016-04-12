@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-11 21:19:07
+<?php /* Smarty version 3.1.24, created on 2016-04-12 15:36:32
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_sider.php" */ ?>
 <?php
-/*%%SmartyHeaderCode:16175570ba44becd331_90205658%%*/
+/*%%SmartyHeaderCode:27641570ca580b9a6a4_67500848%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,25 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95ae4f681b2cef530b27f2b224b55d1da3b778aa' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_sider.php',
-      1 => 1460380744,
+      1 => 1460445960,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '16175570ba44becd331_90205658',
+  'nocache_hash' => '27641570ca580b9a6a4_67500848',
   'variables' => 
   array (
     'type' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570ba44c004d30_66730790',
+  'unifunc' => 'content_570ca580c84d08_46920176',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570ba44c004d30_66730790')) {
-function content_570ba44c004d30_66730790 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570ca580c84d08_46920176')) {
+function content_570ca580c84d08_46920176 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '16175570ba44becd331_90205658';
+$_smarty_tpl->properties['nocache_hash'] = '27641570ca580b9a6a4_67500848';
 ?>
 <!-- 侧栏 -->
   <div id="sider">
@@ -76,8 +76,8 @@ $_smarty_tpl->properties['nocache_hash'] = '16175570ba44becd331_90205658';
       <div class="sider_group_list list-group">
         <a href="<?php echo smarty_function_site_url(array('url'=>'admin/unit'),$_smarty_tpl);?>
 " class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 9) {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="计量单位"><i class="material-icons">&#xe3de;</i><span>计量单位</span></a>
-        <a href="<?php echo smarty_function_site_url(array('url'=>'index/admin_io/admin_material'),$_smarty_tpl);?>
-" class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 'admin_material') {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="材料类别"><i class="material-icons">&#xe918;</i><span>材料类别</span></a>
+        <a href="<?php echo smarty_function_site_url(array('url'=>'admin/material'),$_smarty_tpl);?>
+" class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 10) {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="材料类别"><i class="material-icons">&#xe918;</i><span>材料类别</span></a>
       </div>
     </div>
     

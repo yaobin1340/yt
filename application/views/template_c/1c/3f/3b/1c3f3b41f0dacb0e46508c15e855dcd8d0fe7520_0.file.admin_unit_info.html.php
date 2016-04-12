@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-12 09:11:33
+<?php /* Smarty version 3.1.24, created on 2016-04-12 13:07:12
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit_info.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:1975570c4b45084175_25692878%%*/
+/*%%SmartyHeaderCode:32242570c82804b4c29_08977293%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,21 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1c3f3b41f0dacb0e46508c15e855dcd8d0fe7520' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit_info.html',
-      1 => 1460423230,
+      1 => 1460437318,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1975570c4b45084175_25692878',
+  'nocache_hash' => '32242570c82804b4c29_08977293',
+  'variables' => 
+  array (
+    'data' => 0,
+  ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570c4b451e3ac9_65858876',
+  'unifunc' => 'content_570c8280627e45_34370600',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570c4b451e3ac9_65858876')) {
-function content_570c4b451e3ac9_65858876 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570c8280627e45_34370600')) {
+function content_570c8280627e45_34370600 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '1975570c4b45084175_25692878';
+$_smarty_tpl->properties['nocache_hash'] = '32242570c82804b4c29_08977293';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -61,13 +65,22 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
         <i class="material-icons"></i> <span>计量单位</span>
       </h2>
       <div class="form_card_box">    
-				<form class="form-horizontal" method="post" action="<?php echo smarty_function_site_url(array('url'=>'admin/unit/add_unit'),$_smarty_tpl);?>
+				<form class="form-horizontal" method="post" action="<?php echo smarty_function_site_url(array('url'=>'admin/unit/save_unit'),$_smarty_tpl);?>
 ">
 					<div class="form-group">			
 						<div class="col-sm-6">
-							<input type="text" class="form-control" name="unit" id="unit" >
+                            <input type="hidden" name="id" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value->id;
+}?>">
+							<input type="text" class="form-control" name="name" id="unit" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value->name;
+}?>">
 						</div>
+                        <?php if ($_smarty_tpl->tpl_vars['data']->value) {?>
+						<button type="submit" id="edit" class="btn btn-primary btn-raised" for="zengjia">编辑</button>
+                        <?php } else { ?>
 						<button type="submit" id="add" class="btn btn-primary btn-raised" for="zengjia">增加</button>
+                        <?php }?>
 					</div>
 				</form>
       </div>

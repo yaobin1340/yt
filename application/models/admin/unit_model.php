@@ -19,17 +19,17 @@ class Unit_model extends MY_Model
         $unit='';
         if ($this->input->post('delete'))
         {
-            $unit=$this->input->post('delete');
-            $res=$this->db->delete('unit',array('name' => $unit[0]));
+            $id=$this->input->post('delete');
+            $res=$this->db->delete('unit',array('id' => $id[0]));
             return $res;
         }
         else
         {
             if ($this->input->post('CB')){
-                $unit=$this->input->post('CB');
-                foreach ($unit as $item)
+                $id=$this->input->post('CB');
+                foreach ($id as $item)
                 {
-                    $res=$this->db->delete('unit',array('name' => $item));
+                    $res=$this->db->delete('unit',array('id' => $item));
                 }
                 return true;
             }
@@ -46,12 +46,16 @@ class Unit_model extends MY_Model
     function save_unit(){
         $data = array(
             'name'=>$this->input->post('name'),
-            'cdate'=>date("y-m-d h:m:s",time())
+            'cdate'=>date("y-m-d H:i:s",time())
         );
         if($this->input->post('id')){//修改
             $this->db->where('id',$this->input->post('id'));
             $res = $this->db->update('unit',$data);
         }else{//新增
+            $check=$this->db->select()->from('unit')->where('name',$this->input->post('name'))->get()->row_array();
+            if($check){
+                return 1;
+            }
             $res = $this->db->insert('unit',$data);
         }
 
@@ -65,7 +69,7 @@ class Unit_model extends MY_Model
     public function list_task($page)
     {
         //$user_info = $this->session->userdata('user_info');
-        $limit=1;
+        $limit=4;
         $data['limit'] = $limit;
         //获取总记录数
         $this->db->select('count(1) num')->from('unit');

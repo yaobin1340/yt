@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-12 11:35:28
+<?php /* Smarty version 3.1.24, created on 2016-04-12 16:16:37
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:31997570c6d002f6e56_71768668%%*/
+/*%%SmartyHeaderCode:6456570caee56932c9_63946942%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2a0b319cb1d86bd312b0e21a1004fcff0405f62' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html',
-      1 => 1460432059,
+      1 => 1460448937,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '31997570c6d002f6e56_71768668',
+  'nocache_hash' => '6456570caee56932c9_63946942',
   'variables' => 
   array (
     'data' => 0,
@@ -22,14 +22,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570c6d0037f9d2_27250873',
+  'unifunc' => 'content_570caee5727a06_00997074',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570c6d0037f9d2_27250873')) {
-function content_570c6d0037f9d2_27250873 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570caee5727a06_00997074')) {
+function content_570caee5727a06_00997074 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '31997570c6d002f6e56_71768668';
+$_smarty_tpl->properties['nocache_hash'] = '6456570caee56932c9_63946942';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -68,28 +68,26 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
       </h2>
       <div class="form_card_box">
       
-		<form class="form-horizontal" method="post" action="<?php echo smarty_function_site_url(array('url'=>'admin/unit/select_unit'),$_smarty_tpl);?>
+		<form id="page_form" class="form-horizontal" method="post" action="<?php echo smarty_function_site_url(array('url'=>'admin/unit/list_task'),$_smarty_tpl);?>
 ">
 			<div class="form-group">
 				<div class="col-sm-1">
-					<a href="<?php echo smarty_function_site_url(array('url'=>'admin/add_unit'),$_smarty_tpl);?>
+					<a href="<?php echo smarty_function_site_url(array('url'=>'admin/unit/add_unit'),$_smarty_tpl);?>
 " class="btn btn-primary btn-raised">新增</a>
 				</div>				
 				<div class="col-sm-6">
-					<input type="text" class="form-control" name="sousuo" id="sousuo" value="" >
-                     <input type="hidden" name="title" value="<?php echo $_smarty_tpl->tpl_vars['data']->value['title'];?>
-">
+					<input type="text" class="form-control" name="title" value="<?php echo $_smarty_tpl->tpl_vars['data']->value['title'];?>
+" >
 				</div>
-				<button type="submit" name="select_unit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
+				<button type="submit" class="btn btn-primary btn-raised">搜索</button>
 			</div>
 		</form>
-      
-      <form id="delete_form" method="post" action="<?php echo smarty_function_site_url(array('url'=>'admin/unit/delete_unit'),$_smarty_tpl);?>
+      <form method="post" action="<?php echo smarty_function_site_url(array('url'=>'admin/unit/delete_unit'),$_smarty_tpl);?>
 ">
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
-          <th class=""></th>
+
           <th class="">标题</th>
 					<th class="">推送时间</th>
           <th class="">操作</th>
@@ -108,21 +106,20 @@ $_smarty_tpl->tpl_vars['foo']->_loop = true;
 $foreach_foo_Sav = $_smarty_tpl->tpl_vars['foo'];
 ?>
           <tr>
-              <td class="">
-                  <div class="check">
-                      <input type="checkbox" name="CB[]" id="CB[]" value="<?php echo $_smarty_tpl->tpl_vars['foo']->value['name'];?>
-">
-                  </div>
-              </td>
+
               <td class=""><input type="hidden" name="unitname[]" value="<?php echo $_smarty_tpl->tpl_vars['foo']->value['name'];?>
 "><?php echo $_smarty_tpl->tpl_vars['foo']->value['name'];?>
 </td>
               <td class="small"><?php echo $_smarty_tpl->tpl_vars['foo']->value['cdate'];?>
 </td>
               <td class="">
-                  <button type="submit" name="delete[]" value="<?php echo $_smarty_tpl->tpl_vars['foo']->value['name'];?>
+                  <button type="submit" name="delete[]" value="<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
 " class="btn btn-sm btn-danger">删除</button>
+                  <a type="button" href="<?php echo smarty_function_site_url(array('url'=>'admin/unit/edit_unit'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
+" class="btn btn-sm btn-default">编辑</a>
               </td>
+
           </tr>
       <?php
 $_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
@@ -130,10 +127,6 @@ $_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
 ?>
       </tbody>
 		</table>
-		<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default check" id="allc">全选</button>
-					<button type="button" class="btn btn-danger" name="allD" id="allD">删除</button>
-				</div>
           </form>
     <?php echo $_smarty_tpl->tpl_vars['pager']->value;?>
 
@@ -152,35 +145,14 @@ $_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
 ?>
 
 <?php echo '<script'; ?>
- language="JavaScript">
-$(function(){
-    $("#allD").click(function () {
-                 var check=false;
-               $("[name='CB[]']").each(function () {
-
-                   if($(this).is(':checked'))
-                   {
-                       check=true;
-                   }
-                })
-                if(!check){
-                    alert('请先选择需要删除的单位！');
-                }
-        else
-                {
-                    $("#delete_form").submit();
-                }
-            });
-    $("#allc").click(function () {
-
-        $("[name='CB[]']").each(function () {
-                    $(this).attr("checked",'true');
-                })
-    });
-    $("#page_id").click(function () {
-        
+>
+    $('.pagination').find('a').click(function(){
+        url = $(this).attr('href')
+        $('#page_form').attr('action',url)
+        $('#page_form').submit()
+        return false;
     })
-})
+
 <?php echo '</script'; ?>
 ><?php }
 }

@@ -43,7 +43,7 @@
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="数据维护"><i class="expand material-icons">&#xe5cf;</i><span>数据维护</span></a>
       <div class="sider_group_list list-group">
         <a href="{{site_url url='admin/unit'}}" class="list-group-item {{if $type==9}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="计量单位"><i class="material-icons">&#xe3de;</i><span>计量单位</span></a>
-        <a href="{{site_url url='index/admin_io/admin_material'}}" class="list-group-item {{if $type=='admin_material'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="材料类别"><i class="material-icons">&#xe918;</i><span>材料类别</span></a>
+        <a href="{{site_url url='admin/material'}}" class="list-group-item {{if $type==10}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="材料类别"><i class="material-icons">&#xe918;</i><span>材料类别</span></a>
       </div>
     </div>
     

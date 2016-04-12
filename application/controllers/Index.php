@@ -24,12 +24,13 @@ class Index extends MY_Controller {
         if (!$this->session->userdata('username')){
             redirect('login');
         }
-        
+        $this->cismarty->assign('type',1);
       //  $this->load->model('login_model');
     }
     public function index()
     {
-      $this->admin_io();
+        $path="admin/admin_index.html";
+        $this->cismarty->display($path);
 //		$this->load->view('base_data');
     }
     public function admin_io($type='admin')

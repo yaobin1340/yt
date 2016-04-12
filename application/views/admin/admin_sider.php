@@ -10,7 +10,7 @@
   
     <div class="sider_group on">
       <div class="sider_group_list list-group">
-        <a href="{{site_url url='index/admin_io/admin'}}" class="list-group-item {{if $type=='admin'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="管理员界面首页"><i class="material-icons">&#xe88a;</i><span>首页</span></a>
+        <a href="{{site_url url='index'}}" class="list-group-item {{if $type==1}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="管理员界面首页"><i class="material-icons">&#xe88a;</i><span>首页</span></a>
       </div>
     </div>
   
@@ -42,7 +42,7 @@
     <div class="sider_group">
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="数据维护"><i class="expand material-icons">&#xe5cf;</i><span>数据维护</span></a>
       <div class="sider_group_list list-group">
-        <a href="{{site_url url='index/admin_io/admin_unit'}}" class="list-group-item {{if $type=='admin_unit'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="计量单位"><i class="material-icons">&#xe3de;</i><span>计量单位</span></a>
+        <a href="{{site_url url='admin/unit'}}" class="list-group-item {{if $type==9}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="计量单位"><i class="material-icons">&#xe3de;</i><span>计量单位</span></a>
         <a href="{{site_url url='index/admin_io/admin_material'}}" class="list-group-item {{if $type=='admin_material'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="材料类别"><i class="material-icons">&#xe918;</i><span>材料类别</span></a>
       </div>
     </div>

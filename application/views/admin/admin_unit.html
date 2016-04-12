@@ -32,15 +32,15 @@
       </h2>
       <div class="form_card_box">
       
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="{{site_url url='admin/unit/select'}}">
 			<div class="form-group">
 				<div class="col-sm-1">
-					<a href="./?c=admin_unit_info" class="btn btn-primary btn-raised">新增</a>
+					<a href="{{site_url url='admin/add_unit'}}" class="btn btn-primary btn-raised">新增</a>
 				</div>				
 				<div class="col-sm-6">
 					<input type="text" class="form-control" name="sousuo" id="sousuo" >
 				</div>
-				<button type="submit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
+				<button type="submit" name="select_unit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
 			</div>
 		</form>
       

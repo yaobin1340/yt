@@ -42,53 +42,45 @@ class Unit_model extends MY_Model
 
 
     }
-    function add_unit()
-    {
 
-         $unit=$this->input->post('unit');
-
-
-        $data= $this->db->select()->from('unit')->where('name',$unit)->get()->row_array();
-        if ($data)
-        {
-            return 1;    //已经存在相同的单位
-        }
-        $time=time();
-        $add=array(
-            'name'=>$unit,
-            'cdate'=>date("y-m-d h:m:s",$time)
+    function save_unit(){
+        $data = array(
+            'name'=>$this->input->post('name'),
+            'cdate'=>date("y-m-d h:m:s",time())
         );
-        $res=$this->db->insert('unit',$add);
-        if (!$res)
-        {
-            return 2;   //存储失败
+        if($this->input->post('id')){//修改
+            $this->db->where('id',$this->input->post('id'));
+            $res = $this->db->update('unit',$data);
+        }else{//新增
+            $res = $this->db->insert('unit',$data);
         }
-        else
-        {
+
+        if (!$res){
+            return 2;   //存储失败
+        }else{
             return 3;   //存储成功
         }
     }
+
     public function list_task($page)
     {
-        $title=$this->input->post('sousuo');
         //$user_info = $this->session->userdata('user_info');
-        $limit=4;
-        $data['limit'] = 4;
+        $limit=1;
+        $data['limit'] = $limit;
         //获取总记录数
         $this->db->select('count(1) num')->from('unit');
-        if($title!=''){
-            $this->db->like('name',$title);
+        if($this->input->post('title')){
+            $this->db->like('name',$this->input->post('title'));
         }
         $num = $this->db->get()->row();
         $data['total'] = $num->num;
         //搜索条件
-        $data['title'] = null;
+        $data['title'] = $this->input->post('title')?$this->input->post('title'):null;
         //获取详细列
         $this->db->select()->from('unit');
 
-        if($title!=''){
-            $this->db->like('name',$title);
-            $data['title'] = $title;
+        if($this->input->post('title')){
+            $this->db->like('name',$this->input->post('title'));
         }
 
         $this->db->order_by('cdate','desc');
@@ -96,6 +88,10 @@ class Unit_model extends MY_Model
         $data['items'] = $this->db->get()->result_array();
 
         return $data;
+    }
+
+    public function get_unit($id){
+        return $this->db->select()->from('unit')->where('id',$id)->get()->row();
     }
 
 }

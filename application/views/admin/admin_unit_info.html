@@ -31,12 +31,17 @@
         <i class="material-icons"></i> <span>计量单位</span>
       </h2>
       <div class="form_card_box">    
-				<form class="form-horizontal" method="post" action="{{site_url url='admin/unit/add_unit'}}">
+				<form class="form-horizontal" method="post" action="{{site_url url='admin/unit/save_unit'}}">
 					<div class="form-group">			
 						<div class="col-sm-6">
-							<input type="text" class="form-control" name="unit" id="unit" >
+                            <input type="hidden" name="id" value="{{if $data}}{{$data->id}}{{/if}}">
+							<input type="text" class="form-control" name="name" id="unit" value="{{if $data}}{{$data->name}}{{/if}}">
 						</div>
+                        {{if $data}}
+						<button type="submit" id="edit" class="btn btn-primary btn-raised" for="zengjia">编辑</button>
+                        {{else}}
 						<button type="submit" id="add" class="btn btn-primary btn-raised" for="zengjia">增加</button>
+                        {{/if}}
 					</div>
 				</form>
       </div>

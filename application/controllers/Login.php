@@ -32,13 +32,18 @@ class Login extends MY_Controller {
 	{
          $res= $this->login_model->check_login();
          if ($res!=1) {
-         	$this->session->set_userdata('username',$res['username']);
-
+			 if($res['status']==-1){
+				 $this->show_message('账户已被停用！');
+				 exit();
+			 }
+         	 $this->session->set_userdata('username',$res['username']);
+			 $this->session->set_userdata('type',$res['type']);
          	redirect('index');
 
          }
          else{
-         	echo "登陆失败";
+			 $this->show_message('登陆失败');
+			 exit();
          }
          
 	}

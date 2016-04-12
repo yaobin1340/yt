@@ -16,17 +16,17 @@ class MY_Pagination extends CI_Pagination {
 		
 		$config['cur_tag_open'] = '<li class="am-active"><a href="javascript:;">';
 		$config['cur_tag_close'] = '</a></li>';
-		$config['num_tag_open'] = '<li>';
+		$config['num_tag_open'] = '<li class="ink ink-dark">';
 		$config['num_tag_close'] = '</li>';
-		$config['prev_link'] = '«';
-		$config['prev_tag_open'] = '<li>';
+		$config['prev_link'] = '<';
+		$config['prev_tag_open'] = '<li class="previous">';
 		$config['prev_tag_close'] = '</li>';
-		$config['next_link'] = '»';
-		$config['next_tag_open'] = '<li>';
+		$config['next_link'] = '>';
+		$config['next_tag_open'] = '<li class="next">';
 		$config['next_tag_close'] = '</li>';
 		
 		$config['first_link'] = '首页';
-		$config['first_tag_open'] = '<li class="firstpage hidden-xs disabled"><span class="ink ink-dark">';
+		$config['first_tag_open'] = '<li class="firstpage hidden-xs"><span class="ink ink-dark">';
 		$config['first_tag_close'] = '</span></li>';
 		$config['last_link'] = '尾页';
 		$config['last_tag_open'] = '<li class="firstpage hidden-xs"><span class="ink ink-dark">';

@@ -50,7 +50,7 @@
     <div class="sider_group">
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="系统功能"><i class="expand material-icons">&#xe5cf;</i><span>系统功能</span></a>
       <div class="sider_group_list list-group">
-        <a href="?c=admin_user" class="list-group-item {{if $type=='admin_user'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="用户管理"><i class="material-icons">&#xe7fb;</i><span>用户管理</span></a>
+        <a href="{{site_url url='admin/user'}}" class="list-group-item {{if $type==11}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="用户管理"><i class="material-icons">&#xe7fb;</i><span>用户管理</span></a>
         <a href="?c=password" class="list-group-item " data-toggle="tooltip" data-placement="right" title="密码修改"><i class="material-icons">&#xe88d;</i><span>密码修改</span></a>
       </div>
     </div>

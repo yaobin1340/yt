@@ -34,6 +34,6 @@ class MY_Pagination extends CI_Pagination {
 		
 		$this->initialize($config);
 		
-		return '共 ' . $total_rows . ' 条记录<div class="page clearfix"><ul class="pagination pull-right">' . $this->create_links() . '</ul></div>';
+		return '共 ' . $total_rows . ' 条记录<nav class="page clearfix"><ul class="pagination pull-right">' . $this->create_links() . '</ul></nav>';
 	}
 }

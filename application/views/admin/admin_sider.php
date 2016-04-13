@@ -28,14 +28,14 @@
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="合约管理"><i class="expand material-icons">&#xe5cf;</i><span>合约管理</span></a>
       <div class="sider_group_list list-group">
         <a href="?c=admin_deal" class="list-group-item {{if $type=='admin_deal'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="合约管理"><i class="material-icons">&#xe90e;</i><span>合约管理</span></a>
-        <a href="?c=admin_deal_model" class="list-group-item {{if $type=='admin_deal_model'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="合约范本"><i class="material-icons">&#xe873;</i><span>合约范本</span></a>
+        <a href="{{site_url url='admin/deal_model'}}" class="list-group-item {{if $type==7}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="合约范本"><i class="material-icons">&#xe873;</i><span>合约范本</span></a>
       </div>
     </div>
     
     <div class="sider_group on">
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="信息推送"><i class="expand material-icons">&#xe5cf;</i><span>信息推送</span></a>
       <div class="sider_group_list list-group">
-        <a href="?c=admin_push" class="list-group-item {{if $type=='admin_push'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="公告信息推送"><i class="material-icons">&#xe0c9;</i><span>公告信息推送</span></a>
+        <a href="?c=admin_push" class="list-group-item {{if $type==8}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="公告信息推送"><i class="material-icons">&#xe0c9;</i><span>公告信息推送</span></a>
       </div>
     </div>
     

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-12 22:26:16
+<?php /* Smarty version 3.1.24, created on 2016-04-13 13:24:45
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_sider.php" */ ?>
 <?php
-/*%%SmartyHeaderCode:5553570d0588b56db1_80212657%%*/
+/*%%SmartyHeaderCode:743570dd81d169f69_25321692%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,25 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95ae4f681b2cef530b27f2b224b55d1da3b778aa' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_sider.php',
-      1 => 1460470883,
+      1 => 1460524816,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5553570d0588b56db1_80212657',
+  'nocache_hash' => '743570dd81d169f69_25321692',
   'variables' => 
   array (
     'type' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570d0588d016c4_77075295',
+  'unifunc' => 'content_570dd81d296be9_98341389',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570d0588d016c4_77075295')) {
-function content_570d0588d016c4_77075295 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570dd81d296be9_98341389')) {
+function content_570dd81d296be9_98341389 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '5553570d0588b56db1_80212657';
+$_smarty_tpl->properties['nocache_hash'] = '743570dd81d169f69_25321692';
 ?>
 <!-- 侧栏 -->
   <div id="sider">
@@ -60,14 +60,15 @@ $_smarty_tpl->properties['nocache_hash'] = '5553570d0588b56db1_80212657';
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="合约管理"><i class="expand material-icons">&#xe5cf;</i><span>合约管理</span></a>
       <div class="sider_group_list list-group">
         <a href="?c=admin_deal" class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 'admin_deal') {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="合约管理"><i class="material-icons">&#xe90e;</i><span>合约管理</span></a>
-        <a href="?c=admin_deal_model" class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 'admin_deal_model') {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="合约范本"><i class="material-icons">&#xe873;</i><span>合约范本</span></a>
+        <a href="<?php echo smarty_function_site_url(array('url'=>'admin/deal_model'),$_smarty_tpl);?>
+" class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 7) {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="合约范本"><i class="material-icons">&#xe873;</i><span>合约范本</span></a>
       </div>
     </div>
     
     <div class="sider_group on">
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="信息推送"><i class="expand material-icons">&#xe5cf;</i><span>信息推送</span></a>
       <div class="sider_group_list list-group">
-        <a href="?c=admin_push" class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 'admin_push') {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="公告信息推送"><i class="material-icons">&#xe0c9;</i><span>公告信息推送</span></a>
+        <a href="?c=admin_push" class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 8) {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="公告信息推送"><i class="material-icons">&#xe0c9;</i><span>公告信息推送</span></a>
       </div>
     </div>
     

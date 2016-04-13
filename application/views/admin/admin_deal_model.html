@@ -1,7 +1,7 @@
-<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+{{include file="common/header.html"}}
 <div id="wrap" class="container-fluid">
 
-<?php require_once TEMPLATE."/admin/admin_sider.php";?>
+    {{include file="admin/admin_sider.php"}}
   
   
 <!-- 主体 -->
@@ -34,7 +34,7 @@
       
 		<form class="form-horizontal">
 			<div class="form-group">								
-				<a href="./?c=admin_deal_model_info" class="btn btn-primary btn-raised" for="sousuo">新增</a>
+				<a href="{{site_url url='admin/deal_model/add_model'}}" class="btn btn-primary btn-raised" for="sousuo">新增</a>
 			</div>
 		</form>
       
@@ -42,73 +42,30 @@
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
-          <th class=""></th>
+
           <th class="">名称</th>
           <th class="">更新时间</th>
           <th class="">操作</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">合约范本一</td>
-          <td class="small">2016-03-10 15:39:33</td>
+      {{foreach from=$data['items'] item=foo}}
+      <tr>
+
+          <td class="">{{$foo['dealname']}}</td>
+          <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
-						<a href="./?c=admin_deal_model_edit" class="btn btn-sm btn-primary">编辑</a>
-						<a href="###" class="btn btn-sm btn-danger">删除</a>
-					</td>
-        </tr>
-         <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
+              <a href="{{$base_url}}uploadfiles/{{$foo['url']}}" class="btn btn-sm btn-primary">下载</a>
+              <a href="{{site_url url='admin/deal_model/delete_model'}}/{{$foo['id']}}" class="btn btn-sm btn-danger">删除</a>
           </td>
-          <td class="">合约范本一</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="./?c=admin_deal_model_edit" class="btn btn-sm btn-primary">编辑</a>
-						<a href="###" class="btn btn-sm btn-danger">删除</a>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">合约范本一</td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="./?c=admin_deal_model_edit" class="btn btn-sm btn-primary">编辑</a>
-						<a href="###" class="btn btn-sm btn-danger">删除</a>
-					</td>
-        </tr>
+
+      </tr>
+      {{/foreach}}
+
       </tbody>
 		</table>  
-		<div class="btn-group" role="group">
-			<button type="button" class="btn btn-default check">全选</button>
-			<button type="button" class="btn btn-danger">删除</button>
-		</div>    
-    <nav class="page clearfix">
-      <ul class="pagination pull-right">
-        <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-        <li class="previous disabled">
-          <a href="##" class="ink ink-dark"><span><</span></a>
-        </li>
-        <li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-        <li class="next">
-          <a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-        </li>
-        <li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-      </ul>
-    </nav>
+
+    {{$pager}}
       
       </div>
     </div>
@@ -120,4 +77,4 @@
 <!-- 主体 end -->
   
 </div>
-<?php require_once TEMPLATE."/common/footer.php";?>
+{{include file="common/footer.html"}}

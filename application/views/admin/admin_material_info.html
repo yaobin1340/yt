@@ -35,7 +35,7 @@
 					<div class="form-group">
                         <div class="col-sm-6">
                             <input type="hidden" name="id" value="{{if $data}}{{$data->id}}{{/if}}">
-                            <input type="text" class="form-control" name="name" id="unit" value="{{if $data}}{{$data->name}}{{/if}}">
+                            <input type="text" required="required" class="form-control" name="name" id="unit" value="{{if $data}}{{$data->name}}{{/if}}">
                         </div>
                         {{if $data}}
                         <button type="submit" id="edit" class="btn btn-primary btn-raised" for="zengjia">编辑</button>

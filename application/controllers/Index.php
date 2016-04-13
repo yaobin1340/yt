@@ -18,8 +18,7 @@ class Index extends MY_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
         if (!$this->session->userdata('username')){
             redirect('login');
@@ -27,17 +26,15 @@ class Index extends MY_Controller {
         $this->cismarty->assign('type',1);
       //  $this->load->model('login_model');
     }
-    public function index()
-    {
+
+    public function index(){
         if ($this->session->userdata('type')==1){
-            $path="admin/admin_index.html";
-            $this->cismarty->display($path);
+            redirect('admin/index');
         }
-      
-//		$this->load->view('base_data');
+
     }
-    public function admin_io($type='admin')
-    {
+
+    public function admin_io($type='admin'){
         $types=array('admin',
             'admin_supplier',
             'admin_project',

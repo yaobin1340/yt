@@ -55,7 +55,8 @@
           <td class="">{{$foo['dealname']}}</td>
           <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
-              <a href="{{$base_url}}uploadfiles/{{$foo['url']}}" class="btn btn-sm btn-primary">下载</a>
+
+              <a href="{{site_url url='admin/deal_model/download'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">下载</a>
               <a href="{{site_url url='admin/deal_model/delete_model'}}/{{$foo['id']}}" class="btn btn-sm btn-danger">删除</a>
           </td>
 

@@ -36,6 +36,7 @@ class Deal_model_model extends MY_Model
         $modeldata=array(
           'dealname'=>$this->input->post('dealname'),
             'url'=>$data['file_name'],
+            'oldfilename'=>$data['client_name'],
             'cdate'=>date("y-m-d H:i:s",time())
         );
        $res=$this->db->insert('deal_model',$modeldata);
@@ -86,16 +87,14 @@ class Deal_model_model extends MY_Model
         $data=$this->db->select()->from('deal_model')->where('id',$id)->get()->row_array();
 
         if ($data){
+            $string = read_file('./uploadfiles/'.$data['url']);
 
-            $file_name='/uploadfiles/'.$data['url'];//需要下载的文件
-            force_download($file_name);
+         //   $file_name='./uploadfiles/'.$data['url'];//需要下载的文件
+
+            force_download($data['oldfilename'],$string);
 
         }
 
 
-
-        /*  $this->load->helper('file');
-
-          $string = read_file('./path/to/file.php');*/
     }
 }

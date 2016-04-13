@@ -55,11 +55,11 @@ class MY_Controller extends CI_Controller
 				<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes' />
 				<title>".$message."</title>
-				<script src='../../static/js/jquery.min.js'></script>
-				<link rel='stylesheet' href='../../res/css/dialog.css'>
+				<script src='/static/js/jquery.min.js'></script>
+				<link rel='stylesheet' href='/res/css/dialog.css'>
 				</head>
 				<body>
-				<script src='../../res/js/easydialog.min.js'></script>
+				<script src='/res/js/easydialog.min.js'></script>
 				<script>
 				var callFn = function(){
 				  ".$js."

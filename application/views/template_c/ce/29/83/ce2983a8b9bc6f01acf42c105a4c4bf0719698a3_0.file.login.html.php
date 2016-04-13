@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-11 11:26:46
+<?php /* Smarty version 3.1.24, created on 2016-04-13 11:38:39
          compiled from "D:/amp/Apache/htdocs/yt/application/views/login/login.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:29454570b1976dd3573_68929891%%*/
+/*%%SmartyHeaderCode:30852570dbf3fce89d2_77546825%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,21 +9,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ce2983a8b9bc6f01acf42c105a4c4bf0719698a3' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/login/login.html',
-      1 => 1460345201,
+      1 => 1460518421,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '29454570b1976dd3573_68929891',
+  'nocache_hash' => '30852570dbf3fce89d2_77546825',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570b1976e488a8_90338514',
+  'unifunc' => 'content_570dbf3fd94820_17455636',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570b1976e488a8_90338514')) {
-function content_570b1976e488a8_90338514 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570dbf3fd94820_17455636')) {
+function content_570dbf3fd94820_17455636 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '29454570b1976dd3573_68929891';
+$_smarty_tpl->properties['nocache_hash'] = '30852570dbf3fce89d2_77546825';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -42,13 +42,13 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 
           <label class="form-group">
             <i class="material-icons"></i>
-            <input type="text"  class="form-control" id="user_name" name="user_name" placeholder="请输入手机号" autocomplete="on" value="11111111111">
+            <input type="text"  class="form-control" style="color: #0f0f0f" id="user_name" name="user_name" placeholder="请输入手机号" autocomplete="on" value="11111111111">
             <!--<button class="btn cancel"><i class="material-icons"></i></button>-->
             <p class="help-block"></p>
           </label>
           <label class="form-group">
             <i class="material-icons"></i>
-            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="请输入密码" value="123456">
+            <input type="password" class="form-control" style="color: #0f0f0f" id="pwd" name="pwd" placeholder="请输入密码" value="123456">
             <p class="help-block"></p>
           </label>
           <label id="captchas_part" class="captcha form-group input-group" style="display: none;">

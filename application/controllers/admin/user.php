@@ -56,6 +56,7 @@ class User extends MY_Controller {
 
     public function change()
     {
+        
         $res = $this->user_model->change();
         
         if($res==3){
@@ -69,6 +70,15 @@ class User extends MY_Controller {
             exit();
         }
     }
- 
 
+    public function reset_password($id){
+        $res = $this->user_model->reset_password($id);
+        if($res){
+            $this->show_message('密码重置成功');
+            exit();
+        }else{
+            $this->show_message('密码重置失败');
+            exit();
+        }
+    }
 }

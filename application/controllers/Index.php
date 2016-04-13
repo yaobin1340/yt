@@ -29,8 +29,11 @@ class Index extends MY_Controller {
     }
     public function index()
     {
-        $path="admin/admin_index.html";
-        $this->cismarty->display($path);
+        if ($this->session->userdata('type')==1){
+            $path="admin/admin_index.html";
+            $this->cismarty->display($path);
+        }
+      
 //		$this->load->view('base_data');
     }
     public function admin_io($type='admin')

@@ -20,20 +20,18 @@ class Password extends MY_Controller {
 //		$this->load->view('base_data');
     }
 
-    public function check_login(){
-        $res= $this->login_model->check_login();
-        if ($res!=1) {
-            if($res['status']==-1){
-                $this->show_message('账户已被停用！');
-                exit();
-            }
-            $this->session->set_userdata('username',$res['username']);
-            $this->session->set_userdata('type',$res['type']);
-            redirect('index');
-
-        }
-        else{
-            $this->show_message('登陆失败');
+    public function reset_password(){
+        
+        $res= $this->password_model->reset_password();
+        if ($res==3) {
+            $this->show_message('密码错误');
+            exit();
+        }elseif($res==1){
+            $this->session->sess_destroy();
+            $this->show_message('修改成功',site_url('login'));
+            exit();
+        } else{
+            $this->show_message('修改失败');
             exit();
         }
 

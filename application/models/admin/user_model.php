@@ -107,4 +107,8 @@ class User_model extends MY_Model
         return $this->db->select()->from('users')->where('id',$id)->get()->row();
     }
 
+    public function reset_password($id){
+        $res=$this->db->where('id',$id)->update('users',array('password'=>md5('888888')));
+        return $res;
+    }
 }

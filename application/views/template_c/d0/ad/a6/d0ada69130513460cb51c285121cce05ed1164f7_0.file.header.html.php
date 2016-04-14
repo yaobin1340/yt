@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-11 15:47:51
+<?php /* Smarty version 3.1.24, created on 2016-04-14 10:05:01
          compiled from "D:/amp/Apache/htdocs/yt/application/views/common/header.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:29136570b56a7ab3261_44430153%%*/
+/*%%SmartyHeaderCode:23950570efacd233b43_41877961%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd0ada69130513460cb51c285121cce05ed1164f7' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/common/header.html',
-      1 => 1460360868,
+      1 => 1460599496,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '29136570b56a7ab3261_44430153',
+  'nocache_hash' => '23950570efacd233b43_41877961',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570b56a7b18b94_08869134',
+  'unifunc' => 'content_570efacd30e745_06054787',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570b56a7b18b94_08869134')) {
-function content_570b56a7b18b94_08869134 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570efacd30e745_06054787')) {
+function content_570efacd30e745_06054787 ($_smarty_tpl) {
+if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '29136570b56a7ab3261_44430153';
+$_smarty_tpl->properties['nocache_hash'] = '23950570efacd233b43_41877961';
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,7 +97,8 @@ $_smarty_tpl->properties['nocache_hash'] = '29136570b56a7ab3261_44430153';
         <ul class="dropdown-menu">
           <!--<li><a href="#"><i class="material-icons">&#xe85d;</i>详细资料</a></li>
           <li role="separator" class="divider"></li>-->
-          <li><a href="./?c=logout"><i class="material-icons">&#xe879;</i>退出</a></li>
+          <li><a href="<?php echo smarty_function_site_url(array('url'=>'index/logout'),$_smarty_tpl);?>
+"><i class="material-icons">&#xe879;</i>退出</a></li>
         </ul>
       </li>
         <?php echo '<?php ';?>} <?php echo '?>';?>

@@ -10,7 +10,7 @@
   
     <div class="sider_group on">
       <div class="sider_group_list list-group">
-        <a href="{{site_url url='index'}}" class="list-group-item {{if $type==1}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="管理员界面首页"><i class="material-icons">&#xe88a;</i><span>首页</span></a>
+        <a href="{{site_url url='admin/index'}}" class="list-group-item {{if $type==1}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="管理员界面首页"><i class="material-icons">&#xe88a;</i><span>首页</span></a>
       </div>
     </div>
   

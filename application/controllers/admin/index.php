@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+ * Created by PhpStorm.
+ * User: yangyang
+ * Date: 2016/4/13
+ * Time: 21:24
+ */
 class Index extends MY_Controller {
 
     /**
@@ -24,25 +29,16 @@ class Index extends MY_Controller {
             redirect('login');
         }
         $this->cismarty->assign('type',1);
-      //  $this->load->model('login_model');
+        $this->load->model('admin/index_model','index_model');
     }
 
     public function index(){
         if ($this->session->userdata('type')==1){
-            redirect('admin/index');
-        }elseif($this->session->userdata('type')==2){
-            redirect('admin/index');
-        }elseif($this->session->userdata('type')==3){
-            redirect('project/index');
-        }else{
-            $this->session->sess_destroy();
-            redirect('login');
+            $path="admin/admin_index.html";
+            $this->cismarty->display($path);
         }
-    }
 
-    public function logout(){
-        $this->session->sess_destroy();
-        redirect('login');
+//		$this->load->view('base_data');
     }
 
     public function admin_io($type='admin'){
@@ -58,7 +54,7 @@ class Index extends MY_Controller {
             'admin_material',
             'admin_user');
         if(!in_array($type,$types)){
-            
+
         }
         $this->cismarty->assign('type',$type);
         if ($type=='admin'){
@@ -69,8 +65,8 @@ class Index extends MY_Controller {
         {
             $path="admin/{$type}.html";
         }
-       // redirect($type);
-       // die($path);
+        // redirect($type);
+        // die($path);
         $this->cismarty->display($path);
     }
 }

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-13 13:24:45
+<?php /* Smarty version 3.1.24, created on 2016-04-14 08:18:00
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_sider.php" */ ?>
 <?php
-/*%%SmartyHeaderCode:743570dd81d169f69_25321692%%*/
+/*%%SmartyHeaderCode:401570ee1b8e72c95_82795427%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,25 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95ae4f681b2cef530b27f2b224b55d1da3b778aa' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_sider.php',
-      1 => 1460524816,
+      1 => 1460592623,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '743570dd81d169f69_25321692',
+  'nocache_hash' => '401570ee1b8e72c95_82795427',
   'variables' => 
   array (
     'type' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570dd81d296be9_98341389',
+  'unifunc' => 'content_570ee1b903a304_66755886',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570dd81d296be9_98341389')) {
-function content_570dd81d296be9_98341389 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_570ee1b903a304_66755886')) {
+function content_570ee1b903a304_66755886 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '743570dd81d169f69_25321692';
+$_smarty_tpl->properties['nocache_hash'] = '401570ee1b8e72c95_82795427';
 ?>
 <!-- 侧栏 -->
   <div id="sider">
@@ -41,7 +41,7 @@ $_smarty_tpl->properties['nocache_hash'] = '743570dd81d169f69_25321692';
   
     <div class="sider_group on">
       <div class="sider_group_list list-group">
-        <a href="<?php echo smarty_function_site_url(array('url'=>'index'),$_smarty_tpl);?>
+        <a href="<?php echo smarty_function_site_url(array('url'=>'admin/index'),$_smarty_tpl);?>
 " class="list-group-item <?php if ($_smarty_tpl->tpl_vars['type']->value == 1) {?>active<?php }?>" data-toggle="tooltip" data-placement="right" title="管理员界面首页"><i class="material-icons">&#xe88a;</i><span>首页</span></a>
       </div>
     </div>

@@ -1,7 +1,7 @@
-<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+{{include file="common/header.html"}}
 <div id="wrap" class="container-fluid">
 
-<?php require_once TEMPLATE."/project/project_sider.php";?>
+	{{include file="project/project_sider.php"}}
   
   
 <!-- 主体 -->
@@ -30,7 +30,7 @@
       </h2>
       <div class="form_card_box">
       
-        <form class="form-horizontal" style="margin-bottom:40px;">
+        <form id="save_form" class="form-horizontal" style="margin-bottom:40px;" method="post" action="{{site_url url='project/info/save_info'}}">
 					<div class="form-group">
 						<div class="col-sm-2 col-sm-offset-1">
 							<a href="#" class="btn btn-default disabled" role="button" style="color:#333">项目基本信息</a>
@@ -40,98 +40,97 @@
 						</div>
 					</div>				
 					<div class="form-group">
-						<label for="xiangmumingcheng" class="col-sm-2 control-label">项目名称</label>
+						<label for="pro_name" class="col-sm-2 control-label">项目名称</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="xiangmumingcheng" >
+							<input type="text" class="form-control" id="pro_name" name="pro_name" value="{{$pro_name}}" >
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="xiangmudizhi" class="col-sm-2 control-label">项目地址</label>
+						<label for="pro_province" class="col-sm-2 control-label">项目地址</label>
 						<div class="col-sm-3">
-							<select class="form-control" id="xiangmudizhi">
-								<option>江苏省</option>
-								<option>浙江省</option>
-								<option>河南省</option>
-								<option>上海市</option>
-								<option>北京市</option>
+							<select class="form-control" id="pro_province" name="pro_province">
+								<option value="00">请选择</option>
 							</select>
 						</div>
 						<div class="col-sm-3">
-							<select class="form-control" >
-								<option>南京市</option>
-								<option>无锡市</option>
-								<option>苏州市</option>
-								<option>扬州市</option>
-								<option>南通市</option>
+							<select class="form-control" id="pro_city" name="pro_city">
+								<option value="00">请选择</option>
 							</select>
 						</div>
-						<div class="col-sm-3"><input type="text" class="form-control" id="inputEmail3" placeholder="路牌号"></div>
+						<div class="col-sm-3"><input type="text" class="form-control" id="pro_address" name="pro_address" placeholder="路牌号" value="{{$pro_address}}"></div>
 					</div>
 					<div class="form-group">
-						<label for="xiangmujine" class="col-sm-2 control-label">项目金额</label>
+						<label for="pro_total" class="col-sm-2 control-label">项目金额</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="xiangmujine" >
+							<input type="text" class="form-control" id="pro_total" name="pro_total" value="{{$pro_total}}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="xiangmujingli" class="col-sm-2 control-label">项目经理</label>
+						<label for="pro_manager" class="col-sm-2 control-label">项目经理</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="xiangmujingli" >
+							<input type="text" class="form-control" id="pro_manager"   name="pro_manager" value="{{$pro_manager}}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="xiangmufuzeren" class="col-sm-2 control-label">项目负责人</label>
+						<label for="pro_leader" class="col-sm-2 control-label">项目负责人</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="xiangmufuzeren" >
+							<input type="text" class="form-control" id="pro_leader" name="pro_leader" value="{{$pro_leader}}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="fuzerenphone" class="col-sm-2 control-label">负责人电话</label>
+						<label for="pro_leader_phone" class="col-sm-2 control-label">负责人电话</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="fuzerenphone" >
+							<input type="text" class="form-control" id="pro_leader_phone"  name="pro_leader_phone"  value="{{$pro_leader_phone}}" >
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="lianxiren" class="col-sm-2 control-label">联系人</label>
+						<label for="pro_contacter" class="col-sm-2 control-label">联系人</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="lianxiren" >
+							<input type="text" class="form-control" id="pro_contacter"  name="pro_contacter"  value="{{$pro_contacter}}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="phone" class="col-sm-2 control-label">联系电话</label>
+						<label for="pro_contacter_phone" class="col-sm-2 control-label">联系电话</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="phone" >
+							<input type="text" class="form-control" id="pro_contacter_phone" name="pro_contacter_phone"   value="{{$pro_contacter_phone}}">
 						</div>
 					</div>
-				</form>
-				<form class="form-horizontal">
+
+
 					<div class="form-group">
 						<div class="col-sm-2 col-sm-offset-1">
 							<a href="#" class="btn btn-default  disabled" role="button" style="color:#333">主要材料和数量</a>
 						</div>
 						<div class="col-sm-1">
-							<button class="btn btn-primary btn-raised"  type="submit">增加</button>
+							<button class="btn btn-primary btn-raised"  type="button" id="addum">增加</button>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="col-sm-2"></div>		
-						<div class="col-sm-3">
-							<select class="form-control" id="xiangmudizhi">
-								<option>钢材</option>
-								<option>涂料</option>
-							</select>
-						</div>
-						<div class="col-sm-3" ><input type="text" class="form-control border_rnone" id="inputEmail3" placeholder="数字"></div>
-						<div class="col-sm-3" >
-							<select class="form-control border_lnone" >
-								<option>吨</option>
-								<option>桶</option>
-							</select>
-						</div>				
+					<div id="div_um_box" style="display: none">
+
+
+	                 </div>
+			<div id="yy_block_um">
+				<div class="form-group">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-3">
+						<select class="form-control" name="unit[]" id="unit">
+							<option value="00">请选择</option>
+						</select>
 					</div>
+					<div class="col-sm-3" ><input type="text" class="form-control border_rnone" name="num[]" placeholder="数字"></div>
+					<div class="col-sm-3" >
+						<select class="form-control border_lnone" id="material" name="material[]">
+							<option value="00">请选择</option>
+						</select>
+					</div>
+					<div class="col-sm-1">
+						<button class="btn btn-primary btn-raised"  type="button" name="delete_div[]">删除</button>
+					</div>
+				</div>
+			</div>
 					<div class="form-group" style="margin-right:0;">
 						<div class="col-sm-9 col-sm-offset-2">
-							<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink" >完成</button>
+							<button type="button" id="save_btn" class="btn btn-primary btn-lg btn-raised btn-block ink" >完成</button>
 						</div>
 					</div>
 				</form>
@@ -143,4 +142,161 @@
 <!-- 主体 end -->
   
 </div>
-<?php require_once TEMPLATE."/common/footer.php";?>
+{{include file="common/footer.html"}}
+
+<script>
+
+	$(function(){
+
+		$.getJSON("{{site_url url='project/info/getprovince'}}",function(data){
+			html='<option value="00">请选择</option>'
+             if (data!=1){
+                 data.forEach(function (item) {
+					 html+='<option value="'+item.code+'">'+item.name+'</option>'
+				 })
+			 }else{
+				 alert('NG');
+			 }
+			$("#pro_province").html(html);
+			{{if $pro_province!='00'}}
+			$("#pro_province").val('{{$pro_province}}');
+			$.getJSON("{{site_url url='project/info/getcity'}}/{{$pro_province}}",function(data){
+				html='<option value="00">请选择</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#pro_city").html(html);
+				$("#pro_city").val('{{$pro_city}}');
+			});
+			{{/if}}
+		})
+
+		$.getJSON("{{site_url url='project/info/getunit'}}",function(data){
+			html='<option value="0">请选择</option>'
+			if (data!=1){
+				data.forEach(function (item) {
+					html+='<option value="'+item.id+'">'+item.name+'</option>'
+				})
+			}else{
+
+			}
+			$("#unit").html(html);
+			$.getJSON("{{site_url url='project/info/getmaterial'}}",function(data){
+				html='<option value="0">请选择</option>'
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.id+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#material").html(html);
+                 //这里进行明细的载人
+             	{{if $detail!=1}}
+				{{foreach from=$detail key=part_id item=foo}}
+
+				{{if $part_id!=0}}
+				 divbox=$("#yy_block_um").children().html();
+				 divbox="<div class='form-group'>"+divbox+"</div>";
+				 $('#yy_block_um').prepend(divbox);
+				{{/if}}
+				 $("#yy_block_um").find("div").eq(0).find("[name='unit[]']").eq(0).val("{{$foo['unit']}}");
+				 $("#yy_block_um").find("div").eq(0).find("[name='num[]']").eq(0).val("{{$foo['num']}}");
+				 $("#yy_block_um").find("div").eq(0).find("[name='material[]']").eq(0).val("{{$foo['m_id']}}");
+
+				 {{/foreach}}
+
+					{{/if}}
+
+			})
+		});
+
+		$("#pro_province").change(function(){
+			$.getJSON("{{site_url url='project/info/getcity'}}/"+$("#pro_province").val(),function(data){
+				html='<option value="00">请选择</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#pro_city").html(html);
+			});
+		});
+
+		$("#addum").click(function(){
+			//解绑事件
+			$("#yy_block_um").find("button").off('click');
+			divbox=$("#yy_block_um").children().html();
+			divbox="<div class='form-group'>"+divbox+"</div>"
+			$('#yy_block_um').append(divbox);
+			//绑定事件
+			$("#yy_block_um").find("button").on('click',function () {
+				if($('#yy_block_um').children('div').length <= 1){
+					alert('需至少保留一条‘材料与数量’信息');
+				}
+				else{
+					$(this).parent().parent().remove();
+				}
+			})
+		});
+
+		$("#yy_block_um").find("button").on('click',function () {
+			if($('#yy_block_um').children('div').length <= 1){
+				alert('需至少保留一条‘材料与数量’信息');
+			}
+			else{
+				$(this).parent().parent().remove();
+			}
+		})
+
+        $("#save_btn").click(function () {
+			if ($.trim($("#pro_name").val())==""){
+				$("#pro_name").focus().parent().addClass("has-error").children(".help-block").html("项目名称不能为空");
+				return false;
+			}
+			if ($("#pro_province").val()=="00"){
+				$("#pro_province").focus().parent().addClass("has-error").children(".help-block").html("省份必选");
+				return false;
+			}
+			if ($("#pro_city").val()=="00"){
+				$("#pro_city").focus().parent().addClass("has-error").children(".help-block").html("城市必选");
+				return false;
+			}
+			if ($.trim($("#pro_address").val())==""){
+				$("#pro_address").focus().parent().addClass("has-error").children(".help-block").html("地址不能为空");
+				return false;
+			}
+			if ($.trim($("#pro_total").val())==""){
+				$("#pro_total").focus().parent().addClass("has-error").children(".help-block").html("金额不能为空");
+				return false;
+			}
+			if ($.trim($("#pro_manager").val())==""){
+				$("#pro_manager").focus().parent().addClass("has-error").children(".help-block").html("项目经理不能为空");
+				return false;
+			}
+			if ($.trim($("#pro_leader").val())==""){
+				$("#pro_leader").focus().parent().addClass("has-error").children(".help-block").html("项目负责人不能为空");
+				return false;
+			}
+			if ($.trim($("#pro_leader_phone").val())==""){
+				$("#pro_leader_phone").focus().parent().addClass("has-error").children(".help-block").html("负责人电话不能为空");
+				return false;
+			}
+			if ($.trim($("#pro_contacter").val())==""){
+				$("#pro_contacter").focus().parent().addClass("has-error").children(".help-block").html("联系人不能为空");
+				return false;
+			}
+			if ($.trim($("#pro_contacter_phone").val())==""){
+				$("#pro_contacter_phone").focus().parent().addClass("has-error").children(".help-block").html("联系电话不能为空");
+				return false;
+			}
+			$('#save_form').submit();
+		})
+	})
+</script>

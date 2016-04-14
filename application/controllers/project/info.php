@@ -55,7 +55,7 @@ class Info extends MY_Controller {
             $this->cismarty->assign('pro_leader_phone',$leader_phone);
             $this->cismarty->assign('pro_contacter',$contacter);
             $this->cismarty->assign('pro_contacter_phone',$contacter_phone);
-            $this->cismarty->assign('pro_province',$province_code);
+            $this->cismarty->assign('pro_province',$province_code?$province_code:"00");
             $this->cismarty->assign('pro_city',$city_code);
             $this->cismarty->assign('detail',$detail);
             $path="project/project_info.html";

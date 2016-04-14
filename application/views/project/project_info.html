@@ -49,7 +49,7 @@
 						<label for="pro_province" class="col-sm-2 control-label">项目地址</label>
 						<div class="col-sm-3">
 							<select class="form-control" id="pro_province" name="pro_province">
-								<option value="00" selected = "selected">请选择</option>
+								<option value="00" >请选择</option>
 							</select>
 						</div>
 						<div class="col-sm-3">
@@ -157,10 +157,8 @@
 			 }else{
 				 alert('NG');
 			 }
+
 			$("#pro_province").html(html);
-
-			$("#pro_province").val('00');
-
 			{{if $pro_province != '00'}}
 			$("#pro_province").val('{{$pro_province}}');
 			$.getJSON("{{site_url url='project/info/getcity'}}/{{$pro_province}}",function(data){
@@ -176,6 +174,9 @@
 				$("#pro_city").val('{{$pro_city}}');
 			});
 			{{/if}}
+
+
+			//$("#pro_province").val('00');
 		})
 
 		$.getJSON("{{site_url url='project/info/getunit'}}",function(data){

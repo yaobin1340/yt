@@ -49,7 +49,7 @@
 						<label for="pro_province" class="col-sm-2 control-label">项目地址</label>
 						<div class="col-sm-3">
 							<select class="form-control" id="pro_province" name="pro_province">
-								<option value="00">请选择</option>
+								<option value="00" selected = "selected">请选择</option>
 							</select>
 						</div>
 						<div class="col-sm-3">
@@ -113,14 +113,14 @@
 				<div class="form-group">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-3">
-						<select class="form-control" name="unit[]" id="unit">
-							<option value="00">请选择</option>
+						<select class="form-control" name="material[]" id="material">
+							<option value="0">请选择</option>
 						</select>
 					</div>
-					<div class="col-sm-3" ><input type="text" class="form-control border_rnone" name="num[]" placeholder="数字"></div>
+					<div class="col-sm-3" ><input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onblur = "this.value = this.value.replace(/\D+/g, '')" class="form-control border_rnone" name="num[]" placeholder="数字"></div>
 					<div class="col-sm-3" >
-						<select class="form-control border_lnone" id="material" name="material[]">
-							<option value="00">请选择</option>
+						<select class="form-control border_lnone" id="unit" name="unit[]">
+							<option value="0">请选择</option>
 						</select>
 					</div>
 					<div class="col-sm-1">
@@ -149,7 +149,7 @@
 	$(function(){
 
 		$.getJSON("{{site_url url='project/info/getprovince'}}",function(data){
-			html='<option value="00">请选择</option>'
+			html='<option value="00" selected = "selected">请选择</option>';
              if (data!=1){
                  data.forEach(function (item) {
 					 html+='<option value="'+item.code+'">'+item.name+'</option>'
@@ -158,7 +158,10 @@
 				 alert('NG');
 			 }
 			$("#pro_province").html(html);
-			{{if $pro_province!='00'}}
+
+			$("#pro_province").val('00');
+
+			{{if $pro_province != '00'}}
 			$("#pro_province").val('{{$pro_province}}');
 			$.getJSON("{{site_url url='project/info/getcity'}}/{{$pro_province}}",function(data){
 				html='<option value="00">请选择</option>';
@@ -211,7 +214,14 @@
 				 {{/foreach}}
 
 					{{/if}}
-
+				$("#yy_block_um").find("button").on('click',function () {
+					if($('#yy_block_um').children('div').length <= 1){
+						alert('需至少保留一条‘材料与数量’信息');
+					}
+					else{
+						$(this).parent().parent().remove();
+					}
+				})
 			})
 		});
 
@@ -246,14 +256,7 @@
 			})
 		});
 
-		$("#yy_block_um").find("button").on('click',function () {
-			if($('#yy_block_um').children('div').length <= 1){
-				alert('需至少保留一条‘材料与数量’信息');
-			}
-			else{
-				$(this).parent().parent().remove();
-			}
-		})
+
 
         $("#save_btn").click(function () {
 			if ($.trim($("#pro_name").val())==""){
@@ -296,7 +299,35 @@
 				$("#pro_contacter_phone").focus().parent().addClass("has-error").children(".help-block").html("联系电话不能为空");
 				return false;
 			}
-			$('#save_form').submit();
+			var flag=0;
+			$("[name='material[]']").each(function(){
+				if ($(this).val()=='0'){
+					//$(this).focus().parent().addClass("has-error").children(".help-block").html("单位必须选择");
+					alert('单位必须选择');
+					flag=1;
+					return false;
+				}
+			});
+			$("[name='num[]']").each(function(){
+				if ($(this).val()==""){
+					//$(this).focus().parent().addClass("has-error").children(".help-block").html("数字必须填写");
+					alert('必须填写数字');
+					flag=1;
+					return false;
+				}
+			});
+			$("[name='unit[]']").each(function(){
+				if ($(this).val()=='0'){
+					//$(this).focus().parent().addClass("has-error").children(".help-block").html("类别必须选择");
+					alert('必须选择类别');
+					flag=1;
+					return false;
+				}
+			});
+			if (flag !=1){
+				$('#save_form').submit();
+			}
+
 		})
 	})
 </script>

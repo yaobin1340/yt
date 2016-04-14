@@ -99,12 +99,13 @@ class Info_model extends MY_Model
             }
         }else{
              $this->db->insert('project_profile',$data);
-             $insert_id=$this->db->insert_id();
+            $insert_id=$this->db->insert_id();
+
              $this->db->where('pid',$insert_id)->delete('project_material');
             if ($m_id){
                 foreach ($m_id as $key=>$value){
                     $detail=array(
-                        'pid' => $row['id'],
+                        'pid' => $insert_id,
                         'm_id' => $value,
                         'num'=>$num[$key],
                         'unit'=>$unit[$key]

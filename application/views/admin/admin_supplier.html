@@ -1,7 +1,7 @@
-<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+{{include file="common/header.html"}}
 <div id="wrap" class="container-fluid">
 
-<?php require_once TEMPLATE."/admin/admin_sider.php";?>
+    {{include file="admin/admin_sider.php"}}
   
   
 <!-- 主体 -->
@@ -32,12 +32,12 @@
       </h2>
       <div class="form_card_box">
       
-		<form class="form-horizontal">
+		<form id="page_form" class="form-horizontal" method="post" action="{{site_url url='admin/supplier/list_task'}}">
 			<div class="form-group">				
 				<div class="col-sm-6">
-					<input type="text" class="form-control" name="sousuo" id="sousuo" >
+					<input type="text" class="form-control" name="title" id="title" value="{{$data['title']}}">
 				</div>
-				<button type="submit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
+				<button type="submit" class="btn btn-primary btn-raised" for="title">搜索</button>
 			</div>
 		</form>
       
@@ -45,86 +45,30 @@
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
-          <th class=""></th>
+
           <th class="">名称</th>
           <th class="">创建时间</th>
           <th class="">操作</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="./?c=admin_supplier_info" class="table_card_a">
-                昆山正元贸易有限公司
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
+      {{foreach from=$data['items'] item=foo}}
+      <tr>
+
+          <td class=""><a href="{{site_url url='admin/supplier/get_sup'}}/{{$foo['id']}}">{{$foo['name']}}</a></td>
+          <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >密码重置</a>
-						<a href="###" class="btn btn-sm btn-info" >审核</a>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
+              <a href="###" class="btn btn-sm btn-danger" >密码重置</a>
+              <a href="###" class="btn btn-sm btn-info" >审核</a>
           </td>
-          <td class="">
-            <a href="./?c=admin_supplier_info" class="table_card_a">
-                admin_user
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >密码重置</a>					
-						<a href="###" class="btn btn-sm btn-info" >通过</a>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="./?c=admin_supplier_info" class="table_card_a">
-                admin_user
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >密码重置</a>
-						<a href="###" class="btn btn-sm btn-info" >审核</a>
-					</td>
-        </tr>
+
+      </tr>
+      {{/foreach}}
+
       </tbody>
 		</table>
-		<div class="btn-group" role="group">
-			<button type="button" class="btn btn-default check">全选</button>
-			<button type="button" class="btn btn-danger">删除</button>
-		</div>      
-    <nav class="page clearfix">
-      <ul class="pagination pull-right">
-        <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-        <li class="previous disabled">
-          <a href="##" class="ink ink-dark"><span><</span></a>
-        </li>
-        <li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-        <li class="next">
-          <a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-        </li>
-        <li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-      </ul>
-    </nav>
-      
+          {{$pager}}
+
       </div>
     </div>
 <!---->
@@ -135,4 +79,13 @@
 <!-- 主体 end -->
   
 </div>
-<?php require_once TEMPLATE."/common/footer.php";?>
+{{include file="common/footer.html"}}
+<script>
+    $('.pagination').find('a').click(function(){
+        url = $(this).attr('href')
+        $('#page_form').attr('action',url)
+        $('#page_form').submit()
+        return false;
+    })
+
+</script>

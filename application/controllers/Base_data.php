@@ -20,6 +20,9 @@ class Base_data extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->database();
+		$data=$this->db->select('b.name,a.status',false)->from('users a')->from('supplier_profile b')->where('a.username =','b.masterid')->get()->row_array();
+		var_dump($data);
 		//echo '1111';
 //		$this->load->view('base_data');
 	}

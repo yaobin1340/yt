@@ -20,6 +20,7 @@ class Login_model extends MY_Model
                       ->from('users')
                       ->where('username',$user)
                       ->where('password',md5($pwd))
+                      ->where('status >',0)
                       ->get()->row_array();
         if (!$res) {
         	return 1;

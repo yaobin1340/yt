@@ -14,7 +14,7 @@ class Info extends MY_Controller {
         if (!$this->session->userdata('username')){
             redirect('login');
         }
-        $this->cismarty->assign('type',1);
+        $this->cismarty->assign('type',0);
         $this->load->model('project/info_model','info_model');
     }
 
@@ -34,7 +34,7 @@ class Info extends MY_Controller {
             $detail=1;
             $profile=$this->info_model->getpro();
            
-            if ($profile['row']!=1){
+            if ($profile!=1){
                 $name = $profile['row']['name'];
                 $total = $profile['row']['total'];
                 $address = $profile['row']['address'];
@@ -55,7 +55,7 @@ class Info extends MY_Controller {
             $this->cismarty->assign('pro_leader_phone',$leader_phone);
             $this->cismarty->assign('pro_contacter',$contacter);
             $this->cismarty->assign('pro_contacter_phone',$contacter_phone);
-            $this->cismarty->assign('pro_province',$province_code?$province_code:"00");
+            $this->cismarty->assign('pro_province',$province_code);
             $this->cismarty->assign('pro_city',$city_code);
             $this->cismarty->assign('detail',$detail);
             $path="project/project_info.html";

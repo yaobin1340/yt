@@ -31,7 +31,7 @@ class Index extends MY_Controller {
         if ($this->session->userdata('type')==1){
             redirect('admin/index');
         }elseif($this->session->userdata('type')==2){
-            redirect('admin/index');
+            redirect('supplier/index');
         }elseif($this->session->userdata('type')==3){
             redirect('project/index');
         }else{

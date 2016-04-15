@@ -148,7 +148,7 @@
 
 	$(function(){
 
-		$.getJSON("{{site_url url='project/info/getprovince'}}",function(data){
+		$.getJSON("{{site_url url='ajax/getprovince'}}",function(data){
 			html='<option value="00" selected = "selected">请选择</option>';
              if (data!=1){
                  data.forEach(function (item) {
@@ -161,7 +161,7 @@
 			$("#pro_province").html(html);
 			{{if $pro_province != '00'}}
 			$("#pro_province").val('{{$pro_province}}');
-			$.getJSON("{{site_url url='project/info/getcity'}}/{{$pro_province}}",function(data){
+			$.getJSON("{{site_url url='ajax/getcity'}}/{{$pro_province}}",function(data){
 				html='<option value="00">请选择</option>';
 				if (data!=1){
 					data.forEach(function (item) {
@@ -179,7 +179,7 @@
 			//$("#pro_province").val('00');
 		})
 
-		$.getJSON("{{site_url url='project/info/getunit'}}",function(data){
+		$.getJSON("{{site_url url='ajax/getunit'}}",function(data){
 			html='<option value="0">请选择</option>'
 			if (data!=1){
 				data.forEach(function (item) {
@@ -189,7 +189,7 @@
 
 			}
 			$("#unit").html(html);
-			$.getJSON("{{site_url url='project/info/getmaterial'}}",function(data){
+			$.getJSON("{{site_url url='ajax/getmaterial'}}",function(data){
 				html='<option value="0">请选择</option>'
 				if (data!=1){
 					data.forEach(function (item) {
@@ -227,7 +227,7 @@
 		});
 
 		$("#pro_province").change(function(){
-			$.getJSON("{{site_url url='project/info/getcity'}}/"+$("#pro_province").val(),function(data){
+			$.getJSON("{{site_url url='ajax/getcity'}}/"+$("#pro_province").val(),function(data){
 				html='<option value="00">请选择</option>';
 				if (data!=1){
 					data.forEach(function (item) {

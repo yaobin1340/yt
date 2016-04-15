@@ -49,51 +49,51 @@
 				</div>
 
 				<div class="col-md-6 col-sm-12">
-					<form class="form-horizontal">
+					<form id="save_form" class="form-horizontal" method="post" action="{{site_url url='supplier/info/save_info'}}">
 						<div class="form-group">
 							<label for="sup_name" class="col-sm-2 control-label">公司名称</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_name" name="sup_name">
+								<input type="text" class="form-control" id="sup_name" name="sup_name" value="{{$sup_name}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_type"  class="col-sm-2 control-label">公司性质</label>
 							<div class="col-sm-10">
 								<select class="form-control" id="sup_type" name="sup_type">
-									<option value="A01">请选择</option>
-									<option value="A02">国有企业</option>
-									<option value="A03">集体企业</option>
-									<option value="A04">联营企业</option>
-									<option value="A05">股份合作制企业</option>
-									<option value="A06">私营企业</option>
-									<option value="A07">个体户</option>
-									<option value="A08">有限责任公司</option>
-									<option value="A09">股份有限公司</option>
+									<option value="0">请选择</option>
+									<option value="1">国有企业</option>
+									<option value="2">集体企业</option>
+									<option value="3">联营企业</option>
+									<option value="4">股份合作制企业</option>
+									<option value="5">私营企业</option>
+									<option value="6">个体户</option>
+									<option value="7">有限责任公司</option>
+									<option value="8">股份有限公司</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_total" class="col-sm-2 control-label">注册资金</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_total" name="sup_total">
+								<input type="text" class="form-control" id="sup_total" name="sup_total" value="{{$sup_total}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_allow" class="col-sm-2 control-label">经营范围</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_allow" name="sup_allow">
+								<input type="text" class="form-control" id="sup_allow" name="sup_allow"  value="{{$sup_allow}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_num" class="col-sm-2 control-label">营业执照</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_num" placeholder="营业执照代码输入" name="sup_num">
+								<input type="text" class="form-control" id="sup_num" placeholder="营业执照代码输入" name="sup_num"  value="{{$sup_num}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_card" class="col-sm-2 control-label">单位账号</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_card" name="sup_card">
+								<input type="text" class="form-control" id="sup_card" name="sup_card"  value="{{$sup_card}}">
 							</div>
 						</div>
 						<div class="form-group">
@@ -108,29 +108,30 @@
 									<option value="00">请选择</option>
 								</select>
 							</div>
-							<div class="col-sm-3"><input type="text" class="form-control" id="sup_address" placeholder="路牌号" name="sup_address"></div>
+							<div class="col-sm-3"><input type="text" class="form-control" id="sup_address" placeholder="路牌号" name="sup_address"  value="{{$sup_address}}"></div>
 						</div>
 						<div class="form-group">
 							<label for="sup_person" class="col-sm-2 control-label">联系人</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_person" name="sup_person">
+								<input type="text" class="form-control" id="sup_person" name="sup_person" value="{{$sup_person}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_phone" class="col-sm-2 control-label">电话</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_phone" name="sup_phone">
+								<input type="text" class="form-control" id="sup_phone" name="sup_phone" value="{{$sup_phone}}">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_desc" class="col-sm-2 control-label">公司简介</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="8" id="sup_desc" name="sup_desc"></textarea>
+								<textarea class="form-control" rows="8" id="sup_desc" name="sup_desc" >{{$sup_desc}}</textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-10 col-sm-offset-2">
-								<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink">提交审核</button>
+								<button type="button" class="btn btn-primary btn-lg btn-raised btn-block ink" id="save_btn">提交审核</button>
+								<input type="hidden" id="hidImgName" name="pic" value="{{$pic}}" />
 							</div>
 						</div>
 					</form>
@@ -139,8 +140,8 @@
 			  <br/>
 			  <div class="form-group">
 				  <div class="col-sm-3  control-label">
-					  <img style="width: 300px" id="imgShow" src="/imgs/1.jpg">
-					  <input type="hidden" id="hidImgName" />
+					  <img style="width: 300px" id="imgShow" {{if $pic != ''}}  src="/uploadimages/{{$pic}}"{{/if}}>
+
 				  </div>
 			  </div>
 		  </div>
@@ -192,14 +193,15 @@
 				else {
 					hidPut.value = response;
 					img.src = g_AjxTempDir + response;
+
 				}
 			}
 		});
 	}
 
 	$(function () {
-
-		$.getJSON("{{site_url url='supplier/info/getprovince'}}",function(data){
+        $("#sup_type").val("{{$sup_type}}")
+		$.getJSON("{{site_url url='ajax/getprovince'}}",function(data){
 			html='<option value="00" selected = "selected">请选择</option>';
 			if (data!=1){
 				data.forEach(function (item) {
@@ -212,7 +214,7 @@
 			$("#sup_province").html(html);
 			{{if $sup_province != '00'}}
 			$("#sup_province").val('{{$sup_province}}');
-			$.getJSON("{{site_url url='supplier/info/getcity'}}/{{$sup_province}}",function(data){
+			$.getJSON("{{site_url url='ajax/getcity'}}/{{$sup_province}}",function(data){
 				html='<option value="00">请选择</option>';
 				if (data!=1){
 					data.forEach(function (item) {
@@ -228,7 +230,7 @@
 		})
 
 		$("#sup_province").change(function(){
-			$.getJSON("{{site_url url='supplier/info/getcity'}}/"+$("#sup_province").val(),function(data){
+			$.getJSON("{{site_url url='ajax/getcity'}}/"+$("#sup_province").val(),function(data){
 				html='<option value="00">请选择</option>';
 				if (data!=1){
 					data.forEach(function (item) {
@@ -241,8 +243,61 @@
 			});
 		});
 
-
-
+        $("#save_btn").click(function (){
+			if ($.trim($("#sup_name").val())==""){
+				$("#sup_name").focus().parent().addClass("has-error").children(".help-block").html("公司名称不能为空");
+				return false;
+			}
+			if ($("#sup_type").val()=="0"){
+				$("#sup_type").focus().parent().addClass("has-error").children(".help-block").html("公司性质必选");
+				return false;
+			}
+			if ($.trim($("#sup_total").val())==""){
+				$("#sup_total").focus().parent().addClass("has-error").children(".help-block").html("注册资金不能为空");
+				return false;
+			}
+			if ($.trim($("#sup_allow").val())==""){
+				$("#sup_allow").focus().parent().addClass("has-error").children(".help-block").html("经营范围不能为空");
+				return false;
+			}
+			if ($.trim($("#sup_num").val())==""){
+				$("#sup_num").focus().parent().addClass("has-error").children(".help-block").html("营业执照不能为空");
+				return false;
+			}
+			if ($.trim($("#sup_card").val())==""){
+				$("#sup_card").focus().parent().addClass("has-error").children(".help-block").html("单位账号不能为空");
+				return false;
+			}
+			if ($.trim($("#sup_province").val())=="00" || $("#sup_province").val()==""){
+				$("#sup_province").focus().parent().addClass("has-error").children(".help-block").html("省份必选");
+				return false;
+			}
+			if ($.trim($("#sup_city").val())=="00" || $("#sup_city").val()==""){
+				$("#sup_city").focus().parent().addClass("has-error").children(".help-block").html("城市必选");
+				return false;
+			}
+			if ($.trim($("#sup_address").val())==""){
+				$("#sup_address").focus().parent().addClass("has-error").children(".help-block").html("公司地址不能为空");
+				return false;
+			}
+			if ($.trim($("#sup_person").val())==""){
+				$("#sup_person").focus().parent().addClass("has-error").children(".help-block").html("联系人不能为空");
+				return false;
+			}
+			if ($.trim($("#sup_phone").val())==""){
+				$("#sup_phone").focus().parent().addClass("has-error").children(".help-block").html("电话不能为空");
+				return false;
+			}
+			if ($.trim($("#sup_desc").val())==""){
+				$("#sup_desc").focus().parent().addClass("has-error").children(".help-block").html("公司简介不能为空");
+				return false;
+			}
+			if ($.trim($("#pic").val())==""){
+				$("#btnUploadImg").focus().parent().addClass("has-error").children(".help-block").html("需上传图片");
+				return false;
+			}
+			$("#save_form").submit();
+		})
 	})
 
 </script>

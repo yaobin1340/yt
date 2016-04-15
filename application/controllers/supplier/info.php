@@ -21,7 +21,7 @@ class Info extends MY_Controller {
     public function index(){
         if ($this->session->userdata('type')==2){
             $name="";
-            $type="A01";
+            $type=0;
             $total="";
             $allow="";
             $num="";
@@ -33,7 +33,22 @@ class Info extends MY_Controller {
             $phone="";
             $desc="";
             $pic="";
-
+            $res=$this->info_model->getinfo();
+            if ($res){
+                $name=$res['name'];
+                $type=$res['type'];
+                $total=$res['total'];
+                $allow=$res['allow'];
+                $num=$res['num'];
+                $card=$res['card'];
+                $province_code=$res['province_code'];
+                $city_code=$res['city_code'];
+                $address=$res['address'];
+                $person=$res['person'];
+                $phone=$res['phone'];
+                $desc=$res['desc'];
+                $pic=$res['pic'];
+            }
             $this->cismarty->assign('sup_name',$name);
             $this->cismarty->assign('sup_type',$type);
             $this->cismarty->assign('sup_total',$total);
@@ -55,18 +70,17 @@ class Info extends MY_Controller {
         }
     }
 
-    public function getprovince(){
-        $data=$this->info_model->getprovince();
-        echo json_encode($data);
-    }
-
-    public function getcity($code){
-        $data=$this->info_model->getcity($code);
-        echo json_encode($data);
-    }
-
-    public function saveimg(){
-        $this->deal_model_model->saveimg();
-
+    public function save_info(){
+        $res=$this->info_model->save_info();
+        if ($res==2){
+            $this->show_message('信息不完整');
+            exit();
+        }elseif($res==1){
+            $this->show_message('存储成功',site_url('supplier/index'));
+            exit();
+        }else{
+            $this->show_message('存储失败');
+            exit();
+        }
     }
 }

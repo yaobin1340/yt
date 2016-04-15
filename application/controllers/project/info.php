@@ -65,26 +65,6 @@ class Info extends MY_Controller {
             redirect('login');
         }
     }
-
-    public function getprovince(){
-        $data=$this->info_model->getprovince();
-        echo json_encode($data);
-    }
-
-    public function getcity($code){
-        $data=$this->info_model->getcity($code);
-        echo json_encode($data);
-    }
-
-    public function getmaterial(){
-        $data=$this->info_model->getmaterial();
-        echo json_encode($data);
-    }
-
-    public function getunit(){
-        $data=$this->info_model->getunit();
-        echo json_encode($data);
-    }
     
     public function save_info(){
         //die(var_dump($this->input->post('num')));

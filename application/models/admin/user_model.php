@@ -54,7 +54,7 @@ class User_model extends MY_Model
         $data = array(
             'username'=>$this->input->post('name'),
             'type'=>$this->input->post('sel'),
-            'password'=>md5('888888'),
+            'password'=>sha1('888888'),
             'cdate'=>date("y-m-d H:i:s",time())
         );
         if($this->input->post('id')){//修改
@@ -108,7 +108,7 @@ class User_model extends MY_Model
     }
 
     public function reset_password($id){
-        $res=$this->db->where('id',$id)->update('users',array('password'=>md5('888888')));
+        $res=$this->db->where('id',$id)->update('users',array('password'=>sha1('888888')));
         return $res;
     }
 }

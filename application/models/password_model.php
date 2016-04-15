@@ -19,7 +19,7 @@ class Password_model extends MY_Model
         $pwd=$this->input->post('pwd_now');
         $newpwd=$this->input->post('pwd');
         $username=$this->session->userdata('username');
-        $data=$this->db->select()->from('users')->where('username',$username)->where('password',md5($pwd))->get()->row_array();
+        $data=$this->db->select()->from('users')->where('username',$username)->where('password',sha1($pwd))->get()->row_array();
 
         if (!$data){
             return 3;
@@ -27,7 +27,7 @@ class Password_model extends MY_Model
         if (strlen($newpwd) < 6 || strlen($newpwd) > 15){
             return 2;
         }
-        $res=$this->db->where('username',$username)->update('users',array('password'=>md5($newpwd)));
+        $res=$this->db->where('username',$username)->update('users',array('password'=>sha1($newpwd)));
         if ($res){
             return 1;
         }else{

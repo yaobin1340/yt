@@ -26,6 +26,7 @@ class Deal_model_model extends MY_Model
         $config['upload_path']="./uploadfiles/";
         $config['allowed_types']="jpg|gif|png|jpeg|doc|docx|pdf|xlsx";
         $config['file_name']=uniqid();
+        $config['max_size'] = '10000';
         //$config['encrypt_name']=true;
         $this->load->library('upload',$config);
         if( !$this->upload->do_upload('Inputfile')){

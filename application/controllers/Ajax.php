@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ajax extends CI_Controller {
+class Ajax extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,14 +18,19 @@ class Ajax extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct(){
+		parent::__construct();
+
+		$this->load->model('ajax_model');
+	}
 	public function index()
 	{
-		echo '1111';
+
 //		$this->load->view('base_data');
 	}
 
 	public function upload_image(){
-		$config['upload_path'] = './././uploadimages/';
+		$config['upload_path'] = './uploadimages/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['encrypt_name'] = true;
 		$config['max_size'] = '1000';
@@ -37,5 +42,25 @@ class Ajax extends CI_Controller {
 			$pic_arr = $this->upload->data();
 			echo $pic_arr['file_name'];
 		}
+	}
+
+	public function getprovince(){
+		$data=$this->ajax_model->getprovince();
+		echo json_encode($data);
+	}
+
+	public function getcity($code){
+		$data=$this->ajax_model->getcity($code);
+		echo json_encode($data);
+	}
+
+	public function getmaterial(){
+		$data=$this->ajax_model->getmaterial();
+		echo json_encode($data);
+	}
+
+	public function getunit(){
+		$data=$this->ajax_model->getunit();
+		echo json_encode($data);
 	}
 }

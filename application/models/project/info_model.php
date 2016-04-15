@@ -13,43 +13,7 @@ class Info_model extends MY_Model
     function __construct(){
         parent::__construct();
     }
-
-    public function getprovince(){
-        $data=$this->db->select()->from('province')->get()->result_array();
-        if (!$data){
-            return 1;
-        }else{
-            return $data;
-        }
-    }
-
-    public function getcity($code){
-        $data=$this->db->select()->from('city')->where('provincecode',$code)->get()->result_array();
-        if (!$data){
-            return 1;
-        }else{
-            return $data;
-        }
-    }
-
-    public function getmaterial(){
-        $data=$this->db->select()->from('material')->get()->result_array();
-        if (!$data){
-            return 1;
-          }else{
-           return $data;
-         }
-     }
-
-    public function getunit(){
-        $data=$this->db->select()->from('unit')->get()->result_array();
-        if (!$data){
-            return 1;
-        }else{
-            return $data;
-        }
-    }
-
+    
     public function save_info(){
         $masterid=$this->session->userdata('username');
         $name=$this->input->post('pro_name');

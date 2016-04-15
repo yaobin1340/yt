@@ -20,7 +20,7 @@ class Base_data extends CI_Controller {
 	 */
 	public function index()
 	{
-		echo '1111';
+		//echo '1111';
 //		$this->load->view('base_data');
 	}
 }

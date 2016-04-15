@@ -19,7 +19,7 @@ class Login_model extends MY_Model
 		$res=$this->db->select()
                       ->from('users')
                       ->where('username',$user)
-                      ->where('password',md5($pwd))
+                      ->where('password',sha1($pwd))
                       ->where('status >',0)
                       ->get()->row_array();
         if (!$res) {

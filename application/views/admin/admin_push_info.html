@@ -31,28 +31,27 @@
         <i class="material-icons"></i> <span>信息推送</span>
       </h2>
       <div class="form_card_box">     
-				<form class="form-horizontal">
+				<form class="form-horizontal" method="post" action="{{site_url url='admin/push/save_push'}}">
 					<div class="form-group">
-						<label for="biaoti" class="col-sm-2 control-label">标题</label>
+						<label for="title" class="col-sm-2 control-label">标题</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="biaoti" id="biaoti"  >
+							<input type="text" class="form-control" name="title" id="title" value="{{$title}}" >
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="xinxileibie" class="col-sm-2 control-label">信息类别</label>				
+						<label for="content" class="col-sm-2 control-label">内容</label>
 						<div class="col-sm-8">
-							<select class="form-control" name="xinxileibie" id="xinxileibie">
-								<option>公告</option>
-								<option>站内信息</option>
-							</select>
-						</div>					
-					</div>
-					<div class="form-group">
-						<label for="nierong" class="col-sm-2 control-label">内容</label>
-						<div class="col-sm-8">
-							<textarea class="form-control" rows="12" name="nierong" id="nierong"></textarea>
+							<textarea class="form-control" rows="12" name="content" id="content">{{$content}}</textarea>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-8">
+							<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink" >提交</button>
+
+						</div>
+					</div>
+                    <input type="hidden" name="id" value="{{$id}}">
 				</form> 
       </div>
     </div>

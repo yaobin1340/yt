@@ -292,8 +292,9 @@
 				$("#sup_desc").focus().parent().addClass("has-error").children(".help-block").html("公司简介不能为空");
 				return false;
 			}
-			if ($.trim($("#pic").val())==""){
+			if ($.trim($("#hidImgName").val())==""){
 				$("#btnUploadImg").focus().parent().addClass("has-error").children(".help-block").html("需上传图片");
+				alert('需上传图片');
 				return false;
 			}
 			$("#save_form").submit();

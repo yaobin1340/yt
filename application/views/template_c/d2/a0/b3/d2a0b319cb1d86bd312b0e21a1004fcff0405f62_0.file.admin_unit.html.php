@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-12 16:16:37
+<?php /* Smarty version 3.1.24, created on 2016-04-16 11:26:14
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:6456570caee56932c9_63946942%%*/
+/*%%SmartyHeaderCode:193225711b0d6175a10_30146616%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2a0b319cb1d86bd312b0e21a1004fcff0405f62' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html',
-      1 => 1460448937,
+      1 => 1460776891,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6456570caee56932c9_63946942',
+  'nocache_hash' => '193225711b0d6175a10_30146616',
   'variables' => 
   array (
     'data' => 0,
@@ -22,14 +22,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570caee5727a06_00997074',
+  'unifunc' => 'content_5711b0d6229566_46346974',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570caee5727a06_00997074')) {
-function content_570caee5727a06_00997074 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5711b0d6229566_46346974')) {
+function content_5711b0d6229566_46346974 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '6456570caee56932c9_63946942';
+$_smarty_tpl->properties['nocache_hash'] = '193225711b0d6175a10_30146616';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -115,7 +115,7 @@ $foreach_foo_Sav = $_smarty_tpl->tpl_vars['foo'];
               <td class="">
                   <button type="submit" name="delete[]" value="<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
 " class="btn btn-sm btn-danger">删除</button>
-                  <a type="button" href="<?php echo smarty_function_site_url(array('url'=>'admin/unit/edit_unit'),$_smarty_tpl);?>
+                  <a  href="<?php echo smarty_function_site_url(array('url'=>'admin/unit/edit_unit'),$_smarty_tpl);?>
 /<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
 " class="btn btn-sm btn-default">编辑</a>
               </td>

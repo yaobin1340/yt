@@ -1,7 +1,7 @@
-<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+{{include file="common/header.html"}}
 <div id="wrap" class="container-fluid">
 
-<?php require_once TEMPLATE."/supplier/supplier_sider.php";?>
+	{{include file="supplier/supplier_sider.php"}}
   
   
 <!-- 主体 -->
@@ -31,102 +31,35 @@
       </h2>
       <div class="form_card_box">
       
-		<form class="form-horizontal">
+		<form class="form-horizontal"  id="page_form" method="post" action="{{site_url url='supplier/notice/list_task'}}">
 			<div class="form-group">				
 				<div class="col-sm-6">
-        
-
-        
-					<input type="text" class="form-control" id="sousuo" >
-        
-          
+					<input type="text" class="form-control"  id="title" name="title" value="{{$data['title']}}" >
 				</div>
-				<button type="submit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
+				<button type="submit" class="btn btn-primary btn-raised" for="title">搜索</button>
 			</div>
 		</form>				
 			<table class="table_card table table-striped table-hover">
 				<thead>
 					<tr>
-						<th class=""></th>
+
 						<th class="">标题</th>
 						<th class="">推送时间</th>
-						<th class="">操作</th>
+
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td class="">
-							<div class="check">
-								<input type="checkbox" value="">
-							</div>		
-						</td>
-						<td class="">
-							<a href="###" class="table_card_a">
-									裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-							</a>		
-						</td>
-						<td class="small">2016-03-10 15:39:33</td>
-						<td class="bloc">
-							<a href="###" class="btn btn-sm btn-primary" >查看</a>
-							<button type="button" class="btn btn-sm btn-danger">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="">
-							<div class="check">
-								<input type="checkbox" value="">
-							</div>		
-						</td>
-						<td class="">
-							<a href="###" class="table_card_a">
-									裕腾集团XXX项目材料采购招标正式开始
-							</a>		
-						</td>
-						<td class="small">2016-03-10 15:39:33</td>
-						<td class="bloc">
-							<a href="###" class="btn btn-sm btn-primary" >查看</a>
-							<button type="button" class="btn btn-sm btn-danger">删除</button>
-						</td>
-					</tr>
-					<tr>
-						<td class="">
-							<div class="check">
-								<input type="checkbox" value="">
-							</div>		
-						</td>
-						<td class="">
-							<a href="###" class="table_card_a">
-									裕腾集团XXX项目材料采购招标正式开始
-							</a>		
-						</td>
-						<td class="small">2016-03-10 15:39:33</td>
-						<td class="bloc">
-							<a href="###" class="btn btn-sm btn-primary" >查看</a>
-							<button type="button" class="btn btn-sm btn-danger">删除</button>
-						</td>
-					</tr>
-	
+				{{foreach from=$data['items'] item=foo}}
+				<tr>
+
+					<td class=""><a href="{{site_url url='supplier/notice/show_push'}}/{{$foo['id']}}" class="table_card_a">{{$foo['title']}}</a></td>
+					<td class="small">{{$foo['cdate']}}</td>
+				</tr>
+				{{/foreach}}
 				</tbody>
 			</table>   
-			<div class="btn-group" role="group" >
-				<button type="button" class="btn btn-default check">全选</button>
-				<button type="button" class="btn btn-danger">删除</button>
-			</div>     
-			<nav class="page clearfix">
-				<ul class="pagination pull-right">
-					<li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-					<li class="previous disabled">
-						<a href="##" class="ink ink-dark"><span><</span></a>
-					</li>
-					<li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-					<li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-					<li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-					<li class="next">
-						<a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-					</li>
-					<li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-				</ul>
-			</nav>      
+
+		  {{$pager}}
       </div>
     </div>
   <!---->
@@ -134,4 +67,14 @@
 <!-- 主体 end -->
   
 </div>
-<?php require_once TEMPLATE."/common/footer.php";?>
+{{include file="common/footer.html"}}
+
+<script>
+	$('.pagination').find('a').click(function(){
+		url = $(this).attr('href')
+		$('#page_form').attr('action',url)
+		$('#page_form').submit()
+		return false;
+	})
+
+</script>

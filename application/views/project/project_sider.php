@@ -27,7 +27,7 @@
         <a href="?c=project_supplier" class="list-group-item {{if $type==2}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="供应商查询"><i class="material-icons">&#xe558;</i><span>供应商查询</span></a>
         <a href="?c=project_demand" class="list-group-item {{if $type==3}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="需求信管理"><i class="material-icons">&#xe0c6;</i><span>需求信息管理</span></a>
         <a href="?c=project_deal" class="list-group-item {{if $type==4}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="合约管理"><i class="material-icons">&#xe90e;</i><span>合约管理</span></a>
-        <a href="?c=project_notice" class="list-group-item {{if $type==5}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="系统公告"><i class="material-icons">&#xe85a;</i><span>系统公告</span></a>
+        <a href="{{site_url url='project/notice'}}" class="list-group-item {{if $type==5}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="系统公告"><i class="material-icons">&#xe85a;</i><span>系统公告</span></a>
       </div>
     </div>
     <div class="sider_group">

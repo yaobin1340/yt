@@ -15,7 +15,7 @@ class Info_model extends MY_Model
     }
     
     public function save_info(){
-        $masterid=$this->session->userdata('username');
+        $masterid=$this->session->userdata('id');
         $name=$this->input->post('pro_name');
         $total=$this->input->post('pro_total');
         $address=$this->input->post('pro_address');
@@ -87,7 +87,7 @@ class Info_model extends MY_Model
     }
 
     public function getpro(){
-        $masterid=$this->session->userdata('username');
+        $masterid=$this->session->userdata('id');
         $row=$this->db->select()->from('project_profile')->where('masterid',$masterid)->get()->row_array();
         if (!$row){
             return 1;

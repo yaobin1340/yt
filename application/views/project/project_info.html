@@ -265,7 +265,8 @@
 				$("#pro_province").focus().parent().addClass("has-error").children(".help-block").html("省份必选");
 				return false;
 			}
-			if ($("#pro_city").val()=="00"){
+			if ($("#pro_city").val()=="00" || $("#pro_city").val()==""){
+				$("#pro_city").val('00');
 				$("#pro_city").focus().parent().addClass("has-error").children(".help-block").html("城市必选");
 				return false;
 			}

@@ -36,9 +36,9 @@
 					<a href="{{site_url url='project/demand/info'}}" class="btn btn-primary btn-raised" >新增</a>
 				</div>				
 				<div class="col-sm-6">
-					<input type="text" class="form-control" name="sousuo" id="sousuo" >
+					<input type="text" class="form-control" name="title" id="title" value="{{$data['title']}}" >
 				</div>
-				<button type="submit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
+				<button type="submit" class="btn btn-primary btn-raised" for="title">搜索</button>
 			</div>
 		</form>
       
@@ -46,99 +46,33 @@
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
-          <th class=""></th>
+
           <th class="">标题</th>
 					<th class="">发布时间</th>
           <th class="">操作</th>
         </tr>
       </thead>
       <tbody>
+
+        {{foreach from=$data['items'] item=foo}}
         <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-               裕腾xxx项目需要水泥1000吨，型号为
-            </a>		
-          </td>
-					<td class="">公告</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-primary">修改</a>
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
+
+            <td class="">
+                <a href="{{site_url url='project/demand/show_demand'}}/{{$foo['id']}}" class="table_card_a">
+                   {{$data['pro_name']}}需要{{$foo['m_name']}}{{$foo['num']}}{{$foo['u_name']}},规格为{{$foo['size']}}
+                </a></td>
+            <td class="small">{{$foo['cdate']}}</td>
+            <td class="bloc">
+                <a href="{{site_url url='project/demand/edit_demand'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">修改</a>
+                <a href="{{site_url url='project/demand/delete_demand'}}/{{$foo['id']}}" class="btn btn-sm btn-danger">删除</a>
+            </td>
+
         </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-               裕腾xxx项目需要水泥1000吨，型号为
-            </a>		
-          </td>
-					<td class="">公告</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-primary">修改</a>
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-               裕腾xxx项目需要水泥1000吨，型号为
-            </a>		
-          </td>
-					<td class="">公告</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-primary">修改</a>
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-				<tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-               裕腾xxx项目需要水泥1000吨，型号为
-            </a>		
-          </td>
-					<td class="">公告</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-primary">修改</a>
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
+        {{/foreach}}
       </tbody>
 		</table>
 
-    <nav class="page clearfix">
-      <ul class="pagination pull-right">
-        <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-        <li class="previous disabled">
-          <a href="##" class="ink ink-dark"><span><</span></a>
-        </li>
-        <li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-        <li class="next">
-          <a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-        </li>
-        <li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-      </ul>
-    </nav>
+    {{$pager}}
       
       </div>
     </div>

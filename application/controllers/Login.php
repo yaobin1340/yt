@@ -37,6 +37,8 @@ class Login extends MY_Controller {
 				 exit();
 			 }
          	 $this->session->set_userdata('username',$res['username']);
+			 $this->session->set_userdata('id',$res['id']);
+			 $this->session->set_userdata('status',$res['status']);
 			 $this->session->set_userdata('type',$res['type']);
          	redirect('index');
 

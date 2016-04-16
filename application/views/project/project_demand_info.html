@@ -30,7 +30,8 @@
       </h2>
       <div class="form_card_box">
       
-        <form class="form-horizontal">				
+        <form class="form-horizontal" method="post" action="{{site_url url='project/demand/save_demand'}}">
+
 					<div class="form-group">
 						<label for="material"  class="col-sm-2 control-label">所需材料</label>
 						<div class="col-sm-9">
@@ -40,22 +41,31 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="guigeyaoqiu" class="col-sm-2 control-label">规格要求</label>
+						<label for="size" class="col-sm-2 control-label">规格要求</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="guigeyaoqiu" >
+							<input type="text" class="form-control" id="size" name="size" value="{{$size}}">
 						</div>
 					</div>
-					
+			<div class="form-group">
+				<label for="unit" class="col-sm-2 control-label">单位</label>
+				<div class="col-sm-9">
+					<select class="form-control" name="unit" id="unit">
+						<option value="0">请选择</option>
+					</select>
+				</div>
+			</div>
 					<div class="form-group">
-						<label for="cailiaoshuliang" class="col-sm-2 control-label">材料数量</label>
+						<label for="num" class="col-sm-2 control-label">材料数量</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="cailiaoshuliang" >
+							<input type="text" class="form-control"
+								   onkeyup="this.value=this.value.replace(/\D/g,'')" onblur = "this.value = this.value.replace(/\D+/g, '')"
+								   id="num" name="num" value="{{$num}}">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="s_date" class="col-sm-2 control-label">供货期限</label>
 						<div class="col-sm-4">
-							<input  class="form-control" id="s_date" name="s_date" type="text"
+							<input  class="form-control" id="s_date" name="s_date" type="text" value="{{$s_date}}"
 									style="background:#fff url(/res/js/My97DatePicker/skin/datePicker.gif) no-repeat right;"
 									onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd'})">
 						</div>
@@ -63,15 +73,15 @@
 							<label  class="col-sm-7 control-label">至</label>
 						</div>
 						<div class="col-sm-4">
-							<input  class="form-control" id="e_date" name="e_date" type="text"
+							<input  class="form-control" id="e_date" name="e_date" type="text" value="{{$e_date}}"
 									style="background:#fff url(/res/js/My97DatePicker/skin/datePicker.gif) no-repeat right;"
 									onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd'})">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="xinxileibie"  class="col-sm-2 control-label">信息类别</label>
+						<label for="unit_id"  class="col-sm-2 control-label">信息类别</label>
 						<div class="col-sm-9">
-							<select class="form-control" id="xinxileibie">
+							<select class="form-control" id="unit_id" name="unit_id">
 								<option value="1">紧急</option>
 								<option value="2">正常</option>
 								<option value="3">预期</option>
@@ -79,37 +89,40 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="lianxiren" class="col-sm-2 control-label">联系人</label>
+						<label for="person" class="col-sm-2 control-label">联系人</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="lianxiren" >
+							<input type="text" class="form-control" id="person" name="person" value="{{$person}}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="dianhua" class="col-sm-2 control-label">联系电话</label>
+						<label for="phone" class="col-sm-2 control-label">联系电话</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="dianhua" >
+							<input type="text" class="form-control" id="phone" name="phone" value="{{$phone}}">
 						</div>
 					</div>
+
 					<div class="form-group">
-						<label for="tupianshangchuan" class="col-sm-2 control-label">图片上传</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" id="tupianshangchuan" placeholder="材料规格/品牌（样品照片）" >
-						</div>
-						<div class="col-sm-2  control-label">
-							<input type="file" id="exampleInputFile">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="gongsijianjie" class="col-sm-2 control-label">需求详情</label>
+						<label for="desc" class="col-sm-2 control-label">需求详情</label>
 						<div class="col-sm-9">
-							<textarea class="form-control" rows="8" id="gongsijianjie"></textarea>
+							<textarea class="form-control" rows="8" id="desc" name="desc">{{$desc}}</textarea>
 						</div>
 					</div>
-					<div class="form-group" style="margin-right:0;">
-						<div class="col-sm-9 col-sm-offset-2">
-							<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink" >提交</button>
-						</div>
-					</div>
+			<div class="form-group">
+				<label for="btnUploadImg" class="col-sm-2 control-label">图片上传</label>
+				<div class="col-sm-2">
+					<button type="button" id="btnUploadImg"  class="btn btn-primary btn-md btn-raised btn-block ink">上传</button>
+					<input type="hidden" id="hidImgName" name="pic" value="{{$pic}}" />
+				</div>
+				<div class="col-sm-4  control-label">
+					<img style="width: 250px" id="imgShow" {{if $pic != ''}}  src="/uploadimages/{{$pic}}"{{/if}}>
+				</div>
+			</div>
+			<div class="form-group" style="margin-right:0;">
+				<div class="col-sm-9 col-sm-offset-2">
+					<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink" >提交</button>
+					<input type="hidden" name="id" value="{{$id}}">
+				</div>
+			</div>
 				</form>
       </div>
     </div>
@@ -120,8 +133,52 @@
   
 </div>
 {{include file="common/footer.html"}}
+<script src="/res/js/ajaxfileupload.js"></script>
 <script src="/res/js/My97DatePicker/WdatePicker.js"></script>
 <script>
+
+	window.onload = function() {
+		init();  //初始化
+	}
+
+	//初始化
+	function init() {
+		//初始化图片上传
+		var btnImg = document.getElementById("btnUploadImg");
+		var img = document.getElementById("imgShow");
+		var hidImgName = document.getElementById("hidImgName");
+//		document.getElementById("btnDeleteImg").onclick = function() { DelImg(img, hidImgName); };
+		g_AjxUploadImg(btnImg, img, hidImgName);
+	}
+
+	var g_AjxTempDir = "/uploadimages/";
+
+	//图片上传
+	function g_AjxUploadImg(btn, img, hidPut) {
+		var button = btn, interval;
+		new AjaxUpload(button, {
+			action: '/ajax/upload_image',
+			data: {},
+			name: 'userfile',
+			onSubmit: function(file, ext) {
+				if (!(ext && /^(jpg|JPG|png|PNG|gif|GIF)$/.test(ext))) {
+					alert("您上传的图片格式不对，请重新选择！");
+					return false;
+				}
+			},
+			onComplete: function(file, response) {
+				flagValue = response;
+				if (flagValue == "1") {
+					alert("您上传的图片存在错误");
+				}
+				else {
+					hidPut.value = response;
+					img.src = g_AjxTempDir + response;
+
+				}
+			}
+		});
+	}
 
 	$(function () {
 		$.getJSON("{{site_url url='ajax/getmaterial'}}",function(data){
@@ -135,8 +192,22 @@
 			}
 			$("#material").html(html);
 			//这里进行明细的载人
-
+			$("#material").val({{$m_id}});
 		})
 
+		$.getJSON("{{site_url url='ajax/getunit'}}",function(data){
+			html='<option value="0">请选择</option>'
+			if (data!=1){
+				data.forEach(function (item) {
+					html+='<option value="'+item.id+'">'+item.name+'</option>'
+				})
+			}else{
+
+			}
+			$("#unit").html(html);
+			$("#unit").val({{$unit}});
+		});
+
+           $("#unit_id").val({{$unit_id}});
 	})
 </script>

@@ -23,7 +23,7 @@ class Project_model extends MY_Model
         //获取总记录数
         $this->db->select('count(1) num')
             ->from('users a')
-            ->join('project_profile b','a.username = b.masterid')
+            ->join('project_profile b','a.id = b.masterid')
             ->where('a.status !=',-1);
         if($this->input->post('title')){
             $this->db->like('b.name',$this->input->post('title'));
@@ -36,7 +36,7 @@ class Project_model extends MY_Model
 
         $this->db->select('b.id id,a.id userid,b.name name,a.status,a.cdate',false)
             ->from('users a')
-            ->join('project_profile b','a.username = b.masterid')
+            ->join('project_profile b','a.id = b.masterid')
             ->where('a.status !=',-1);
         if($this->input->post('title')){
             $this->db->like('name',$this->input->post('title'));

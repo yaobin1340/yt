@@ -273,6 +273,7 @@
 				return false;
 			}
 			if ($.trim($("#sup_city").val())=="00" || $("#sup_city").val()==""){
+				$("#sup_city").val('00');
 				$("#sup_city").focus().parent().addClass("has-error").children(".help-block").html("城市必选");
 				return false;
 			}

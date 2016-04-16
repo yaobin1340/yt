@@ -16,11 +16,11 @@ class Info_model extends MY_Model
     }
 
     public function getinfo(){
-        return $this->db->select()->from('supplier_profile')->where('masterid',$this->session->userdata('username'))->get()->row_array();
+        return $this->db->select()->from('supplier_profile')->where('masterid',$this->session->userdata('id'))->get()->row_array();
     }
 
     public function save_info(){
-        $masterid=$this->session->userdata('username');
+        $masterid=$this->session->userdata('id');
         if (!$masterid){
             return 2;
         }

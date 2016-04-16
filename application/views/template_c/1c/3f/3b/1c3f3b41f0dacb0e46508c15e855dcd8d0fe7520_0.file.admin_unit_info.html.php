@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-12 13:07:12
+<?php /* Smarty version 3.1.24, created on 2016-04-16 20:38:14
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit_info.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:32242570c82804b4c29_08977293%%*/
+/*%%SmartyHeaderCode:5957123236353a06_59739999%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,25 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1c3f3b41f0dacb0e46508c15e855dcd8d0fe7520' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit_info.html',
-      1 => 1460437318,
+      1 => 1460552058,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '32242570c82804b4c29_08977293',
+  'nocache_hash' => '5957123236353a06_59739999',
   'variables' => 
   array (
     'data' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570c8280627e45_34370600',
+  'unifunc' => 'content_5712323644da33_13815412',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570c8280627e45_34370600')) {
-function content_570c8280627e45_34370600 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5712323644da33_13815412')) {
+function content_5712323644da33_13815412 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '32242570c82804b4c29_08977293';
+$_smarty_tpl->properties['nocache_hash'] = '5957123236353a06_59739999';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -72,7 +72,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
                             <input type="hidden" name="id" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
 echo $_smarty_tpl->tpl_vars['data']->value->id;
 }?>">
-							<input type="text" class="form-control" name="name" id="unit" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+							<input type="text" required="required" class="form-control" name="name" id="unit" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
 echo $_smarty_tpl->tpl_vars['data']->value->name;
 }?>">
 						</div>

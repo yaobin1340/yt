@@ -1,7 +1,7 @@
-<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+{{include file="common/header.html"}}
 <div id="wrap" class="container-fluid">
 
-<?php require_once TEMPLATE."/admin/admin_sider.php";?>
+	{{include file="admin/admin_sider.php"}}
   
   
 <!-- 主体 -->
@@ -36,89 +36,94 @@
 				<div class="col-md-6 col-sm-12">
 					<form class="form-horizontal">
 						<div class="form-group">
-							<label for="gongsimingcheng" class="col-sm-2 control-label">公司名称</label>
+							<label for="sup_name" class="col-sm-2 control-label">公司名称</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="gongsimingcheng" disabled>
+								<input type="text" class="form-control"  value="{{$sup_name}}" name="sup_name" id="sup_name"  disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="gongsixingzhi"  class="col-sm-2 control-label">公司性质</label>
+							<label for="sup_type"  class="col-sm-2 control-label">公司性质</label>
 							<div class="col-sm-10">
-								<select class="form-control" id="gongsixingzhi" disabled>
-									<option>社团</option>
-									<option>组织</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
+								<select class="form-control" id="sup_type" name="sup_type" disabled>
+									<option value="0">请选择</option>
+									<option value="1">国有企业</option>
+									<option value="2">集体企业</option>
+									<option value="3">联营企业</option>
+									<option value="4">股份合作制企业</option>
+									<option value="5">私营企业</option>
+									<option value="6">个体户</option>
+									<option value="7">有限责任公司</option>
+									<option value="8">股份有限公司</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="zhucezijin" class="col-sm-2 control-label">注册资金</label>
+							<label for="sup_total" class="col-sm-2 control-label">注册资金</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="zhucezijin" disabled>
+								<input type="text" class="form-control" id="sup_total" name="sup_total" value="{{$sup_total}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="jingyingfanwei" class="col-sm-2 control-label">经营范围</label>
+							<label for="sup_allow" class="col-sm-2 control-label">经营范围</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="jingyingfanwei" disabled>
+								<input type="text" class="form-control" id="sup_allow" name="sup_allow"  value="{{$sup_allow}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="yingyezhizhao" class="col-sm-2 control-label">营业执照</label>
+							<label for="sup_num" class="col-sm-2 control-label">营业执照</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="yingyezhizhao" placeholder="营业执照代码输入" disabled>
+								<input type="text" class="form-control" id="sup_num" name="sup_num"  value="{{$sup_num}}" placeholder="营业执照代码输入" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="danweizhanghao" class="col-sm-2 control-label">单位账号</label>
+							<label for="sup_card" class="col-sm-2 control-label">单位账号</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="danweizhanghao" disabled>
+								<input type="text" class="form-control" id="sup_card" name="sup_card"  value="{{$sup_card}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="gongsidizhi" class="col-sm-2 control-label">公司地址</label>
+							<label for="sup_province" class="col-sm-2 control-label">公司地址</label>
 							<div class="col-sm-3">
-								<select class="form-control" id="gongsidizhi" disabled>
-									<option>江苏省</option>
-									<option>浙江省</option>
-									<option>河南省</option>
-									<option>上海市</option>
-									<option>北京市</option>
+								<select class="form-control" id="sup_province" name="sup_province" disabled>
+									<option value="00">请选择</option>
 								</select>
 							</div>
 							<div class="col-sm-3">
-								<select class="form-control" disabled>
-									<option>南京市</option>
-									<option>无锡市</option>
-									<option>苏州市</option>
-									<option>扬州市</option>
-									<option>南通市</option>
+								<select class="form-control" id="sup_city" name="sup_city" disabled>
+									<option value="00">请选择</option>
 								</select>
 							</div>
-							<div class="col-sm-3"><input type="text" class="form-control" placeholder="路牌号" disabled></div>
+							<div class="col-sm-3"><input type="text" class="form-control" id="sup_address" placeholder="路牌号"  name="sup_address"  value="{{$sup_address}}" disabled></div>
 						</div>
 						<div class="form-group">
-							<label for="lianxiren" class="col-sm-2 control-label">联系人</label>
+							<label for="sup_person" class="col-sm-2 control-label">联系人</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="lianxiren" id="lianxiren" disabled>
+								<input type="text" class="form-control" name="lianxiren"  id="sup_person" name="sup_person" value="{{$sup_person}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="dianhua" class="col-sm-2 control-label">电话</label>
+							<label for="sup_phone" class="col-sm-2 control-label">电话</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="dianhua" id="dianhua" disabled>
+								<input type="text" class="form-control"id="sup_phone" name="sup_phone" value="{{$sup_phone}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="gongsijianjie" class="col-sm-2 control-label">公司简介</label>
-							<div class="col-sm-10" style="padding-top:8px;">
-								公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
+							<label for="sup_desc" class="col-sm-2 control-label">公司简介</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" rows="8" id="sup_desc" name="sup_desc" disabled>{{$sup_desc}}</textarea>
 							</div>
 						</div>
 					</form>
 				</div>
+		  <div class="col-md-5 col-sm-12 pull-right">
+			  <br/>
+			  <div class="form-group">
+				  <div class="col-sm-3  control-label">
+					  <img style="width: 300px" id="imgShow" {{if $pic != ''}}  src="/uploadimages/{{$pic}}"{{/if}}>
+
+				  </div>
+			  </div>
+		  </div>
       </div>
     </div>
 <!---->
@@ -129,4 +134,37 @@
 <!-- 主体 end -->
   
 </div>
-<?php require_once TEMPLATE."/common/footer.php";?>
+{{include file="common/footer.html"}}
+<script>
+
+	$(function(){
+		$("#sup_type").val("{{$sup_type}}")
+		$.getJSON("{{site_url url='ajax/getprovince'}}",function(data){
+			html='<option value="00" selected = "selected">请选择</option>';
+			if (data!=1){
+				data.forEach(function (item) {
+					html+='<option value="'+item.code+'">'+item.name+'</option>'
+				})
+			}else{
+				alert('NG');
+			}
+
+			$("#sup_province").html(html);
+			{{if $sup_province != '00'}}
+			$("#sup_province").val('{{$sup_province}}');
+			$.getJSON("{{site_url url='ajax/getcity'}}/{{$sup_province}}",function(data){
+				html='<option value="00">请选择</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#sup_city").html(html);
+				$("#sup_city").val('{{$sup_city}}');
+			});
+			{{/if}}
+		})
+	})
+</script>

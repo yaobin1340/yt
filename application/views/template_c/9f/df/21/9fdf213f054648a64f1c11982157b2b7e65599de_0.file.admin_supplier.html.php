@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-11 15:26:36
+<?php /* Smarty version 3.1.24, created on 2016-04-16 08:31:56
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_supplier.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:25032570b51acdd6dc1_28961403%%*/
+/*%%SmartyHeaderCode:6058571187fccf3e48_63244851%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,24 +9,35 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9fdf213f054648a64f1c11982157b2b7e65599de' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_supplier.html',
-      1 => 1460127311,
+      1 => 1460766713,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '25032570b51acdd6dc1_28961403',
+  'nocache_hash' => '6058571187fccf3e48_63244851',
+  'variables' => 
+  array (
+    'data' => 0,
+    'foo' => 0,
+    'pager' => 0,
+  ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570b51acec13c7_90643999',
+  'unifunc' => 'content_571187fcdaab67_69903630',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570b51acec13c7_90643999')) {
-function content_570b51acec13c7_90643999 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_571187fcdaab67_69903630')) {
+function content_571187fcdaab67_69903630 ($_smarty_tpl) {
+if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '25032570b51acdd6dc1_28961403';
-echo '<?php ';?>if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";<?php echo '?>';?>
+$_smarty_tpl->properties['nocache_hash'] = '6058571187fccf3e48_63244851';
+echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+?>
+
 <div id="wrap" class="container-fluid">
 
-<?php echo '<?php ';?>require_once TEMPLATE."/admin/admin_sider.php";<?php echo '?>';?>
+    <?php echo $_smarty_tpl->getSubTemplate ("admin/admin_sider.php", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+?>
+
   
   
 <!-- 主体 -->
@@ -35,9 +46,9 @@ echo '<?php ';?>if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/
     <!-- 面包屑导航 -->
     <div id="breadcrumb">
       <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
+        <li class="active">首页</li>
+        <li class="active">日常管理</li>
+				<li class="active">供应商</li>
       </ol>
     </div>
     <!-- 面包屑导航 end -->
@@ -57,12 +68,14 @@ echo '<?php ';?>if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/
       </h2>
       <div class="form_card_box">
       
-		<form class="form-horizontal">
+		<form id="page_form" class="form-horizontal" method="post" action="<?php echo smarty_function_site_url(array('url'=>'admin/supplier/list_task'),$_smarty_tpl);?>
+">
 			<div class="form-group">				
 				<div class="col-sm-6">
-					<input type="text" class="form-control" name="sousuo" id="sousuo" >
+					<input type="text" class="form-control" name="title" id="title" value="<?php echo $_smarty_tpl->tpl_vars['data']->value['title'];?>
+">
 				</div>
-				<button type="submit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
+				<button type="submit" class="btn btn-primary btn-raised" for="title">搜索</button>
 			</div>
 		</form>
       
@@ -70,86 +83,56 @@ echo '<?php ';?>if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
-          <th class=""></th>
+
           <th class="">名称</th>
           <th class="">创建时间</th>
           <th class="">操作</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-                昆山正元贸易有限公司
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
+      <?php
+$_from = $_smarty_tpl->tpl_vars['data']->value['items'];
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['foo']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['foo']->value) {
+$_smarty_tpl->tpl_vars['foo']->_loop = true;
+$foreach_foo_Sav = $_smarty_tpl->tpl_vars['foo'];
+?>
+      <tr>
+
+          <td class=""><a href="<?php echo smarty_function_site_url(array('url'=>'admin/supplier/show_sup'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['foo']->value['name'];?>
+</a></td>
+          <td class="small"><?php echo $_smarty_tpl->tpl_vars['foo']->value['cdate'];?>
+</td>
           <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >密码重置</a>
-						<a href="###" class="btn btn-sm btn-primary"  >查看</a>
-						<a href="###" class="btn btn-sm btn-info" >审核</a>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
+              <a href="<?php echo smarty_function_site_url(array('url'=>'admin/supplier/reset_password'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['foo']->value['userid'];?>
+" class="btn btn-sm btn-danger" >密码重置</a>
+
+              <?php if ($_smarty_tpl->tpl_vars['foo']->value['status'] == 1) {?>  <a href="<?php echo smarty_function_site_url(array('url'=>'admin/supplier/chenge_status'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['foo']->value['userid'];?>
+" class="btn btn-sm btn-info" >审核</a><?php }?>
+              <?php if ($_smarty_tpl->tpl_vars['foo']->value['status'] == 2) {?> <a href="javascript:void(0)" class="btn btn-sm btn-info" >通过</a><?php }?>
+
+
           </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-                admin_user
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >密码重置</a>
-						<a href="###" class="btn btn-sm btn-primary"  >查看</a>
-						<a href="###" class="btn btn-sm btn-info" >通过</a>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-                admin_user
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >密码重置</a>
-						<a href="###" class="btn btn-sm btn-primary"  >查看</a>
-						<a href="###" class="btn btn-sm btn-info" >审核</a>
-					</td>
-        </tr>
+
+      </tr>
+      <?php
+$_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
+}
+?>
 
       </tbody>
-		</table>      
-    <nav class="page clearfix">
-      <ul class="pagination pull-right">
-        <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-        <li class="previous disabled">
-          <a href="##" class="ink ink-dark"><span><</span></a>
-        </li>
-        <li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-        <li class="next">
-          <a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-        </li>
-        <li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-      </ul>
-    </nav>
-      
+		</table>
+          <?php echo $_smarty_tpl->tpl_vars['pager']->value;?>
+
+
       </div>
     </div>
 <!---->
@@ -160,7 +143,19 @@ echo '<?php ';?>if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/
 <!-- 主体 end -->
   
 </div>
-<?php echo '<?php ';?>require_once TEMPLATE."/common/footer.php";<?php echo '?>';
-}
+<?php echo $_smarty_tpl->getSubTemplate ("common/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+?>
+
+<?php echo '<script'; ?>
+>
+    $('.pagination').find('a').click(function(){
+        url = $(this).attr('href')
+        $('#page_form').attr('action',url)
+        $('#page_form').submit()
+        return false;
+    })
+
+<?php echo '</script'; ?>
+><?php }
 }
 ?>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-13 11:38:39
+<?php /* Smarty version 3.1.24, created on 2016-04-15 21:03:38
          compiled from "D:/amp/Apache/htdocs/yt/application/views/login/login.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:30852570dbf3fce89d2_77546825%%*/
+/*%%SmartyHeaderCode:264065710e6aa1890b1_61172493%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,21 +9,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ce2983a8b9bc6f01acf42c105a4c4bf0719698a3' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/login/login.html',
-      1 => 1460518421,
+      1 => 1460724021,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '30852570dbf3fce89d2_77546825',
+  'nocache_hash' => '264065710e6aa1890b1_61172493',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570dbf3fd94820_17455636',
+  'unifunc' => 'content_5710e6aa277574_79216340',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570dbf3fd94820_17455636')) {
-function content_570dbf3fd94820_17455636 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5710e6aa277574_79216340')) {
+function content_5710e6aa277574_79216340 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '30852570dbf3fce89d2_77546825';
+$_smarty_tpl->properties['nocache_hash'] = '264065710e6aa1890b1_61172493';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -48,7 +48,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
           </label>
           <label class="form-group">
             <i class="material-icons"></i>
-            <input type="password" class="form-control" style="color: #0f0f0f" id="pwd" name="pwd" placeholder="请输入密码" value="123456">
+            <input type="password" class="form-control" style="color: #0f0f0f" id="pwd" name="pwd" placeholder="请输入密码" value="888888">
             <p class="help-block"></p>
           </label>
           <label id="captchas_part" class="captcha form-group input-group" style="display: none;">

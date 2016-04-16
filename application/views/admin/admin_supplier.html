@@ -55,11 +55,15 @@
       {{foreach from=$data['items'] item=foo}}
       <tr>
 
-          <td class=""><a href="{{site_url url='admin/supplier/get_sup'}}/{{$foo['id']}}">{{$foo['name']}}</a></td>
+          <td class=""><a href="{{site_url url='admin/supplier/show_sup'}}/{{$foo['id']}}">{{$foo['name']}}</a></td>
           <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
-              <a href="###" class="btn btn-sm btn-danger" >密码重置</a>
-              <a href="###" class="btn btn-sm btn-info" >审核</a>
+              <a href="{{site_url url='admin/supplier/reset_password'}}/{{$foo['userid']}}" class="btn btn-sm btn-danger" >密码重置</a>
+
+              {{if $foo['status']==1}}  <a href="{{site_url url='admin/supplier/chenge_status'}}/{{$foo['userid']}}" class="btn btn-sm btn-info" >审核</a>{{/if}}
+              {{if $foo['status']==2}} <a href="javascript:void(0)" class="btn btn-sm btn-info" >通过</a>{{/if}}
+
+
           </td>
 
       </tr>

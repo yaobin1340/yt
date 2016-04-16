@@ -4,17 +4,17 @@ if (! defined('BASEPATH'))
 /**
  * Created by PhpStorm.
  * User: yangyang
- * Date: 2016/4/15
- * Time: 20:09
+ * Date: 2016/4/16
+ * Time: 8:52
  */
-class Supplier_model extends MY_Model
+class Project_model extends MY_Model
 {
 
     function __construct()
     {
         parent::__construct();
     }
-    
+
     public function list_task($page)
     {
         //$user_info = $this->session->userdata('user_info');
@@ -23,7 +23,7 @@ class Supplier_model extends MY_Model
         //获取总记录数
         $this->db->select('count(1) num')
             ->from('users a')
-            ->join('supplier_profile b','a.username = b.masterid')
+            ->join('project_profile b','a.username = b.masterid')
             ->where('a.status !=',-1);
         if($this->input->post('title')){
             $this->db->like('b.name',$this->input->post('title'));
@@ -36,7 +36,7 @@ class Supplier_model extends MY_Model
 
         $this->db->select('b.id id,a.id userid,b.name name,a.status,a.cdate',false)
             ->from('users a')
-            ->join('supplier_profile b','a.username = b.masterid')
+            ->join('project_profile b','a.username = b.masterid')
             ->where('a.status !=',-1);
         if($this->input->post('title')){
             $this->db->like('name',$this->input->post('title'));
@@ -48,9 +48,22 @@ class Supplier_model extends MY_Model
         return $data;
     }
 
-    public function show_sup($id){
-        return $this->db->select()->from('supplier_profile')->where('id',$id)->get()->row_array();
+    public function show_pro($id){
+            
+            $row=$this->db->select()->from('project_profile')->where('id',$id)->get()->row_array();
+            if (!$row){
+                return 1;
+            }
+            $data['row']=$row;
+            $detail=$this->db->select()->from('project_material')->where('pid',$row['id'])->order_by('id','desc')->get()->result_array();
+            if (!$detail){
+                $data['detail']=1;
+            }else{
+                $data['detail']=$detail;
+            }
+            return $data;
     }
+
 
     public function reset_password($id){
         $res=$this->db->where('id',$id)->update('users',array('password'=>sha1('888888')));

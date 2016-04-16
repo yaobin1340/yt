@@ -8,12 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Notice extends MY_Controller
 {
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
-//        if (!$this->session->userdata('username')){
-//            redirect('login');
-//        }
+       if (!$this->session->userdata('username')){
+           redirect('login');
+        }
 
         $this->cismarty->assign('type', 5);
         $this->load->model('project/notice_model', 'notice_model');

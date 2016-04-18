@@ -59,8 +59,8 @@ class Demand_model extends MY_Model
         }
         $res_row=$this->db->select('a.name name,b.name p_name,c.name c_name,a.address')
             ->from('project_profile a')
-            ->join('province b','b.code = a.province_code')
-            ->join('city c','c.code = a.city_code')
+            ->join('province b','b.code = a.province_code','left')
+            ->join('city c','c.code = a.city_code','left')
             ->where('masterid',$this->session->userdata('id'))
             ->get()->row_array();
         $data['pro_name']=$res_row['name'];
@@ -90,9 +90,9 @@ class Demand_model extends MY_Model
         $phone=$this->input->post('phone');
         $pic=$this->input->post('pic');
         $desc=$this->input->post('desc');
-     /*  if ($m_id!='00' || !$size || !$unit || !$num || !$unit_id || !$s_date || !$e_date || !$person || !$phone || !$pic || !$desc ){
+        if ($m_id=='0' || !$size || $unit=='0'|| !$num || !$unit_id || !$s_date || !$e_date || !$person || !$phone || !$pic || !$desc ){
            return 3;
-       }*/
+       }
         $data=array(
             'masterid'=>$masterid,
             'unit'=>$unit,

@@ -211,7 +211,8 @@
            $("#unit_id").val({{$unit_id}});
 
 		$("#save_btn").click(function () {
-			if ($("#material").val()=="0"){
+			if ($("#material").val()=="0" || $("#pro_city").val()==""){
+				$("#material").val('0');
 				$("#material").focus().parent().addClass("has-error").children(".help-block").html("类别必选");
 				return false;
 			}

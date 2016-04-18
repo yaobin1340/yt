@@ -1,7 +1,7 @@
-<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+{{include file="common/header.html"}}
 <div id="wrap" class="container-fluid">
 
-<?php require_once TEMPLATE."/project/project_sider.php";?>
+    {{include file="project/project_sider.php"}}
   
   
 <!-- 主体 -->
@@ -20,7 +20,7 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始</span>
+      <strong>公告</strong> <span>{{$lastnews}}</span>
     </div>
     <!-- 公告 end -->
 <!---->
@@ -33,7 +33,7 @@
 		<form class="form-horizontal">
 			<div class="form-group">
 				<div class="col-sm-1">
-					<a href="./?c=project_deal_info" class="btn btn-primary btn-raised" >新增</a>
+					<a href="{{site_url url='project/deal/info'}}" class="btn btn-primary btn-raised" >新增</a>
 				</div>				
 				<div class="col-sm-6">
 					<input type="text" class="form-control" id="sousuo" >
@@ -288,4 +288,4 @@
 <!-- 主体 end -->
   
 </div>
-<?php require_once TEMPLATE."/common/footer.php";?>
+{{include file="common/footer.html"}}

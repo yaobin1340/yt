@@ -52,4 +52,13 @@ class Ajax_model extends MY_Model
         }
     }
 
+    public function get_supplier(){
+        $data=$this->db->select('b.id,b.name')
+            ->from('users a')
+            ->join('supplier_profile b','b.masterid = a.id')
+            ->where('a.status',2)
+            ->get()->result_object();
+        return $data;
+    }
+
 }

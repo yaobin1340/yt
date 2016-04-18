@@ -63,4 +63,11 @@ class Ajax extends MY_Controller {
 		$data=$this->ajax_model->getunit();
 		echo json_encode($data);
 	}
+
+	public function get_supplier(){
+		$data=$this->ajax_model->get_supplier();
+		var_dump($data);
+		//echo $data;
+
+	}
 }

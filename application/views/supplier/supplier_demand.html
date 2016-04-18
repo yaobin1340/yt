@@ -20,7 +20,7 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始</span>
+      <strong>公告</strong> <span>{{$lastnews}}</span>
     </div>
     <!-- 公告 end -->
 
@@ -30,114 +30,58 @@
         <i class="material-icons"></i> <span>需求信息</span>
       </h2>
       <div class="form_card_box">
-     <form class="form-horizontal m_top">
+     <form id="page_form" class="form-horizontal m_top" method="post" action="{{site_url url='supplier/demand/list_task'}}">
 			<div class="form-group">
+                <div class="col-sm-2">
+                    <select class="form-control" id="pro_province" name="pro_province">
+                        <option value="00" >省份</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" id="pro_city" name="pro_city">
+                        <option value="00">城市</option>
+                    </select>
+                </div>
 				<div class="col-sm-2">
-					<select class="form-control" >
-						<option>城市</option>
-						<option>浙江省</option>
-						<option>河南省</option>
-						<option>上海市</option>
-						<option>北京市</option>
-					</select>
+                    <select class="form-control" name="material" id="material">
+                        <option value="0">材料</option>
+                    </select>
 				</div>
 				<div class="col-sm-2">
-					<select class="form-control" >
-						<option>材料</option>
-						
-					</select>
+					<input type="text" class="form-control" id="title" name="title" value="{{$data['title']}}" placeholder="其它关键字">
 				</div>
-				<div class="col-sm-2">
-					<input type="text" class="form-control" id="sousuo" placeholder="其它关键字">
-				</div>
-				<button type="submit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
+				<button type="submit" class="btn btn-primary btn-raised">搜索</button>
 			</div>
 		</form> 
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
-          <th class=""></th>
+
           <th class="">标题</th>
           <th class="">推送时间</th>
           <th class="">操作</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+      {{foreach from=$data['items'] item=foo}}
+      <tr>
+
           <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-                裕腾集团天津港口项目工程，需要A标水泥20000吨
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
+
+                  {{$foo['pro_name']}}需要{{$foo['m_name']}}{{$foo['num']}}{{$foo['u_name']}},规格为{{$foo['size']}}
+              </td>
+          <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
-						<a href="gys_need_infor.html" class="btn btn-sm btn-primary" >查看</a>
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
+              <a href="{{site_url url='supplier/demand/show_demand'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">查看</a>
           </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-                裕腾集团天津港口项目工程，需要A标水泥20000吨
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="gys_need_infor.html" class="btn btn-sm btn-primary" >查看</a>
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
-        <tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-                裕腾集团天津港口项目工程，需要A标水泥20000吨
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="gys_need_infor.html" class="btn btn-sm btn-primary" >查看</a>
-						<button type="button" class="btn btn-sm btn-danger">删除</button>
-					</td>
-        </tr>
+
+      </tr>
+      {{/foreach}}
 
       </tbody>
 		</table>
-    
-    <div class="btn-group" role="group" >
-      <button type="button" class="btn btn-default check">全选</button>
-      <button type="button" class="btn btn-danger">删除</button>
-    </div>
       
-    <nav class="page clearfix">
-      <ul class="pagination pull-right">
-        <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-        <li class="previous disabled">
-          <a href="##" class="ink ink-dark"><span><</span></a>
-        </li>
-        <li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-        <li class="next">
-          <a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-        </li>
-        <li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-      </ul>
-    </nav>
+    {{$pager}}
       
       </div>
     </div>
@@ -147,3 +91,74 @@
   
 </div>
 {{include file="common/footer.html"}}
+
+
+<script>
+    $('.pagination').find('a').click(function(){
+        url = $(this).attr('href')
+        $('#page_form').attr('action',url)
+        $('#page_form').submit()
+        return false;
+    })
+
+    $(function () {
+
+        $.getJSON("{{site_url url='ajax/getprovince'}}",function(data){
+            html='<option value="00" selected = "selected">省份</option>';
+            if (data!=1){
+                data.forEach(function (item) {
+                    html+='<option value="'+item.code+'">'+item.name+'</option>'
+                })
+            }else{
+                alert('NG');
+            }
+            $("#pro_province").html(html);
+
+            {{if $data['pro_province'] != '00'}}
+            $("#pro_province").val("{{$data['pro_province']}}");
+            $.getJSON("{{site_url url='ajax/getcity'}}/{{$data['pro_province']}}",function(data){
+                html='<option value="00">城市</option>';
+                if (data!=1){
+                    data.forEach(function (item) {
+                        html+='<option value="'+item.code+'">'+item.name+'</option>'
+                    })
+                }else{
+
+                }
+                $("#pro_city").html(html);
+
+                $("#pro_city").val("{{$data['pro_city']}}");
+            });
+            {{/if}}
+        })
+
+        $.getJSON("{{site_url url='ajax/getmaterial'}}",function(data){
+            html='<option value="0">材料</option>'
+            if (data!=1){
+                data.forEach(function (item) {
+                    html+='<option value="'+item.id+'">'+item.name+'</option>'
+                })
+            }else{
+
+            }
+            $("#material").html(html);
+            $("#material").val({{$data['material']}});
+            //这里进行明细的载人
+
+        })
+
+        $("#pro_province").change(function(){
+            $.getJSON("{{site_url url='ajax/getcity'}}/"+$("#pro_province").val(),function(data){
+                html='<option value="00">城市</option>';
+                if (data!=1){
+                    data.forEach(function (item) {
+                        html+='<option value="'+item.code+'">'+item.name+'</option>'
+                    })
+                }else{
+
+                }
+                $("#pro_city").html(html);
+            });
+        });
+    })
+</script>

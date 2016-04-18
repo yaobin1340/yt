@@ -57,8 +57,16 @@ class Demand_model extends MY_Model
         if (!$data['item']){
         return false;
         }
-        $res_row=$this->db->select('name')->from('project_profile')->where('masterid',$this->session->userdata('id'))->get()->row_array();
+        $res_row=$this->db->select('a.name name,b.name p_name,c.name c_name,a.address')
+            ->from('project_profile a')
+            ->join('province b','b.code = a.province_code')
+            ->join('city c','c.code = a.city_code')
+            ->where('masterid',$this->session->userdata('id'))
+            ->get()->row_array();
         $data['pro_name']=$res_row['name'];
+        $data['p_name']=$res_row['p_name'];
+        $data['c_name']=$res_row['c_name'];
+        $data['address']=$res_row['address'];
         return $data;
     }
 

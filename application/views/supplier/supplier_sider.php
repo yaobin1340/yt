@@ -23,7 +23,7 @@
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="供应商"><i class="expand material-icons">&#xe5cf;</i><span>供应商</span></a>
       <div class="sider_group_list list-group">
         <a href="./?c=supplier_deal" class="list-group-item {{if $type==2}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="合约列表"><i class="material-icons">&#xe90e;</i><span>合约列表</span></a>
-        <a href="./?c=supplier_demand" class="list-group-item {{if $type==3}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="需求信息"><i class="material-icons">&#xe0c6;</i><span>需求信息</span><em class="badge">14</em></a>
+        <a href="{{site_url url='supplier/demand'}}" class="list-group-item {{if $type==3}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="需求信息"><i class="material-icons">&#xe0c6;</i><span>需求信息</span><em class="badge">14</em></a>
         <a href="{{site_url url='supplier/notice'}}" class="list-group-item {{if $type==4}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="系统公告"><i class="material-icons">&#xe85a;</i><span>系统公告</span></a>
       </div>
     </div>

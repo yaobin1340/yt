@@ -38,6 +38,9 @@ class Demand extends MY_Controller
         if ($res){
             $this->assign('data', $res['item']);
             $this->assign('pro_name', $res['pro_name']);
+            $this->assign('p_name', $res['p_name']);
+            $this->assign('c_name', $res['c_name']);
+            $this->assign('address', $res['address']);
             $this->display('project/project_demand_details.html');
         }else{
             $this->show_message('公告内容丢失');
@@ -82,18 +85,18 @@ class Demand extends MY_Controller
     function edit_demand($id){
         $res=$this->demand_model->show_demand($id);
         if ($res){
-            $this->assign('m_id', $res['m_id']?$res['m_id']:'00');
-            $this->assign('size', $res['size']);
-            $this->assign('num', $res['num']);
-            $this->assign('unit_id',$res['unit_id']?$res['unit_id']: 1);
-            $this->assign('s_date', $res['s_date']);
-            $this->assign('e_date', $res['e_date']);
-            $this->assign('person', $res['person']);
-            $this->assign('phone', $res['phone']);
-            $this->assign('pic', $res['pic']);
-            $this->assign('desc', $res['desc']);
-            $this->assign('unit', $res['unit']);
-            $this->assign('id', $res['id']);
+            $this->assign('m_id', $res['item']['m_id'] ? $res['item']['m_id'] : '00');
+            $this->assign('size', $res['item']['size']);
+            $this->assign('num', $res['item']['num']);
+            $this->assign('unit_id',$res['item']['unit_id'] ? $res['item']['unit_id'] :  1);
+            $this->assign('s_date', $res['item']['s_date']);
+            $this->assign('e_date', $res['item']['e_date']);
+            $this->assign('person', $res['item']['person']);
+            $this->assign('phone', $res['item']['phone']);
+            $this->assign('pic', $res['item']['pic']);
+            $this->assign('desc', $res['item']['desc']);
+            $this->assign('unit', $res['item']['unit']);
+            $this->assign('id', $res['item']['id']);
             $this->display('project/project_demand_info.html');
         }
         else{

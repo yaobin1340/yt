@@ -15,8 +15,11 @@ class MY_Controller extends CI_Controller
 	public function __construct ()
 	{
 		parent::__construct();
+		$this->load->model('controller_use');
 		ini_set('date.timezone','Asia/Shanghai');
 		$this->cismarty->assign('base_url',base_url());//url路径
+		$news=$this->controller_use->get_Latest_News();
+		$this->cismarty->assign('lastnews',$news !=1 ? $news['content'] : '无最新公告');//url路径
 	}
 
 	//重载smarty方法assign

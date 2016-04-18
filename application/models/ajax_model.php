@@ -51,4 +51,5 @@ class Ajax_model extends MY_Model
             return $data;
         }
     }
+
 }

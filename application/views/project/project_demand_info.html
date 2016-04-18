@@ -30,7 +30,7 @@
       </h2>
       <div class="form_card_box">
       
-        <form class="form-horizontal" method="post" action="{{site_url url='project/demand/save_demand'}}">
+        <form id="save_form" class="form-horizontal" method="post" action="{{site_url url='project/demand/save_demand'}}">
 
 					<div class="form-group">
 						<label for="material"  class="col-sm-2 control-label">所需材料</label>
@@ -119,7 +119,7 @@
 			</div>
 			<div class="form-group" style="margin-right:0;">
 				<div class="col-sm-9 col-sm-offset-2">
-					<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink" >提交</button>
+					<button type="button" id="save_btn" class="btn btn-primary btn-lg btn-raised btn-block ink" >提交</button>
 					<input type="hidden" name="id" value="{{$id}}">
 				</div>
 			</div>
@@ -209,5 +209,54 @@
 		});
 
            $("#unit_id").val({{$unit_id}});
+
+		$("#save_btn").click(function () {
+			if ($("#material").val()=="0"){
+				$("#material").focus().parent().addClass("has-error").children(".help-block").html("类别必选");
+				return false;
+			}
+			if ($.trim($("#size").val())==""){
+				$("#size").focus().parent().addClass("has-error").children(".help-block").html("规格要求不能为空");
+				return false;
+			}
+
+			if ($("#unit").val()=="0" || $("#pro_city").val()==""){
+				$("#unit").val('0');
+				$("#unit").focus().parent().addClass("has-error").children(".help-block").html("单位必选");
+				return false;
+			}
+			if ($.trim($("#num").val())==""){
+				$("#num").focus().parent().addClass("has-error").children(".help-block").html("数量不能为空");
+				return false;
+			}
+			if ($.trim($("#s_date").val())==""){
+				$("#s_date").focus().parent().addClass("has-error").children(".help-block").html("开始日期不能为空");
+				return false;
+			}
+			if ($.trim($("#e_date").val())==""){
+				$("#e_date").focus().parent().addClass("has-error").children(".help-block").html("截止日期不能为空");
+				return false;
+			}
+			if ($.trim($("#person").val())==""){
+				$("#person").focus().parent().addClass("has-error").children(".help-block").html("联系人不能为空");
+				return false;
+			}
+			if ($.trim($("#phone").val())==""){
+				$("#phone").focus().parent().addClass("has-error").children(".help-block").html("联系电话不能为空");
+				return false;
+			}
+			if ($.trim($("#desc").val())==""){
+				$("#desc").focus().parent().addClass("has-error").children(".help-block").html("详情不能为空");
+				return false;
+			}
+			if ($.trim($("#hidImgName").val())==""){
+				alert('请上传图片')
+				return false;
+			}
+
+				$('#save_form').submit();
+
+
+		})
 	})
 </script>

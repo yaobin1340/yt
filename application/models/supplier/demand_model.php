@@ -22,7 +22,7 @@ class Demand_model extends MY_Model
         $this->db->select('count(1) num')->from('require a')
             ->join('project_profile d','d.masterid = a.masterid');
         if($this->input->post('title')){
-            $this->db->like('a.size',$this->input->post('title'));
+            $this->db->like('d.name',$this->input->post('title'));
         }
         if($this->input->post('pro_province') != '00' && $this->input->post('pro_province') != ''){
             $this->db->where('d.province_code',$this->input->post('pro_province'));
@@ -48,7 +48,7 @@ class Demand_model extends MY_Model
            ->join('project_profile d','d.masterid = a.masterid');
 
         if($this->input->post('title')){
-            $this->db->like('a.size',$this->input->post('title'));
+            $this->db->like('d.name',$this->input->post('title'));
         }
         if($this->input->post('pro_province') != '00' && $this->input->post('pro_province') != ''){
             $this->db->where('d.province_code',$this->input->post('pro_province'));

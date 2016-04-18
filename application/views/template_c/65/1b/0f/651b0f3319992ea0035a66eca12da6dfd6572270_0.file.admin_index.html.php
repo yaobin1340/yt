@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-11 20:30:55
+<?php /* Smarty version 3.1.24, created on 2016-04-18 10:23:41
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_index.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:26835570b98ffbee146_05283156%%*/
+/*%%SmartyHeaderCode:266575714452d3f64e2_57196312%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '651b0f3319992ea0035a66eca12da6dfd6572270' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_index.html',
-      1 => 1460377626,
+      1 => 1460945880,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '26835570b98ffbee146_05283156',
+  'nocache_hash' => '266575714452d3f64e2_57196312',
+  'variables' => 
+  array (
+    'lastnews' => 0,
+  ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570b9900000f43_88577150',
+  'unifunc' => 'content_5714452d457f91_66721655',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570b9900000f43_88577150')) {
-function content_570b9900000f43_88577150 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5714452d457f91_66721655')) {
+function content_5714452d457f91_66721655 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '26835570b98ffbee146_05283156';
+$_smarty_tpl->properties['nocache_hash'] = '266575714452d3f64e2_57196312';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -49,7 +53,8 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始</span>
+      <strong>公告</strong> <span><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
+</span>
     </div>
     <!-- 公告 end -->
 

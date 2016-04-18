@@ -19,9 +19,11 @@ class Demand_model extends MY_Model
         $limit=4;
         $data['limit'] = $limit;
         //获取总记录数
-        $this->db->select('count(1) num')->from('require')->where('masterid',$this->session->userdata('id'));
+        $this->db->select('count(1) num')->from('require a')
+            ->join('material c','c.id = a.m_id','left')
+            ->where('masterid',$this->session->userdata('id'));
         if($this->input->post('title')){
-            $this->db->like('size',$this->input->post('title'));
+            $this->db->like('c.name',$this->input->post('title'));
         }
         $num = $this->db->get()->row();
         $data['total'] = $num->num;
@@ -34,7 +36,7 @@ class Demand_model extends MY_Model
             ->where('masterid',$this->session->userdata('id'));
 
         if($this->input->post('title')){
-            $this->db->like('size',$this->input->post('title'));
+            $this->db->like('c.name',$this->input->post('title'));
         }
 
         $this->db->order_by('cdate','desc');

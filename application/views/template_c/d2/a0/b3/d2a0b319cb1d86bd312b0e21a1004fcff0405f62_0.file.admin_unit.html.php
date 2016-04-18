@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-16 11:26:14
+<?php /* Smarty version 3.1.24, created on 2016-04-18 10:33:46
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:193225711b0d6175a10_30146616%%*/
+/*%%SmartyHeaderCode:37975714478aeca0b8_06511419%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,27 +9,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2a0b319cb1d86bd312b0e21a1004fcff0405f62' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html',
-      1 => 1460776891,
+      1 => 1460945881,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '193225711b0d6175a10_30146616',
+  'nocache_hash' => '37975714478aeca0b8_06511419',
   'variables' => 
   array (
+    'lastnews' => 0,
     'data' => 0,
     'foo' => 0,
     'pager' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5711b0d6229566_46346974',
+  'unifunc' => 'content_5714478b05ac03_77372603',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5711b0d6229566_46346974')) {
-function content_5711b0d6229566_46346974 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5714478b05ac03_77372603')) {
+function content_5714478b05ac03_77372603 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '193225711b0d6175a10_30146616';
+$_smarty_tpl->properties['nocache_hash'] = '37975714478aeca0b8_06511419';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -56,7 +57,8 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始</span>
+      <strong>公告</strong> <span><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
+</span>
     </div>
     <!-- 公告 end -->
 

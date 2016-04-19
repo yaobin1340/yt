@@ -50,7 +50,7 @@ class Deal_model extends MY_Model
 
         if($ids){
             $rs = $this->db->select('a.*,b.name name')->from('change a')
-                ->join('supplier_profile b','a.sid=b.id','left')->where_in('pid',$ids)->order_by('a.cdate','acs')->get()->result_array();
+                ->join('supplier_profile b','a.sid = b.id','left')->where_in('b.masterid',$ids)->order_by('a.cdate','acs')->get()->result_array();
             $data['change_items'] = $rs;
         }else{
             $data['change_items'] = null;
@@ -79,7 +79,7 @@ class Deal_model extends MY_Model
         }*/
         $data=array(
             'sid'=>$sid,
-            'masterid'=>$masterid,
+            'userid'=>$masterid,
             'title'=>$title,
             'num'=>$num,
             'pay_type'=>$pay_type ? $pay_type : '0',
@@ -141,7 +141,7 @@ class Deal_model extends MY_Model
         $data['line'] = $this->db->select('a.*,b.name mname,c.name uname')->from('contract_line a')
             ->join('material b','a.mid=b.id','left')
             ->join('unit c','a.uid=c.id','left')
-            ->where('pid',$id)->get()->result_array();
+            ->where('a.pid',$id)->get()->result_array();
         return $data;
     }
 

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-14 10:05:01
+<?php /* Smarty version 3.1.24, created on 2016-04-19 19:30:18
          compiled from "D:/amp/Apache/htdocs/yt/application/views/common/header.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:23950570efacd233b43_41877961%%*/
+/*%%SmartyHeaderCode:28532571616cacc8517_03887960%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,21 +9,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd0ada69130513460cb51c285121cce05ed1164f7' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/common/header.html',
-      1 => 1460599496,
+      1 => 1461065403,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '23950570efacd233b43_41877961',
+  'nocache_hash' => '28532571616cacc8517_03887960',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_570efacd30e745_06054787',
+  'unifunc' => 'content_571616cb1e3529_55017139',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_570efacd30e745_06054787')) {
-function content_570efacd30e745_06054787 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_571616cb1e3529_55017139')) {
+function content_571616cb1e3529_55017139 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '23950570efacd233b43_41877961';
+$_smarty_tpl->properties['nocache_hash'] = '28532571616cacc8517_03887960';
 ?>
 <!DOCTYPE html>
 <html>
@@ -89,7 +89,8 @@ $_smarty_tpl->properties['nocache_hash'] = '23950570efacd233b43_41877961';
         <?php echo '<?php ';?>if( !$islogin ) { <?php echo '?>';?>
 
       <li><a href="./?c=login" class="header_btn">登录</a></li>
-      <li id="header_reg"><a href="./?c=reg" class="header_btn">注册</a></li>
+      <li id="header_reg"><a href="<?php echo smarty_function_site_url(array('url'=>'reg/index'),$_smarty_tpl);?>
+" class="header_btn">注册</a></li>
         <?php echo '<?php ';?>} else { <?php echo '?>';?>
       
       <li id="header_user">

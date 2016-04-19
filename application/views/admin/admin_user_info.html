@@ -48,7 +48,7 @@
 
 						<button type="submit" id="add" class="btn btn-primary btn-raised" for="zengjia">增加</button>
                         </div>
-                        <div class="col-lg-3" style="margin-top:5px;">（请使用11位电话号码注册）</div>
+                        <div class="col-lg-3" style="margin-top:5px;">（请使用正确的邮箱地址注册）</div>
 					</div>
 				</form>
       </div>
@@ -63,9 +63,12 @@
 </div>
 <script language="JavaScript">
     $("#user_form").submit(function () {
-        if( !$("#name").val().match(/1\d{10,10}$/) ){
-            alert('请使用11位电话号码注册');
+        if(!$("#name").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)){
+            alert("请使用正确的邮箱地址进行注册");
+            $("#name").focus().parent().addClass("has-error").children(".help-block").html("请使用正确的邮箱地址进行注册");
             return false;
+        } else {
+            $("#name").parent().removeClass("has-error").children(".help-block").html("");
         }
     })
 </script>

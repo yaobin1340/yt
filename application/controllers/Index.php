@@ -44,33 +44,4 @@ class Index extends MY_Controller {
         $this->session->sess_destroy();
         redirect('login');
     }
-
-    public function admin_io($type='admin'){
-        $types=array('admin',
-            'admin_supplier',
-            'admin_project',
-            'admin_paymentrequest',
-            'admin_schedule',
-            'admin_deal',
-            'admin_deal_model',
-            'admin_push',
-            'admin_unit',
-            'admin_material',
-            'admin_user');
-        if(!in_array($type,$types)){
-            
-        }
-        $this->cismarty->assign('type',$type);
-        if ($type=='admin'){
-
-            $path="admin/admin_index.html";
-        }
-        else
-        {
-            $path="admin/{$type}.html";
-        }
-       // redirect($type);
-       // die($path);
-        $this->cismarty->display($path);
-    }
 }

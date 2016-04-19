@@ -69,8 +69,8 @@
             <td class="bloc">
                 <a href="{{site_url url='admin/user/reset_password'}}/{{$foo['id']}}" class="btn btn-sm btn-danger">密码重置</a>
                 {{if $foo['type']!='管理员'}}
-                {{if $foo['STATUS']==-1}} <button type="submit" name="open" value="{{$foo['id']}}" class="btn btn-sm btn-primary">启用</button>{{/if}}
-                {{if $foo['STATUS']==1}} <button type="submit" name="close" value="{{$foo['id']}}" class="btn btn-sm btn-info">停用</button>{{/if}}
+                {{if $foo['STATUS']==-1}} <button type="submit" name="open" value="{{$foo['id']}}" class="btn btn-sm btn-primary">启用</button>
+                {{else}} <button type="submit" name="close" value="{{$foo['id']}}" class="btn btn-sm btn-info">停用</button>{{/if}}
                 {{/if}}
             </td>
 

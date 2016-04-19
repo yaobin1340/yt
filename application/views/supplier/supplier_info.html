@@ -100,12 +100,12 @@
 							<label for="sup_province" class="col-sm-2 control-label">公司地址</label>
 							<div class="col-sm-3">
 								<select class="form-control" id="sup_province" name="sup_province">
-									<option value="00">请选择</option>
+									<option value="">-请选择省份-</option>
 								</select>
 							</div>
 							<div class="col-sm-3">
 								<select class="form-control" id="sup_city" name="sup_city">
-									<option value="00">请选择</option>
+									<option value="">-请选择城市-</option>
 								</select>
 							</div>
 							<div class="col-sm-3"><input type="text" class="form-control" id="sup_address" placeholder="路牌号" name="sup_address"  value="{{$sup_address}}"></div>
@@ -202,7 +202,7 @@
 	$(function () {
         $("#sup_type").val("{{$sup_type}}")
 		$.getJSON("{{site_url url='ajax/getprovince'}}",function(data){
-			html='<option value="00" selected = "selected">请选择</option>';
+			html='<option value="" selected = "selected">-请选择省份-</option>';
 			if (data!=1){
 				data.forEach(function (item) {
 					html+='<option value="'+item.code+'">'+item.name+'</option>'
@@ -212,10 +212,10 @@
 			}
 
 			$("#sup_province").html(html);
-			{{if $sup_province != '00'}}
+			{{if $sup_province != ''}}
 			$("#sup_province").val('{{$sup_province}}');
 			$.getJSON("{{site_url url='ajax/getcity'}}/{{$sup_province}}",function(data){
-				html='<option value="00">请选择</option>';
+				html='<option value="">-请选择城市-</option>';
 				if (data!=1){
 					data.forEach(function (item) {
 						html+='<option value="'+item.code+'">'+item.name+'</option>'
@@ -231,7 +231,7 @@
 
 		$("#sup_province").change(function(){
 			$.getJSON("{{site_url url='ajax/getcity'}}/"+$("#sup_province").val(),function(data){
-				html='<option value="00">请选择</option>';
+				html='<option value="">-请选择城市-</option>';
 				if (data!=1){
 					data.forEach(function (item) {
 						html+='<option value="'+item.code+'">'+item.name+'</option>'
@@ -247,56 +247,82 @@
 			if ($.trim($("#sup_name").val())==""){
 				$("#sup_name").focus().parent().addClass("has-error").children(".help-block").html("公司名称不能为空");
 				return false;
+			}else {
+				$("#sup_name").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($("#sup_type").val()=="0"){
 				$("#sup_type").focus().parent().addClass("has-error").children(".help-block").html("公司性质必选");
 				return false;
+			}else {
+				$("#sup_type").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_total").val())==""){
 				$("#sup_total").focus().parent().addClass("has-error").children(".help-block").html("注册资金不能为空");
 				return false;
+			}else {
+				$("#sup_total").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_allow").val())==""){
 				$("#sup_allow").focus().parent().addClass("has-error").children(".help-block").html("经营范围不能为空");
 				return false;
+			}else {
+				$("#sup_allow").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_num").val())==""){
 				$("#sup_num").focus().parent().addClass("has-error").children(".help-block").html("营业执照不能为空");
 				return false;
+			}else {
+				$("#sup_num").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_card").val())==""){
 				$("#sup_card").focus().parent().addClass("has-error").children(".help-block").html("单位账号不能为空");
 				return false;
+			}else {
+				$("#sup_card").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_province").val())=="00" || $("#sup_province").val()==""){
 				$("#sup_province").focus().parent().addClass("has-error").children(".help-block").html("省份必选");
 				return false;
+			}else {
+				$("#sup_province").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_city").val())=="00" || $("#sup_city").val()==""){
-				$("#sup_city").val('00');
+				$("#sup_city").val('');
 				$("#sup_city").focus().parent().addClass("has-error").children(".help-block").html("城市必选");
 				return false;
+			}else {
+				$("#sup_city").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_address").val())==""){
 				$("#sup_address").focus().parent().addClass("has-error").children(".help-block").html("公司地址不能为空");
 				return false;
+			}else {
+				$("#sup_address").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_person").val())==""){
 				$("#sup_person").focus().parent().addClass("has-error").children(".help-block").html("联系人不能为空");
 				return false;
+			}else {
+				$("#sup_person").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_phone").val())==""){
 				$("#sup_phone").focus().parent().addClass("has-error").children(".help-block").html("电话不能为空");
 				return false;
+			}else {
+				$("#sup_phone").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#sup_desc").val())==""){
 				$("#sup_desc").focus().parent().addClass("has-error").children(".help-block").html("公司简介不能为空");
 				return false;
+			}else {
+				$("#sup_desc").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($.trim($("#hidImgName").val())==""){
 				$("#btnUploadImg").focus().parent().addClass("has-error").children(".help-block").html("需上传图片");
 				alert('需上传图片');
 				return false;
+			}else {
+				$("#btnUploadImg").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			$("#save_form").submit();
 		})

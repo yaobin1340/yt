@@ -12,7 +12,7 @@ class Demand extends MY_Controller
 
     function __construct(){
         parent::__construct();
-        if (!$this->session->userdata('username')) {
+        if (!$this->session->userdata('username') && $this->session->userdata('type')!=3) {
             redirect('login');
         }
         $this->cismarty->assign('type', 3);

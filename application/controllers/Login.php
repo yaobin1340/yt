@@ -63,4 +63,8 @@ class Login extends MY_Controller {
 	public function supplier_reg(){
 		$this->display('login/supplier_reg.html');
 	}
+	
+	public function project_reg(){
+		$this->display('login/project_reg.html');
+	}
 }

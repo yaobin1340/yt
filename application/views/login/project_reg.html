@@ -1,28 +1,11 @@
 {{include file="common/header.html"}}
 <div id="wrap" class="container-fluid">
 
-	{{include file="project/project_sider.php"}}
   
   
-<!-- 主体 -->
-  <div id="main">
-  
-    <!-- 面包屑导航 -->
-    <div id="breadcrumb">
-      <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
-      </ol>
-    </div>
-    <!-- 面包屑导航 end -->
-  
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>{{$lastnews}}</span>
-    </div>
-    <!-- 公告 end -->
+
+
+
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -42,7 +25,7 @@
 					<div class="form-group">
 						<label for="pro_name" class="col-sm-2 control-label">项目名称</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_name" name="pro_name" value="{{$pro_name}}" >
+							<input type="text" class="form-control" id="pro_name" name="pro_name"  >
 						</div>
 					</div>
 					<div class="form-group">
@@ -57,42 +40,42 @@
 								<option value="">-请选择城市-</option>
 							</select>
 						</div>
-						<div class="col-sm-3"><input type="text" class="form-control" id="pro_address" name="pro_address" placeholder="路牌号" value="{{$pro_address}}"></div>
+						<div class="col-sm-3"><input type="text" class="form-control" id="pro_address" name="pro_address" placeholder="路牌号"></div>
 					</div>
 					<div class="form-group">
 						<label for="pro_total" class="col-sm-2 control-label">项目金额</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_total" name="pro_total" value="{{$pro_total}}">
+							<input type="text" class="form-control" id="pro_total" name="pro_total" >
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_manager" class="col-sm-2 control-label">项目经理</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_manager"   name="pro_manager" value="{{$pro_manager}}">
+							<input type="text" class="form-control" id="pro_manager"   name="pro_manager">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_leader" class="col-sm-2 control-label">项目负责人</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_leader" name="pro_leader" value="{{$pro_leader}}">
+							<input type="text" class="form-control" id="pro_leader" name="pro_leader">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_leader_phone" class="col-sm-2 control-label">负责人电话</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_leader_phone"  name="pro_leader_phone"  value="{{$pro_leader_phone}}" >
+							<input type="text" class="form-control" id="pro_leader_phone"  name="pro_leader_phone"  >
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_contacter" class="col-sm-2 control-label">联系人</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_contacter"  name="pro_contacter"  value="{{$pro_contacter}}">
+							<input type="text" class="form-control" id="pro_contacter"  name="pro_contacter"  >
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_contacter_phone" class="col-sm-2 control-label">联系电话</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_contacter_phone" name="pro_contacter_phone"   value="{{$pro_contacter_phone}}">
+							<input type="text" class="form-control" id="pro_contacter_phone" name="pro_contacter_phone"  >
 						</div>
 					</div>
 
@@ -135,8 +118,7 @@
     </div>
   <!---->
     
-  </div>
-<!-- 主体 end -->
+
   
 </div>
 {{include file="common/footer.html"}}
@@ -156,21 +138,7 @@
 			 }
 
 			$("#pro_province").html(html);
-			{{if $pro_province != ''}}
-			$("#pro_province").val('{{$pro_province}}');
-			$.getJSON("{{site_url url='ajax/getcity'}}/{{$pro_province}}",function(data){
-				html='<option value="">-请选择城市-</option>';
-				if (data!=1){
-					data.forEach(function (item) {
-						html+='<option value="'+item.code+'">'+item.name+'</option>'
-					})
-				}else{
 
-				}
-				$("#pro_city").html(html);
-				$("#pro_city").val('{{$pro_city}}');
-			});
-			{{/if}}
 
 
 			//$("#pro_province").val('00');
@@ -197,21 +165,7 @@
 				}
 				$("#material").html(html);
                  //这里进行明细的载人
-             	{{if $detail!=1}}
-				{{foreach from=$detail key=part_id item=foo}}
 
-				{{if $part_id!=0}}
-				 divbox=$("#yy_block_um").children().html();
-				 divbox="<div class='form-group'>"+divbox+"</div>";
-				 $('#yy_block_um').prepend(divbox);
-				{{/if}}
-				 $("#yy_block_um").find("div").eq(0).find("[name='unit[]']").eq(0).val("{{$foo['unit']}}");
-				 $("#yy_block_um").find("div").eq(0).find("[name='num[]']").eq(0).val("{{$foo['num']}}");
-				 $("#yy_block_um").find("div").eq(0).find("[name='material[]']").eq(0).val("{{$foo['m_id']}}");
-
-				 {{/foreach}}
-
-					{{/if}}
 				$("#yy_block_um").find("button").on('click',function () {
 					if($('#yy_block_um').children('div').length <= 1){
 						alert('需至少保留一条‘材料与数量’信息');
@@ -260,7 +214,7 @@
 			if ($.trim($("#pro_name").val())==""){
 				$("#pro_name").focus().parent().addClass("has-error").children(".help-block").html("项目名称不能为空");
 				return false;
-			}else {
+			} else {
 				$("#pro_name").parent().removeClass("has-error").children(".help-block").html("");
 			}
 			if ($("#pro_province").val()==""){

@@ -29,8 +29,8 @@ class Info extends MY_Controller {
             $leader_phone="";
             $contacter="";
             $contacter_phone="";
-            $province_code="00";
-            $city_code="00";
+            $province_code="";
+            $city_code="";
             $detail=1;
             $profile=$this->info_model->getpro();
            

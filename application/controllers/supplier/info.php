@@ -26,8 +26,8 @@ class Info extends MY_Controller {
             $allow="";
             $num="";
             $card="";
-            $province_code="00";
-            $city_code="00";
+            $province_code="";
+            $city_code="";
             $address="";
             $person="";
             $phone="";

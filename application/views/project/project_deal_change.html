@@ -1,7 +1,7 @@
-<?php if( !defined("TEMPLATE") ) exit; require_once TEMPLATE."/common/header.php";?>
+{{include file="common/header.html"}}
 <div id="wrap" class="container-fluid">
 
-<?php require_once TEMPLATE."/project/project_sider.php";?>
+	{{include file="project/project_sider.php"}}
   
   
 <!-- 主体 -->
@@ -39,7 +39,7 @@
 					<div class="form-group">
 						<label for="heyuebiaoti" class="col-sm-2 control-label">合约标题</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="heyuebiaoti" id="heyuebiaoti" placeholder="标题不变" >
+							{{$data['mian']['title']}}
 						</div>					
 					</div>
 					<div class="form-group">
@@ -48,38 +48,18 @@
 							<input type="text" class="form-control" name="biangenggys" id="biangenggys" >
 						</div>
 					</div>
+					{{foreach from=$data['line'] item=foo}}
 					<div class="form-group">
 						<div class="col-sm-2"></div>			
 						<div class="col-sm-3">
-							<select class="form-control">
-								<option>钢材</option>
-								<option>涂料</option>
-							</select>
-						</div>
-						<div class="col-sm-3"><input type="text" class="form-control"  placeholder="数字"></div>
-						<div class="col-sm-3">
-							<select class="form-control" >
-								<option>吨</option>
-								<option>桶</option>
-							</select>
-						</div>				
-					</div>
-					<div class="form-group">
-						<div class="col-sm-2"></div>			
-						<div class="col-sm-3">
-							<select class="form-control">
-								<option>钢材</option>
-								<option>涂料</option>
-							</select>
+							{{$foo['mname']}}
 						</div>
 						<div class="col-sm-3"><input type="text" class="form-control "  placeholder="数字"></div>
 						<div class="col-sm-3">
-							<select class="form-control" >
-								<option>吨</option>
-								<option>桶</option>
-							</select>
+							{{$foo['uname']}}
 						</div>				
 					</div>
+					{{/foreach}}
 					<div class="form-group">
 						<label for="biangengshuoming" class="col-sm-2 control-label">变更说明</label>
 						<div class="col-sm-9">
@@ -109,4 +89,4 @@
 <!-- 主体 end -->
   
 </div>
-<?php require_once TEMPLATE."/common/footer.php";?>
+{{include file="common/footer.html"}}

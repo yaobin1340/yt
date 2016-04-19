@@ -18,6 +18,33 @@ class Deal_model extends MY_Model
 
     }
 
+    public function list_deal($page){
+        $limit=4;
+        $data['limit'] = $limit;
+        //获取总记录数
+        $this->db->select('count(1) num')->from('contract_main');
+        if($this->input->post('title')){
+            $this->db->like('title',$this->input->post('title'));
+        }
+        $num = $this->db->get()->row();
+        $data['total'] = $num->num;
+        //搜索条件
+        $data['title'] = $this->input->post('title')?$this->input->post('title'):null;
+        //获取详细列
+        $this->db->select("a.*,b.name name")->from('contract_main a');
+        $this->db->join('supplier_profile b','a.sid=b.id','left');
+
+        if($this->input->post('title')){
+            $this->db->like('title',$this->input->post('title'));
+        }
+
+        $this->db->order_by('cdate','desc');
+        $this->db->limit($limit, $offset = ($page - 1) * $limit);
+        $data['items'] = $this->db->get()->result_array();
+
+        return $data;
+    }
+
     function save_deal(){
         $id=$this->input->post('id');
         $masterid=$this->session->userdata('id');
@@ -91,5 +118,15 @@ class Deal_model extends MY_Model
             return 1;
         }
 
+    }
+
+    public function get_change($id){
+        $data['mian'] = $this->db->select()->from('contract_main')
+            ->where('id',$id)->get()->row_array();
+        $data['line'] = $this->db->select('a.*,b.name mname,c.name uname')->from('contract_line a')
+            ->join('material b','a.mid=b.id','left')
+            ->join('unit c','a.uid=c.id','left')
+            ->where('pid',$id)->get()->result_array();
+        return $data;
     }
 }

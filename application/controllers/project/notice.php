@@ -10,16 +10,14 @@ class Notice extends MY_Controller
 {
     function __construct(){
         parent::__construct();
-       if (!$this->session->userdata('username')){
+        if (!$this->session->userdata('username')){
            redirect('login');
         }
-
         $this->cismarty->assign('type', 5);
         $this->load->model('project/notice_model', 'notice_model');
     }
 
     function index(){
-
         $this->list_task();
     }
 

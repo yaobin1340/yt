@@ -57,7 +57,7 @@ class Ajax_model extends MY_Model
             ->from('users a')
             ->join('supplier_profile b','b.masterid = a.id')
             ->where('a.status',2)
-            ->get()->result_object();
+            ->get()->result_array();
         return $data;
     }
 

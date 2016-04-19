@@ -302,7 +302,7 @@
 			$("[name='material[]']").each(function(){
 				if ($(this).val()=='0'){
 					//$(this).focus().parent().addClass("has-error").children(".help-block").html("单位必须选择");
-					alert('单位必须选择');
+					alert('类别必须选择');
 					flag=1;
 					return false;
 				}
@@ -318,7 +318,7 @@
 			$("[name='unit[]']").each(function(){
 				if ($(this).val()=='0'){
 					//$(this).focus().parent().addClass("has-error").children(".help-block").html("类别必须选择");
-					alert('必须选择类别');
+					alert('必须选择单位');
 					flag=1;
 					return false;
 				}

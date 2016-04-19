@@ -35,8 +35,11 @@ class Deal extends MY_Controller {
 
     public function save_deal(){
         $res=$this->deal_model->save_deal();
-        if ($res){
+        if ($res==1){
             $this->show_message('存储成功',site_url('project/deal/index'));
+            exit();
+        }elseif ($res==2){
+            $this->show_message('信息不完整');
             exit();
         }else{
             $this->show_message('存储失败');

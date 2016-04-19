@@ -28,6 +28,7 @@ class Deal_model extends MY_Model
         if($this->input->post('title')){
             $this->db->like('title',$this->input->post('title'));
         }
+        $this->db->where('userid',$this->session->userdata('id'));
         $num = $this->db->get()->row();
         $data['total'] = $num->num;
         //搜索条件
@@ -39,7 +40,7 @@ class Deal_model extends MY_Model
         if($this->input->post('title')){
             $this->db->like('title',$this->input->post('title'));
         }
-
+        $this->db->where('userid',$this->session->userdata('id'));
         $this->db->order_by('cdate','desc');
         $this->db->limit($limit, $offset = ($page - 1) * $limit);
         $data['items'] = $this->db->get()->result_array();
@@ -47,9 +48,13 @@ class Deal_model extends MY_Model
             $ids[] = $v['id'];
         }
 
-        $rs = $this->db->select('a.*,b.name name')->from('change a')
-            ->join('supplier_profile b','a.sid=b.id','left')->where_in('pid',$ids)->order_by('a.cdate','acs')->get()->result_array();
-        $data['change_items'] = $rs;
+        if($ids){
+            $rs = $this->db->select('a.*,b.name name')->from('change a')
+                ->join('supplier_profile b','a.sid=b.id','left')->where_in('pid',$ids)->order_by('a.cdate','acs')->get()->result_array();
+            $data['change_items'] = $rs;
+        }else{
+            $data['change_items'] = null;
+        }
 
         return $data;
     }
@@ -80,7 +85,8 @@ class Deal_model extends MY_Model
             'pay_type'=>$pay_type ? $pay_type : '0',
             'total'=>$total,
             'pic'=>$pic,
-            'cdate'=>date("y-m-d H:i:s",time())
+            'cdate'=>date("y-m-d H:i:s",time()),
+            'userid'=>$this->session->userdata('id')
         );
         $this->db->trans_start();
 

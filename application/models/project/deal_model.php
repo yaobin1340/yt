@@ -21,6 +21,8 @@ class Deal_model extends MY_Model
     public function list_deal($page){
         $limit=4;
         $data['limit'] = $limit;
+
+        $ids = array();
         //获取总记录数
         $this->db->select('count(1) num')->from('contract_main');
         if($this->input->post('title')){
@@ -41,6 +43,13 @@ class Deal_model extends MY_Model
         $this->db->order_by('cdate','desc');
         $this->db->limit($limit, $offset = ($page - 1) * $limit);
         $data['items'] = $this->db->get()->result_array();
+        foreach($data['items'] as $v){
+            $ids[] = $v['id'];
+        }
+
+        $rs = $this->db->select('a.*,b.name name')->from('change a')
+            ->join('supplier_profile b','a.sid=b.id','left')->where_in('pid',$ids)->order_by('a.cdate','acs')->get()->result_array();
+        $data['change_items'] = $rs;
 
         return $data;
     }
@@ -128,5 +137,42 @@ class Deal_model extends MY_Model
             ->join('unit c','a.uid=c.id','left')
             ->where('pid',$id)->get()->result_array();
         return $data;
+    }
+
+    function save_change(){
+        $data=array(
+            'num'=>$this->input->post('num'),
+            'desc'=>$this->input->post('desc'),
+            'pic'=>$this->input->post('pic'),
+            'pid'=>$this->input->post('pid'),
+            'sid'=>$this->input->post('sid'),
+            'cdate'=>date("y-m-d H:i:s",time())
+        );
+
+        $uids = $this->input->post('uid');
+        $nums = $this->input->post('qty');
+        $mids = $this->input->post('mid');
+        $this->db->trans_start();
+
+        $this->db->insert('change',$data);
+        $insert_id=$this->db->insert_id();
+
+        foreach ($uids as $key=>$value){
+            $detail=array(
+                'pid' => $insert_id,
+                'mid' => $mids[$key],
+                'uid'=>$value,
+                'num'=>$nums[$key],
+            );
+            $this->db->insert('change_line',$detail);
+        }
+
+        $this->db->trans_complete();//------结束事务
+        if ($this->db->trans_status() === FALSE) {
+            return -1;
+        } else {
+            return 1;
+        }
+
     }
 }

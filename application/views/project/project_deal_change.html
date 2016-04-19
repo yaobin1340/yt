@@ -29,23 +29,25 @@
         <i class="material-icons"></i> <span>合约变更</span>
       </h2>
       <div class="form_card_box">     
-        <form class="form-horizontal">				
+        <form class="form-horizontal" method="post" action="{{site_url url='project/deal/save_change'}}">
 					<div class="form-group">
 						<label for="heyuebianhao" class="col-sm-2 control-label">变更合约编号</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="heyuebianhao" id="heyuebianhao" >
+							<input type="text" class="form-control" name="num" >
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="heyuebiaoti" class="col-sm-2 control-label">合约标题</label>
 						<div class="col-sm-9">
 							{{$data['mian']['title']}}
+							<input type="hidden" name="pid" value="{{$data['mian']['id']}}">
 						</div>					
 					</div>
 					<div class="form-group">
 						<label for="biangenggys" class="col-sm-2 control-label">变更供应商</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="biangenggys" id="biangenggys" >
+							<input type="text" class="form-control" id="product_search" >
+							<input type="hidden" name="sid" id="sid">
 						</div>
 					</div>
 					{{foreach from=$data['line'] item=foo}}
@@ -53,9 +55,11 @@
 						<div class="col-sm-2"></div>			
 						<div class="col-sm-3">
 							{{$foo['mname']}}
+							<input type="hidden" name="mid[]" value="{{$foo['mid']}}">
 						</div>
-						<div class="col-sm-3"><input type="text" class="form-control "  placeholder="数字"></div>
+						<div class="col-sm-3"><input type="text" class="form-control " name="qty[]"  placeholder="数字"></div>
 						<div class="col-sm-3">
+							<input type="hidden" name="uid[]" value="{{$foo['uid']}}">
 							{{$foo['uname']}}
 						</div>				
 					</div>
@@ -63,17 +67,18 @@
 					<div class="form-group">
 						<label for="biangengshuoming" class="col-sm-2 control-label">变更说明</label>
 						<div class="col-sm-9">
-							<textarea class="form-control" rows="6" name="biangengshuoming" id="biangengshuoming"></textarea>
+							<textarea class="form-control" rows="6" name="desc" id="biangengshuoming"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="tupianshangchuan" class="col-sm-2 control-label">传变更合约</label>
+						<div class="col-sm-1">
+							<button type="button" class="btn btn-primary btn-md btn-raised btn-block ink" id="btnUploadImg">上传</button>
+						</div>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" name="tupianshangchuan" id="tupianshangchuan" >
+							<input type="text" name="pic" id="hidImgName" class="form-control" readonly>
 						</div>
-						<div class="col-sm-4  control-label">
-							<input type="file" id="exampleInputFile">
-						</div>
+
 					</div>
 					<div class="form-group" style="margin-right:0;">
 						<div class="col-sm-9 col-sm-offset-2">
@@ -89,4 +94,103 @@
 <!-- 主体 end -->
   
 </div>
+<script src="/res/js/ajaxfileupload.js"></script>
+<script src="/res/js/bootstrap-typeahead.js"></script>
+<script src="/res/js/underscore-min.js"></script>
+<script>
+
+	window.onload = function() {
+		init();  //初始化
+	}
+
+	//初始化
+	function init() {
+		//初始化图片上传
+		var btnImg = document.getElementById("btnUploadImg");
+		var img = document.getElementById("imgShow");
+		var hidImgName = document.getElementById("hidImgName");
+//		document.getElementById("btnDeleteImg").onclick = function() { DelImg(img, hidImgName); };
+		g_AjxUploadImg(btnImg, img, hidImgName);
+	}
+
+	var g_AjxTempDir = "/uploadimages/";
+
+	//图片上传
+	function g_AjxUploadImg(btn, img, hidPut) {
+		var button = btn, interval;
+		new AjaxUpload(button, {
+			action: '/ajax/upload_image',
+			data: {},
+			name: 'userfile',
+			onSubmit: function(file, ext) {
+				if (!(ext && /^(jpg|JPG|png|PNG|gif|GIF)$/.test(ext))) {
+					alert("您上传的图片格式不对，请重新选择！");
+					return false;
+				}
+			},
+			onComplete: function(file, response) {
+				flagValue = response;
+				if (flagValue == "1") {
+					alert("您上传的图片存在错误");
+				}
+				else {
+					hidPut.value = response;
+//					img.src = g_AjxTempDir + response;
+
+				}
+			}
+		});
+	}
+
+	$(function () {
+
+		$.getJSON("{{site_url url='ajax/get_supplier'}}",function (data) {
+			// Workaround for bug in mouse item selection
+			$.fn.typeahead.Constructor.prototype.blur = function () {
+				var that = this;
+				setTimeout(function () { that.hide() }, 250);
+			};
+
+			var products = data;
+
+			var that = this;
+
+			$('#product_search').typeahead({
+				source: function (query, process) {
+					var results = _.map(products, function (product) {
+						return product.name + "";
+					});
+					process(results);
+				},
+
+				matcher: function (item) {
+					return true;
+				},
+
+				highlighter: function (name) {
+					var product = _.find(products, function (p) {
+						return p.name == name;
+					});
+					return product.name;
+				},
+
+				updater: function (name) {
+					var product = _.find(products, function (p) {
+						return p.name == name;
+					});
+					that.setSelectedProduct(product);
+					return product.name;
+				}
+
+			});
+
+			this.setSelectedProduct = function (product) {
+				$('#sid').val(product.id)
+			}
+
+
+		})
+	})
+
+</script>
 {{include file="common/footer.html"}}

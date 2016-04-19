@@ -70,20 +70,65 @@
 	
           </td>
           <td class="">
-            <a href="###" class="table_card_a"><span class="label label-success">已签约</span>
+            {{if $foo['status'] == 1}}
+            <a href="###" class="table_card_a"><span class="label label-default">审核中</span>
                {{$foo['title']}}
-            </a>		
+            </a>
+            {{/if}}
+            {{if $foo['status'] == 2}}
+            <a href="###" class="table_card_a"><span class="label label-success">审核中</span>
+              {{$foo['title']}}
+            </a>
+            {{/if}}
+            {{if $foo['status'] == 3}}
+            <a href="###" class="table_card_a"><span class="label label-danger">合同终止</span>
+              {{$foo['title']}}
+            </a>
+            {{/if}}
           </td>
           <td class="small">{{$foo['name']}}</td>
           <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
-						<a href="./?c=project_deal_check" class="btn btn-sm btn-primary">查看</a>
 						<a href="./?c=project_deal_execute" class="btn btn-sm btn-info">执行</a>
 						<a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
 						<a href="./?c=project_deal_change_end" class="btn btn-sm btn-danger"  >变更终止</a>
 					</td>
         </tr>
 
+
+        {{foreach from=$data['change_items'] item=row}}
+        {{if $foo['id'] == $row['pid']}}
+        <tr>
+          <td class="">
+
+          </td>
+          <td class="">
+            {{if $row['status'] == 1}}
+            <a href="###" class="table_card_a"><span class="label label-default">审核中</span>
+              {{$foo['title']}}
+            </a>
+            {{/if}}
+            {{if $row['status'] == 2}}
+            <a href="###" class="table_card_a"><span class="label label-success">审核中</span>
+              {{$foo['title']}}
+            </a>
+            {{/if}}
+            {{if $row['status'] == 3}}
+            <a href="###" class="table_card_a"><span class="label label-danger">合同终止</span>
+              {{$foo['title']}}
+            </a>
+            {{/if}}
+          </td>
+          <td class="small">{{$row['name']}}</td>
+          <td class="small">{{$row['cdate']}}</td>
+          <td class="bloc">
+            <a href="./?c=project_deal_execute" class="btn btn-sm btn-info">执行</a>
+            <a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
+            <a href="./?c=project_deal_change_end" class="btn btn-sm btn-danger"  >变更终止</a>
+          </td>
+        </tr>
+        {{/if}}
+        {{/foreach}}
       </tbody>
 		</table>
         <hr>

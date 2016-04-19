@@ -38,6 +38,17 @@ class Deal extends MY_Controller {
         $this->display('project/project_deal_change.html');
     }
 
+    public function save_change(){
+        $res=$this->deal_model->save_change();
+        if ($res==1){
+            $this->show_message('存储成功',site_url('project/deal/index'));
+            exit();
+        }else{
+            $this->show_message('存储失败');
+            exit();
+        }
+    }
+
     public function info(){
         $this->cismarty->assign('data',1);
         $this->cismarty->display("project/project_deal_info.html");

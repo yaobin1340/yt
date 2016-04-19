@@ -259,13 +259,17 @@
 				$("#num").focus().parent().addClass("has-error").children(".help-block").html("合约编号不能为空");
 				return false;
 			}
+			if ($.trim($("#pid").val())==""){
+				$("#product_search").focus().parent().addClass("has-error").children(".help-block").html("供应商必须选择");
+				return false;
+			}
 			if ($("#pay_type").val()=="0" || $("#pay_type").val()==""){
 				$("#pay_type").val('0');
 				$("#pay_type").focus().parent().addClass("has-error").children(".help-block").html("付款方式必选");
 				return false;
 			}
-			if ($.trim($("#pid").val())==""){
-				$("#product_search").focus().parent().addClass("has-error").children(".help-block").html("供应商必须选择");
+			if ($.trim($("#total").val())==""){
+				$("#total").focus().parent().addClass("has-error").children(".help-block").html("总金额必须填写");
 				return false;
 			}
 			if ($.trim($("#hidImgName").val())==""){

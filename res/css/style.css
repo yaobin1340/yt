@@ -663,6 +663,9 @@ body.login .copyright a {
 
 
 /** 单选框 复选框 **/
+label.check {
+  cursor: pointer;
+}
 .check input[type="checkbox"],
 .check input[type="radio"] {
   -webkit-appearance: none;
@@ -891,8 +894,10 @@ body.login .copyright a {
 .login_form .form-group input[type=text],
 .login_form .form-group input[type=email],
 .login_form .form-group input[type=password] {
-  /*padding: 20px 50px 20px 40px;*/
-  padding: 20px 20px 20px 40px;
+  /* padding: 20px 20px 20px 40px; */
+  padding: 0 20px 0 40px;
+  height: auto;
+  line-height: 42px;
 }
 .login_form .form-group > .material-icons {
   position: absolute;

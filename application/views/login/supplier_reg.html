@@ -1,0 +1,262 @@
+{{include file="common/header.html"}}
+<div id="wrap" class="container-fluid">
+  
+
+<!-- 登陆框1212 -->
+  <div class="form_card card z_depth-1">
+    <h2 class="form_card_title">
+      <i class="material-icons"></i> <span>信息完善</span>
+    </h2>
+    <div class="form_card_box">
+      <div class="col-md-4 col-sm-12 pull-right">
+        <div class="form-group">
+          <div class="col-sm-3  control-label">
+
+
+          </div>
+          <div class="col-sm-3  control-label">
+
+            <input type="file" id="fileup" style="visibility:hidden;">
+          </div>
+          <div class="col-sm-4  control-label">
+            <button type="button" class="btn btn-primary btn-md btn-raised btn-block ink" id="btnUploadImg">上传</button>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <form id="save_form" class="form-horizontal" method="post" action="{{site_url url='supplier/info/save_info'}}">
+          <div class="form-group">
+            <label for="sup_name" class="col-sm-2 control-label">公司名称</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sup_name" name="sup_name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_type"  class="col-sm-2 control-label">公司性质</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="sup_type" name="sup_type">
+                <option value="">请选择</option>
+                <option value="1">国有企业</option>
+                <option value="2">集体企业</option>
+                <option value="3">联营企业</option>
+                <option value="4">股份合作制企业</option>
+                <option value="5">私营企业</option>
+                <option value="6">个体户</option>
+                <option value="7">有限责任公司</option>
+                <option value="8">股份有限公司</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_total" class="col-sm-2 control-label">注册资金</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sup_total" name="sup_total">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_allow" class="col-sm-2 control-label">经营范围</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sup_allow" name="sup_allow" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_num" class="col-sm-2 control-label">营业执照</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sup_num" placeholder="营业执照代码输入" name="sup_num">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_card" class="col-sm-2 control-label">单位账号</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sup_card" name="sup_card" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_province" class="col-sm-2 control-label">公司地址</label>
+            <div class="col-sm-3">
+              <select class="form-control" id="sup_province" name="sup_province">
+                <option value="">请选择</option>
+              </select>
+            </div>
+            <div class="col-sm-3">
+              <select class="form-control" id="sup_city" name="sup_city">
+                <option value="">请选择</option>
+              </select>
+            </div>
+            <div class="col-sm-3"><input type="text" class="form-control" id="sup_address" placeholder="路牌号" name="sup_address"  value=""></div>
+          </div>
+          <div class="form-group">
+            <label for="sup_person" class="col-sm-2 control-label">联系人</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sup_person" name="sup_person">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_phone" class="col-sm-2 control-label">电话</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sup_phone" name="sup_phone">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_desc" class="col-sm-2 control-label">公司简介</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="8" id="sup_desc" name="sup_desc" ></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="button" class="btn btn-primary btn-lg btn-raised btn-block ink" id="save_btn">提交审核</button>
+              <input type="hidden" id="hidImgName" name="pic" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-5 col-sm-12 pull-right">
+        <br/>
+        <div class="form-group">
+          <div class="col-sm-3  control-label">
+            <img style="width: 300px" id="imgShow" >
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- 登陆框 end -->
+  
+</div>
+<script src="/res/js/ajaxfileupload.js"></script>
+<script>
+
+  window.onload = function() {
+    init();  //初始化
+  }
+
+  //初始化
+  function init() {
+    //初始化图片上传
+    var btnImg = document.getElementById("btnUploadImg");
+    var img = document.getElementById("imgShow");
+    var hidImgName = document.getElementById("hidImgName");
+//		document.getElementById("btnDeleteImg").onclick = function() { DelImg(img, hidImgName); };
+    g_AjxUploadImg(btnImg, img, hidImgName);
+  }
+
+  var g_AjxTempDir = "/uploadimages/";
+
+  //图片上传
+  function g_AjxUploadImg(btn, img, hidPut) {
+    var button = btn, interval;
+    new AjaxUpload(button, {
+      action: '/ajax/upload_image',
+      data: {},
+      name: 'userfile',
+      onSubmit: function(file, ext) {
+        if (!(ext && /^(jpg|JPG|png|PNG|gif|GIF)$/.test(ext))) {
+          alert("您上传的图片格式不对，请重新选择！");
+          return false;
+        }
+      },
+      onComplete: function(file, response) {
+        flagValue = response;
+        if (flagValue == "1") {
+          alert("您上传的图片存在错误");
+        }
+        else {
+          hidPut.value = response;
+          img.src = g_AjxTempDir + response;
+
+        }
+      }
+    });
+  }
+
+$(function () {
+  $.getJSON("{{site_url url='ajax/getprovince'}}",function(data){
+    html='<option value="">-请选择省份-</option>';
+    data.forEach(function (item) {
+      html+='<option value="'+item.code+'">'+item.name+'</option>'
+    })
+
+    $("#sup_province").html(html);
+  })
+
+  $("#sup_province").change(function() {
+    $.getJSON("{{site_url url='ajax/getcity'}}/" + $(this).val(), function (data) {
+      html = '<option value="">-请选择城市-</option>';
+      data.forEach(function (item) {
+        html += '<option value="' + item.code + '">' + item.name + '</option>'
+      })
+      $("#sup_city").html(html);
+    });
+  })
+
+  $("#save_btn").click(function (){
+    if (!$.trim($("#sup_name").val())){
+      $("#sup_name").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$("#sup_type").val()){
+      $("#sup_type").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_total").val())){
+      $("#sup_total").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_allow").val())){
+      $("#sup_allow").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_num").val())){
+      $("#sup_num").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_card").val())){
+      $("#sup_card").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_province").val())){
+      $("#sup_province").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_city").val())){
+      $("#sup_city").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_address").val())){
+      $("#sup_address").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_person").val())){
+      $("#sup_person").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_phone").val())){
+      $("#sup_phone").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#sup_desc").val())){
+      $("#sup_desc").focus().parent().addClass("has-error")
+      return false;
+    }
+    if (!$.trim($("#hidImgName").val())){
+      $("#btnUploadImg").focus().parent().addClass("has-error")
+      alert('需上传图片');
+      return false;
+    }
+    $("#save_form").submit();
+  })
+
+})
+
+</script>
+
+
+
+
+{{include file="common/footer.html"}}

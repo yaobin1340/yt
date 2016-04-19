@@ -47,6 +47,9 @@ class Login extends MY_Controller {
 			 $this->show_message('登陆失败');
 			 exit();
          }
-         
+	}
+
+	public function supplier_reg(){
+		$this->display('login/supplier_reg.html');
 	}
 }

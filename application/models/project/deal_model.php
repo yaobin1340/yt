@@ -50,7 +50,7 @@ class Deal_model extends MY_Model
 
         if($ids){
             $rs = $this->db->select('a.*,b.name name')->from('change a')
-                ->join('supplier_profile b','a.sid = b.id','left')->where_in('b.masterid',$ids)->order_by('a.cdate','acs')->get()->result_array();
+                ->join('supplier_profile b','a.sid = b.id','left')->where_in('pid',$ids)->order_by('a.cdate','acs')->get()->result_array();
             $data['change_items'] = $rs;
         }else{
             $data['change_items'] = null;

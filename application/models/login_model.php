@@ -30,4 +30,14 @@ class Login_model extends MY_Model
         	return $res;
         }
 	}
+
+	public function check_profile($id){
+		$rs1 = $this->db->select('count(1) num')->from('project_profile')->where('masterid',$id)->get()->row();
+		$rs2 = $this->db->select('count(1) num')->from('supplier_profile')->where('masterid',$id)->get()->row();
+		if($rs1->num + $rs2->num > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

@@ -36,12 +36,23 @@ class Login extends MY_Controller {
 				 $this->show_message('账户已被停用！');
 				 exit();
 			 }
-         	 $this->session->set_userdata('username',$res['username']);
-			 $this->session->set_userdata('id',$res['id']);
-			 $this->session->set_userdata('status',$res['status']);
-			 $this->session->set_userdata('type',$res['type']);
-         	redirect('index');
 
+			$this->session->set_userdata('username',$res['username']);
+			$this->session->set_userdata('id',$res['id']);
+			$this->session->set_userdata('status',$res['status']);
+			$this->session->set_userdata('type',$res['type']);
+			$rs = $this->login_model->check_profile($res['id']);
+			 if($rs){
+				 redirect('index');
+			 }else{
+				 if($res['type'] == 3){
+					 redirect('login/project_reg');
+				 }elseif($res['type'] == 2){
+					 redirect('login/supplier_reg');
+				 }else{
+					 redirect('index');
+				 }
+			 }
          }
          else{
 			 $this->show_message('登陆失败');

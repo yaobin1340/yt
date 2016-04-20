@@ -71,17 +71,17 @@
           </td>
           <td class="">
             {{if $foo['status'] == 1}}
-            <a href="###" class="table_card_a"><span class="label label-default">审核中</span>
+            <a href="{{site_url url='project/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-default">审核中</span>
                {{$foo['title']}}
             </a>
             {{/if}}
             {{if $foo['status'] == 2}}
-            <a href="###" class="table_card_a"><span class="label label-success">审核中</span>
+            <a href="{{site_url url='project/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-success">审核通过</span>
               {{$foo['title']}}
             </a>
             {{/if}}
             {{if $foo['status'] == 3}}
-            <a href="###" class="table_card_a"><span class="label label-danger">合同终止</span>
+            <a href="{{site_url url='project/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-danger">合同终止</span>
               {{$foo['title']}}
             </a>
             {{/if}}
@@ -104,17 +104,17 @@
           </td>
           <td class="">
             {{if $row['status'] == 1}}
-            <a href="###" class="table_card_a"><span class="label label-default">审核中</span>
+            <a href="{{site_url url='project/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-default">审核中</span>
               {{$foo['title']}}
             </a>
             {{/if}}
             {{if $row['status'] == 2}}
-            <a href="###" class="table_card_a"><span class="label label-success">审核中</span>
+            <a href="{{site_url url='project/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-success">审核通过</span>
               {{$foo['title']}}
             </a>
             {{/if}}
             {{if $row['status'] == 3}}
-            <a href="###" class="table_card_a"><span class="label label-danger">合同终止</span>
+            <a href="{{site_url url='project/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-danger">合同终止</span>
               {{$foo['title']}}
             </a>
             {{/if}}

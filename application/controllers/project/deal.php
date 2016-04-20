@@ -67,4 +67,26 @@ class Deal extends MY_Controller {
             exit();
         }
     }
+
+    public function show_contract($id){
+        $data=$this->deal_model->show_contract($id);
+        if ($data){
+            $this->assign('data', $data);
+            $this->display('project/project_deal_contract_details.html');
+        }else{
+            $this->show_message('信息丢失');
+            exit();
+        }
+    }
+
+    public function show_change($id){
+        $data=$this->deal_model->show_change($id);
+        if ($data){
+            $this->assign('data', $data);
+            $this->display('project/project_deal_change_details.html');
+        }else{
+            $this->show_message('信息丢失');
+            exit();
+        }
+    }
 }

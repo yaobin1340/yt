@@ -181,4 +181,39 @@ class Deal_model extends MY_Model
         }
 
     }
+
+    public function show_contract($id){
+        $row=$this->db->select('a.*,b.name pid_name')->from('contract_main a')
+            ->join('supplier_profile b','a.sid = b.id','left')
+            ->where('a.id',$id)->get()->row_array();
+        if (!$row){
+            return false;
+        }
+        $detail=$this->db->select('a.*,b.name u_name,c.name m_name')->from('contract_line a')
+            ->join('unit b','b.id = a.uid','left')
+            ->join('material c','c.id = a.mid','left')
+            ->where('a.pid',$id)->get()->result_array();
+        $data['main']=$row;
+        $data['line']=$detail;
+        return $data;
+
+    }
+
+    public function show_change($id){
+        $row=$this->db->select('a.*,b.name sid_name,c.title p_title')->from('change a')
+            ->join('supplier_profile b','a.sid = b.id','left')
+            ->join('contract_main c','c.id = a.pid','left')
+            ->where('a.id',$id)->get()->row_array();
+        if (!$row){
+            return false;
+        }
+        $detail=$this->db->select('a.*,b.name u_name,c.name m_name')->from('change_line a')
+            ->join('unit b','b.id = a.uid','left')
+            ->join('material c','c.id = a.mid','left')
+            ->where('a.pid',$id)->get()->result_array();
+        $data['main']=$row;
+        $data['line']=$detail;
+        return $data;
+
+    }
 }

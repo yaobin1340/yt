@@ -30,7 +30,7 @@
       </h2>
       <div class="form_card_box">
       
-		<form class="form-horizontal">
+		<form id="page_form" class="form-horizontal" method="post" action="{{site_url url='project/deal/list_deal'}}">
 			<div class="form-group">
 				<div class="col-sm-1">
 					<a href="{{site_url url='project/deal/info'}}" class="btn btn-primary btn-raised" >新增</a>
@@ -91,7 +91,7 @@
           <td class="bloc">
 						<a href="./?c=project_deal_execute" class="btn btn-sm btn-info">执行</a>
 						<a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
-						<a href="./?c=project_deal_change_end" class="btn btn-sm btn-danger"  >变更终止</a>
+
 					</td>
         </tr>
 
@@ -144,3 +144,13 @@
   
 </div>
 {{include file="common/footer.html"}}
+
+<script>
+
+  $('.pagination').find('a').click(function(){
+    url = $(this).attr('href')
+    $('#page_form').attr('action',url)
+    $('#page_form').submit()
+    return false;
+  })
+</script>

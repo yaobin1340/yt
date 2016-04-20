@@ -32,10 +32,10 @@
       </h2>
       <div class="form_card_box">
       
-		<form class="form-horizontal">
+		<form id="page_form" class="form-horizontal" method="post" action="{{site_url url='admin/deal/list_deal'}}">
 			<div class="form-group">			
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="sousuo" >
+					<input type="text" class="form-control" id="sousuo" name="title" value="{{$data['title']}}">
 				</div>
 				<button type="submit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
 			</div>
@@ -156,3 +156,13 @@
   
 </div>
 {{include file="common/footer.html"}}
+
+<script>
+
+    $('.pagination').find('a').click(function(){
+        url = $(this).attr('href')
+        $('#page_form').attr('action',url)
+        $('#page_form').submit()
+        return false;
+    })
+</script>

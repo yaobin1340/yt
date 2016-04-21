@@ -11,8 +11,6 @@
     <div id="breadcrumb">
       <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
       </ol>
     </div>
     <!-- 面包屑导航 end -->
@@ -31,7 +29,7 @@
         <div class="dashboard_card card z_depth-1" style="border-color:#62caec;">
           <div class="icon"><i class="material-icons" style="color:#62caec;">&#xe263;</i></div>
           <div class="title">申请付款</div>
-          <div class="maincon"><span class="num">125</span>条</div>
+          <div class="maincon"><span class="num">{{$data.e_count}}</span>条</div>
           <div class="extra"><a href="./?c=admin_paymentrequest">查看</a></div>
         </div>
       </div>
@@ -41,8 +39,8 @@
         <div class="dashboard_card card z_depth-1" style="border-color:#9f70f4;">
           <div class="icon"><i class="material-icons" style="color:#9f70f4;">&#xe558;</i></div>
           <div class="title">新增供应商</div>
-          <div class="maincon"><span class="num">15</span>家</div>
-          <div class="extra"><a href="./?c=admin_project">查看</a></div>
+          <div class="maincon"><span class="num">{{$data.s_count}}</span>家</div>
+          <div class="extra"><a href="{{site_url url='admin/supplier'}}">查看</a></div>
         </div>
       </div>
     <!-- 仪表盘演示1 end -->
@@ -51,8 +49,8 @@
         <div class="dashboard_card card z_depth-1" style="border-color:#ff5752;">
           <div class="icon"><i class="material-icons" style="color:#ff5752;">&#xe90e;</i></div>
           <div class="title">合约变更</div>
-          <div class="maincon"><span class="num">125</span>件</div>
-          <div class="extra"><a href="./?c=admin_supplier">查看</a></div>
+          <div class="maincon"><span class="num">{{$data.c_count}}</span>件</div>
+          <div class="extra"><a href="{{site_url url='admin/deal'}}">查看</a></div>
         </div>
       </div>
     <!-- 仪表盘演示1 end -->
@@ -61,8 +59,8 @@
         <div class="dashboard_card card z_depth-1" style="border-color:#f0ad4e;">
           <div class="icon"><i class="material-icons" style="color:#f0ad4e;">&#xe53f;</i></div>
           <div class="title">新增项目</div>
-          <div class="maincon"><span class="num">125</span>件</div>
-          <div class="extra"><a href="./?c=admin_project">查看</a></div>
+          <div class="maincon"><span class="num">{{$data.p_count}}</span>件</div>
+          <div class="extra"><a href="{{site_url url='admin/project'}}">查看</a></div>
         </div>
       </div>
     <!-- 仪表盘演示1 end -->
@@ -74,33 +72,20 @@
     <div class="index_notice form_card card z_depth-1">
       <div class="form_card_title">
         <i class="material-icons">&#xe85a;</i> <span>供应商搜索</span>
-        <a href="./?c=supplier_notice" class="btn btn-primary pull-right">更多...</a>
+        <a href="{{site_url url='admin/supplier'}}" class="btn btn-primary pull-right">更多...</a>
       </div>
       <div class="form_card_box">
     
 
       
 		<ul>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
+          {{foreach from=$data.s_list item=row}}
+          <li>
+            <a href="{{site_url url='admin/supplier/show_sup'}}/{{$row.id}}" class="">
+                {{$row.name}}
+            </a>
+          </li>
+          {{/foreach}}
 		</ul>
       
       </div>

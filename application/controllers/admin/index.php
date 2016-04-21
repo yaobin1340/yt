@@ -34,9 +34,13 @@ class Index extends MY_Controller {
 
     public function index(){
         if ($this->session->userdata('type')==1){
+            $data = $this->index_model->get_index_info();
+            $this->assign('data', $data);
             $path="admin/admin_index.html";
             $this->cismarty->display($path);
         }
+
+
 
 //		$this->load->view('base_data');
     }

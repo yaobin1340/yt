@@ -1,0 +1,126 @@
+{{include file="common/header.html"}}
+<div id="wrap" class="container-fluid">
+
+	{{include file="supplier/supplier_sider.php"}}
+  
+  
+<!-- 主体 -->
+  <div id="main">
+  
+    <!-- 面包屑导航 -->
+    <div id="breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Library</a></li>
+        <li class="active">Data</li>
+      </ol>
+    </div>
+    <!-- 面包屑导航 end -->
+  
+    <!-- 公告 -->
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>公告</strong> <span>{{$lastnews}}</span>
+    </div>
+    <!-- 公告 end -->
+<!---->
+    <div class="form_card card z_depth-1">
+      <h2 class="form_card_title">
+        <i class="material-icons"></i> <span>合约查看</span>
+      </h2>
+      <div class="form_card_box">
+
+				<div class="col-md-6 col-sm-12">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">合约标题</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{$data['main']['title']}}</p>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">合约编号</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{$data['main']['num']}}</p>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label  class="col-sm-2 control-label">供应商</label>
+							<div class="col-sm-9 ">
+								<p class="form-control-static">{{$data['main']['pid_name']}}</p>
+							</div>
+						</div>
+
+						<div id="line_details">
+							{{foreach from=$data['line'] item=foo}}
+							<div class="form-group">
+								<div class="col-sm-2"></div>
+								<div class="col-sm-3">
+									<p class="form-control-static">{{$foo['m_name']}}</p>
+								</div>
+								<div class="col-sm-3">	<p class="form-control-static">规格为:{{$foo['size']}}</p></div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-2"></div>
+								<div class="col-sm-3">
+									<p class="form-control-static">单价:{{$foo['price']}}</p>
+								</div>
+								<div class="col-sm-3" style="padding-right:0;">
+									<p class="form-control-static">{{$foo['num']}} {{$foo['u_name']}}</p></div>
+
+
+							</div>
+							{{/foreach}}
+
+
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">付款方式</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">
+
+									{{if $data['main']['pay_type']==1}}现金{{/if}}
+									{{if $data['main']['pay_type']==2}}转账{{/if}}
+								</p>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">总金额</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{$data['main']['total']}}</p>
+
+							</div>
+						</div>
+					
+
+					</form>
+				</div>
+		  <div class="col-md-5 col-sm-12 pull-right">
+			  <br/>
+			  <div class="form-group">
+				  <div class="col-sm-3  control-label">
+					  <img style="width: 300px" id="imgShow" {{if $data['main']['pic']!=''}} src="/uploadimages/{{$data['main']['pic']}}" {{/if}}>
+
+				  </div>
+			  </div>
+		  </div>
+      </div>
+    </div>
+  <!---->
+    
+  </div>
+<!-- 主体 end -->
+  
+</div>
+{{include file="common/footer.html"}}
+<script src="/res/js/ajaxfileupload.js"></script>
+<script src="/res/js/bootstrap-typeahead.js"></script>
+<script src="/res/js/underscore-min.js"></script>
+<script>
+
+
+</script>

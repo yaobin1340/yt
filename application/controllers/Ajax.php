@@ -70,4 +70,10 @@ class Ajax extends MY_Controller {
 		echo json_encode($data);
 
 	}
+
+	public function get_pro(){
+		$data=$this->ajax_model->get_pro();
+		//var_dump($data);
+		echo json_encode($data);
+	}
 }

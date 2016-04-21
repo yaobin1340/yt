@@ -61,4 +61,12 @@ class Ajax_model extends MY_Model
         return $data;
     }
 
+    public function get_pro(){
+        $data=$this->db->select('a.*')
+            ->from('project_profile a')
+            ->join('users b','b.id = a.masterid')
+            ->where('b.status',2)
+            ->get()->result_array();
+        return $data;
+    }
 }

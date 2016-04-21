@@ -20,7 +20,7 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始</span>
+      <strong>公告</strong> <span>{{$lastnews}}</span>
     </div>
     <!-- 公告 end -->
 <!---->
@@ -29,91 +29,86 @@
         <i class="material-icons"></i> <span>合约执行</span>
       </h2>
       <div class="form_card_box">      
-        <div class="col-md-4 col-sm-12 pull-right">
-						<div class="col-sm-3  control-label">
-							<input type="file" id="exampleInputFile" style="visibility:hidden;">
-						</div>
-						<div class="col-sm-3  control-label">				
-							<button type="submit" class="btn btn-primary btn-md btn-raised btn-block ink">上传合约</button>
-						</div>
-						<div class="col-sm-3  control-label">
-							<button type="submit" class="btn btn-primary btn-md btn-raised btn-block ink">完成</button>
-						</div>
-				</div>
+
 				<div class="col-md-6 col-sm-12">
-					<form class="form-horizontal" >
+					<form class="form-horizontal" method="post" action="{{site_url url='project/deal/save_execute'}}">
 						<div class="form-group">
 							<div class="col-sm-2 col-sm-offset-2">
 								<button type="submit" class="btn btn-primary btn-raised" >导出数据</button>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="zhixingheyue" class="col-sm-2 control-label">执行合约</label>
+							<label class="col-sm-2 control-label">执行合约</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" name="zhixingheyue"  id="zhixingheyue" >
+								<p class="form-control-static">{{$data['ex_title']}}</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="heyuebianhao" class="col-sm-2 control-label">合约编号</label>
+							<label class="col-sm-2 control-label">合约编号</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" name="heyuebianhao" id="heyuebianhao" >
+                                <p class="form-control-static">{{$data['ex_num']}}</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="gongyingshang" class="col-sm-2 control-label">供应商</label>
+							<label class="col-sm-2 control-label">供应商</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" name="gongyingshang" id="gongyingshang" >
+                                <p class="form-control-static">{{$data['ex_sup_name']}}</p>
 							</div>
 						</div>
+
 						<div class="form-group">
-							<label for="cailiaomingcheng"  class="col-sm-2 control-label">材料名称</label>
+							<label for="material"  class="col-sm-2 control-label">材料名称</label>
 							<div class="col-sm-3">
-								<select class="form-control" name="cailiaomingcheng" id="cailiaomingcheng">
-									<option>黄土</option>
-									<option>黄沙</option>
-									<option>水泥</option>
-									<option>钢筋</option>
+								<select class="form-control" name="material" id="material">
+                                    <option value="">-类别-</option>
+                                    {{foreach from=$data['details'] item=foo}}
+									<option value="{{$foo['de_id']}}">{{$foo['de_name']}}</option>
+                                    {{/foreach}}
 								</select>
 							</div>
-							<label for="jinhuoshijian"  class="col-sm-3 control-label">进货时间</label>
+							<label for="date"  class="col-sm-3 control-label">进货时间</label>
 							<div class="col-sm-3">
-								<select class="form-control" name="jinhuoshijian" id="jinhuoshijian">
-									<option>2016-04-07</option>
-									<option>2016-04-07</option>
-									<option>2016-04-07</option>
-									<option>2016-04-07</option>
-								</select>
+                                <input  class="form-control" id="date" name="date" type="text"
+                                        style="background:#fff url(/res/js/My97DatePicker/skin/datePicker.gif) no-repeat right;"
+                                        onfocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd'})">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="caiguoshuliang"  class="col-sm-2 control-label">采购数量</label>
+							<label for="num"  class="col-sm-2 control-label">采购数量</label>
 							<div class="col-sm-3">
-								<select class="form-control" name="caiguoshuliang" id="caiguoshuliang">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-								</select>
+                                <input type="text" class="form-control" id="num" name="num" >
 							</div>
-							<label for="cailiaodanjia"  class="col-sm-3 control-label">材料单价</label>
+							<label for="price"  class="col-sm-3 control-label">材料单价</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name="gongyingshang" id="gongyingshang" >
+								<input type="text" class="form-control" name="price" id="price" >
 							</div>
 						</div>
+
 						<div class="form-group">
-							<label for="gongsijianjie" class="col-sm-2 control-label">项目进度说明</label>
+							<label for="desc" class="col-sm-2 control-label">项目进度说明</label>
 							<div class="col-sm-9">
-								<textarea class="form-control" rows="8" name="gongsijianjie" id="gongsijianjie"></textarea>
+								<textarea class="form-control" rows="8" name="desc" id="desc"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-2"></div>
 							<div class="col-sm-9">
 								<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink">提交</button>
+                                <input type="hidden" id="cid" name="cid" value="{{$cid}}">
+                                <input type="hidden" id="pid" name="pid" value="{{$pid}}">
 							</div>
 						</div>
 					</form>
 				</div>
+          <div class="col-md-5 col-sm-12 pull-right">
+              <br/>
+              <div class="form-group">
+                  <div class="col-sm-3  control-label">
+                      <img style="width: 300px" id="imgShow" {{if $data['ex_pic']!=''}} src="/uploadimages/{{$data['ex_pic']}}" {{/if}}>
+
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
   <!---->
@@ -123,87 +118,40 @@
 		<table class="table_card table table-striped table-hover">
       <thead>
         <tr>
-          <th class=""></th>
+
           <th class="">标题</th>
 					<th class="">发布时间</th>
           <th class="">操作</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+
+      {{foreach from=$data['items'] item=foo}}
+      <tr>
+
           <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
+              <a href="###" class="table_card_a">
+                  {{$foo['con_title']}}
+              </a>
           </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-               钢铁、水泥合约
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
+          <td class="small">{{$foo['ex_cdate']}}</td>
           <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >申请付款</a>
-						<a href="###" class="btn btn-sm btn-primary"  >查看</a>
-					</td>
-        </tr>
-				<tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
+              {{if $foo['ex_status'] == 1}}
+              <a href="{{site_url url='project/deal/fukuang'}}/{{$foo['ex_id']}}" class="btn btn-sm btn-danger">申请付款</a>
+              {{/if}}
+
+              <a href="{{site_url url='project/deal/get_ex'}}/{{$foo['ex_id']}}" class="btn btn-sm btn-primary">查看</a>
           </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-               钢铁、水泥合约
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >申请付款</a>
-						<a href="###" class="btn btn-sm btn-primary"  >查看</a>
-					</td>
-        </tr>
-				<tr>
-          <td class="">
-            <div class="check">
-              <input type="checkbox" value="">
-            </div>		
-          </td>
-          <td class="">
-            <a href="###" class="table_card_a">
-               钢铁、水泥合约
-            </a>		
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-          <td class="bloc">
-						<a href="###" class="btn btn-sm btn-danger" >申请付款</a>
-						<a href="###" class="btn btn-sm btn-primary"  >查看</a>
-					</td>
-        </tr>
+
+      </tr>
+      {{/foreach}}
+
       </tbody>
 		</table>
     
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default check">全选</button>
-      <button type="button" class="btn btn-danger">删除</button>
-    </div>
+
       
-    <nav class="page clearfix">
-      <ul class="pagination pull-right">
-        <li class="firstpage hidden-xs disabled"><a href="##"><span class="ink ink-dark">首页</span></a></li>
-        <li class="previous disabled">
-          <a href="##" class="ink ink-dark"><span><</span></a>
-        </li>
-        <li class="active"><a href="##" class="ink ink-dark"><span>1</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>2</span></a></li>
-        <li><a href="##" class="ink ink-dark"><span>3</span></a></li>
-        <li class="next">
-          <a href="##" class="ink ink-dark"><em class="ripple ripple-effect" style="width: 46px; height: 46px; top: 1px; left: 4.5px;"></em><span>></span></a>
-        </li>
-        <li class="firstpage hidden-xs"><a href="##"><span class="ink ink-dark">尾页</span></a></li>
-      </ul>
-    </nav>
+  {{$pager}}
       
       </div>
     </div>
@@ -214,3 +162,26 @@
   
 </div>
 {{include file="common/footer.html"}}
+<script src="/res/js/My97DatePicker/WdatePicker.js"></script>
+
+<script>
+
+    $(function () {
+        $("#material").change(function () {
+            var mid = $(this).val();
+            switch (mid){
+                case '':
+                    $("#price").val('');
+                    break;
+                {{foreach from=$data['details'] item=foo}}
+                case "{{$foo['de_id']}}":
+                    $("#price").val("{{$foo['de_price']}}");
+                    break;
+                {{/foreach}}
+                default:
+                    $("#price").val('');
+            }
+
+        })
+    })
+</script>

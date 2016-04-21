@@ -216,4 +216,127 @@ class Deal_model extends MY_Model
         return $data;
 
     }
+
+    public function show_execute($pid,$cid,$page){
+       if ($cid==0){
+           $res=$this->db->select('a.*,b.name sup_name')
+               ->from('contract_main a')
+               ->join('supplier_profile b','a.sid = b.id','left')
+               ->where('a.id',$pid)->get()->row_array();
+           if (!$res){
+               return false;
+           }
+           $data['ex_title']=$res['title'];
+           $data['ex_num']=$res['num'];
+           $data['ex_pic']=$res['pic'];
+           $data['ex_sup_name']=$res['sup_name'];
+           $details=$this->db->select('a.price de_price,b.name de_name,b.id de_id')
+               ->from('contract_line a')
+               ->join('material b','b.id = a.mid','left')
+               ->where('a.pid',$pid)->get()->result_array();
+           $data['details']=$details;
+       }else{
+           $res=$this->db->select('a.*,b.name sup_name,c.title con_title')
+               ->from('change a')
+               ->join('supplier_profile b','a.sid = b.id','left')
+               ->join('contract_main c','c.id = a.pid','left')
+               ->where('a.id',$cid)->get()->row_array();
+           if (!$res){
+               return false;
+           }
+           $data['ex_title']=$res['con_title'];
+           $data['ex_num']=$res['num'];
+           $data['ex_pic']=$res['pic'];
+           $data['ex_sup_name']=$res['sup_name'];
+           $details=$this->db->select('b.price de_price,c.name de_name,c.id de_id')->from('change_line a')
+               ->join('contract_line b','a.mid = b.mid')
+               ->join('material c','c.id = a.mid','left')
+               ->where('a.pid',$cid)
+               ->where('b.pid',$pid)
+               ->get()->result_array();
+           $data['details']=$details;
+       }
+        //分页信息
+        $limit=3;
+        $data['limit'] = $limit;
+
+        //获取总记录数
+        $num=$this->db->select('count(1) num')
+            ->from('execute a')
+            ->join('contract_main b','a.pid = b.id','left')
+            ->where('cid',$cid)
+            ->where('pid',$pid)->get()->row();
+        $data['total'] = $num->num;
+        //搜索条件
+
+        //获取详细列
+        $this->db->select('a.id ex_id,b.title con_title,a.cdate ex_cdate,a.status ex_status')
+            ->from('execute a')
+            ->join('contract_main b','a.pid = b.id','left')
+            ->where('cid',$cid)
+            ->where('pid',$pid);
+
+
+
+        $this->db->order_by('a.cdate','desc');
+        $this->db->limit($limit, $offset = ($page - 1) * $limit);
+        $data['items'] = $this->db->get()->result_array();
+        return $data;
+
+        
+    }
+
+    public function save_execute(){
+      if (!$this->input->post('pid')){
+          return false;
+      }
+        $data=array(
+            'pid'=>$this->input->post('pid'),
+            'cid'=>$this->input->post('cid'),
+            'mid'=>$this->input->post('material'),
+            'date'=>$this->input->post('date'),
+            'num'=>$this->input->post('num'),
+            'price'=>$this->input->post('price'),
+            'desc'=>$this->input->post('desc'),
+            'cdate'=>date("y-m-d H:i:s",time())
+        );
+        $res=$this->db->insert('execute',$data);
+        return $res;
+    }
+
+    public function get_ex($id){
+       $res=$this->db->select('a.*,b.name m_name')->from('execute a')
+           ->join('material b','b.id = a.mid','left')
+           ->where('a.id',$id)->get()->row_array();
+        if(!$res){
+            return false;
+        }
+        $data['ex']=$res;
+
+        if($res['cid']==0){
+            $contract=$this->db->select('a.*,b.name sup_name')->from('contract_main a')
+                ->join('supplier_profile b','a.sid = b.id','left')
+                ->where('a.id',$res['pid'])->get()->row_array();
+            $data['con_title']=$contract['title'];
+            $data['num']=$contract['num'];
+            $data['pic']=$contract['pic'];
+            $data['sup_name']=$res['sup_name'];
+        }else{
+            $change=$this->db->select('a.*,b.name sup_name,c.title con_title')
+                ->from('change a')
+                ->join('supplier_profile b','a.sid = b.id','left')
+                ->join('contract_main c','c.id = a.pid','left')
+                ->where('a.id',$res['cid'])->get()->row_array();
+            $data['con_title']=$change['con_title'];
+            $data['num']=$change['num'];
+            $data['pic']=$change['pic'];
+            $data['sup_name']=$change['sup_name'];
+        }
+       return $data;
+    }
+
+    public function fukuang($id){
+       $res=$this->db->where('id',$id)->update('execute',array('status'=>2));
+        return $res;
+    }
 }

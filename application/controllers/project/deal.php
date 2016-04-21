@@ -89,4 +89,49 @@ class Deal extends MY_Controller {
             exit();
         }
     }
+
+    public function show_execute($pid,$cid=0,$page=1){
+        $data = $this->deal_model->show_execute($pid,$cid,$page);
+        $base_url = "/project/deal/show_execute/".$pid.'/'.$cid;
+        $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
+        $this->assign('pager', $pager);
+        $this->assign('data', $data);
+        $this->assign('pid', $pid);
+        $this->assign('cid', $cid);
+        $this->display('project/project_deal_execute.html');
+
+    }
+
+    public function save_execute(){
+        $data=$this->deal_model->save_execute();
+        if ($data){
+            $this->show_message('提交成功');
+            exit();
+        }else{
+            $this->show_message('提交失败');
+            exit();
+        }
+    }
+    
+    public function get_ex($id){
+        $data=$this->deal_model->get_ex($id);
+        if ($data){
+            $this->assign('data', $data);
+            $this->display('project/project_deal_execute_details.html');
+        }else{
+            $this->show_message('信息丢失');
+            exit();
+        }
+    }
+
+    public function fukuang($id){
+        $data=$this->deal_model->fukuang($id);
+        if ($data){
+            $this->show_message('申请成功');
+            exit();
+        }else{
+            $this->show_message('申请失败');
+            exit();
+        }
+    }
 }

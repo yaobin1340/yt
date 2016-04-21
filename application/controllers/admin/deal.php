@@ -89,5 +89,5 @@ class Deal extends MY_Controller {
             exit();
         }
     }
-
+    
 }

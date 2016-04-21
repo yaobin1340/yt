@@ -260,6 +260,7 @@
 				return false;
 			}
 			if ($.trim($("#pid").val())==""){
+				alert($.trim($("#pid").val()));
 				$("#product_search").focus().parent().addClass("has-error").children(".help-block").html("供应商必须选择");
 				return false;
 			}

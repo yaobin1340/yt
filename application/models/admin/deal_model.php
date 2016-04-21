@@ -95,6 +95,6 @@ class Deal_model extends MY_Model
     }
 
     public function SH_change($id){
-        return $this->db->where('id',$id)->update('chang',array('status'=>2));
+        return $this->db->where('id',$id)->update('change',array('status'=>2));
     }
 }

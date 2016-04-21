@@ -11,7 +11,7 @@ class Index extends MY_Controller {
 
     function __construct(){
         parent::__construct();
-        if (!$this->session->userdata('username')){
+        if (!$this->session->userdata('username') && $this->session->userdata('type')!=2){
             redirect('login');
         }
         $this->cismarty->assign('type',1);
@@ -19,12 +19,8 @@ class Index extends MY_Controller {
     }
 
     public function index(){
-        if ($this->session->userdata('type')==2){
-            $path="supplier/supplier_index.html";
-            $this->cismarty->display($path);
-        }else{
-            $this->session->sess_destroy();
-            redirect('login');
-        }
+        $data = $this->index_model->get_index_info();
+        $this->assign('data', $data);
+        $this->cismarty->display("supplier/supplier_index.html");
     }
 }

@@ -14,4 +14,14 @@ class Index_model extends MY_Model
         parent::__construct();
     }
 
+    public function get_index_info(){
+        $rs = $this->db->select('a.id id,name')->from('supplier_profile a')
+            ->join('users b','a.masterid=b.id','left')
+            ->where('status',2)->order_by('cdate','desc')->limit(4)->get()->result_array();
+
+        $data['s_list'] = $rs;
+        return $data;
+
+    }
+
 }

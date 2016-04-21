@@ -15,56 +15,25 @@
     <!-- 公告 end -->
 
 
-
-
-<!---->
-    <div class="form_card card z_depth-1">
-      <div class="form_card_title">
-        <i class="material-icons">&#xe0c6;</i> <span>搜索供应商</span>
-         <a href="./?c=project_supplier" class="btn btn-primary pull-right">更多...</a>
-      </div>
-      <div class="form_card_box">
-    
-
-      
-
-      
-      </div>
-    </div>
-<!---->
-
 <!---->
   <div class="index_left col-xs-12 col-sm-6">
     <div class="index_notice form_card card z_depth-1">
       <div class="form_card_title">
         <i class="material-icons">&#xe85a;</i> <span>供应商搜索</span>
-        <a href="./?c=supplier_notice" class="btn btn-primary pull-right">更多...</a>
+        <a href="{{site_url url='project/supplier'}}" class="btn btn-primary pull-right">更多...</a>
       </div>
       <div class="form_card_box">
     
 
       
 		<ul>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
+          {{foreach from=$data.s_list item=row}}
+          <li>
+            <a href="{{site_url url='project/supplier/show_supplier'}}/{{$row.id}}" class="">
+              {{$row.name}}
+            </a>
+          </li>
+          {{/foreach}}
 		</ul>
       
       </div>

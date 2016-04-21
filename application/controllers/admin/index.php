@@ -25,7 +25,7 @@ class Index extends MY_Controller {
      */
     function __construct(){
         parent::__construct();
-        if (!$this->session->userdata('username')){
+        if (!$this->session->userdata('username') && $this->session->userdata('type')!=1){
             redirect('login');
         }
         $this->cismarty->assign('type',1);
@@ -33,16 +33,9 @@ class Index extends MY_Controller {
     }
 
     public function index(){
-        if ($this->session->userdata('type')==1){
-            $data = $this->index_model->get_index_info();
-            $this->assign('data', $data);
-            $path="admin/admin_index.html";
-            $this->cismarty->display($path);
-        }
-
-
-
-//		$this->load->view('base_data');
+        $data = $this->index_model->get_index_info();
+        $this->assign('data', $data);
+        $this->cismarty->display("admin/admin_index.html");
     }
 
     public function admin_io($type='admin'){

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends MY_Controller {
+class Login extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -25,7 +25,7 @@ class Login extends MY_Controller {
 	}
 	public function index()
 	{
-		$this->display('login/login.html');
+		$this->cismarty->display('login/login.html');
 //		$this->load->view('base_data');
 	}
 	public function check_login()
@@ -41,8 +41,9 @@ class Login extends MY_Controller {
 			$this->session->set_userdata('id',$res['id']);
 			$this->session->set_userdata('status',$res['status']);
 			$this->session->set_userdata('type',$res['type']);
-			$rs = $this->login_model->check_profile($res['id']);
+			$rs = $this->login_model->check_profile($res['id'],$res['type']);
 			 if($rs){
+
 				 redirect('index');
 			 }else{
 				 if($res['type'] == 3){
@@ -61,10 +62,56 @@ class Login extends MY_Controller {
 	}
 
 	public function supplier_reg(){
-		$this->display('login/supplier_reg.html');
+		$this->cismarty->display('login/supplier_reg.html');
 	}
 	
 	public function project_reg(){
-		$this->display('login/project_reg.html');
+		$this->cismarty->display('login/project_reg.html');
+	}
+
+	/**
+	 * 提示信息
+	 * @param varchar $message 提示信息
+	 * @param varchar $url 跳转页面，如果为空则后退
+	 * @param int $type 提示类型，1是自动关闭的提示框，2是错误提示框
+	 * @return array 显示页码的数组
+	 **/
+	public function show_message($message,$url=null,$type = 1){
+		if($url){
+			$js = "location.href='".$url."';";
+		}else{
+			$js = "history.back();";
+		}
+
+		if($type=='1'){
+			echo "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+				<html xmlns='http://www.w3.org/1999/xhtml'>
+				<head>
+				<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+				<meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes' />
+				<title>".$message."</title>
+				<script src='/static/js/jquery.min.js'></script>
+				<link rel='stylesheet' href='/res/css/dialog.css'>
+				</head>
+				<body>
+				<script src='/res/js/easydialog.min.js'></script>
+				<script>
+				var callFn = function(){
+				  ".$js."
+				};
+				easyDialog.open({
+					container : {
+						content : '".$message."'
+					},
+					autoClose : 2000,
+					callback : callFn
+
+				});
+
+				</script>
+				</body>
+				</html>";
+		}
+		exit;
 	}
 }

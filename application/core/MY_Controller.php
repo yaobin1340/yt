@@ -16,10 +16,27 @@ class MY_Controller extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('controller_use');
+		$this->load->model('login_model');
 		ini_set('date.timezone','Asia/Shanghai');
 		$this->cismarty->assign('base_url',base_url());//url路径
 		$news=$this->controller_use->get_Latest_News();
 		$this->cismarty->assign('lastnews',$news !=1 ? $news['content'] : '无最新公告');//url路径
+
+		if (!$this->session->userdata('username')){
+			redirect('login');
+		}
+		$rs = $this->login_model->check_profile($this->session->userdata('id'),$this->session->userdata('type'));
+		if($rs){
+			$name = $this->login_model->get_profile_name($this->session->userdata('id'),$this->session->userdata('type'));
+			$name = $name?$name:'管理员';
+			$this->assign('head_name',$name);
+		}else{
+			if($this->session->userdata('type') == 3){
+				redirect('login/project_reg');
+			}elseif($this->session->userdata('type') == 2){
+				redirect('login/supplier_reg');
+			}
+		}
 	}
 
 	//重载smarty方法assign

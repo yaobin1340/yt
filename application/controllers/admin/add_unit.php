@@ -7,32 +7,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Time: 21:38
  */
 class Add_unit extends MY_Controller {
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
-        if (!$this->session->userdata('username')){
-            redirect('login');
-        }
-        else
-        {
-            $this->cismarty->assign('type',9);
-
-        }
-         $this->load->model('admin/add_unit_model','add_unit_model');
+        $this->cismarty->assign('type',9);
+        $this->load->model('admin/add_unit_model','add_unit_model');
     }
-    function index()
-    {
+
+    function index(){
         $this->cismarty->assign('flag',0);
         $path="admin/admin_unit_info.html";
         $this->cismarty->display($path);
     }
-    function add($unit)
-    {
-      //  die('单位：'.$unit);
+
+    function add($unit){
         $res=$this->add_unit_model->add($unit);
         echo $res;
-       /* $this->cismarty->assign('flag',$res);
-        $this->cismarty->display("admin/admin_unit_info.html");*/
     }
 
 }

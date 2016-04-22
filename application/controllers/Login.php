@@ -45,7 +45,14 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('type',$res['type']);
 			$rs = $this->login_model->check_profile($res['id'],$res['type']);
 			 if($rs){
-
+				 $status = $this->login_model->get_status();
+				 if($status < 2){
+					 if($res['type'] == 3){
+						 redirect(site_url('project/info/index'));
+					 }else{
+						 redirect(site_url('supplier/info/index'));
+					 }
+				 }
 				 redirect('index');
 			 }else{
 				 if($res['type'] == 3){

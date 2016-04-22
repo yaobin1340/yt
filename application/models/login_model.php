@@ -56,6 +56,10 @@ class Login_model extends MY_Model
 			$rs = $this->db->select('name')->from('project_profile')->where('masterid',$id)->get()->row();
 		}
 		return $rs->name;
+	}
 
+	public function get_status(){
+		$rs = $this->db->select('status')->from('users')->where('username',$this->session->userdata('username'))->get()->row();
+		return $rs->status;
 	}
 }

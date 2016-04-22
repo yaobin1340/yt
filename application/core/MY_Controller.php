@@ -37,6 +37,11 @@ class MY_Controller extends CI_Controller
 				redirect('login/supplier_reg');
 			}
 		}
+		$status = $this->login_model->get_status();
+		if($status < 2){
+			$this->show_message('您好没有通过审核，无权此操作');
+		}
+
 	}
 
 	//重载smarty方法assign

@@ -59,6 +59,7 @@ class Info extends CI_Controller {
             $this->cismarty->assign('pro_city',$city_code);
             $this->cismarty->assign('detail',$detail);
             $this->cismarty->assign('web_title','基本信息');
+            $this->cismarty->assign('head_name',$name);
             $path="project/project_info.html";
             $this->cismarty->display($path);
         }else{

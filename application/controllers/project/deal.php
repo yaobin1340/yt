@@ -141,4 +141,9 @@ class Deal extends MY_Controller {
             exit();
         }
     }
+
+    public function end_deal($pid,$cid){
+        $this->assign('web_title','合约终止');
+        $this->display('project/project_deal_finish_end.html');
+    }
 }

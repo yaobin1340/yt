@@ -36,7 +36,7 @@
 					<a href="{{site_url url='project/deal/info'}}" class="btn btn-primary btn-raised" >新增</a>
 				</div>				
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="sousuo" >
+					<input type="text" class="form-control" id="sousuo" name="title" value="{{$data['title']}}">
 				</div>
 				<button type="submit" class="btn btn-primary btn-raised" for="sousuo">搜索</button>
 			</div>
@@ -60,7 +60,7 @@
           <th class="">{{$foo['title']}}</th>
 					<th class=""></th>
 					<th class=""></th>
-          <th class=""><a href="./?c=project_deal_finish_info" class="btn btn-sm btn-danger"  >合约终止</a></th>
+          <th class=""></th>
         </tr>
       </thead>
 			
@@ -81,7 +81,12 @@
             </a>
             {{/if}}
             {{if $foo['status'] == 3}}
-            <a href="{{site_url url='project/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-danger">合同终止</span>
+            <a href="{{site_url url='project/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-danger">待终止</span>
+              {{$foo['title']}}
+            </a>
+            {{/if}}
+            {{if $foo['status'] == 4}}
+            <a href="{{site_url url='project/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-primary">已终止</span>
               {{$foo['title']}}
             </a>
             {{/if}}
@@ -94,7 +99,7 @@
 
             {{/if}}
             <a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
-
+            <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/0" class="btn btn-sm btn-danger"  >终止</a>
 					</td>
         </tr>
 
@@ -117,7 +122,12 @@
             </a>
             {{/if}}
             {{if $row['status'] == 3}}
-            <a href="{{site_url url='project/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-danger">合同终止</span>
+            <a href="{{site_url url='project/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-danger">待终止</span>
+              {{$foo['title']}}
+            </a>
+            {{/if}}
+            {{if $row['status'] == 4}}
+            <a href="{{site_url url='project/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-primary">已终止</span>
               {{$foo['title']}}
             </a>
             {{/if}}
@@ -129,7 +139,7 @@
             <a href="{{site_url url='project/deal/show_execute'}}/{{$foo['id']}}/{{$row['id']}}/" class="btn btn-sm btn-info">执行</a>
             {{/if}}
             <a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
-            <a href="./?c=project_deal_change_end" class="btn btn-sm btn-danger"  >变更终止</a>
+            <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/{{$row['id']}}/" class="btn btn-sm btn-danger"  >终止</a>
           </td>
         </tr>
         {{/if}}

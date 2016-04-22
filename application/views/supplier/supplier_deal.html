@@ -62,8 +62,11 @@
         <span class="label label-success">审核通过</span>
           {{/if}}
           {{if $foo['status'] == 3}}
-        <span class="label label-danger">合同终止</span>
+        <span class="label label-danger">待终止</span>
           {{/if}}
+            {{if $foo['status'] == 4}}
+            <span class="label label-primary">已终止</span>
+            {{/if}}
 {{$foo['title']}}
         </td>
         <td class="small">{{$foo['cdate']}}</td>

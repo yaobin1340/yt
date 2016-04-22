@@ -21,7 +21,7 @@
         <div class="dashboard_card card z_depth-1" style="border-color:#62caec;">
           <div class="icon"><i class="material-icons" style="color:#62caec;">&#xe0c6;</i></div>
           <div class="title">有效的需求</div>
-          <div class="maincon"><span class="num">125</span>件</div>
+          <div class="maincon"><span class="num">{{$data.r_count}}</span>件</div>
           <div class="extra"><a href="./?c=supplier_demand">查看</a></div>
         </div>
       </div>
@@ -31,7 +31,7 @@
         <div class="dashboard_card card z_depth-1" style="border-color:#9f70f4;">
           <div class="icon"><i class="material-icons" style="color:#9f70f4;">&#xe90e;</i></div>
           <div class="title">已签署合约</div>
-          <div class="maincon"><span class="num">25</span>件</div>
+          <div class="maincon"><span class="num">{{$data.c_count}}</span>件</div>
           <div class="extra"><a href="./?c=supplier_deal">查看</a></div>
         </div>
       </div>
@@ -44,7 +44,7 @@
     <div class="form_card card z_depth-1">
       <div class="form_card_title">
         <i class="material-icons">&#xe0c6;</i> <span>最新需求信息</span>
-         <a href="./?c=supplier_demand" class="btn btn-primary pull-right">更多...</a>
+         <a href="{{site_url url='supplier/demand'}}" class="btn btn-primary pull-right">更多...</a>
       </div>
       <div class="form_card_box">
 
@@ -58,31 +58,16 @@
         </tr>
       </thead>
       <tbody>
+      {{foreach from=$data.r_list item=row}}
         <tr>
           <td class="">
-            <a href="###" class="table_card_a">
-                裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
+            <a href="{{site_url url='supplier/demand/show_demand'}}/{{$row['id']}}" class="table_card_a">
+              {{$row['pro_name']}}需要{{$row['m_name']}}{{$row['num']}}{{$row['u_name']}},规格为{{$row['size']}}
             </a>
           </td>
-          <td class="small">2016-03-10 15:39:33</td>
+          <td class="small">{{$row.cdate}}</td>
         </tr>
-        <tr>
-          <td class="">
-            <a href="###" class="table_card_a">
-                裕腾集团XXX项目材料采购招标正式开始
-            </a>
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-        </tr>
-        <tr>
-          <td class="">
-            <a href="###" class="table_card_a">
-                裕腾集团XXX项目材料采购招标正式开始
-            </a>
-          </td>
-          <td class="small">2016-03-10 15:39:33</td>
-        </tr>
-
+      {{/foreach}}
       </tbody>
 		</table>
 
@@ -95,33 +80,20 @@
     <div class="index_notice form_card card z_depth-1">
       <div class="form_card_title">
         <i class="material-icons">&#xe85a;</i> <span>系统消息</span>
-        <a href="./?c=supplier_notice" class="btn btn-primary pull-right">更多...</a>
+        <a href="{{site_url url='supplier/notice'}}" class="btn btn-primary pull-right">更多...</a>
       </div>
       <div class="form_card_box">
     
 
       
 		<ul>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>
-      </li>
+          {{foreach from=$data.n_list item=row}}
+            <li>
+              <a href="{{site_url url='supplier/notice/show_push'}}/{{$row.id}}" class="">
+                  {{$row.title}}
+              </a>
+            </li>
+          {{/foreach}}
 		</ul>
       
       </div>
@@ -134,7 +106,6 @@
     <div class="index_support form_card card z_depth-1">
       <div class="form_card_title">
         <i class="material-icons">&#xe869;</i> <span>技术支持</span>
-        <a href="./?c=supplier_notice" class="btn btn-primary pull-right">更多...</a>
       </div>
       <div class="form_card_box">
     

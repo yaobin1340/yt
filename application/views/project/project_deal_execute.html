@@ -31,7 +31,7 @@
       <div class="form_card_box">      
 
 				<div class="col-md-6 col-sm-12">
-					<form class="form-horizontal" method="post" action="{{site_url url='project/deal/save_execute'}}">
+					<form id="save_form" class="form-horizontal" method="post" action="{{site_url url='project/deal/save_execute'}}">
 						<div class="form-group">
 							<div class="col-sm-2 col-sm-offset-2">
 								<button type="submit" class="btn btn-primary btn-raised" >导出数据</button>
@@ -93,7 +93,7 @@
 						<div class="form-group">
 							<div class="col-sm-2"></div>
 							<div class="col-sm-9">
-								<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink">提交</button>
+								<button type="button" id="save_btn" class="btn btn-primary btn-lg btn-raised btn-block ink">提交</button>
                                 <input type="hidden" id="cid" name="cid" value="{{$cid}}">
                                 <input type="hidden" id="pid" name="pid" value="{{$pid}}">
 							</div>
@@ -182,6 +182,40 @@
                     $("#price").val('');
             }
 
+        })
+
+        $("#save_btn").click(function(){
+            if ($.trim($("#material").val())==""){
+                $("#material").focus().parent().addClass("has-error").children(".help-block").html("类别必选");
+                return false;
+            }else {
+                $("#material").parent().removeClass("has-error").children(".help-block").html("");
+            }
+            if ($.trim($("#date").val())==""){
+                $("#date").focus().parent().addClass("has-error").children(".help-block").html("进货时间不能为空");
+                return false;
+            }else {
+                $("#date").parent().removeClass("has-error").children(".help-block").html("");
+            }
+            if ($.trim($("#num").val())==""){
+                $("#num").focus().parent().addClass("has-error").children(".help-block").html("采购数量不能为空");
+                return false;
+            }else {
+                $("#num").parent().removeClass("has-error").children(".help-block").html("");
+            }
+            if ($.trim($("#price").val())==""){
+                $("#price").focus().parent().addClass("has-error").children(".help-block").html("材料单价不能为空");
+                return false;
+            }else {
+                $("#price").parent().removeClass("has-error").children(".help-block").html("");
+            }
+            if ($.trim($("#desc").val())==""){
+                $("#desc").focus().parent().addClass("has-error").children(".help-block").html("项目进度说明不能为空");
+                return false;
+            }else {
+                $("#desc").parent().removeClass("has-error").children(".help-block").html("");
+            }
+            $("#save_form").submit();
         })
     })
 </script>

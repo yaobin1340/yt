@@ -13,7 +13,7 @@ class Schedule extends MY_Controller {
 //            redirect('login');
 //        }
 
-        $this->cismarty->assign('type',10);
+        $this->cismarty->assign('type',5);
         $this->load->model('admin/schedule_model','schedule_model');
     }
 
@@ -31,5 +31,17 @@ class Schedule extends MY_Controller {
         $this->assign('web_title','进度数据');
         $this->display('admin/admin_schedule.html');
 
+    }
+
+    function show_ex($id){
+        $data=$this->schedule_model->show_ex($id);
+        if ($data){
+            $this->assign('data', $data);
+            $this->assign('web_title','进度详情');
+            $this->display('admin/admin_schedule_details.html');
+        }else{
+            $this->show_message('信息丢失');
+            exit();
+        }
     }
 }

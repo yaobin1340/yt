@@ -68,7 +68,42 @@ where a.cid>0
         //  die(var_dump($data['pro_name']));
         return $data;
 
-
     }
 
+    public function show_ex($id){
+        $res=$this->db->select('a.*,b.name m_name')->from('execute a')
+            ->join('material b','b.id = a.mid','left')
+            ->where('a.id',$id)->get()->row_array();
+        if(!$res){
+            return false;
+        }
+        $data['ex']=$res;
+
+        if($res['cid']==0){
+            $contract=$this->db->select('c.name pro_name,a.*,b.name sup_name')->from('contract_main a')
+                ->join('supplier_profile b','a.sid = b.id','left')
+                ->join('project_profile c','c.masterid = a.userid','left')
+                ->where('a.id',$res['pid'])->get()->row_array();
+           // die($this->db->last_query());
+            $data['con_title']=$contract['title'];
+            $data['num']=$contract['num'];
+            $data['pic']=$contract['pic'];
+            $data['sup_name']=$contract['sup_name'];
+            $data['pro_name']=$contract['pro_name'];
+
+        }else{
+            $change=$this->db->select('a.*,b.name sup_name,c.title con_title,d.name pro_name')
+                ->from('change a')
+                ->join('supplier_profile b','a.sid = b.id','left')
+                ->join('contract_main c','c.id = a.pid','left')
+                ->join('project_profile d','d.masterid = c.userid','left')
+                ->where('a.id',$res['cid'])->get()->row_array();
+            $data['con_title']=$change['con_title'];
+            $data['num']=$change['num'];
+            $data['pic']=$change['pic'];
+            $data['sup_name']=$change['sup_name'];
+           $data['pro_name']=$change['pro_name'];
+        }
+        return $data;
+    }
 }

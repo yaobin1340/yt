@@ -320,7 +320,7 @@ class Deal_model extends MY_Model
             $data['con_title']=$contract['title'];
             $data['num']=$contract['num'];
             $data['pic']=$contract['pic'];
-            $data['sup_name']=$res['sup_name'];
+            $data['sup_name']=$contract['sup_name'];
         }else{
             $change=$this->db->select('a.*,b.name sup_name,c.title con_title')
                 ->from('change a')

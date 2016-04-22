@@ -58,4 +58,15 @@ class Payment extends MY_Controller {
             exit();
         }
     }
+
+    public function QRfukuang($id){
+        $data=$this->payment_model->QRfukuang($id);
+        if ($data){
+            $this->show_message('确认成功');
+            exit();
+        }else{
+            $this->show_message('确认失败');
+            exit();
+        }
+    }
 }

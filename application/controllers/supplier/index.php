@@ -21,6 +21,7 @@ class Index extends MY_Controller {
     public function index(){
         $data = $this->index_model->get_index_info();
         $this->assign('data', $data);
+        $this->assign('web_title','供应商首页');
         $this->cismarty->display("supplier/supplier_index.html");
     }
 }

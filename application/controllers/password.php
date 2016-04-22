@@ -15,6 +15,7 @@ class Password extends MY_Controller {
         $this->load->model('password_model');
     }
     public function index(){
+        $this->assign('web_title','修改密码');
         $this->assign('username',$this->session->userdata('username'));
         $this->display('login/password.html');
 //		$this->load->view('base_data');

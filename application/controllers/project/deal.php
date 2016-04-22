@@ -28,6 +28,7 @@ class Deal extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','合约管理');
         $this->display('project/project_deal.html');
 
     }
@@ -35,6 +36,7 @@ class Deal extends MY_Controller {
     public function change($id){
         $data = $this->deal_model->get_change($id);
         $this->cismarty->assign('data',$data);
+        $this->assign('web_title','合约变更');
         $this->display('project/project_deal_change.html');
     }
 
@@ -51,6 +53,7 @@ class Deal extends MY_Controller {
 
     public function info(){
         $this->cismarty->assign('data',1);
+        $this->assign('web_title','合约添加');
         $this->cismarty->display("project/project_deal_info.html");
     }
 
@@ -72,6 +75,7 @@ class Deal extends MY_Controller {
         $data=$this->deal_model->show_contract($id);
         if ($data){
             $this->assign('data', $data);
+            $this->assign('web_title','合约详情');
             $this->display('project/project_deal_contract_details.html');
         }else{
             $this->show_message('信息丢失');
@@ -83,6 +87,7 @@ class Deal extends MY_Controller {
         $data=$this->deal_model->show_change($id);
         if ($data){
             $this->assign('data', $data);
+            $this->assign('web_title','合约变更详情');
             $this->display('project/project_deal_change_details.html');
         }else{
             $this->show_message('信息丢失');
@@ -98,6 +103,7 @@ class Deal extends MY_Controller {
         $this->assign('data', $data);
         $this->assign('pid', $pid);
         $this->assign('cid', $cid);
+        $this->assign('web_title','合约执行');
         $this->display('project/project_deal_execute.html');
 
     }
@@ -117,6 +123,7 @@ class Deal extends MY_Controller {
         $data=$this->deal_model->get_ex($id);
         if ($data){
             $this->assign('data', $data);
+            $this->assign('web_title','合约执行详情');
             $this->display('project/project_deal_execute_details.html');
         }else{
             $this->show_message('信息丢失');

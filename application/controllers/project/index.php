@@ -20,6 +20,7 @@ class Index extends MY_Controller {
 
     public function index(){
         $data = $this->index_model->get_index_info();
+        $this->assign('web_title','项目管理首页');
         $this->assign('data', $data);
         $this->cismarty->display("project/project_index.html");
     }

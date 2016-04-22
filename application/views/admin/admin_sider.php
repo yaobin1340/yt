@@ -20,7 +20,7 @@
         <a href="{{site_url url='admin/supplier'}}" class="list-group-item {{if $type==2}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="供应商"><i class="material-icons">&#xe558;</i><span>供应商</span><em class="badge">14</em></a>
         <a href="{{site_url url='admin/project'}}" class="list-group-item {{if $type==3}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="项目"><i class="material-icons">&#xe53f;</i><span>项目</span><em class="badge">2</em></a>
         <a href="{{site_url url='admin/payment'}}" class="list-group-item {{if $type==4}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="申请付款"><i class="material-icons">&#xe263;</i><span>申请付款</span><em class="badge">2</em></a>
-        <a href="?c=admin_schedule" class="list-group-item {{if $type=='admin_schedule'}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="进度数据"><i class="material-icons">&#xe85c;</i><span>进度数据</span></a>
+        <a href="{{site_url url='admin/schedule'}}" class="list-group-item {{if $type==5}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="进度数据"><i class="material-icons">&#xe85c;</i><span>进度数据</span></a>
       </div>
     </div>
     

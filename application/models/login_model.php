@@ -22,6 +22,7 @@ class Login_model extends MY_Model
                       ->where('password',sha1($pwd))
                       ->where('status >',0)
                       ->get()->row_array();
+		//die($this->db->last_query());
         if (!$res) {
         	return 1;
         }

@@ -42,6 +42,7 @@ class Payment extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','申请支付');
         $this->display('admin/admin_paymentrequest.html');
 
     }
@@ -50,6 +51,7 @@ class Payment extends MY_Controller {
         $data=$this->payment_model->get_ex($id);
         if ($data){
             $this->assign('data', $data);
+            $this->assign('web_title','申请信息');
             $this->display('admin/admin_paymentrequest_details.html');
         }else{
             $this->show_message('信息丢失');

@@ -29,6 +29,7 @@ class Demand extends MY_Controller
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','需求信息');
         $this->display('supplier/supplier_demand.html');
 
     }
@@ -41,9 +42,10 @@ class Demand extends MY_Controller
             $this->assign('p_name', $res['p_name']);
             $this->assign('c_name', $res['c_name']);
             $this->assign('address', $res['address']);
+            $this->assign('web_title','需求信息详情');
             $this->display('supplier/supplier_demand_details.html');
         }else{
-            $this->show_message('公告内容丢失');
+            $this->show_message('需求内容丢失');
             exit();
         }
     }

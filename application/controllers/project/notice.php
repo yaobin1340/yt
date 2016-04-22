@@ -27,6 +27,7 @@ class Notice extends MY_Controller
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','系统公告');
         $this->display('project/project_notice.html');
 
     }
@@ -36,6 +37,7 @@ class Notice extends MY_Controller
 
         if ($res){
             $this->assign('data', $res);
+            $this->assign('web_title','公告详情');
             $this->display('project/project_notice_details.html');
         }else{
             $this->show_message('公告内容丢失');

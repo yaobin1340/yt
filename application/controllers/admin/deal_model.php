@@ -44,6 +44,7 @@ class Deal_model extends MY_Controller {
         $this->assign('pager', $pager);
         $this->assign('data', $data);
         $this->assign('base_url', base_url());
+        $this->assign('web_title','合约范本');
         $this->display('admin/admin_deal_model.html');
 
     }
@@ -62,6 +63,7 @@ class Deal_model extends MY_Controller {
 
     public function add_model(){
         //$this->assign('data',null);
+        $this->assign('web_title','新增合约范本');
         $this->cismarty->display('admin/admin_deal_model_info.html');
     }
 

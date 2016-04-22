@@ -42,6 +42,7 @@ class Deal extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','合约管理');
         $this->display('admin/admin_deal.html');
 
     }
@@ -50,6 +51,7 @@ class Deal extends MY_Controller {
         $data=$this->deal_model->show_contract($id);
         if ($data){
             $this->assign('data', $data);
+            $this->assign('web_title','合约查看');
             $this->display('admin/admin_deal_contract_details.html');
         }else{
             $this->show_message('信息丢失');
@@ -61,6 +63,7 @@ class Deal extends MY_Controller {
         $data=$this->deal_model->show_change($id);
         if ($data){
             $this->assign('data', $data);
+            $this->assign('web_title','合约变更查看');
             $this->display('admin/admin_deal_change_details.html');
         }else{
             $this->show_message('信息丢失');

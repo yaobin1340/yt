@@ -28,6 +28,7 @@ class Deal extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','合约查看列表');
         $this->display('supplier/supplier_deal.html');
 
     }
@@ -38,6 +39,7 @@ class Deal extends MY_Controller {
             $res = $this->deal_model->show_contract($id);
             if ($res){
                 $this->assign('data', $res);
+                $this->assign('web_title','合约详情');
                 $this->display('supplier/supplier_deal_contract_details.html');
             }else{
                 $this->show_message('公告内容丢失');
@@ -47,6 +49,7 @@ class Deal extends MY_Controller {
             $res = $this->deal_model->show_change($id);
             if ($res){
                 $this->assign('data', $res);
+                $this->assign('web_title','合约变更详情');
                 $this->display('supplier/supplier_deal_change_details.html');
             }else{
                 $this->show_message('公告内容丢失');

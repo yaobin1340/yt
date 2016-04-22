@@ -62,6 +62,7 @@ class Info extends MY_Controller {
             $this->cismarty->assign('sup_phone',$phone);
             $this->cismarty->assign('sup_desc',$desc);
             $this->cismarty->assign('pic',$pic);
+            $this->assign('web_title','基本信息');
             $path="supplier/supplier_info.html";
             $this->cismarty->display($path);
         }else{

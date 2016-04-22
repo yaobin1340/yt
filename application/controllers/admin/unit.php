@@ -43,6 +43,7 @@ class Unit extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','计量单位');
         $this->display('admin/admin_unit.html');
 
     }
@@ -62,6 +63,7 @@ class Unit extends MY_Controller {
     public function add_unit()
     {
         $this->assign('data',null);
+        $this->assign('web_title','新增计量单位');
         $this->cismarty->display('admin/admin_unit_info.html');
     }
 
@@ -69,6 +71,7 @@ class Unit extends MY_Controller {
     {
         $data = $this->unit_model->get_unit($id);
         $this->assign('data',$data);
+        $this->assign('web_title','修改计量单位');
         $this->cismarty->display('admin/admin_unit_info.html');
     }
 

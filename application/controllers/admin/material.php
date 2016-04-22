@@ -43,6 +43,7 @@ class Material extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','材料类别');
         $this->display('admin/admin_material.html');
 
     }
@@ -62,12 +63,14 @@ class Material extends MY_Controller {
     public function add_material()
     {
         $this->assign('data',null);
+        $this->assign('web_title','新增材料类别');
         $this->cismarty->display('admin/admin_material_info.html');
     }
 
     public function edit_material($id)
     {
         $data = $this->material_model->get_material($id);
+        $this->assign('web_title','修改材料类别');
         $this->assign('data',$data);
         $this->cismarty->display('admin/admin_material_info.html');
     }

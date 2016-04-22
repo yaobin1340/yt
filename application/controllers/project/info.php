@@ -58,6 +58,7 @@ class Info extends MY_Controller {
             $this->cismarty->assign('pro_province',$province_code);
             $this->cismarty->assign('pro_city',$city_code);
             $this->cismarty->assign('detail',$detail);
+            $this->assign('web_title','基本信息');
             $path="project/project_info.html";
             $this->cismarty->display($path);
         }else{

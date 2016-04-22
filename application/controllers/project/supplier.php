@@ -29,6 +29,7 @@ class Supplier extends MY_Controller
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','供应商查询');
         $this->display('project/project_supplier.html');
 
     }
@@ -38,6 +39,7 @@ class Supplier extends MY_Controller
 
         if ($res){
             $this->assign('data', $res);
+            $this->assign('web_title','供应商详情');
             $this->display('project/project_supplier_details.html');
         }else{
             $this->show_message('公告内容丢失');

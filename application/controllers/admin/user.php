@@ -43,6 +43,7 @@ class User extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','用户管理');
         $this->display('admin/admin_user.html');
 
     }
@@ -51,6 +52,7 @@ class User extends MY_Controller {
     public function add_user()
     {
         //$this->assign('data',null);
+        $this->assign('web_title','新增用户');
         $this->cismarty->display('admin/admin_user_info.html');
     }
 

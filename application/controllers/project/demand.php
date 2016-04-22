@@ -29,6 +29,7 @@ class Demand extends MY_Controller
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','需求信息管理');
         $this->display('project/project_demand.html');
 
     }
@@ -41,6 +42,7 @@ class Demand extends MY_Controller
             $this->assign('p_name', $res['p_name']);
             $this->assign('c_name', $res['c_name']);
             $this->assign('address', $res['address']);
+            $this->assign('web_title','信息详情页面');
             $this->display('project/project_demand_details.html');
         }else{
             $this->show_message('公告内容丢失');
@@ -61,6 +63,7 @@ class Demand extends MY_Controller
         $this->assign('desc', '');
         $this->assign('unit', '0');
         $this->assign('id', '');
+        $this->assign('web_title','发布需求信息');
         $this->display('project/project_demand_info.html');
     }
     
@@ -97,6 +100,7 @@ class Demand extends MY_Controller
             $this->assign('desc', $res['item']['desc']);
             $this->assign('unit', $res['item']['unit']);
             $this->assign('id', $res['item']['id']);
+            $this->assign('web_title','修改需求信息');
             $this->display('project/project_demand_info.html');
         }
         else{

@@ -25,6 +25,8 @@ class Login extends CI_Controller {
 	}
 	public function index()
 	{
+
+		//$this->assign('web_title', '登陆');
 		$this->cismarty->display('login/login.html');
 //		$this->load->view('base_data');
 	}
@@ -62,10 +64,12 @@ class Login extends CI_Controller {
 	}
 
 	public function supplier_reg(){
+		//$this->assign('web_title','基本信息');
 		$this->cismarty->display('login/supplier_reg.html');
 	}
 	
 	public function project_reg(){
+		//$this->assign('web_title','基本信息');
 		$this->cismarty->display('login/project_reg.html');
 	}
 

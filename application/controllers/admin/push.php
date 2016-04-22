@@ -30,6 +30,7 @@ class Push extends MY_Controller
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','公告信息');
         $this->display('admin/admin_push.html');
 
     }
@@ -38,6 +39,7 @@ class Push extends MY_Controller
         $this->assign('title', "");
         $this->assign('content', "");
         $this->assign('id', "");
+        $this->assign('web_title','新增公告信息');
         $this->display('admin/admin_push_info.html');
     }
 
@@ -58,6 +60,7 @@ class Push extends MY_Controller
 
         if ($res){
             $this->assign('data', $res);
+            $this->assign('web_title','公告详情');
             $this->display('admin/admin_push_details.html');
         }else{
             $this->show_message('公告内容丢失');
@@ -71,6 +74,7 @@ class Push extends MY_Controller
             $this->assign('title', $res['title']);
             $this->assign('content', $res['content']);
             $this->assign('id', $res['id']);
+            $this->assign('web_title','修改公告');
             $this->display('admin/admin_push_info.html');
         }else{
             $this->show_message('公告内容丢失');

@@ -27,6 +27,7 @@ class Supplier extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','供应商列表');
         $this->display('admin/admin_supplier.html');
 
     }
@@ -46,6 +47,7 @@ class Supplier extends MY_Controller {
         $this->cismarty->assign('sup_phone',$data['phone'] ? $data['phone'] : "");
         $this->cismarty->assign('sup_desc',$data['desc'] ? $data['desc'] : "");
         $this->cismarty->assign('pic',$data['pic'] ? $data['pic'] : "");
+        $this->assign('web_title','供应商基本信息');
         $path="admin/admin_supplier_info.html";
         $this->cismarty->display($path);
     }

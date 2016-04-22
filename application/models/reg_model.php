@@ -32,6 +32,7 @@ class Reg_model extends MY_Model
             'username'=>$this->input->post('user_name'),
             'password'=>sha1($this->input->post('pwd')),
             'type'=>$this->input->post('reg_type'),
+            'status'=>1,
             'cdate'=>date("y-m-d H:i:s",time())
         );
         $res=$this->db->insert('users',$data);

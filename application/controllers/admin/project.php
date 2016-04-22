@@ -27,6 +27,7 @@ class Project extends MY_Controller {
         $pager = $this->pagination->getPageLink($base_url, $data['total'], $data['limit']);
         $this->assign('pager', $pager);
         $this->assign('data', $data);
+        $this->assign('web_title','项目列表');
         $this->display('admin/admin_project.html');
 
     }
@@ -68,6 +69,7 @@ class Project extends MY_Controller {
         $this->cismarty->assign('pro_province',$province_code);
         $this->cismarty->assign('pro_city',$city_code);
         $this->cismarty->assign('detail',$detail);
+        $this->assign('web_title','项目基本信息');
         $path="admin/admin_project_info.html";
         $this->cismarty->display($path);
     }

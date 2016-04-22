@@ -26,8 +26,15 @@ class Reg extends CI_Controller {
             $this->show_message('账户已被使用');
             exit();
         }elseif($res==1){
-            $this->session->sess_destroy();
-            $this->show_message('注册成功',site_url('login'));
+//            $this->session->sess_destroy();
+            $this->session->set_userdata('username',$this->input->post('user_name'));
+            $this->session->set_userdata('status',1);
+            $this->session->set_userdata('type',$this->input->post('reg_type'));
+            if($this->input->post('reg_type') == 2)
+                $this->show_message('注册成功',site_url('login/supplier_reg'));
+            else
+                $this->show_message('注册成功',site_url('login/project_reg'));
+
             exit();
         } else{
             $this->show_message('注册失败');

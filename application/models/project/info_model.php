@@ -29,9 +29,9 @@ class Info_model extends MY_Model
         $m_id=$this->input->post('material');
         $unit=$this->input->post('unit');
         $num=$this->input->post('num');
-        if (!$masterid || !$name || !$total || !$address || !$manager || !$leader || !$leader_phone || !$contacter || !$contacter_phone || !$province_code || !$city_code){
-            return 2;
-        }
+//        if (!$masterid || !$name || !$total || !$address || !$manager || !$leader || !$leader_phone || !$contacter || !$contacter_phone || !$province_code || !$city_code){
+//            return 2;
+//        }
         $data=array(
             'masterid'=>$masterid,
             'name'=>$name,

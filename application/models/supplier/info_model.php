@@ -37,9 +37,9 @@ class Info_model extends MY_Model
         $phone=$this->input->post('sup_phone');
         $desc=$this->input->post('sup_desc');
         $pic=$this->input->post('pic');
-        if (!$name || $type==0 || !$total || !$allow || !$num || !$card || !$address || !$person || !$phone || !$desc || !$pic || !$province_code || !$city_code){
-            return 2;
-        }
+//        if (!$name || $type==0 || !$total || !$allow || !$num || !$card || !$address || !$person || !$phone || !$desc || !$pic || !$province_code || !$city_code){
+//            return 2;
+//        }
         $data=array(
             'name' => $name,
             'masterid'=>$masterid,

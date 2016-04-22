@@ -14,7 +14,7 @@
 
 
   <div id="sider_scrollbox">
-  
+
     <div class="sider_group on">
       <div class="sider_group_list list-group">
         <a href="{{site_url url='project/index'}}" class="list-group-item {{if $type==1}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="项目方界面首页"><i class="material-icons">&#xe88a;</i><span>首页</span></a>

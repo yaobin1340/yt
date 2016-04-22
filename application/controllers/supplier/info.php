@@ -77,7 +77,7 @@ class Info extends CI_Controller {
             $this->show_message('信息不完整');
             exit();
         }elseif($res==1){
-            $this->show_message('存储成功',site_url('supplier/index'));
+            $this->show_message('存储成功',site_url('supplier/info'));
             exit();
         }else{
             $this->show_message('存储失败');

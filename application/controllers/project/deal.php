@@ -157,10 +157,10 @@ class Deal extends MY_Controller {
     public function save_end(){
         $data=$this->deal_model->save_end();
         if ($data==1){
-            $this->show_message('合同终止成功',site_url('project/deal/index'));
+            $this->show_message('合同终止申请成功',site_url('project/deal/index'));
             exit();
         }else{
-            $this->show_message('合同终止失败');
+            $this->show_message('合同终止申请失败');
             exit();
         }
     }

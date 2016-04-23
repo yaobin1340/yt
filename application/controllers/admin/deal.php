@@ -94,15 +94,52 @@ class Deal extends MY_Controller {
     }
 
     public function end_change($id){
-        
+        $res=$this->deal_model->end_change($id);
+        if ($res==1){
+            $this->show_message('终止成功');
+            exit();
+        }else{
+            $this->show_message('终止失败');
+            exit();
+        }
     }
 
     public function end_contract($id){
-
+        $res=$this->deal_model->end_contract($id);
+        if ($res==1){
+            $this->show_message('终止成功');
+            exit();
+        }else{
+            $this->show_message('终止失败');
+            exit();
+        }
     }
 
     public function end_deal($id){
+        $res=$this->deal_model->end_deal($id);
+        if ($res==1){
+            $this->show_message('终止成功');
+            exit();
+        }else{
+            $this->show_message('终止失败');
+            exit();
+        }
+    }
 
+    public function show_end_details($pid,$cid){
+        $data=$this->deal_model->show_end_details($pid,$cid);
+        if ($data==-1){
+            $this->show_message('未找到终止信息');
+            exit();
+        }elseif (!$data){
+            $this->show_message('信息丢失');
+            exit();
+        }else{
+            $this->assign('data', $data);
+            $this->assign('web_title','变更终止信息');
+            $this->display('admin/admin_deal_end.html');
+            exit();
+        }
     }
     
 }

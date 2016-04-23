@@ -60,8 +60,8 @@
                   <th class=""></th>
                   <th class=""></th>
                   <th class="">
-                      <a href="./?c=project_deal_execute" class="btn btn-sm btn-info">合约终止信息</a>
-                      <a href="{{site_url url='admin/deal/end_deal'}}/{{$foo['id']}" class="btn btn-sm btn-danger"  >合约终止</a></th>
+
+                      <a href="{{site_url url='admin/deal/end_deal'}}/{{$foo['id']}}" class="btn btn-sm btn-danger"  >合约终止</a></th>
               </tr>
               </thead>
 
@@ -95,8 +95,8 @@
                   <td class="small">{{$foo['name']}}</td>
                   <td class="small">{{$foo['cdate']}}</td>
                   <td class="bloc">
-                      {{if $foo['status'] > 2}}
-                      <a href="./?c=project_deal_execute" class="btn btn-sm btn-info">变更终止信息</a>
+                      {{if $foo['status'] > 2 }}
+                      <a href="{{site_url url='admin/deal/show_end_details'}}/{{$foo['id']}}/0" class="btn btn-sm btn-info">变更终止信息</a>
                       {{/if}}
                       {{if $foo['status'] == 1}}
                       <a href="{{site_url url='admin/deal/SH_contract'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">确认审核</a>
@@ -140,14 +140,16 @@
                   <td class="small">{{$row['cdate']}}</td>
                   <td class="bloc">
                       {{if $row['status'] > 2}}
-                      <a href="./?c=project_deal_execute" class="btn btn-sm btn-info">变更终止信息</a>
-                      {{/if}}
-                      {{if $row['status'] == 1}}
-                      <a href="{{site_url url='admin/deal/SH_change'}}/{{$row['id']}}" class="btn btn-sm btn-primary">确认审核</a>
+                      <a href="{{site_url url='admin/deal/show_end_details'}}/{{$foo['id']}}/{{$row['id']}}" class="btn btn-sm btn-info">变更终止信息</a>
                       {{/if}}
                       {{if $row['status'] == 3}}
                       <a href="{{site_url url='admin/deal/end_change'}}/{{$row['id']}}" class="btn btn-sm btn-danger"  >确认终止</a>
                       {{/if}}
+                      {{if $row['status'] == 1}}
+                      <a href="{{site_url url='admin/deal/SH_change'}}/{{$row['id']}}" class="btn btn-sm btn-primary">确认审核</a>
+                      {{/if}}
+
+
                   </td>
               </tr>
               {{/if}}

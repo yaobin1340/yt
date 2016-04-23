@@ -96,10 +96,11 @@
           <td class="bloc">
             {{if $foo['status'] == 2}}
 						<a href="{{site_url url='project/deal/show_execute'}}/{{$foo['id']}}/0" class="btn btn-sm btn-info">执行</a>
-
+                        <a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
             {{/if}}
-            <a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
+            {{if $foo['status'] < 3}}
             <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/0" class="btn btn-sm btn-danger"  >终止</a>
+            {{/if}}
 					</td>
         </tr>
 
@@ -137,9 +138,11 @@
           <td class="bloc">
             {{if $row['status'] == 2}}
             <a href="{{site_url url='project/deal/show_execute'}}/{{$foo['id']}}/{{$row['id']}}/" class="btn btn-sm btn-info">执行</a>
-            {{/if}}
             <a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
+            {{/if}}
+            {{if $row['status'] < 3}}
             <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/{{$row['id']}}/" class="btn btn-sm btn-danger"  >终止</a>
+            {{/if}}
           </td>
         </tr>
         {{/if}}

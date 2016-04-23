@@ -339,4 +339,59 @@ class Deal_model extends MY_Model
        $res=$this->db->where('id',$id)->update('execute',array('status'=>2));
         return $res;
     }
+
+    public function end_deal($pid,$cid){
+        if ($cid==0){
+            $row=$this->db->select('a.num con_num,b.name sup_name')->from('contract_main a')
+                ->join('supplier_profile b','a.sid = b.id','left')
+                ->where('a.id',$pid)->get()->row_array();
+            $data=array(
+                'con_num' => $row['con_num'] ? $row['con_num'] : "",
+                'sup_name' => $row['sup_name'] ? $row['sup_name'] : "",
+                'pid'=> $pid,
+                'cid'=> $cid
+            );
+            return $data;
+        }else{
+            $row=$this->db->select('a.num con_num,b.name sup_name')->from('change a')
+                ->join('supplier_profile b','a.sid = b.id','left')
+                ->where('a.id',$cid)->get()->row_array();
+            $data=array(
+                'con_num' => $row['con_num'] ? $row['con_num'] : "",
+                'sup_name' => $row['sup_name'] ? $row['sup_name'] : "",
+                'pid'=> $pid,
+                'cid'=> $cid
+            );
+            return $data;
+        }
+    }
+
+    public function save_end(){
+       if(!$this->input->post('pid') || !$this->input->post('type')){
+           return -1;
+       }
+        $this->db->trans_start();
+        $data=array(
+            'pid'=>$this->input->post('pid'),
+            'cid'=>$this->input->post('cid'),
+            'type'=>$this->input->post('type'),
+            'desc'=>$this->input->post('desc'),
+            'flag'=>$this->input->post('cid')==0 ? 1 : 2,
+            'cdate'=>date("y-m-d H:i:s",time())
+        );
+        $this->db->insert('end',$data);
+        if ($this->input->post('cid')==0){
+
+            $this->db->where('id',$this->input->post('pid'))->update('contract_main',array('status'=>3));
+        }else{
+            $this->db->where('id',$this->input->post('cid'))->update('change',array('status'=>3));
+        }
+
+        $this->db->trans_complete();//------结束事务
+        if ($this->db->trans_status() === FALSE) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
 }

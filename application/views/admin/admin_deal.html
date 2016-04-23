@@ -61,7 +61,7 @@
                   <th class=""></th>
                   <th class="">
                       <a href="./?c=project_deal_execute" class="btn btn-sm btn-info">合约终止信息</a>
-                      <a href="./?c=project_deal_finish_info" class="btn btn-sm btn-danger"  >合约终止</a></th>
+                      <a href="{{site_url url='admin/deal/end_deal'}}/{{$foo['id']}" class="btn btn-sm btn-danger"  >合约终止</a></th>
               </tr>
               </thead>
 
@@ -82,7 +82,12 @@
                       </a>
                       {{/if}}
                       {{if $foo['status'] == 3}}
-                      <a href="{{site_url url='admin/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-danger">合同终止</span>
+                      <a href="{{site_url url='admin/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-danger">待终止</span>
+                          {{$foo['title']}}
+                      </a>
+                      {{/if}}
+                      {{if $foo['status'] == 4}}
+                      <a href="{{site_url url='admin/deal/show_contract'}}/{{$foo['id']}}" class="table_card_a"><span class="label label-primary">已终止</span>
                           {{$foo['title']}}
                       </a>
                       {{/if}}
@@ -90,11 +95,15 @@
                   <td class="small">{{$foo['name']}}</td>
                   <td class="small">{{$foo['cdate']}}</td>
                   <td class="bloc">
+                      {{if $foo['status'] > 2}}
                       <a href="./?c=project_deal_execute" class="btn btn-sm btn-info">变更终止信息</a>
+                      {{/if}}
                       {{if $foo['status'] == 1}}
                       <a href="{{site_url url='admin/deal/SH_contract'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">确认审核</a>
                       {{/if}}
-                      <a href="./?c=project_deal_change_end" class="btn btn-sm btn-danger"  >确认终止</a>
+                      {{if $foo['status'] == 3}}
+                      <a href="{{site_url url='admin/deal/end_contract'}}/{{$foo['id']}}" class="btn btn-sm btn-danger"  >确认终止</a>
+                      {{/if}}
                   </td>
               </tr>
 
@@ -117,7 +126,12 @@
                       </a>
                       {{/if}}
                       {{if $row['status'] == 3}}
-                      <a href="{{site_url url='admin/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-danger">合同终止</span>
+                      <a href="{{site_url url='admin/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-danger">待终止</span>
+                          {{$foo['title']}}
+                      </a>
+                      {{/if}}
+                      {{if $row['status'] == 4}}
+                      <a href="{{site_url url='admin/deal/show_change'}}/{{$row['id']}}" class="table_card_a"><span class="label label-primary">已终止</span>
                           {{$foo['title']}}
                       </a>
                       {{/if}}
@@ -125,12 +139,15 @@
                   <td class="small">{{$row['name']}}</td>
                   <td class="small">{{$row['cdate']}}</td>
                   <td class="bloc">
+                      {{if $row['status'] > 2}}
                       <a href="./?c=project_deal_execute" class="btn btn-sm btn-info">变更终止信息</a>
+                      {{/if}}
                       {{if $row['status'] == 1}}
                       <a href="{{site_url url='admin/deal/SH_change'}}/{{$row['id']}}" class="btn btn-sm btn-primary">确认审核</a>
                       {{/if}}
-
-                      <a href="./?c=project_deal_change_end" class="btn btn-sm btn-danger"  >确认终止</a>
+                      {{if $row['status'] == 3}}
+                      <a href="{{site_url url='admin/deal/end_change'}}/{{$row['id']}}" class="btn btn-sm btn-danger"  >确认终止</a>
+                      {{/if}}
                   </td>
               </tr>
               {{/if}}

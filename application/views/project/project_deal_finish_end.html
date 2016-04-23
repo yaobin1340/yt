@@ -29,7 +29,7 @@
         <i class="material-icons"></i> <span>合约完成终止</span>
       </h2>
       <div class="form_card_box">
-				<form class="form-horizontal" >
+				<form class="form-horizontal" id="save_form" method="post" action="{{site_url url='project/deal/save_end'}}">
 					<div class="form-group">
 						<div class="col-sm-1"></div>	
 						<div class="col-sm-1">
@@ -37,38 +37,40 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="heyuebianhao" class="col-sm-2 control-label">合约编号</label>
+						<label  class="col-sm-2 control-label">合约编号</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="heyuebianhao" id="heyuebianhao" >
+							<p class="form-control-static">{{$data['con_num']}}</p>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="gongyingshang" class="col-sm-2 control-label">供应商</label>
+						<label class="col-sm-2 control-label">供应商</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="gongyingshang" id="gongyingshang" >
+							<p class="form-control-static">{{$data['sup_name']}}</p>
 						</div>
 					</div>
 					<div class="form-group">
-							<label for="fyqk" class="col-sm-2 control-label">费用情况</label>
+							<label for="type" class="col-sm-2 control-label">费用情况</label>
 							<div class="col-sm-9">
-								<select class="form-control" name="fyqk" id="fyqk">
-									<option>-请选择-</option>
-									<option>款未结清</option>
-									<option>款已结清</option>
+								<select class="form-control" name="type" id="type">
+									<option value="">-请选择-</option>
+									<option value="1">款未结清</option>
+									<option value="2">款已结清</option>
 								</select>
 							</div>
 					</div>
 					<div class="form-group">
-						<label for="qtsm" class="col-sm-2 control-label">其它说明</label>
+						<label for="desc" class="col-sm-2 control-label">其它说明</label>
 						<div class="col-sm-9">
-							<textarea class="form-control" rows="4" name="qtsm" id="qtsm"></textarea>
+							<textarea class="form-control" rows="4" name="desc" id="desc"></textarea>
 						</div>
 						
 					</div>
 					<div class="form-group">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-9">
-							<button type="submit" class="btn btn-primary btn-lg btn-raised btn-block ink" >提交</button>
+							<button type="button" id="save_btn" class="btn btn-primary btn-lg btn-raised btn-block ink" >提交</button>
+							<input type="hidden" name="pid" value="{{$data['pid']}}">
+							<input type="hidden" name="cid" value="{{$data['cid']}}">
 						</div>
 					</div>
 				</form>
@@ -81,3 +83,26 @@
   
 </div>
 {{include file="common/footer.html"}}
+<script>
+	
+	$(function(){
+		
+		$("#save_btn").click(function () {
+
+			if ($.trim($("#type").val())==""){
+				$("#type").focus().parent().addClass("has-error").children(".help-block").html("费用情况必须选择");
+				return false;
+			}else {
+				$("#type").parent().removeClass("has-error").children(".help-block").html("");
+			}
+			if ($.trim($("#desc").val())==""){
+				$("#desc").focus().parent().addClass("has-error").children(".help-block").html("其它说明不能为空");
+				return false;
+			}else {
+				$("#desc").parent().removeClass("has-error").children(".help-block").html("");
+			}
+
+			$('#save_form').submit();
+		})
+	})
+</script>

@@ -143,7 +143,25 @@ class Deal extends MY_Controller {
     }
 
     public function end_deal($pid,$cid){
-        $this->assign('web_title','合约终止');
-        $this->display('project/project_deal_finish_end.html');
+        $data=$this->deal_model->end_deal($pid,$cid);
+        if ($data){
+            $this->assign('data', $data);
+            $this->assign('web_title','合约终止');
+            $this->display('project/project_deal_finish_end.html');
+        }else{
+            $this->show_message('信息丢失');
+            exit();
+        }
+    }
+    
+    public function save_end(){
+        $data=$this->deal_model->save_end();
+        if ($data==1){
+            $this->show_message('合同终止成功',site_url('project/deal/index'));
+            exit();
+        }else{
+            $this->show_message('合同终止失败');
+            exit();
+        }
     }
 }

@@ -92,5 +92,17 @@ class Deal extends MY_Controller {
             exit();
         }
     }
+
+    public function end_change($id){
+        
+    }
+
+    public function end_contract($id){
+
+    }
+
+    public function end_deal($id){
+
+    }
     
 }

@@ -30,7 +30,7 @@
         <a href="{{site_url url='project/notice'}}" class="list-group-item {{if $type==5}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="系统公告"><i class="material-icons">&#xe85a;</i><span>系统公告</span></a>
       </div>
     </div>
-    <div class="sider_group">
+    <div class="sider_group on">
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="系统功能"><i class="expand material-icons">&#xe5cf;</i><span>系统功能</span></a>
       <div class="sider_group_list list-group">
         <a href="{{site_url url='password'}}" class="list-group-item " data-toggle="tooltip" data-placement="right" title="密码修改"><i class="material-icons">&#xe88d;</i><span>密码修改</span></a>

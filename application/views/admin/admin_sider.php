@@ -17,9 +17,9 @@
     <div class="sider_group on">
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="日常管理"><i class="expand material-icons">&#xe5cf;</i><span>日常管理</span></a>
       <div class="sider_group_list list-group">
-        <a href="{{site_url url='admin/supplier'}}" class="list-group-item {{if $type==2}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="供应商"><i class="material-icons">&#xe558;</i><span>供应商</span><em class="badge">14</em></a>
-        <a href="{{site_url url='admin/project'}}" class="list-group-item {{if $type==3}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="项目"><i class="material-icons">&#xe53f;</i><span>项目</span><em class="badge">2</em></a>
-        <a href="{{site_url url='admin/payment'}}" class="list-group-item {{if $type==4}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="申请付款"><i class="material-icons">&#xe263;</i><span>申请付款</span><em class="badge">2</em></a>
+        <a href="{{site_url url='admin/supplier'}}" class="list-group-item {{if $type==2}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="供应商"><i class="material-icons">&#xe558;</i><span>供应商</span></a>
+        <a href="{{site_url url='admin/project'}}" class="list-group-item {{if $type==3}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="项目"><i class="material-icons">&#xe53f;</i><span>项目</span></a>
+        <a href="{{site_url url='admin/payment'}}" class="list-group-item {{if $type==4}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="申请付款"><i class="material-icons">&#xe263;</i><span>申请付款</span></a>
         <a href="{{site_url url='admin/schedule'}}" class="list-group-item {{if $type==5}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="进度数据"><i class="material-icons">&#xe85c;</i><span>进度数据</span></a>
       </div>
     </div>
@@ -39,7 +39,7 @@
       </div>
     </div>
     
-    <div class="sider_group">
+    <div class="sider_group on">
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="数据维护"><i class="expand material-icons">&#xe5cf;</i><span>数据维护</span></a>
       <div class="sider_group_list list-group">
         <a href="{{site_url url='admin/unit'}}" class="list-group-item {{if $type==9}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="计量单位"><i class="material-icons">&#xe3de;</i><span>计量单位</span></a>
@@ -47,7 +47,7 @@
       </div>
     </div>
     
-    <div class="sider_group">
+    <div class="sider_group on">
       <a class="sider_group_title" data-toggle="tooltip" data-placement="right" title="系统功能"><i class="expand material-icons">&#xe5cf;</i><span>系统功能</span></a>
       <div class="sider_group_list list-group">
         <a href="{{site_url url='admin/user'}}" class="list-group-item {{if $type==11}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="用户管理"><i class="material-icons">&#xe7fb;</i><span>用户管理</span></a>

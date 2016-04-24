@@ -54,7 +54,14 @@
       {{foreach from=$data['items'] item=foo}}
       <tr>
 
-          <td class=""><a href="{{site_url url='admin/project/show_pro'}}/{{$foo['id']}}">{{$foo['name']}}</a></td>
+          <td class="">
+              {{if $foo['status']==1}}
+              <span class="label label-default">审核中</span>
+              {{/if}}
+              {{if $foo['status']==2}}
+              <span class="label label-success">审核通过</span>
+              {{/if}}
+              <a href="{{site_url url='admin/project/show_pro'}}/{{$foo['id']}}">{{$foo['name']}}</a></td>
           <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
               <a href="{{site_url url='admin/project/reset_password'}}/{{$foo['userid']}}" class="btn btn-sm btn-danger" >密码重置</a>

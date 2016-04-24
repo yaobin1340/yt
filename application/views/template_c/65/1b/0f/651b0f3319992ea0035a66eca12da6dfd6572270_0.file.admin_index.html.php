@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-18 10:23:41
+<?php /* Smarty version 3.1.24, created on 2016-04-23 19:58:05
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_index.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:266575714452d3f64e2_57196312%%*/
+/*%%SmartyHeaderCode:22781571b634dc97895_86116009%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,24 +9,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '651b0f3319992ea0035a66eca12da6dfd6572270' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_index.html',
-      1 => 1460945880,
+      1 => 1461412680,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '266575714452d3f64e2_57196312',
+  'nocache_hash' => '22781571b634dc97895_86116009',
   'variables' => 
   array (
     'lastnews' => 0,
+    'data' => 0,
+    'row' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5714452d457f91_66721655',
+  'unifunc' => 'content_571b634dd4e593_58835068',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5714452d457f91_66721655')) {
-function content_5714452d457f91_66721655 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_571b634dd4e593_58835068')) {
+function content_571b634dd4e593_58835068 ($_smarty_tpl) {
+if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '266575714452d3f64e2_57196312';
+$_smarty_tpl->properties['nocache_hash'] = '22781571b634dc97895_86116009';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -43,9 +46,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <!-- 面包屑导航 -->
     <div id="breadcrumb">
       <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
+        <li class="active">首页</li>
       </ol>
     </div>
     <!-- 面包屑导航 end -->
@@ -65,7 +66,8 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
         <div class="dashboard_card card z_depth-1" style="border-color:#62caec;">
           <div class="icon"><i class="material-icons" style="color:#62caec;">&#xe263;</i></div>
           <div class="title">申请付款</div>
-          <div class="maincon"><span class="num">125</span>条</div>
+          <div class="maincon"><span class="num"><?php echo $_smarty_tpl->tpl_vars['data']->value['e_count'];?>
+</span>条</div>
           <div class="extra"><a href="./?c=admin_paymentrequest">查看</a></div>
         </div>
       </div>
@@ -75,8 +77,10 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
         <div class="dashboard_card card z_depth-1" style="border-color:#9f70f4;">
           <div class="icon"><i class="material-icons" style="color:#9f70f4;">&#xe558;</i></div>
           <div class="title">新增供应商</div>
-          <div class="maincon"><span class="num">15</span>家</div>
-          <div class="extra"><a href="./?c=admin_project">查看</a></div>
+          <div class="maincon"><span class="num"><?php echo $_smarty_tpl->tpl_vars['data']->value['s_count'];?>
+</span>家</div>
+          <div class="extra"><a href="<?php echo smarty_function_site_url(array('url'=>'admin/supplier'),$_smarty_tpl);?>
+">查看</a></div>
         </div>
       </div>
     <!-- 仪表盘演示1 end -->
@@ -85,8 +89,10 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
         <div class="dashboard_card card z_depth-1" style="border-color:#ff5752;">
           <div class="icon"><i class="material-icons" style="color:#ff5752;">&#xe90e;</i></div>
           <div class="title">合约变更</div>
-          <div class="maincon"><span class="num">125</span>件</div>
-          <div class="extra"><a href="./?c=admin_supplier">查看</a></div>
+          <div class="maincon"><span class="num"><?php echo $_smarty_tpl->tpl_vars['data']->value['c_count'];?>
+</span>件</div>
+          <div class="extra"><a href="<?php echo smarty_function_site_url(array('url'=>'admin/deal'),$_smarty_tpl);?>
+">查看</a></div>
         </div>
       </div>
     <!-- 仪表盘演示1 end -->
@@ -95,8 +101,10 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
         <div class="dashboard_card card z_depth-1" style="border-color:#f0ad4e;">
           <div class="icon"><i class="material-icons" style="color:#f0ad4e;">&#xe53f;</i></div>
           <div class="title">新增项目</div>
-          <div class="maincon"><span class="num">125</span>件</div>
-          <div class="extra"><a href="./?c=admin_project">查看</a></div>
+          <div class="maincon"><span class="num"><?php echo $_smarty_tpl->tpl_vars['data']->value['p_count'];?>
+</span>件</div>
+          <div class="extra"><a href="<?php echo smarty_function_site_url(array('url'=>'admin/project'),$_smarty_tpl);?>
+">查看</a></div>
         </div>
       </div>
     <!-- 仪表盘演示1 end -->
@@ -108,33 +116,37 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <div class="index_notice form_card card z_depth-1">
       <div class="form_card_title">
         <i class="material-icons">&#xe85a;</i> <span>供应商搜索</span>
-        <a href="./?c=supplier_notice" class="btn btn-primary pull-right">更多...</a>
+        <a href="<?php echo smarty_function_site_url(array('url'=>'admin/supplier'),$_smarty_tpl);?>
+" class="btn btn-primary pull-right">更多...</a>
       </div>
       <div class="form_card_box">
     
 
       
 		<ul>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
-      <li>
-        <a href="###" class="">
-            裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始
-        </a>		
-      </li>
+          <?php
+$_from = $_smarty_tpl->tpl_vars['data']->value['s_list'];
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['row'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['row']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
+$_smarty_tpl->tpl_vars['row']->_loop = true;
+$foreach_row_Sav = $_smarty_tpl->tpl_vars['row'];
+?>
+          <li>
+            <a href="<?php echo smarty_function_site_url(array('url'=>'admin/supplier/show_sup'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
+" class="">
+                <?php echo $_smarty_tpl->tpl_vars['row']->value['name'];?>
+
+            </a>
+          </li>
+          <?php
+$_smarty_tpl->tpl_vars['row'] = $foreach_row_Sav;
+}
+?>
 		</ul>
       
       </div>

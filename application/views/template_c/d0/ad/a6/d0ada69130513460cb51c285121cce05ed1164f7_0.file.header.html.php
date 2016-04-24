@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-19 19:30:18
+<?php /* Smarty version 3.1.24, created on 2016-04-22 04:48:45
          compiled from "D:/amp/Apache/htdocs/yt/application/views/common/header.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:28532571616cacc8517_03887960%%*/
+/*%%SmartyHeaderCode:103175719ad2d9fb052_72616454%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,21 +9,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd0ada69130513460cb51c285121cce05ed1164f7' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/common/header.html',
-      1 => 1461065403,
+      1 => 1461297907,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '28532571616cacc8517_03887960',
+  'nocache_hash' => '103175719ad2d9fb052_72616454',
+  'variables' => 
+  array (
+    'web_title' => 0,
+    'head_name' => 0,
+  ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_571616cb1e3529_55017139',
+  'unifunc' => 'content_5719ad2daa6e59_43042723',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_571616cb1e3529_55017139')) {
-function content_571616cb1e3529_55017139 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5719ad2daa6e59_43042723')) {
+function content_5719ad2daa6e59_43042723 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '28532571616cacc8517_03887960';
+$_smarty_tpl->properties['nocache_hash'] = '103175719ad2d9fb052_72616454';
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,7 +45,8 @@ $_smarty_tpl->properties['nocache_hash'] = '28532571616cacc8517_03887960';
 <meta name="keywords" content="没有关键词" />
 <meta name="description" content="不以学习为目的的分享就是耍流氓" />
 
-<title>登陆</title>
+<title><?php echo $_smarty_tpl->tpl_vars['web_title']->value;?>
+</title>
 
 
 <link href="/res/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -68,33 +74,20 @@ $_smarty_tpl->properties['nocache_hash'] = '28532571616cacc8517_03887960';
 <![endif]-->
 </head>
 
-
-<?php echo '<?php ';?>if( $c=="login" || $c=="reg" || $c=="reg_supplier" || $c=="reg_project" || $c=="resetpassword" ) { <?php echo '?>';?>
-<body class="fixed_header login" style="background-image:url(/tmp_res/img/login_bg.jpg);background-color: #01375d;" >
-<?php echo '<?php ';?>} else { <?php echo '?>';?>
-<body class="fixed_header"  >
-<?php echo '<?php ';?>} <?php echo '?>';?>
-
 <div id="loader"></div>
 
 <!-- 头部 -->
 <header id="header" class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="./" style="background-image: url(./tmp_res/img/header_logo.png);" ><i class="material-icons"></i></a>
+      <a class="navbar-brand" href="./" style="background-image: url(/tmp_res/img/header_logo.png);" ><i class="material-icons"></i></a>
     </div>
 
     <ul id="header_userarea" class="pull-right">
       <li id="scroll_to_top"><a class="header_btn" data-toggle="tooltip" data-placement="bottom" title="返回顶部"><i class="material-icons">&#xe255;</i></a></li>
-        <?php echo '<?php ';?>if( !$islogin ) { <?php echo '?>';?>
-
-      <li><a href="./?c=login" class="header_btn">登录</a></li>
-      <li id="header_reg"><a href="<?php echo smarty_function_site_url(array('url'=>'reg/index'),$_smarty_tpl);?>
-" class="header_btn">注册</a></li>
-        <?php echo '<?php ';?>} else { <?php echo '?>';?>
-      
       <li id="header_user">
-        <a class="header_btn" data-toggle="dropdown"><img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="帅气的梦田君"> Admin</a>
+        <a class="header_btn" data-toggle="dropdown"><img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="帅气的梦田君"> <?php echo $_smarty_tpl->tpl_vars['head_name']->value;?>
+</a>
         <ul class="dropdown-menu">
           <!--<li><a href="#"><i class="material-icons">&#xe85d;</i>详细资料</a></li>
           <li role="separator" class="divider"></li>-->
@@ -102,9 +95,7 @@ $_smarty_tpl->properties['nocache_hash'] = '28532571616cacc8517_03887960';
 "><i class="material-icons">&#xe879;</i>退出</a></li>
         </ul>
       </li>
-        <?php echo '<?php ';?>} <?php echo '?>';?>
 
-      
       <!--<li class="divider"></li>-->
       <li>
         <a href="#" class="header_btn" data-toggle="dropdown"><i class="material-icons">&#xe8b8;</i></a>

@@ -49,7 +49,14 @@
       <tbody>
         {{foreach from=$data['items'] item=foo}}
         <tr>
-            <td class="">{{$foo['name']}}</td>
+            <td class="">
+                {{if $foo['status']==1}}
+                <span class="label label-default">审核中</span>
+                {{/if}}
+                {{if $foo['status']==2}}
+                <span class="label label-success">审核通过</span>
+                {{/if}}
+                {{$foo['name']}}</td>
             <td class="small">{{$foo['cdate']}}</td>
             <td class="bloc">
                 <a href="{{site_url url='project/supplier/show_supplier'}}/{{$foo['id']}}" class="btn btn-sm btn-primary" >查看</a>

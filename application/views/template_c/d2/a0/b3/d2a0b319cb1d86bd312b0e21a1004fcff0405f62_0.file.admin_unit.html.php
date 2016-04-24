@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-18 10:33:46
+<?php /* Smarty version 3.1.24, created on 2016-04-23 20:04:26
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:37975714478aeca0b8_06511419%%*/
+/*%%SmartyHeaderCode:10933571b64ca6f3bc7_12736667%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2a0b319cb1d86bd312b0e21a1004fcff0405f62' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_unit.html',
-      1 => 1460945881,
+      1 => 1461412980,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '37975714478aeca0b8_06511419',
+  'nocache_hash' => '10933571b64ca6f3bc7_12736667',
   'variables' => 
   array (
     'lastnews' => 0,
@@ -23,14 +23,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5714478b05ac03_77372603',
+  'unifunc' => 'content_571b64ca7aa8c4_08523787',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5714478b05ac03_77372603')) {
-function content_5714478b05ac03_77372603 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_571b64ca7aa8c4_08523787')) {
+function content_571b64ca7aa8c4_08523787 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '37975714478aeca0b8_06511419';
+$_smarty_tpl->properties['nocache_hash'] = '10933571b64ca6f3bc7_12736667';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -48,7 +48,6 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <div id="breadcrumb">
       <ol class="breadcrumb">
         <li class="active">首页</li>
-        <li class="active">数据维护</li>
         <li class="active">计量单位</li>
       </ol>
     </div>

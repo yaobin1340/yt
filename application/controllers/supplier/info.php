@@ -21,48 +21,14 @@ class Info extends CI_Controller {
 
     public function index(){
         if ($this->session->userdata('type')==2){
+            $data=array();
             $name="";
-            $type=0;
-            $total="";
-            $allow="";
-            $num="";
-            $card="";
-            $province_code="";
-            $city_code="";
-            $address="";
-            $person="";
-            $phone="";
-            $desc="";
-            $pic="";
             $res=$this->info_model->getinfo();
             if ($res){
-                $name=$res['name'];
-                $type=$res['type'];
-                $total=$res['total'];
-                $allow=$res['allow'];
-                $num=$res['num'];
-                $card=$res['card'];
-                $province_code=$res['province_code'];
-                $city_code=$res['city_code'];
-                $address=$res['address'];
-                $person=$res['person'];
-                $phone=$res['phone'];
-                $desc=$res['desc'];
-                $pic=$res['pic'];
+                 $data=$res;
+                 $name=$res['name'];
             }
-            $this->cismarty->assign('sup_name',$name);
-            $this->cismarty->assign('sup_type',$type);
-            $this->cismarty->assign('sup_total',$total);
-            $this->cismarty->assign('sup_allow',$allow);
-            $this->cismarty->assign('sup_num',$num);
-            $this->cismarty->assign('sup_card',$card);
-            $this->cismarty->assign('sup_province',$province_code);
-            $this->cismarty->assign('sup_city',$city_code);
-            $this->cismarty->assign('sup_address',$address);
-            $this->cismarty->assign('sup_person',$person);
-            $this->cismarty->assign('sup_phone',$phone);
-            $this->cismarty->assign('sup_desc',$desc);
-            $this->cismarty->assign('pic',$pic);
+            $this->cismarty->assign('data',$data);
             $this->cismarty->assign('web_title','基本信息');
             $this->cismarty->assign('head_name',$name);
             $path="supplier/supplier_info.html";

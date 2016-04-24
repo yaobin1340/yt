@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-19 20:57:14
+<?php /* Smarty version 3.1.24, created on 2016-04-22 11:19:26
          compiled from "D:/amp/Apache/htdocs/yt/application/views/login/login.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:2801457162b2a274f57_75158357%%*/
+/*%%SmartyHeaderCode:22128571a08be99bd84_78193940%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,26 +9,95 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ce2983a8b9bc6f01acf42c105a4c4bf0719698a3' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/login/login.html',
-      1 => 1461070630,
+      1 => 1461323342,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2801457162b2a274f57_75158357',
+  'nocache_hash' => '22128571a08be99bd84_78193940',
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_57162b2a2f1f73_72903303',
+  'unifunc' => 'content_571a08bebc0486_53494084',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57162b2a2f1f73_72903303')) {
-function content_57162b2a2f1f73_72903303 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_571a08bebc0486_53494084')) {
+function content_571a08bebc0486_53494084 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '2801457162b2a274f57_75158357';
-echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+$_smarty_tpl->properties['nocache_hash'] = '22128571a08be99bd84_78193940';
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="zh-CN" />
+  <!--<meta content="all" name="robots" />
+  <meta content="all" name="googlebot" />-->
+  <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="renderer" content="webkit">
+  <meta name="author" content="Dline" />
+  <meta name="Copyright" content="不以学习为目的的分享就是耍流氓" />
+  <meta name="keywords" content="没有关键词" />
+  <meta name="description" content="不以学习为目的的分享就是耍流氓" />
 
+  <title>登陆</title>
+
+
+  <link href="/res/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/res/css/material-icons.css" rel="stylesheet">
+  <link href="/res/css/base.css" rel="stylesheet">
+  <link href="/res/css/style.css" rel="stylesheet">
+
+  <link href="/res/css/ys.css" rel="stylesheet">
+
+  <?php echo '<script'; ?>
+ src="/res/js/jquery.min.js?v=1.12.1"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ async="async" src="/res/bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+
+
+  <!--[if lt IE 9]>
+  <?php echo '<script'; ?>
+ src="/res/js/html5shiv.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="/res/js/respond.min.js"><?php echo '</script'; ?>
+>
+  <![endif]-->
+</head>
+
+<div id="loader"></div>
+
+<!-- 头部 -->
+<header id="header" class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="./" style="background-image: url(/tmp_res/img/header_logo.png);" ><i class="material-icons"></i></a>
+    </div>
+
+    <ul id="header_userarea" class="pull-right">
+      <li id="scroll_to_top"><a class="header_btn" data-toggle="tooltip" data-placement="bottom" title="返回顶部"><i class="material-icons">&#xe255;</i></a></li>
+
+
+
+      <!--<li class="divider"></li>-->
+      <li>
+        <a href="#" class="header_btn" data-toggle="dropdown"><i class="material-icons">&#xe8b8;</i></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a id="header_btn_fullscreen"><i class="material-icons">&#xe5d0;</i>切换全屏</a></li>
+          <li><a id="header_btn_fixed"><i class="material-icons">&#xe250;</i>锁定顶栏</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="header_btn"><i class="material-icons">&#xe887;</i></a></li>
+    </ul>
+
+  </div>
+</header>
+<!-- 头部 end -->
 <div id="wrap" class="container-fluid">
-  
+
 
 <!-- 登陆框1212 -->
 <div class="login_card card z_depth-1 container login_form">
@@ -38,7 +107,8 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <form id="login" class="form-horizontal" action="<?php echo smarty_function_site_url(array('url'=>'login/check_login'),$_smarty_tpl);?>
 " method="post" novalidate="" autocomplete="off">
         <fieldset>
-          <legend>欢迎登录<div class="pull-right">没有账号？<a href="./?c=reg" id="gotoreg" class="btn btn-flat btn-default">立即注册</a></div></legend>
+          <legend>欢迎登录<div class="pull-right">没有账号？<a href="<?php echo smarty_function_site_url(array('url'=>'reg/index'),$_smarty_tpl);?>
+" id="gotoreg" class="btn btn-flat btn-default">立即注册</a></div></legend>
 
           <label class="form-group">
             <i class="material-icons"></i>
@@ -59,7 +129,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
           </label>
           <div class="form-group">
             <label class="check"><input id="user_remember" name="user_remember" type="checkbox"> 记住我</label>
-            <a href="./?c=resetpassword" class="btn btn-flat btn-default pull-right">忘记密码</a>
+            <!--<a href="./?c=resetpassword" class="btn btn-flat btn-default pull-right">忘记密码</a>-->
           </div>
 
           <div class="form-group">
@@ -99,9 +169,7 @@ $("#login").submit( function() {
   if ( !user_name ) {
     $("#user_name").focus().parent().addClass("has-error").children(".help-block").html("不能为空，请输入邮箱地址");
     return false;
-  } else if (!$("#user_name").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
-    $("#user_name").focus().parent().addClass("has-error").children(".help-block").html("请输入正确的邮箱地址");
-    return false;
+
   } else {
     $("#user_name").parent().removeClass("has-error").children(".help-block").html("");
   }

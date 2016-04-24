@@ -20,43 +20,17 @@ class Info extends CI_Controller {
 
     public function index(){
         if ($this->session->userdata('type')==3){
-
-            $name="";
-            $total="";
-            $address="";
-            $manager="";
-            $leader="";
-            $leader_phone="";
-            $contacter="";
-            $contacter_phone="";
-            $province_code="";
-            $city_code="";
+            $data=array();
             $detail=1;
+            $name="";
             $profile=$this->info_model->getpro();
            
             if ($profile!=1){
-                $name = $profile['row']['name'];
-                $total = $profile['row']['total'];
-                $address = $profile['row']['address'];
-                $manager = $profile['row']['manager'];
-                $leader = $profile['row']['leader'];
-                $leader_phone = $profile['row']['leader_phone'];
-                $contacter = $profile['row']['contacter'];
-                $contacter_phone = $profile['row']['contacter_phone'];
-                $province_code = $profile['row']['province_code'];
-                $city_code = $profile['row']['city_code'];
+                $data=$profile['row'];
+                $name=$profile['row']['name'];
                 $detail=$profile['detail'];
             }
-            $this->cismarty->assign('pro_name',$name);
-            $this->cismarty->assign('pro_total',$total);
-            $this->cismarty->assign('pro_address',$address);
-            $this->cismarty->assign('pro_manager',$manager);
-            $this->cismarty->assign('pro_leader',$leader);
-            $this->cismarty->assign('pro_leader_phone',$leader_phone);
-            $this->cismarty->assign('pro_contacter',$contacter);
-            $this->cismarty->assign('pro_contacter_phone',$contacter_phone);
-            $this->cismarty->assign('pro_province',$province_code);
-            $this->cismarty->assign('pro_city',$city_code);
+            $this->cismarty->assign('data',$data);
             $this->cismarty->assign('detail',$detail);
             $this->cismarty->assign('web_title','基本信息');
             $this->cismarty->assign('head_name',$name);

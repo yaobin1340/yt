@@ -13,7 +13,12 @@ class Password extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('password_model');
+        $this->load->model('login_model');
+        $name = $this->login_model->get_profile_name($this->session->userdata('id'),$this->session->userdata('type'));
+        $name = $name?$name:'管理员';
+        $this->cismarty->assign('head_name',$name);
     }
+
     public function index(){
         $this->cismarty->assign('web_title','修改密码');
         $this->cismarty->assign('username',$this->session->userdata('username'));

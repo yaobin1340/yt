@@ -10,12 +10,11 @@ if (! defined('BASEPATH'))
 class Password_model extends MY_Model
 {
 
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
     }
-    function reset_password()
-    {
+
+    function reset_password(){
         $pwd=$this->input->post('pwd_now');
         $newpwd=$this->input->post('pwd');
         $username=$this->session->userdata('username');
@@ -33,6 +32,5 @@ class Password_model extends MY_Model
         }else{
             return 2;
         }
-
     }
 }

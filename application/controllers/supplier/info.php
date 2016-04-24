@@ -12,6 +12,7 @@ class Info extends CI_Controller {
     function __construct(){
         parent::__construct();
         if (!$this->session->userdata('username')){
+            var_dump($this->session->all_userdata());
             redirect('login');
         }
         $this->cismarty->assign('type',0);
@@ -67,7 +68,6 @@ class Info extends CI_Controller {
             $path="supplier/supplier_info.html";
             $this->cismarty->display($path);
         }else{
-            $this->session->sess_destroy();
             redirect('login');
         }
     }

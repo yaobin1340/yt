@@ -22,22 +22,21 @@ class Reg extends CI_Controller {
 
     public function save_user(){
         $res=$this->reg_model->save_user();
-        if ($res==3) {
+        if ($res==-2) {
             $this->show_message('账户已被使用');
             exit();
-        }elseif($res==1){
-//            $this->session->sess_destroy();
+        }elseif($res==-1){
+            $this->show_message('注册失败');
+            exit();
+        } else{
             $this->session->set_userdata('username',$this->input->post('user_name'));
             $this->session->set_userdata('status',1);
             $this->session->set_userdata('type',$this->input->post('reg_type'));
+            $this->session->set_userdata('id',$res);
             if($this->input->post('reg_type') == 2)
                 $this->show_message('注册成功',site_url('login/supplier_reg'));
             else
                 $this->show_message('注册成功',site_url('login/project_reg'));
-
-            exit();
-        } else{
-            $this->show_message('注册失败');
             exit();
         }
     }

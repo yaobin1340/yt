@@ -10,22 +10,21 @@ if (! defined('BASEPATH'))
 class Reg_model extends MY_Model
 {
 
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
     }
-    function save_user()
-    {
+
+    function save_user(){
        if(!$this->input->post('user_name') || !$this->input->post('pwd')){
-           return 2;
+           return -1;
        }
         if(!in_array($this->input->post('reg_type'),array(2,3))){
-            return 2;
+            return -1;
         }
 
         $row=$this->db->select()->from('users')->where('username',$this->input->post('user_name'))->get()->row_array();
         if ($row){
-            return 3;
+            return -2;
         }
 
         $data=array(
@@ -38,9 +37,9 @@ class Reg_model extends MY_Model
         $res=$this->db->insert('users',$data);
 
         if ($res){
-            return 1;
+            return $this->db->insert_id();
         }else{
-            return 2;
+            return -1;
         }
 
     }

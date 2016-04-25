@@ -48,7 +48,6 @@
         <tr>
 
           <th class="">所属项目</th>
-            <th class="">供应商</th>
             <th class="">创建时间</th>
           <th class="">款项进度</th>
         </tr>
@@ -57,27 +56,11 @@
       {{foreach from=$data['items'] item=foo}}
       <tr>
 
-          <td class=""><a href="{{site_url url='admin/schedule/show_ex'}}/{{$foo['ex_id']}}">{{$foo['pro_name']}}</a></td>
-          <td class="">{{$foo['sup_name']}}</td>
-          <td class="small">{{$foo['ex_cdate']}}</td>
+          <td class="">{{$foo['name']}}</td>
+          <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
-              {{if $foo['ex_status'] == 1}}
-              <span class="btn btn-sm btn-danger">
-                  未申请付款
-              </span>
-              {{/if}}
-
-              {{if $foo['ex_status'] == 2}}
-               <span class="btn btn-sm btn-default">
-                  已申请付款
-              </span>
-              {{/if}}
-
-              {{if $foo['ex_status'] == 3}}
-                 <span class="btn btn-sm btn-primary">
-                  已付款
-              </span>
-              {{/if}}
+              <a href="###" class="btn btn-sm btn-primary"  >项目进度</a>
+              <a href="###" class="btn btn-sm btn-info"  >款项进度</a>
           </td>
       </tr>
       {{/foreach}}

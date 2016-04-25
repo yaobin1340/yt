@@ -110,8 +110,11 @@ class Deal extends MY_Controller {
 
     public function save_execute(){
         $data=$this->deal_model->save_execute();
-        if ($data){
+        if ($data == 1){
             $this->show_message('提交成功');
+            exit();
+        }elseif ($data == -2){
+            $this->show_message('存在未申请的付款');
             exit();
         }else{
             $this->show_message('提交失败');
@@ -156,6 +159,29 @@ class Deal extends MY_Controller {
     
     public function save_end(){
         $data=$this->deal_model->save_end();
+        if ($data==1){
+            $this->show_message('合同终止申请成功',site_url('project/deal/index'));
+            exit();
+        }else{
+            $this->show_message('合同终止申请失败');
+            exit();
+        }
+    }
+
+    public function end_all_deal($id){
+        $data=$this->deal_model->end_all_deal($id);
+        if ($data){
+            $this->assign('data', $data);
+            $this->assign('web_title','合约终止');
+            $this->display('project/project_deal_all_end.html');
+        }else{
+            $this->show_message('信息丢失');
+            exit();
+        }
+    }
+
+    public function save_all_end(){
+        $data=$this->deal_model->save_all_end();
         if ($data==1){
             $this->show_message('合同终止申请成功',site_url('project/deal/index'));
             exit();

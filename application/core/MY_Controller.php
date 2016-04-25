@@ -20,8 +20,8 @@ class MY_Controller extends CI_Controller
 		ini_set('date.timezone','Asia/Shanghai');
 		$this->cismarty->assign('base_url',base_url());//url路径
 		$news=$this->controller_use->get_Latest_News();
-		$this->cismarty->assign('lastnews',$news !=1 ? $news['content'] : '无最新公告');//url路径
-
+		$this->cismarty->assign('lastnews',$news !=1 ? $news['title'] : '无最新公告');
+		$this->cismarty->assign('lastnewsid',$news !=1 ? $news['id'] : -1);
 		if (!$this->session->userdata('username')){
 			redirect('login');
 		}

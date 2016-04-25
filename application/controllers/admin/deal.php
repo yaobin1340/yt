@@ -141,5 +141,21 @@ class Deal extends MY_Controller {
             exit();
         }
     }
+
+    public function show_end_all_details($pid){
+        $data=$this->deal_model->show_end_all_details($pid);
+        if ($data==-1){
+            $this->show_message('未找到终止信息');
+            exit();
+        }elseif (!$data){
+            $this->show_message('信息丢失');
+            exit();
+        }else{
+            $this->assign('data', $data);
+            $this->assign('web_title','变更终止信息');
+            $this->display('admin/admin_deal_all_end.html');
+            exit();
+        }
+    }
     
 }

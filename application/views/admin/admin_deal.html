@@ -59,7 +59,9 @@
                   <th class=""></th>
                   <th class=""></th>
                   <th class="">
-
+                      {{if $foo['e_id']}}
+                      <a href="{{site_url url='admin/deal/show_end_all_details'}}/{{$foo['id']}}" class="btn btn-sm btn-info">变更终止信息</a>
+                      {{/if}}
                       <a href="{{site_url url='admin/deal/end_deal'}}/{{$foo['id']}}" class="btn btn-sm btn-danger"  >合约终止</a></th>
               </tr>
               </thead>

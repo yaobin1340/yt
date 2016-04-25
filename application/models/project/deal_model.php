@@ -287,21 +287,29 @@ class Deal_model extends MY_Model
     }
 
     public function save_execute(){
-      if (!$this->input->post('pid')){
-          return false;
-      }
+        if (!$this->input->post('pid')){
+              return -1;
+        }
+        $check=$this->db->select()->from('execute')->where('pid',$this->input->post('pid'))->where('status',1)->get()->result_array();
+        if ($check){
+            return -2;
+        }
         $data=array(
-            'pid'=>$this->input->post('pid'),
-            'cid'=>$this->input->post('cid'),
-            'mid'=>$this->input->post('material'),
-            'date'=>$this->input->post('date'),
-            'num'=>$this->input->post('num'),
-            'price'=>$this->input->post('price'),
-            'desc'=>$this->input->post('desc'),
-            'cdate'=>date("y-m-d H:i:s",time())
+                'pid'=>$this->input->post('pid'),
+                'cid'=>$this->input->post('cid'),
+                'mid'=>$this->input->post('material'),
+                'date'=>$this->input->post('date'),
+                'num'=>$this->input->post('num'),
+                'price'=>$this->input->post('price'),
+                'desc'=>$this->input->post('desc'),
+                'cdate'=>date("y-m-d H:i:s",time())
         );
         $res=$this->db->insert('execute',$data);
-        return $res;
+        if($res){
+            return 1;
+        }else{
+            return -1;
+        }
     }
 
     public function get_ex($id){
@@ -387,6 +395,34 @@ class Deal_model extends MY_Model
             $this->db->where('id',$this->input->post('cid'))->update('change',array('status'=>3));
         }
 
+        $this->db->trans_complete();//------结束事务
+        if ($this->db->trans_status() === FALSE) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
+    public function end_all_deal($id){
+        $row=$this->db->select()->from('contract_main')->where('id',$id)->get()->row_array();
+        return $row;
+    }
+
+    public function save_all_end(){
+        if(!$this->input->post('id') || !$this->input->post('type')){
+            return -1;
+        }
+        $this->db->trans_start();
+        $data=array(
+            'pid'=>$this->input->post('id'),
+            'type'=>$this->input->post('type'),
+            'desc'=>$this->input->post('desc'),
+            'cdate'=>date("y-m-d H:i:s",time())
+        );
+        $this->db->insert('end_all',$data);
+        $this->db->where('id',$this->input->post('id'))->update('contract_main',array('status'=>3));
+        $this->db->where('pid',$this->input->post('id'))->update('change',array('status'=>3));
+      
         $this->db->trans_complete();//------结束事务
         if ($this->db->trans_status() === FALSE) {
             return -1;

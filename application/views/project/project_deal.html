@@ -19,7 +19,13 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>{{$lastnews}}</span>
+      <strong>公告</strong> <span>
+      {{if $lastnewsid!=-1}}
+      <a href="{{site_url url='project/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
+      {{else}}
+      {{$lastnews}}
+      {{/if}}
+    </span>
     </div>
     <!-- 公告 end -->
 <!---->
@@ -95,7 +101,9 @@
           <td class="bloc">
             {{if $foo['status'] == 2}}
 						<a href="{{site_url url='project/deal/show_execute'}}/{{$foo['id']}}/0" class="btn btn-sm btn-info">执行</a>
+
                         <a href="{{site_url url='project/deal/change'}}/{{$foo['id']}}" class="btn btn-sm btn-primary">变更</a>
+
             {{/if}}
             {{if $foo['status'] < 3}}
             <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/0" class="btn btn-sm btn-danger"  >终止</a>

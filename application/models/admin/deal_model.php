@@ -30,8 +30,9 @@ class Deal_model extends MY_Model
         //搜索条件
         $data['title'] = $this->input->post('title')?$this->input->post('title'):null;
         //获取详细列
-        $this->db->select("a.*,b.name name")->from('contract_main a');
+        $this->db->select("a.*,b.name name,c.id e_id")->from('contract_main a');
         $this->db->join('supplier_profile b','a.sid=b.id','left');
+        $this->db->join('end_all c','a.id = c.pid','left');
 
         if($this->input->post('title')){
             $this->db->like('title',$this->input->post('title'));
@@ -175,5 +176,17 @@ class Deal_model extends MY_Model
         $data['desc']=$res['desc'];
         return $data;
 
+    }
+
+    public function show_end_all_details($pid){
+        $row = $this->db->select()->from('contract_main')->get()->row_array();
+        $res=$this->db->select()->from('end_all')->where('pid',$pid)->get()->row_array();
+        if (!$res){
+            return -1;
+        }
+        $data['title']=$row['title'];
+        $data['type']=$res['type'];
+        $data['desc']=$res['desc'];
+        return $data;
     }
 }

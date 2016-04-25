@@ -19,7 +19,13 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>{{$lastnews}}</span>
+      <strong>公告</strong> <span>
+          {{if $lastnewsid!=-1}}
+      <a href="{{site_url url='admin/push/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
+      {{else}}
+      {{$lastnews}}
+      {{/if}}
+    </span>
     </div>
     <!-- 公告 end -->
 
@@ -37,7 +43,9 @@
 							<input type="text" required="required" class="form-control" name="name" id="name" >
 						</div>
                         <div class="col-sm-2" >
-                            <select name="sel" class="form-control">
+                            <select name="sel" id="sel" class="form-control">
+                                <option value="">-请选择-</option>
+                                <option value="1">管理员</option>
                                 <option value="2">供应商</option>
                                 <option value="3">项目方</option>
 
@@ -68,6 +76,12 @@
             return false;
         } else {
             $("#name").parent().removeClass("has-error").children(".help-block").html("");
+        }
+        if($("#sel").val()==''){
+            $("#sel").focus().parent().addClass("has-error").children(".help-block").html("");
+            return false;
+        } else {
+            $("#sel").parent().removeClass("has-error").children(".help-block").html("");
         }
     })
 </script>

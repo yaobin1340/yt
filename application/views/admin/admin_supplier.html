@@ -19,7 +19,13 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>{{$lastnews}}</span>
+      <strong>公告</strong> <span>
+          {{if $lastnewsid!=-1}}
+      <a href="{{site_url url='admin/push/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
+      {{else}}
+      {{$lastnews}}
+      {{/if}}
+    </span>
     </div>
     <!-- 公告 end -->
 
@@ -46,6 +52,7 @@
         <tr>
 
           <th class="">名称</th>
+            <th class="">注册邮箱</th>
           <th class="">创建时间</th>
           <th class="">操作</th>
         </tr>
@@ -63,6 +70,7 @@
               {{/if}}
               <a href="{{site_url url='admin/supplier/show_sup'}}/{{$foo['id']}}">{{$foo['name']}}</a>
           </td>
+          <td class="small">{{$foo['username']}}</td>
           <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
               <a href="{{site_url url='admin/supplier/reset_password'}}/{{$foo['userid']}}" class="btn btn-sm btn-danger" >密码重置</a>

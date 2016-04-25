@@ -31,6 +31,7 @@ class Info_model extends MY_Model
         $total=$this->input->post('sup_total');
         $allow=$this->input->post('sup_allow');
         $num=$this->input->post('sup_num');
+        $bank=$this->input->post('sup_bank');
         $card=$this->input->post('sup_card');
         $province_code=$this->input->post('sup_province');
         $city_code=$this->input->post('sup_city');
@@ -40,7 +41,7 @@ class Info_model extends MY_Model
         $phone=$this->input->post('sup_phone');
         $desc=$this->input->post('sup_desc');
         $pic=$this->input->post('pic');
-        if (!$name || $type==0 || !$total || !$allow || !$num || !$card || !$address || !$person || !$phone || !$desc || !$pic || !$area_code || !$province_code || !$city_code){
+        if (!$name || !$bank || $type==0 || !$total || !$allow || !$num || !$card || !$address || !$person || !$phone || !$desc || !$pic || !$area_code || !$province_code || !$city_code){
             return 2;
         }
         $data=array(
@@ -50,6 +51,7 @@ class Info_model extends MY_Model
             'total'=>$total,
             'allow'=>$allow,
             'num'=>$num,
+            'bank'=>$bank,
             'card'=>$card,
             'province_code'=>$province_code,
             'city_code'=>$city_code,

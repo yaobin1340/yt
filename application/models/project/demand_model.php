@@ -75,9 +75,7 @@ class Demand_model extends MY_Model
     }
 
     public function save_demand(){
-        if($this->session->userdata('status')!=2){
-            return 5;
-        }
+
         
         $masterid=$this->session->userdata('id');
         if (!$masterid){

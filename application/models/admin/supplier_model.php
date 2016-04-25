@@ -34,7 +34,7 @@ class Supplier_model extends MY_Model
         $data['title'] = $this->input->post('title')?$this->input->post('title'):null;
         //获取详细列
 
-        $this->db->select('b.id id,a.id userid,b.name name,a.status,a.cdate',false)
+        $this->db->select('b.id id,a.id userid,a.username,b.name name,a.status,a.cdate',false)
             ->from('users a')
             ->join('supplier_profile b','a.id = b.masterid')
             ->where('a.status !=',-1);

@@ -19,7 +19,13 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>{{$lastnews}}</span>
+      <strong>公告</strong> <span>
+          {{if $lastnewsid!=-1}}
+      <a href="{{site_url url='admin/push/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
+      {{else}}
+      {{$lastnews}}
+      {{/if}}
+    </span>
     </div>
     <!-- 公告 end -->
 
@@ -67,10 +73,10 @@
 
             <td class="bloc">
                 <a href="{{site_url url='admin/user/reset_password'}}/{{$foo['id']}}" class="btn btn-sm btn-danger">密码重置</a>
-                {{if $foo['type']!='管理员'}}
+
                 {{if $foo['STATUS']==-1}} <button type="submit" name="open" value="{{$foo['id']}}" class="btn btn-sm btn-primary">启用</button>
                 {{else}} <button type="submit" name="close" value="{{$foo['id']}}" class="btn btn-sm btn-info">停用</button>{{/if}}
-                {{/if}}
+
             </td>
 
         </tr>

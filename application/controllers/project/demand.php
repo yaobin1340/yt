@@ -77,7 +77,7 @@ class Demand extends MY_Controller
             $this->show_message('信息不完整');
             exit();
         } elseif ($res==1){
-            $this->show_message('单位存储成功',site_url('project/demand/index'));
+            $this->show_message('需求存储成功',site_url('project/demand/index'));
             exit();
         }
         else{

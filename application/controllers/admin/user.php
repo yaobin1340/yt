@@ -23,15 +23,17 @@ class User extends MY_Controller {
 
     function save_user(){
         $res = $this->user_model->save_user();
-        if($res == 1){
-            $this->show_message('手机已注册！');
+        if($res == -1){
+            $this->show_message('只有admin管理员可以新增用户');
             exit();
         }
         elseif ($res==3){
             $this->show_message('账号注册成功',site_url('admin/user/index'));
             exit();
-        }
-        else{
+        }elseif ($res==1){
+            $this->show_message('手机已注册！');
+            exit();
+        }else{
             $this->show_message('账号注册失败');
             exit();
         }
@@ -51,6 +53,7 @@ class User extends MY_Controller {
 
     public function add_user()
     {
+
         //$this->assign('data',null);
         $this->assign('web_title','新增用户');
         $this->cismarty->display('admin/admin_user_info.html');
@@ -65,7 +68,7 @@ class User extends MY_Controller {
             $this->show_message('操作成功');
             exit();
         }elseif($res==2){
-            $this->show_message('不能操作管理员账号');
+            $this->show_message('只有admin管理员可以此操作');
             exit();
         }else{
             $this->show_message('操作失败');
@@ -75,8 +78,11 @@ class User extends MY_Controller {
 
     public function reset_password($id){
         $res = $this->user_model->reset_password($id);
-        if($res){
-            $this->show_message('密码重置成功');
+        if($res == -1){
+            $this->show_message('只有admin管理员可以重置密码');
+            exit();
+        } elseif ($res==1){
+            $this->show_message('密码重置成功！');
             exit();
         }else{
             $this->show_message('密码重置失败');

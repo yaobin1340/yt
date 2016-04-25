@@ -15,6 +15,9 @@ class User_model extends MY_Model
     }
 
     function change(){
+        if ($this->session->userdata('username') != 'admin'){
+            return 2;
+        }
         $id='';
         if ($this->input->post('open')){
             $id=$this->input->post('open');
@@ -27,9 +30,9 @@ class User_model extends MY_Model
             return 1; //未找到账号
         }
 
-        if ($data->type==1){
+      /*  if ($data->type==1){
             return 2; //管理员账号不能进行修改
-        }
+        }*/
         $status=1;
         if ($data->status==1){
             $status=-1;
@@ -50,13 +53,19 @@ class User_model extends MY_Model
     }
 
     function save_user(){
-        
+        if ($this->session->userdata('username') != 'admin'){
+            return -1;
+        }
         $data = array(
             'username'=>$this->input->post('name'),
             'type'=>$this->input->post('sel'),
             'password'=>sha1('888888'),
             'cdate'=>date("y-m-d H:i:s",time())
         );
+        if($this->input->post('sel')==1){
+            $data['status']=2;
+        }
+
         if($this->input->post('id')){//修改
             $this->db->where('id',$this->input->post('id'));
             $res = $this->db->update('user',$data);
@@ -81,7 +90,7 @@ class User_model extends MY_Model
         $limit=4;
         $data['limit'] = $limit;
         //获取总记录数
-        $this->db->select('count(1) num')->from('users');
+        $this->db->select('count(1) num')->from('users')->where('type',1);
         if($this->input->post('title')){
             $this->db->like('username',$this->input->post('title'));
         }
@@ -90,7 +99,7 @@ class User_model extends MY_Model
         //搜索条件
         $data['title'] = $this->input->post('title')?$this->input->post('title'):null;
         //获取详细列
-        $this->db->select('id,username,cdate,STATUS, REPLACE(REPLACE(REPLACE(type,1,\'管理员\'),2,\'供应商\'),3,\'项目方\') type')->from('users');
+        $this->db->select('id,username,cdate,STATUS, REPLACE(REPLACE(REPLACE(type,1,\'管理员\'),2,\'供应商\'),3,\'项目方\') type')->from('users')->where('type',1);
 
         if($this->input->post('title')){
             $this->db->like('username',$this->input->post('title'));
@@ -108,7 +117,14 @@ class User_model extends MY_Model
     }
 
     public function reset_password($id){
+        if ($this->session->userdata('username') != 'admin'){
+            return -1;
+        }
         $res=$this->db->where('id',$id)->update('users',array('password'=>sha1('888888')));
-        return $res;
+        if ($res){
+            return 1;
+        }else{
+            return -2;
+        }
     }
 }

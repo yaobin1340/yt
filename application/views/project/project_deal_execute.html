@@ -19,7 +19,13 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>{{$lastnews}}</span>
+      <strong>公告</strong> <span>
+        {{if $lastnewsid!=-1}}
+      <a href="{{site_url url='project/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
+      {{else}}
+      {{$lastnews}}
+      {{/if}}
+    </span>
     </div>
     <!-- 公告 end -->
 <!---->
@@ -31,11 +37,7 @@
 
 				<div class="col-md-6 col-sm-12">
 					<form id="save_form" class="form-horizontal" method="post" action="{{site_url url='project/deal/save_execute'}}">
-						<div class="form-group">
-							<div class="col-sm-2 col-sm-offset-2">
-								<button type="submit" class="btn btn-primary btn-raised" >导出数据</button>
-							</div>
-						</div>
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">执行合约</label>
 							<div class="col-sm-9">

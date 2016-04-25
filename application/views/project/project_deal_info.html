@@ -19,7 +19,13 @@
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>{{$lastnews}}</span>
+      <strong>公告</strong> <span>
+		{{if $lastnewsid!=-1}}
+      <a href="{{site_url url='project/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
+      {{else}}
+      {{$lastnews}}
+      {{/if}}
+	</span>
     </div>
     <!-- 公告 end -->
 <!---->

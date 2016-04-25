@@ -85,7 +85,7 @@ class Schedule_model extends MY_Model
         $rs = $this->db->get()->row();
         $data['total'] = $rs->num;
 
-        $this->db->select('b.id id,b.name name,a.cdate cdate')->from('users a');
+        $this->db->select('a.id id,b.name name,a.cdate cdate')->from('users a');
         $this->db->join('project_profile b','a.id=b.masterid','left');
         $this->db->where('a.status',2);
         $this->db->where('a.type',3);
@@ -98,6 +98,24 @@ class Schedule_model extends MY_Model
         $this->db->limit($limit, $offset = ($page - 1) * $limit);
         $data['items'] = $this->db->get()->result_array();
         return $data;
+    }
+
+    public function get_exe_data($id){
+        $this->db->select('a.cdate cdate,d.name m_name,a.num,a.price,a.desc,b.sid b_sid,c.sid c_sid,e.name sname1,f.name sname2,c.userid,b.num no1,c.num no2,a.status status');
+        $this->db->from('execute a');
+        $this->db->join('change b','a.cid = b.id','left');
+        $this->db->join('contract_main c','a.pid=c.id','left');
+        $this->db->join('material d','a.mid=d.id','left');
+        $this->db->join('supplier_profile e','b.sid=e.id','left');
+        $this->db->join('supplier_profile f','c.sid=f.id','left');
+        $this->db->where('c.userid',$id);
+        return $this->db->get()->result_array();
+
+    }
+
+    public function get_project_name($id){
+        $rs = $this->db->select('b.name name')->from('users a')->join('project_profile b','a.id=b.masterid')->where('a.id',$id)->get()->row();
+        return $rs->name;
     }
 
     public function show_ex($id){

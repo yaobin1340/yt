@@ -59,8 +59,8 @@
           <td class="">{{$foo['name']}}</td>
           <td class="small">{{$foo['cdate']}}</td>
           <td class="bloc">
-              <a href="###" class="btn btn-sm btn-primary"  >项目进度</a>
-              <a href="###" class="btn btn-sm btn-info"  >款项进度</a>
+              <a href="{{site_url url='admin/schedule/export_exe'}}/{{$foo['id']}}" class="btn btn-sm btn-primary"  >项目进度</a>
+              <a href="{{site_url url='admin/schedule/export_pay'}}/{{$foo['id']}}" class="btn btn-sm btn-info"  >款项进度</a>
           </td>
       </tr>
       {{/foreach}}

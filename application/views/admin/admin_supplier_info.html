@@ -37,7 +37,7 @@
 						<div class="form-group">
 							<label for="sup_name" class="col-sm-2 control-label">公司名称</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control"  value="{{$sup_name}}" name="sup_name" id="sup_name"  disabled>
+								<input type="text" class="form-control"  value="{{if $data}}{{$data['name']}}{{/if}}" name="sup_name" id="sup_name"  disabled>
 							</div>
 						</div>
 						<div class="form-group">
@@ -59,25 +59,25 @@
 						<div class="form-group">
 							<label for="sup_total" class="col-sm-2 control-label">注册资金</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_total" name="sup_total" value="{{$sup_total}}" disabled>
+								<input type="text" class="form-control" id="sup_total" name="sup_total" value="{{if $data}}{{$data['total']}}{{/if}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_allow" class="col-sm-2 control-label">经营范围</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_allow" name="sup_allow"  value="{{$sup_allow}}" disabled>
+								<input type="text" class="form-control" id="sup_allow" name="sup_allow"  value="{{if $data}}{{$data['allow']}}{{/if}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_num" class="col-sm-2 control-label">营业执照</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_num" name="sup_num"  value="{{$sup_num}}" placeholder="营业执照代码输入" disabled>
+								<input type="text" class="form-control" id="sup_num" name="sup_num"  value="{{if $data}}{{$data['num']}}{{/if}}" placeholder="营业执照代码输入" disabled>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_card" class="col-sm-2 control-label">单位账号</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_card" name="sup_card"  value="{{$sup_card}}" disabled>
+								<input type="text" class="form-control" id="sup_card" name="sup_card"  value="{{if $data}}{{$data['card']}}{{/if}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
@@ -92,24 +92,34 @@
 									<option value="00">请选择</option>
 								</select>
 							</div>
-							<div class="col-sm-3"><input type="text" class="form-control" id="sup_address" placeholder="路牌号"  name="sup_address"  value="{{$sup_address}}" disabled></div>
+							<div class="col-sm-4">
+								<select class="form-control" id="sup_area" name="sup_area" disabled>
+									<option value="">-请选择区域-</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="sup_address" class="col-sm-2 control-label"></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="sup_address" placeholder="路牌号" name="sup_address"  value="{{if $data}}{{$data['address']}}{{/if}}" disabled>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_person" class="col-sm-2 control-label">联系人</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="lianxiren"  id="sup_person" name="sup_person" value="{{$sup_person}}" disabled>
+								<input type="text" class="form-control" name="lianxiren"  id="sup_person" name="sup_person" value="{{if $data}}{{$data['person']}}{{/if}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_phone" class="col-sm-2 control-label">电话</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control"id="sup_phone" name="sup_phone" value="{{$sup_phone}}" disabled>
+								<input type="text" class="form-control"id="sup_phone" name="sup_phone" value="{{if $data}}{{$data['phone']}}{{/if}}" disabled>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_desc" class="col-sm-2 control-label">公司简介</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="8" id="sup_desc" name="sup_desc" disabled>{{$sup_desc}}</textarea>
+								<textarea class="form-control" rows="8" id="sup_desc" name="sup_desc" disabled>{{if $data}}{{$data['desc']}}{{/if}}</textarea>
 							</div>
 						</div>
 					</form>
@@ -118,7 +128,7 @@
 			  <br/>
 			  <div class="form-group">
 				  <div class="col-sm-3  control-label">
-					  <img style="width: 300px" id="imgShow" {{if $pic != ''}}  src="/uploadimages/{{$pic}}"{{/if}}>
+					  <img style="width: 300px" id="imgShow"  {{if $data}}  src="/uploadimages/{{$data['pic']}}"{{/if}}>
 
 				  </div>
 			  </div>
@@ -139,7 +149,7 @@
 	$(function(){
 		$("#sup_type").val("{{$sup_type}}")
 		$.getJSON("{{site_url url='ajax/getprovince'}}",function(data){
-			html='<option value="00" selected = "selected">请选择</option>';
+			html='<option value="" selected = "selected">-请选择省份-</option>';
 			if (data!=1){
 				data.forEach(function (item) {
 					html+='<option value="'+item.code+'">'+item.name+'</option>'
@@ -149,10 +159,10 @@
 			}
 
 			$("#sup_province").html(html);
-			{{if $sup_province != '00'}}
-			$("#sup_province").val('{{$sup_province}}');
-			$.getJSON("{{site_url url='ajax/getcity'}}/{{$sup_province}}",function(data){
-				html='<option value="00">请选择</option>';
+			{{if $data}}
+			$("#sup_province").val("{{if $data}}{{$data['province_code']}}{{/if}}");
+			$.getJSON("{{site_url url='ajax/getcity'}}/{{$data['province_code']}}",function(data){
+				html='<option value="">-请选择城市-</option>';
 				if (data!=1){
 					data.forEach(function (item) {
 						html+='<option value="'+item.code+'">'+item.name+'</option>'
@@ -161,7 +171,19 @@
 
 				}
 				$("#sup_city").html(html);
-				$("#sup_city").val('{{$sup_city}}');
+				$("#sup_city").val("{{$data['city_code']}}");
+			});
+			$.getJSON("{{site_url url='ajax/getarea'}}/{{$data['city_code']}}",function(data){
+				html='<option value="">-请选择区域-</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#sup_area").html(html);
+				$("#sup_area").val("{{$data['area_code']}}");
 			});
 			{{/if}}
 		})

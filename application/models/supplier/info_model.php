@@ -34,12 +34,13 @@ class Info_model extends MY_Model
         $card=$this->input->post('sup_card');
         $province_code=$this->input->post('sup_province');
         $city_code=$this->input->post('sup_city');
+        $area_code=$this->input->post('sup_area');
         $address=$this->input->post('sup_address');
         $person=$this->input->post('sup_person');
         $phone=$this->input->post('sup_phone');
         $desc=$this->input->post('sup_desc');
         $pic=$this->input->post('pic');
-        if (!$name || $type==0 || !$total || !$allow || !$num || !$card || !$address || !$person || !$phone || !$desc || !$pic || !$province_code || !$city_code){
+        if (!$name || $type==0 || !$total || !$allow || !$num || !$card || !$address || !$person || !$phone || !$desc || !$pic || !$area_code || !$province_code || !$city_code){
             return 2;
         }
         $data=array(
@@ -52,6 +53,7 @@ class Info_model extends MY_Model
             'card'=>$card,
             'province_code'=>$province_code,
             'city_code'=>$city_code,
+            'area_code'=>$area_code,
             'address'=>$address,
             'person'=>$person,
             'phone'=>$phone,

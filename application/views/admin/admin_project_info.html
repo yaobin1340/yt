@@ -40,7 +40,7 @@
 					<div class="form-group">
 						<label for="pro_name" class="col-sm-2 control-label">项目名称</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_name" name="pro_name" value="{{$pro_name}}" disabled>
+							<input type="text" class="form-control" id="pro_name" name="pro_name" value="{{if $data}}{{$data['name']}}{{/if}}" disabled>
 						</div>
 					</div>
 					<div class="form-group">
@@ -55,42 +55,52 @@
 								<option value="00" >请选择</option>
 							</select>
 						</div>
-						<div class="col-sm-3"><input type="text" class="form-control" id="pro_address"  value="{{$pro_address}}" name="pro_address" placeholder="路牌号" disabled></div>
+						<div class="col-sm-3">
+							<select class="form-control" id="pro_area" name="pro_area" disabled>
+								<option value="">-请选择区域-</option>
+							</select>
+						</div>
 					</div>
+			<div class="form-group">
+				<label for="pro_address" class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="pro_address" name="pro_address" placeholder="路牌号" value="{{if $data}}{{$data['address']}}{{/if}}" disabled>
+				</div>
+			</div>
 					<div class="form-group">
 						<label for="pro_total" class="col-sm-2 control-label">项目金额</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control"  id="pro_total" name="pro_total" value="{{$pro_total}}" disabled>
+							<input type="text" class="form-control"  id="pro_total" name="pro_total" value="{{if $data}}{{$data['total']}}{{/if}}" disabled>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_manager" class="col-sm-2 control-label">项目经理</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control"id="pro_manager"   name="pro_manager" value="{{$pro_manager}}" disabled>
+							<input type="text" class="form-control"id="pro_manager"   name="pro_manager" value="{{if $data}}{{$data['manager']}}{{/if}}" disabled>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_leader" class="col-sm-2 control-label">项目负责人</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control"  id="pro_leader" name="pro_leader" value="{{$pro_leader}}" disabled>
+							<input type="text" class="form-control"  id="pro_leader" name="pro_leader" value="{{if $data}}{{$data['leader']}}{{/if}}" disabled>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_leader_phone" class="col-sm-2 control-label">负责人电话</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control"  id="pro_leader_phone"  name="pro_leader_phone"  value="{{$pro_leader_phone}}" disabled>
+							<input type="text" class="form-control"  id="pro_leader_phone"  name="pro_leader_phone"  value="{{if $data}}{{$data['leader_phone']}}{{/if}}" disabled>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_contacter" class="col-sm-2 control-label">联系人</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_contacter"  name="pro_contacter"  value="{{$pro_contacter}}" disabled>
+							<input type="text" class="form-control" id="pro_contacter"  name="pro_contacter"  value="{{if $data}}{{$data['contacter']}}{{/if}}" disabled>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="pro_contacter_phone" class="col-sm-2 control-label">联系电话</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pro_contacter_phone" name="pro_contacter_phone"   value="{{$pro_contacter_phone}}" disabled>
+							<input type="text" class="form-control" id="pro_contacter_phone" name="pro_contacter_phone"   value="{{if $data}}{{$data['contacter_phone']}}{{/if}}" disabled>
 						</div>
 					</div>
 				</form>
@@ -146,9 +156,9 @@
 			}
 
 			$("#pro_province").html(html);
-			{{if $pro_province != '00'}}
-			$("#pro_province").val('{{$pro_province}}');
-			$.getJSON("{{site_url url='ajax/getcity'}}/{{$pro_province}}",function(data){
+			{{if $data}}
+			$("#pro_province").val('{{$data["province_code"]}}');
+			$.getJSON("{{site_url url='ajax/getcity'}}/{{$data['province_code']}}",function(data){
 				html='<option value="00">请选择</option>';
 				if (data!=1){
 					data.forEach(function (item) {
@@ -158,7 +168,21 @@
 
 				}
 				$("#pro_city").html(html);
-				$("#pro_city").val('{{$pro_city}}');
+				$("#pro_city").val('{{$data["city_code"]}}');
+			});
+
+			$.getJSON("{{site_url url='ajax/getarea'}}/{{$data['city_code']}}",function(data){
+				html='<option value="">-请选择区域-</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#pro_area").html(html);
+				$("#pro_area").val('{{$data["area_code"]}}');
+
 			});
 			{{/if}}
 		})

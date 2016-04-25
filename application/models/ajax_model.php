@@ -33,6 +33,14 @@ class Ajax_model extends MY_Model
         }
     }
 
+    public function getarea($code){
+        $data=$this->db->select()->from('area')->where('citycode',$code)->get()->result_array();
+        if (!$data){
+            return 1;
+        }else{
+            return $data;
+        }
+    }
 
     public function getmaterial(){
         $data=$this->db->select()->from('material')->get()->result_array();

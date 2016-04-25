@@ -34,40 +34,13 @@ class Project extends MY_Controller {
 
     public function show_pro($id){
         $profile=$this->project_model->show_pro($id);
-        $name="";
-        $total="";
-        $address="";
-        $manager="";
-        $leader="";
-        $leader_phone="";
-        $contacter="";
-        $contacter_phone="";
-        $province_code="00";
-        $city_code="00";
+        $data=array();
         $detail=1;
         if ($profile!=1){
-            $name = $profile['row']['name'];
-            $total = $profile['row']['total'];
-            $address = $profile['row']['address'];
-            $manager = $profile['row']['manager'];
-            $leader = $profile['row']['leader'];
-            $leader_phone = $profile['row']['leader_phone'];
-            $contacter = $profile['row']['contacter'];
-            $contacter_phone = $profile['row']['contacter_phone'];
-            $province_code = $profile['row']['province_code'];
-            $city_code = $profile['row']['city_code'];
+            $data=$profile['row'];
             $detail=$profile['detail'];
         }
-        $this->cismarty->assign('pro_name',$name);
-        $this->cismarty->assign('pro_total',$total);
-        $this->cismarty->assign('pro_address',$address);
-        $this->cismarty->assign('pro_manager',$manager);
-        $this->cismarty->assign('pro_leader',$leader);
-        $this->cismarty->assign('pro_leader_phone',$leader_phone);
-        $this->cismarty->assign('pro_contacter',$contacter);
-        $this->cismarty->assign('pro_contacter_phone',$contacter_phone);
-        $this->cismarty->assign('pro_province',$province_code);
-        $this->cismarty->assign('pro_city',$city_code);
+        $this->cismarty->assign('data',$data);
         $this->cismarty->assign('detail',$detail);
         $this->assign('web_title','项目基本信息');
         $path="admin/admin_project_info.html";

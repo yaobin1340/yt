@@ -46,9 +46,10 @@ class Supplier_model extends MY_Model
     }
 
     function show_supplier($id){
-        $data=$this->db->select('a.*,b.name p_name,c.name c_name')->from('supplier_profile a')
+        $data=$this->db->select('a.*,b.name p_name,c.name c_name,d.name a_name')->from('supplier_profile a')
             ->join('province b','b.code = a.province_code','left')
             ->join('city c','c.code = a.city_code','left')
+            ->join('area d','d.code = a.area_code','left')
             ->where('a.id',$id)->get()->row_array();
         return $data;
     }

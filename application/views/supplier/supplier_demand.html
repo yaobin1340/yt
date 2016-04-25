@@ -41,6 +41,11 @@
                         <option value="00">城市</option>
                     </select>
                 </div>
+                <div class="col-sm-2">
+                    <select class="form-control" id="pro_area" name="pro_area">
+                        <option value="00">地区</option>
+                    </select>
+                </div>
 				<div class="col-sm-2">
                     <select class="form-control" name="material" id="material">
                         <option value="0">材料</option>
@@ -128,6 +133,20 @@
 
                 $("#pro_city").val("{{$data['pro_city']}}");
             });
+            $.getJSON("{{site_url url='ajax/getarea'}}/{{$data['pro_city']}}",function(data){
+                html='<option value="00">地区</option>';
+                if (data!=1){
+                    data.forEach(function (item) {
+                        html+='<option value="'+item.code+'">'+item.name+'</option>'
+                    })
+                }else{
+
+                }
+                $("#pro_area").html(html);
+
+                $("#pro_area").val("{{$data['pro_area']}}");
+            });
+
             {{/if}}
         })
 
@@ -157,6 +176,20 @@
 
                 }
                 $("#pro_city").html(html);
+            });
+        });
+
+        $("#pro_city").change(function(){
+            $.getJSON("{{site_url url='ajax/getarea'}}/"+$("#pro_city").val(),function(data){
+                html='<option value="00">地区</option>';
+                if (data!=1){
+                    data.forEach(function (item) {
+                        html+='<option value="'+item.code+'">'+item.name+'</option>'
+                    })
+                }else{
+
+                }
+                $("#pro_area").html(html);
             });
         });
     })

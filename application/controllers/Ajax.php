@@ -54,6 +54,11 @@ class Ajax extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function getarea($code){
+		$data=$this->ajax_model->getarea($code);
+		echo json_encode($data);
+	}
+
 	public function getmaterial(){
 		$data=$this->ajax_model->getmaterial();
 		echo json_encode($data);

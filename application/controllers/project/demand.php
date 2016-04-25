@@ -41,6 +41,7 @@ class Demand extends MY_Controller
             $this->assign('pro_name', $res['pro_name']);
             $this->assign('p_name', $res['p_name']);
             $this->assign('c_name', $res['c_name']);
+            $this->assign('a_name', $res['a_name']);
             $this->assign('address', $res['address']);
             $this->assign('web_title','信息详情页面');
             $this->display('project/project_demand_details.html');

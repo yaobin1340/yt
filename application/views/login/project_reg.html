@@ -80,9 +80,7 @@
 						<div class="col-sm-2 col-sm-offset-1">
 							<a href="#" class="btn btn-default disabled" role="button" style="color:#333">项目基本信息</a>
 						</div>
-						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-raised" >导出数据</button>
-						</div>
+
 					</div>				
 					<div class="form-group">
 						<label for="pro_name" class="col-sm-2 control-label">项目名称</label>
@@ -102,8 +100,18 @@
 								<option value="">-请选择城市-</option>
 							</select>
 						</div>
-						<div class="col-sm-3"><input type="text" class="form-control" id="pro_address" name="pro_address" placeholder="路牌号"></div>
+						<div class="col-sm-3">
+							<select class="form-control" id="pro_area" name="pro_area">
+								<option value="">-请选择区域-</option>
+							</select>
+						</div>
 					</div>
+			<div class="form-group">
+				<label for="pro_address" class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="pro_address" name="pro_address" placeholder="路牌号">
+				</div>
+			</div>
 					<div class="form-group">
 						<label for="pro_total" class="col-sm-2 control-label">项目金额</label>
 						<div class="col-sm-9">
@@ -253,6 +261,20 @@
 			});
 		});
 
+		$("#pro_city").change(function(){
+			$.getJSON("{{site_url url='ajax/getarea'}}/"+$("#pro_city").val(),function(data){
+				html='<option value="">-请选择区域-</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#pro_area").html(html);
+			});
+		});
+
 		$("#addum").click(function(){
 			//解绑事件
 			$("#yy_block_um").find("button").off('click');
@@ -288,6 +310,13 @@
 			if ($("#pro_city").val()=="00" || $("#pro_city").val()==""){
 				$("#pro_city").val('');
 				$("#pro_city").focus().parent().addClass("has-error").children(".help-block").html("城市必选");
+				return false;
+			}else {
+				$("#pro_city").parent().removeClass("has-error").children(".help-block").html("");
+			}
+			if ($("#pro_area").val()=="00" || $("#pro_area").val()==""){
+				$("#pro_area").val('');
+				$("#pro_area").focus().parent().addClass("has-error").children(".help-block").html("区域必选");
 				return false;
 			}else {
 				$("#pro_city").parent().removeClass("has-error").children(".help-block").html("");

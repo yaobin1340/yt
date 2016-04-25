@@ -26,6 +26,7 @@ class Info_model extends MY_Model
         $contacter_phone=$this->input->post('pro_contacter');
         $province_code=$this->input->post('pro_province');
         $city_code=$this->input->post('pro_city');
+        $area_code=$this->input->post('pro_area');
         $m_id=$this->input->post('material');
         $unit=$this->input->post('unit');
         $num=$this->input->post('num');
@@ -43,7 +44,8 @@ class Info_model extends MY_Model
             'contacter'=>$contacter,
             'contacter_phone'=>$contacter_phone,
             'province_code'=>$province_code,
-            'city_code'=>$city_code
+            'city_code'=>$city_code,
+            'area_code'=>$area_code
         );
         $this->db->trans_start();
         $row=$this->db->select()->from('project_profile')->where('masterid',$masterid)->get()->row_array();

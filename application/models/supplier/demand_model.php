@@ -30,6 +30,9 @@ class Demand_model extends MY_Model
         if($this->input->post('pro_city') != '00' && $this->input->post('pro_city') != ''){
             $this->db->where('d.city_code',$this->input->post('pro_city'));
         }
+        if($this->input->post('pro_area') != '00' && $this->input->post('pro_area') != ''){
+            $this->db->where('d.area_code',$this->input->post('pro_area'));
+        }
         if($this->input->post('material') != '0' && $this->input->post('material') != ''){
             $this->db->where('a.m_id',$this->input->post('material'));
         }
@@ -39,7 +42,8 @@ class Demand_model extends MY_Model
         //搜索条件
         $data['title'] = $this->input->post('title')?$this->input->post('title'):null;
         $data['pro_province']= $this->input->post('pro_province')?$this->input->post('pro_province'):'00';
-        $data['pro_city']= $this->input->post('pro_province')?$this->input->post('pro_city'):'00';
+        $data['pro_city']= $this->input->post('pro_city')?$this->input->post('pro_city'):'00';
+        $data['pro_area']= $this->input->post('pro_area')?$this->input->post('pro_area'):'00';
         $data['material']= $this->input->post('material')?$this->input->post('material'):'0';
         //获取详细列
         $this->db->select('d.name pro_name,a.id,b.name u_name,c.name m_name,a.cdate,a.size,a.num',false)->from('require a')
@@ -55,6 +59,9 @@ class Demand_model extends MY_Model
         }
         if($this->input->post('pro_city') != '00' && $this->input->post('pro_city') != ''){
             $this->db->where('d.city_code',$this->input->post('pro_city'));
+        }
+        if($this->input->post('pro_area') != '00' && $this->input->post('pro_area') != ''){
+            $this->db->where('d.area_code',$this->input->post('pro_area'));
         }
         if($this->input->post('material') != '0' && $this->input->post('material') != ''){
             $this->db->where('a.m_id',$this->input->post('material'));
@@ -78,15 +85,17 @@ class Demand_model extends MY_Model
         if (!$data['item']){
         return false;
         }
-        $res_row=$this->db->select('a.name name,b.name p_name,c.name c_name,a.address')
+        $res_row=$this->db->select('a.name name,b.name p_name,c.name c_name,a.address,d.name a_name')
             ->from('project_profile a')
-            ->join('province b','b.code = a.province_code')
-            ->join('city c','c.code = a.city_code')
+            ->join('province b','b.code = a.province_code','left')
+            ->join('city c','c.code = a.city_code','left')
+            ->join('area d','d.code = a.area_code','left')
             ->where('a.id',$data['item']['pro_id'])
             ->get()->row_array();
         $data['pro_name']=$res_row['name'];
         $data['p_name']=$res_row['p_name'];
         $data['c_name']=$res_row['c_name'];
+        $data['a_name']=$res_row['a_name'];
         $data['address']=$res_row['address'];
         return $data;
     }

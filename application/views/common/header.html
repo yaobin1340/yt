@@ -45,7 +45,7 @@
     <ul id="header_userarea" class="pull-right">
       <li id="scroll_to_top"><a class="header_btn" data-toggle="tooltip" data-placement="bottom" title="返回顶部"><i class="material-icons">&#xe255;</i></a></li>
       <li id="header_user">
-        <a class="header_btn" data-toggle="dropdown"><img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="帅气的梦田君"> {{$head_name}}</a>
+        <a class="header_btn" data-toggle="dropdown">{{if $head_name!=""}}<img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="帅气的梦田君"> {{/if}}{{$head_name}}</a>
         <ul class="dropdown-menu">
           <!--<li><a href="#"><i class="material-icons">&#xe85d;</i>详细资料</a></li>
           <li role="separator" class="divider"></li>-->

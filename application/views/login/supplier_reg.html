@@ -148,7 +148,17 @@
                 <option value="">-请选择城市-</option>
               </select>
             </div>
-            <div class="col-sm-3"><input type="text" class="form-control" id="sup_address" placeholder="路牌号" name="sup_address"  value=""></div>
+            <div class="col-sm-4">
+              <select class="form-control" id="sup_area" name="sup_area">
+                <option value="">-请选择区域-</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sup_address" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sup_address" placeholder="路牌号" name="sup_address"  value="">
+            </div>
           </div>
           <div class="form-group">
             <label for="sup_person" class="col-sm-2 control-label">联系人</label>
@@ -257,6 +267,20 @@ $(function () {
     });
   })
 
+  $("#sup_city").change(function(){
+    $.getJSON("{{site_url url='ajax/getarea'}}/"+$("#sup_city").val(),function(data){
+      html='<option value="">-请选择区域-</option>';
+      if (data!=1){
+        data.forEach(function (item) {
+          html+='<option value="'+item.code+'">'+item.name+'</option>'
+        })
+      }else{
+
+      }
+      $("#sup_area").html(html);
+    });
+  });
+
   $("#save_btn").click(function (){
     if (!$.trim($("#sup_name").val())){
       $("#sup_name").focus().parent().addClass("has-error")
@@ -305,6 +329,12 @@ $(function () {
       return false;
     }else {
       $("#sup_city").parent().removeClass("has-error").children(".help-block").html("");
+    }
+    if (!$.trim($("#sup_area").val())){
+      $("#sup_area").focus().parent().addClass("has-error")
+      return false;
+    }else {
+      $("#sup_area").parent().removeClass("has-error").children(".help-block").html("");
     }
     if (!$.trim($("#sup_address").val())){
       $("#sup_address").focus().parent().addClass("has-error")

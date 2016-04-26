@@ -206,8 +206,8 @@ class Schedule extends MY_Controller {
         require_once (APPPATH . 'libraries/PHPExcel/PHPExcel.php');
         $excel  = new \PHPExcel ();
         $Pointer=1;
-        $excel->getActiveSheet()->setCellValue("A".$Pointer,"裕腾管理软件，所有项目进度表");
-        $excel->getActiveSheet()->mergeCells('A'.$Pointer.':G'.$Pointer);
+        $excel->getActiveSheet()->setCellValue("A".$Pointer,"裕腾管理软件，所有款项进度表");
+        $excel->getActiveSheet()->mergeCells('A'.$Pointer.':H'.$Pointer);
         $excel->getActiveSheet()->getStyle('A'.$Pointer++)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
         foreach ($pro_data as $pro_item=>$pro_value){

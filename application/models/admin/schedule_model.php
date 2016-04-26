@@ -118,6 +118,11 @@ class Schedule_model extends MY_Model
         return $rs->name;
     }
 
+    public function get_all_project(){
+        $rs = $this->db->select('b.name name,a.id userid')->from('users a')->join('project_profile b','a.id=b.masterid')->where('a.status',2)->get()->result_array();
+        return $rs;
+    }
+
     public function show_ex($id){
         $res=$this->db->select('a.*,b.name m_name')->from('execute a')
             ->join('material b','b.id = a.mid','left')

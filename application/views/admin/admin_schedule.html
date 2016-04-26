@@ -36,8 +36,19 @@
         <i class="material-icons"></i> <span>数据导出</span>
       </h2>
       <div class="form_card_box">
-      
+
+          <form class="form-horizontal">
+              <div class="form-group">
+                  <div class="col-sm-2  control-label">
+                      <a href="{{site_url url='admin/schedule/export_all_exe'}}" class="btn btn-primary"  >所有项目进度</a>
+                  </div>
+                  <div class="col-sm-2  control-label">
+                      <a href="{{site_url url='admin/schedule/export_all_pay'}}" class="btn btn-primary"  >所有款项进度</a>
+                  </div>
+              </div>
+          </form>
 		<form id="page_form" class="form-horizontal" method="post" action="{{site_url url='admin/schedule/list_task'}}">
+
 			<div class="form-group">				
 				<div class="col-sm-6">
 					<input type="text" class="form-control" name="title" id="title" value="{{$data['title']}}">

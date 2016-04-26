@@ -134,6 +134,138 @@ class Schedule extends MY_Controller {
         $write->save('php://output');
     }
 
+    public function export_all_exe(){
+        
+        $pro_data= $this->schedule_model->get_all_project();
+       
+        if(!$pro_data){
+            $this->show_message('暂无数据');
+        }
+        require_once (APPPATH . 'libraries/PHPExcel/PHPExcel.php');
+        $excel  = new \PHPExcel ();
+        $Pointer=1;
+        $excel->getActiveSheet()->setCellValue("A".$Pointer,"裕腾管理软件，所有项目进度表");
+        $excel->getActiveSheet()->mergeCells('A'.$Pointer.':G'.$Pointer);
+        $excel->getActiveSheet()->getStyle('A'.$Pointer++)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        foreach ($pro_data as $pro_item=>$pro_value){
+            $rs = $this->schedule_model->get_exe_data($pro_value['userid']);
+            $project_name=$pro_value['name'];
+
+
+            $excel->getActiveSheet()->setCellValue("A".$Pointer,"项目名称：".$project_name);
+            $excel->getActiveSheet()->mergeCells('A'.$Pointer.':G'.$Pointer++);
+            if (!$rs){
+                $excel->getActiveSheet()->setCellValue("A".$Pointer++,"暂无数据");
+                $Pointer+=1;
+                continue;
+            }
+            $letter = array('A','B','C','D','E','F','G');
+            $tableheader = array('序','日期','物料','供应商','数量','单价','备注');
+            for($i = 0;$i < count($tableheader);$i++) {
+                $excel->getActiveSheet()->setCellValue("$letter[$i]".$Pointer,"$tableheader[$i]");
+            }
+            $data = array();
+
+            foreach ($rs as $k=>$v){
+                $sname = $v['sname1']?$v['sname1']:$v['sname2'];
+                $data[] = array(($k+1),$v['cdate'],$v['m_name'],$sname,$v['num'],$v['price'],$v['desc']);
+            }
+            $Pointer += 1;
+            for ($i = $Pointer;$i <= count($data) + $Pointer -1;$i++) {
+                $j = 0;
+                foreach ($data[$i - $Pointer] as $key=>$value) {
+                    $excel->getActiveSheet()->setCellValue("$letter[$j]$i",' '."$value");
+                    $j++;
+                }
+            }
+            $Pointer += count($data);
+            $excel->getActiveSheet()->setCellValue("A".$Pointer++,"");
+        }
+
+        
+        
+        $write = new \PHPExcel_Writer_Excel5 ($excel);
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+        header("Content-Type:application/force-download");
+        header("Content-Type:application/vnd.ms-execl");
+        header("Content-Type:application/octet-stream");
+        header("Content-Type:application/download");;
+        header('Content-Disposition:attachment;filename="alldata.xls"');
+        header("Content-Transfer-Encoding:binary");
+        $write->save('php://output');
+    }
+
+    public function export_all_pay(){
+        $pro_data= $this->schedule_model->get_all_project();
+
+        if(!$pro_data){
+            $this->show_message('暂无数据');
+        }
+        require_once (APPPATH . 'libraries/PHPExcel/PHPExcel.php');
+        $excel  = new \PHPExcel ();
+        $Pointer=1;
+        $excel->getActiveSheet()->setCellValue("A".$Pointer,"裕腾管理软件，所有项目进度表");
+        $excel->getActiveSheet()->mergeCells('A'.$Pointer.':G'.$Pointer);
+        $excel->getActiveSheet()->getStyle('A'.$Pointer++)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+        foreach ($pro_data as $pro_item=>$pro_value){
+            $rs = $this->schedule_model->get_exe_data($pro_value['userid']);
+            $project_name=$pro_value['name'];
+            $excel->getActiveSheet()->setCellValue("A".$Pointer,"项目名称：".$project_name);
+            $excel->getActiveSheet()->mergeCells('A'.$Pointer.':H'.$Pointer++);
+            if (!$rs){
+                $excel->getActiveSheet()->setCellValue("A".$Pointer++,"暂无数据");
+                $Pointer+=1;
+                continue;
+            }
+            $letter = array('A','B','C','D','E','F','G','H');
+            $tableheader = array('序','申请日期','物料','供应商','合约编号','数量','单价','支付状态');
+            for($i = 0;$i < count($tableheader);$i++) {
+                $excel->getActiveSheet()->setCellValue("$letter[$i]".$Pointer,"$tableheader[$i]");
+            }
+            $data = array();
+            $Pointer+=1;
+            foreach ($rs as $k=>$v){
+                $sname = $v['sname1']?$v['sname1']:$v['sname2'];
+                $no = $v['no1']?$v['no1']:$v['no2'];
+                if($v['status'] == 1)
+                    $status = '未申请支付';
+                if($v['status'] == 2)
+                    $status = '申请支付';
+                if($v['status'] == 3)
+                    $status = '已支付';
+                $data[] = array(($k+1),$v['cdate'],$v['m_name'],$sname,''.$no,$v['num'],$v['price'],$status);
+            }
+
+            for ($i = $Pointer;$i <= count($data) + $Pointer -1;$i++) {
+                $j = 0;
+                foreach ($data[$i - $Pointer] as $key=>$value) {
+                    $excel->getActiveSheet()->setCellValue("$letter[$j]$i",' '."$value");
+                    $j++;
+                }
+            }
+            $Pointer += count($data);
+            $excel->getActiveSheet()->setCellValue("A".$Pointer++,"");
+        }
+
+
+
+
+        $write = new \PHPExcel_Writer_Excel5 ($excel);
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+        header("Content-Type:application/force-download");
+        header("Content-Type:application/vnd.ms-execl");
+        header("Content-Type:application/octet-stream");
+        header("Content-Type:application/download");;
+        header('Content-Disposition:attachment;filename="alldata.xls"');
+        header("Content-Transfer-Encoding:binary");
+        $write->save('php://output');
+    }
+
     function show_ex($id){
         $data=$this->schedule_model->show_ex($id);
         if ($data){

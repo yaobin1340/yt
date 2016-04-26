@@ -36,6 +36,13 @@
       <div class="form_card_box">
       
 		<form id="page_form" class="form-horizontal" method="post" action="{{site_url url='project/deal/list_deal'}}">
+          <div class="form-group">
+            {{foreach from=$data['deal_model'] item=model}}
+            <div class="col-sm-2">
+              <a href="{{site_url url='project/deal/download'}}/{{$model['id']}}" class="btn btn-primary btn-raised" >{{$model['dealname']}}</a>
+            </div>
+            {{/foreach}}
+          </div>
 			<div class="form-group">
 				<div class="col-sm-1">
 					<a href="{{site_url url='project/deal/info'}}" class="btn btn-primary btn-raised" >新增</a>

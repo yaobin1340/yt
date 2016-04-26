@@ -56,6 +56,8 @@ class Deal_model extends MY_Model
             $data['change_items'] = null;
         }
 
+        $deal_model=$this->db->select()->from('deal_model')->get()->result_array();
+        $data['deal_model']=$deal_model;
         return $data;
     }
 
@@ -230,9 +232,10 @@ class Deal_model extends MY_Model
            $data['ex_num']=$res['num'];
            $data['ex_pic']=$res['pic'];
            $data['ex_sup_name']=$res['sup_name'];
-           $details=$this->db->select('a.price de_price,b.name de_name,b.id de_id')
+           $details=$this->db->select('a.price de_price,b.name de_name,b.id de_id,c.name u_name,c.id u_id')
                ->from('contract_line a')
                ->join('material b','b.id = a.mid','left')
+               ->join('unit c','c.id = a.uid','left')
                ->where('a.pid',$pid)->get()->result_array();
            $data['details']=$details;
        }else{
@@ -248,9 +251,10 @@ class Deal_model extends MY_Model
            $data['ex_num']=$res['num'];
            $data['ex_pic']=$res['pic'];
            $data['ex_sup_name']=$res['sup_name'];
-           $details=$this->db->select('b.price de_price,c.name de_name,c.id de_id')->from('change_line a')
+           $details=$this->db->select('b.price de_price,c.name de_name,c.id de_id,d.name u_name,d.id u_id')->from('change_line a')
                ->join('contract_line b','a.mid = b.mid')
                ->join('material c','c.id = a.mid','left')
+               ->join('unit d','d.id = a.uid','left')
                ->where('a.pid',$cid)
                ->where('b.pid',$pid)
                ->get()->result_array();
@@ -295,6 +299,7 @@ class Deal_model extends MY_Model
             return -2;
         }
         $data=array(
+               'uid'=>$this->input->post('u_id'),
                 'pid'=>$this->input->post('pid'),
                 'cid'=>$this->input->post('cid'),
                 'mid'=>$this->input->post('material'),
@@ -313,8 +318,9 @@ class Deal_model extends MY_Model
     }
 
     public function get_ex($id){
-       $res=$this->db->select('a.*,b.name m_name')->from('execute a')
+       $res=$this->db->select('a.*,b.name m_name,d.name u_name')->from('execute a')
            ->join('material b','b.id = a.mid','left')
+           ->join('unit d','d.id = a.uid','left')
            ->where('a.id',$id)->get()->row_array();
         if(!$res){
             return false;
@@ -429,5 +435,23 @@ class Deal_model extends MY_Model
         } else {
             return 1;
         }
+    }
+
+    public function download($id){
+
+        $this->load->helper('download');
+        $this->load->helper('file');
+        $data=$this->db->select()->from('deal_model')->where('id',$id)->get()->row_array();
+
+        if ($data){
+            $string = read_file('./uploadfiles/'.$data['url']);
+
+            //   $file_name='./uploadfiles/'.$data['url'];//需要下载的文件
+
+            force_download($data['oldfilename'],$string);
+
+        }
+
+
     }
 }

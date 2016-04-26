@@ -63,8 +63,9 @@ class Payment_model extends MY_Model
     }
 
     public function get_ex($id){
-        $res=$this->db->select('a.*,b.name m_name')->from('execute a')
+        $res=$this->db->select('a.*,b.name m_name,d.name u_name')->from('execute a')
             ->join('material b','b.id = a.mid','left')
+            ->join('unit d','d.id = a.uid','left')
             ->where('a.id',$id)->get()->row_array();
         if(!$res){
             return false;

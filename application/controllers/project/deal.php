@@ -190,4 +190,8 @@ class Deal extends MY_Controller {
             exit();
         }
     }
+
+    public function download($id){
+        $this->deal_model->download($id);
+    }
 }

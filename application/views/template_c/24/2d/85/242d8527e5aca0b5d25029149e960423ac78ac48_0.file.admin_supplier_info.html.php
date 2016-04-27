@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-23 20:14:28
+<?php /* Smarty version 3.1.24, created on 2016-04-27 09:11:19
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_supplier_info.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:30571b67249e8ff7_51606454%%*/
+/*%%SmartyHeaderCode:28274572011b7252002_61825891%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,38 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '242d8527e5aca0b5d25029149e960423ac78ac48' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_supplier_info.html',
-      1 => 1461412979,
+      1 => 1461717326,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '30571b67249e8ff7_51606454',
+  'nocache_hash' => '28274572011b7252002_61825891',
   'variables' => 
   array (
-    'lastnews' => 0,
-    'sup_name' => 0,
-    'sup_total' => 0,
-    'sup_allow' => 0,
-    'sup_num' => 0,
-    'sup_card' => 0,
-    'sup_address' => 0,
-    'sup_person' => 0,
-    'sup_phone' => 0,
-    'sup_desc' => 0,
-    'pic' => 0,
-    'sup_type' => 0,
-    'sup_province' => 0,
-    'sup_city' => 0,
+    'data' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_571b6724a9fcf3_93711924',
+  'unifunc' => 'content_572011b744dd01_78253245',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_571b6724a9fcf3_93711924')) {
-function content_571b6724a9fcf3_93711924 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_572011b744dd01_78253245')) {
+function content_572011b744dd01_78253245 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '30571b67249e8ff7_51606454';
+$_smarty_tpl->properties['nocache_hash'] = '28274572011b7252002_61825891';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -62,15 +49,12 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
       </ol>
     </div>
     <!-- 面包屑导航 end -->
-  
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
-</span>
-    </div>
-    <!-- 公告 end -->
 
+    <!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">供应商</span>
+    </div>
+    <!-- 返回栏 end -->
     
 <!---->
     <div class="form_card card z_depth-1">
@@ -85,8 +69,9 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 						<div class="form-group">
 							<label for="sup_name" class="col-sm-2 control-label">公司名称</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control"  value="<?php echo $_smarty_tpl->tpl_vars['sup_name']->value;?>
-" name="sup_name" id="sup_name"  disabled>
+								<input type="text" class="form-control"  value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['name'];
+}?>" name="sup_name" id="sup_name"  disabled>
 							</div>
 						</div>
 						<div class="form-group">
@@ -107,30 +92,43 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 						</div>
 						<div class="form-group">
 							<label for="sup_total" class="col-sm-2 control-label">注册资金</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_total" name="sup_total" value="<?php echo $_smarty_tpl->tpl_vars['sup_total']->value;?>
-" disabled>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="sup_total" name="sup_total" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['total'];
+}?>" disabled>
 							</div>
+							<label class="col-sm-1 control-label" style="font-weight:lighter; text-align:left;">万元</label>
 						</div>
 						<div class="form-group">
 							<label for="sup_allow" class="col-sm-2 control-label">经营范围</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_allow" name="sup_allow"  value="<?php echo $_smarty_tpl->tpl_vars['sup_allow']->value;?>
-" disabled>
+								<input type="text" class="form-control" id="sup_allow" name="sup_allow"  value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['allow'];
+}?>" disabled>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_num" class="col-sm-2 control-label">营业执照</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_num" name="sup_num"  value="<?php echo $_smarty_tpl->tpl_vars['sup_num']->value;?>
-" placeholder="营业执照代码输入" disabled>
+								<input type="text" class="form-control" id="sup_num" name="sup_num"  value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['num'];
+}?>" placeholder="营业执照代码输入" disabled>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="sup_card" class="col-sm-2 control-label">单位账号</label>
+							<label for="sup_bank" class="col-sm-2 control-label">开户银行</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="sup_card" name="sup_card"  value="<?php echo $_smarty_tpl->tpl_vars['sup_card']->value;?>
-" disabled>
+								<input type="text" class="form-control" id="sup_bank" name="sup_bank"  value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['bank'];
+}?>" disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="sup_card" class="col-sm-2 control-label">开户账号</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="sup_card" name="sup_card"  value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['card'];
+}?>" disabled>
 							</div>
 						</div>
 						<div class="form-group">
@@ -145,28 +143,42 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 									<option value="00">请选择</option>
 								</select>
 							</div>
-							<div class="col-sm-3"><input type="text" class="form-control" id="sup_address" placeholder="路牌号"  name="sup_address"  value="<?php echo $_smarty_tpl->tpl_vars['sup_address']->value;?>
-" disabled></div>
+							<div class="col-sm-4">
+								<select class="form-control" id="sup_area" name="sup_area" disabled>
+									<option value="">-请选择区域-</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="sup_address" class="col-sm-2 control-label"></label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="sup_address" placeholder="路牌号" name="sup_address"  value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['address'];
+}?>" disabled>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_person" class="col-sm-2 control-label">联系人</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="lianxiren"  id="sup_person" name="sup_person" value="<?php echo $_smarty_tpl->tpl_vars['sup_person']->value;?>
-" disabled>
+								<input type="text" class="form-control" name="lianxiren"  id="sup_person" name="sup_person" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['person'];
+}?>" disabled>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_phone" class="col-sm-2 control-label">电话</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control"id="sup_phone" name="sup_phone" value="<?php echo $_smarty_tpl->tpl_vars['sup_phone']->value;?>
-" disabled>
+								<input type="text" class="form-control"id="sup_phone" name="sup_phone" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['phone'];
+}?>" disabled>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="sup_desc" class="col-sm-2 control-label">公司简介</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="8" id="sup_desc" name="sup_desc" disabled><?php echo $_smarty_tpl->tpl_vars['sup_desc']->value;?>
-</textarea>
+								<textarea class="form-control" rows="8" id="sup_desc" name="sup_desc" disabled><?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['desc'];
+}?></textarea>
 							</div>
 						</div>
 					</form>
@@ -175,7 +187,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 			  <br/>
 			  <div class="form-group">
 				  <div class="col-sm-3  control-label">
-					  <img style="width: 300px" id="imgShow" <?php if ($_smarty_tpl->tpl_vars['pic']->value != '') {?>  src="/uploadimages/<?php echo $_smarty_tpl->tpl_vars['pic']->value;?>
+					  <img style="width: 300px" id="imgShow"  <?php if ($_smarty_tpl->tpl_vars['data']->value) {?>  src="/uploadimages/<?php echo $_smarty_tpl->tpl_vars['data']->value['pic'];?>
 "<?php }?>>
 
 				  </div>
@@ -198,11 +210,12 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 >
 
 	$(function(){
-		$("#sup_type").val("<?php echo $_smarty_tpl->tpl_vars['sup_type']->value;?>
-")
+		$("#sup_type").val("<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['type'];
+}?>")
 		$.getJSON("<?php echo smarty_function_site_url(array('url'=>'ajax/getprovince'),$_smarty_tpl);?>
 ",function(data){
-			html='<option value="00" selected = "selected">请选择</option>';
+			html='<option value="" selected = "selected">-请选择省份-</option>';
 			if (data!=1){
 				data.forEach(function (item) {
 					html+='<option value="'+item.code+'">'+item.name+'</option>'
@@ -212,13 +225,14 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 			}
 
 			$("#sup_province").html(html);
-			<?php if ($_smarty_tpl->tpl_vars['sup_province']->value != '00') {?>
-			$("#sup_province").val('<?php echo $_smarty_tpl->tpl_vars['sup_province']->value;?>
-');
+			<?php if ($_smarty_tpl->tpl_vars['data']->value) {?>
+			$("#sup_province").val("<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['province_code'];
+}?>");
 			$.getJSON("<?php echo smarty_function_site_url(array('url'=>'ajax/getcity'),$_smarty_tpl);?>
-/<?php echo $_smarty_tpl->tpl_vars['sup_province']->value;?>
+/<?php echo $_smarty_tpl->tpl_vars['data']->value['province_code'];?>
 ",function(data){
-				html='<option value="00">请选择</option>';
+				html='<option value="">-请选择城市-</option>';
 				if (data!=1){
 					data.forEach(function (item) {
 						html+='<option value="'+item.code+'">'+item.name+'</option>'
@@ -227,8 +241,23 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 
 				}
 				$("#sup_city").html(html);
-				$("#sup_city").val('<?php echo $_smarty_tpl->tpl_vars['sup_city']->value;?>
-');
+				$("#sup_city").val("<?php echo $_smarty_tpl->tpl_vars['data']->value['city_code'];?>
+");
+			});
+			$.getJSON("<?php echo smarty_function_site_url(array('url'=>'ajax/getarea'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['data']->value['city_code'];?>
+",function(data){
+				html='<option value="">-请选择区域-</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#sup_area").html(html);
+				$("#sup_area").val("<?php echo $_smarty_tpl->tpl_vars['data']->value['area_code'];?>
+");
 			});
 			<?php }?>
 		})

@@ -16,19 +16,12 @@
     </div>
     <!-- 面包屑导航 end -->
   
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>
-		 {{if $lastnewsid!=-1}}
-      <a href="{{site_url url='supplier/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
-      {{else}}
-      {{$lastnews}}
-      {{/if}}
-	</span>
-    </div>
-    <!-- 公告 end -->
 
+<!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">需求信息</span>
+    </div>
+    <!-- 返回栏 end -->
 <!---->
    <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -73,7 +66,7 @@
 								<p class="form-control-static">{{$data['phone']}}</p>
 							</div>
 						</div>
-						<div class="form-group">a
+						<div class="form-group">
 							<label class="col-sm-2 control-label">联系地址</label>
 							<div class="col-sm-10">
 								<p class="form-control-static">{{$p_name}}{{$c_name}}{{$a_name}}{{$address}}</p>

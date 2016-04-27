@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-23 19:26:48
+<?php /* Smarty version 3.1.24, created on 2016-04-27 08:58:26
          compiled from "D:/amp/Apache/htdocs/yt/application/views/project/project_deal_execute.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:25025571b5bf80f2d34_91193830%%*/
+/*%%SmartyHeaderCode:594857200eb2cd82c6_91560486%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,14 +9,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '77fdc7870224311fd96ddabdaa8685d24068c020' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/project/project_deal_execute.html',
-      1 => 1461326671,
+      1 => 1461718643,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '25025571b5bf80f2d34_91193830',
+  'nocache_hash' => '594857200eb2cd82c6_91560486',
   'variables' => 
   array (
-    'lastnews' => 0,
     'data' => 0,
     'foo' => 0,
     'cid' => 0,
@@ -25,14 +24,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_571b5bf81e6939_95124785',
+  'unifunc' => 'content_57200eb2e01132_27623343',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_571b5bf81e6939_95124785')) {
-function content_571b5bf81e6939_95124785 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_57200eb2e01132_27623343')) {
+function content_57200eb2e01132_27623343 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '25025571b5bf80f2d34_91193830';
+$_smarty_tpl->properties['nocache_hash'] = '594857200eb2cd82c6_91560486';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -49,20 +48,17 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <!-- 面包屑导航 -->
     <div id="breadcrumb">
       <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
+          <li class="active">首页</li>
+          <li class="active">合约管理</li>
       </ol>
     </div>
     <!-- 面包屑导航 end -->
   
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
-</span>
+  <!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">合约管理</span>
     </div>
-    <!-- 公告 end -->
+<!-- 返回栏 end -->
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -73,11 +69,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 				<div class="col-md-6 col-sm-12">
 					<form id="save_form" class="form-horizontal" method="post" action="<?php echo smarty_function_site_url(array('url'=>'project/deal/save_execute'),$_smarty_tpl);?>
 ">
-						<div class="form-group">
-							<div class="col-sm-2 col-sm-offset-2">
-								<button type="submit" class="btn btn-primary btn-raised" >导出数据</button>
-							</div>
-						</div>
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label">执行合约</label>
 							<div class="col-sm-9">
@@ -134,13 +126,16 @@ $_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
 						</div>
 						<div class="form-group">
 							<label for="num"  class="col-sm-2 control-label">采购数量</label>
-							<div class="col-sm-3">
+							<div class="col-sm-2">
                                 <input type="text" class="form-control" id="num" name="num" >
 							</div>
+                                <input type="hidden" id="unit_id" name="u_id">
+                            <label  id="unit" class="col-sm-1 control-label" style="text-align:left; font-weight:lighter"></label>
 							<label for="price"  class="col-sm-3 control-label">材料单价</label>
-							<div class="col-sm-3">
+							<div class="col-sm-2">
 								<input type="text" class="form-control" name="price" id="price" >
 							</div>
+							<label class="col-sm-1 control-label" style="text-align:left; font-weight:lighter">元</label>
 						</div>
 
 						<div class="form-group">
@@ -275,6 +270,10 @@ $foreach_foo_Sav = $_smarty_tpl->tpl_vars['foo'];
 ":
                     $("#price").val("<?php echo $_smarty_tpl->tpl_vars['foo']->value['de_price'];?>
 ");
+                    $("#unit").html("<?php echo $_smarty_tpl->tpl_vars['foo']->value['u_name'];?>
+");
+                    $("#unit_id").val("<?php echo $_smarty_tpl->tpl_vars['foo']->value['u_id'];?>
+")
                     break;
                 <?php
 $_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;

@@ -15,19 +15,11 @@
       </ol>
     </div>
     <!-- 面包屑导航 end -->
-  
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>
-		{{if $lastnewsid!=-1}}
-      <a href="{{site_url url='project/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
-      {{else}}
-      {{$lastnews}}
-      {{/if}}
-	</span>
+ <!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">合约管理</span>
     </div>
-    <!-- 公告 end -->
+<!-- 返回栏 end -->
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -70,7 +62,7 @@
 							<div class="form-group">
 								<div class="col-sm-2"></div>
 								<div class="col-sm-3">
-									<p class="form-control-static">单价:{{$foo['price']}}</p>
+									<p class="form-control-static">单价:{{$foo['price']}}元</p>
 								</div>
 								<div class="col-sm-3" style="padding-right:0;">
 									<p class="form-control-static">{{$foo['num']}} {{$foo['u_name']}}</p></div>
@@ -96,7 +88,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label">总金额</label>
 							<div class="col-sm-9">
-								<p class="form-control-static">{{$data['main']['total']}}</p>
+								<p class="form-control-static">{{$data['main']['total']}}万元</p>
 
 							</div>
 						</div>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-24 03:50:00
+<?php /* Smarty version 3.1.24, created on 2016-04-27 01:12:30
          compiled from "D:/amp/Apache/htdocs/yt/application/views/project/project_info.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:5908571c42687e7307_97805126%%*/
+/*%%SmartyHeaderCode:4793572011fe41ef09_13730229%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6c4400924e33b11be291cd6fb25603de06cdbe25' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/project/project_info.html',
-      1 => 1461469797,
+      1 => 1461717328,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5908571c42687e7307_97805126',
+  'nocache_hash' => '4793572011fe41ef09_13730229',
   'variables' => 
   array (
     'data' => 0,
@@ -23,15 +23,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_571c4268a29594_13120282',
+  'unifunc' => 'content_572011fe603501_58894149',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_571c4268a29594_13120282')) {
-function content_571c4268a29594_13120282 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_572011fe603501_58894149')) {
+function content_572011fe603501_58894149 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '5908571c42687e7307_97805126';
-echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+$_smarty_tpl->properties['nocache_hash'] = '4793572011fe41ef09_13730229';
+?>
+ <?php echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
 <div id="wrap" class="container-fluid">
@@ -66,9 +67,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 						<div class="col-sm-2 col-sm-offset-1">
 							<a href="#" class="btn btn-default disabled" role="button" style="color:#333">项目基本信息</a>
 						</div>
-						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-raised" >导出数据</button>
-						</div>
+
 					</div>				
 					<div class="form-group">
 						<label for="pro_name" class="col-sm-2 control-label">项目名称</label>
@@ -90,17 +89,28 @@ echo $_smarty_tpl->tpl_vars['data']->value['name'];
 								<option value="">-请选择城市-</option>
 							</select>
 						</div>
-						<div class="col-sm-3"><input type="text" class="form-control" id="pro_address" name="pro_address" placeholder="路牌号" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
-echo $_smarty_tpl->tpl_vars['data']->value['address'];
-}?>"></div>
+						<div class="col-sm-3">
+							<select class="form-control" id="pro_area" name="pro_area">
+								<option value="">-请选择区域-</option>
+							</select>
+						</div>
 					</div>
+			<div class="form-group">
+				<label for="pro_address" class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="pro_address" name="pro_address" placeholder="路牌号" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
+echo $_smarty_tpl->tpl_vars['data']->value['address'];
+}?>">
+				</div>
+			</div>
 					<div class="form-group">
 						<label for="pro_total" class="col-sm-2 control-label">项目金额</label>
-						<div class="col-sm-9">
+						<div class="col-sm-8">
 							<input type="text" class="form-control" id="pro_total" name="pro_total" value="<?php if ($_smarty_tpl->tpl_vars['data']->value) {
 echo $_smarty_tpl->tpl_vars['data']->value['total'];
 }?>">
 						</div>
+						<label class="col-sm-1 control-label" style="font-weight:lighter;text-align:left;">万元</label>
 					</div>
 					<div class="form-group">
 						<label for="pro_manager" class="col-sm-2 control-label">项目经理</label>
@@ -224,7 +234,25 @@ echo $_smarty_tpl->tpl_vars['data']->value['contacter_phone'];
 				$("#pro_city").html(html);
 				$("#pro_city").val('<?php echo $_smarty_tpl->tpl_vars['data']->value["city_code"];?>
 ');
+
 			});
+			$.getJSON("<?php echo smarty_function_site_url(array('url'=>'ajax/getarea'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['data']->value['city_code'];?>
+",function(data){
+				html='<option value="">-请选择区域-</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#pro_area").html(html);
+				$("#pro_area").val('<?php echo $_smarty_tpl->tpl_vars['data']->value["area_code"];?>
+');
+
+			});
+
 			<?php }?>
 
 
@@ -312,6 +340,21 @@ $_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
 			});
 		});
 
+		$("#pro_city").change(function(){
+			$.getJSON("<?php echo smarty_function_site_url(array('url'=>'ajax/getarea'),$_smarty_tpl);?>
+/"+$("#pro_city").val(),function(data){
+				html='<option value="">-请选择区域-</option>';
+				if (data!=1){
+					data.forEach(function (item) {
+						html+='<option value="'+item.code+'">'+item.name+'</option>'
+					})
+				}else{
+
+				}
+				$("#pro_area").html(html);
+			});
+		});
+
 		$("#addum").click(function(){
 			//解绑事件
 			$("#yy_block_um").find("button").off('click');
@@ -347,6 +390,13 @@ $_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
 			if ($("#pro_city").val()=="00" || $("#pro_city").val()==""){
 				$("#pro_city").val('');
 				$("#pro_city").focus().parent().addClass("has-error").children(".help-block").html("城市必选");
+				return false;
+			}else {
+				$("#pro_city").parent().removeClass("has-error").children(".help-block").html("");
+			}
+			if ($("#pro_area").val()=="00" || $("#pro_area").val()==""){
+				$("#pro_area").val('');
+				$("#pro_area").focus().parent().addClass("has-error").children(".help-block").html("区域必选");
 				return false;
 			}else {
 				$("#pro_city").parent().removeClass("has-error").children(".help-block").html("");

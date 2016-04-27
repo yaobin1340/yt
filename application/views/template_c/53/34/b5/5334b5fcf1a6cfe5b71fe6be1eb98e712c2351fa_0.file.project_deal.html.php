@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-23 20:10:17
+<?php /* Smarty version 3.1.24, created on 2016-04-27 09:11:58
          compiled from "D:/amp/Apache/htdocs/yt/application/views/project/project_deal.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:24937571b66298da4e0_93776693%%*/
+/*%%SmartyHeaderCode:23680572011de96a689_38698052%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,29 +9,29 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5334b5fcf1a6cfe5b71fe6be1eb98e712c2351fa' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/project/project_deal.html',
-      1 => 1461413412,
+      1 => 1461719053,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '24937571b66298da4e0_93776693',
+  'nocache_hash' => '23680572011de96a689_38698052',
   'variables' => 
   array (
-    'lastnews' => 0,
     'data' => 0,
+    'model' => 0,
     'foo' => 0,
     'row' => 0,
     'pager' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_571b6629a12084_95635010',
+  'unifunc' => 'content_572011deb37585_11880380',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_571b6629a12084_95635010')) {
-function content_571b6629a12084_95635010 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_572011deb37585_11880380')) {
+function content_572011deb37585_11880380 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '24937571b66298da4e0_93776693';
+$_smarty_tpl->properties['nocache_hash'] = '23680572011de96a689_38698052';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -53,14 +53,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
       </ol>
     </div>
     <!-- 面包屑导航 end -->
-  
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
-</span>
-    </div>
-    <!-- 公告 end -->
+
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -74,7 +67,29 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 				<div class="col-sm-1">
 					<a href="<?php echo smarty_function_site_url(array('url'=>'project/deal/info'),$_smarty_tpl);?>
 " class="btn btn-primary btn-raised" >新增</a>
-				</div>				
+				</div>
+              <?php
+$_from = $_smarty_tpl->tpl_vars['data']->value['deal_model'];
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['model'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['model']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['model']->value) {
+$_smarty_tpl->tpl_vars['model']->_loop = true;
+$foreach_model_Sav = $_smarty_tpl->tpl_vars['model'];
+?>
+              <div class="col-sm-1">
+                <a href="<?php echo smarty_function_site_url(array('url'=>'project/deal/download'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['model']->value['id'];?>
+" class="btn btn-primary btn-raised" ><?php echo $_smarty_tpl->tpl_vars['model']->value['dealname'];?>
+</a>
+              </div>
+              <?php
+$_smarty_tpl->tpl_vars['model'] = $foreach_model_Sav;
+}
+?>
+
 				<div class="col-sm-6">
 					<input type="text" class="form-control" id="sousuo" name="title" value="<?php echo $_smarty_tpl->tpl_vars['data']->value['title'];?>
 ">
@@ -112,7 +127,9 @@ $foreach_foo_Sav = $_smarty_tpl->tpl_vars['foo'];
 </th>
 					<th class=""></th>
 					<th class=""></th>
-          <th class=""></th>
+          <th class=""><a href="<?php echo smarty_function_site_url(array('url'=>'project/deal/end_all_deal'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
+" class="btn btn-sm btn-danger"  >合约终止</a></th>
         </tr>
       </thead>
 			
@@ -164,14 +181,13 @@ $foreach_foo_Sav = $_smarty_tpl->tpl_vars['foo'];
 						<a href="<?php echo smarty_function_site_url(array('url'=>'project/deal/show_execute'),$_smarty_tpl);?>
 /<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
 /0" class="btn btn-sm btn-info">执行</a>
-                        <a href="<?php echo smarty_function_site_url(array('url'=>'project/deal/change'),$_smarty_tpl);?>
-/<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
-" class="btn btn-sm btn-primary">变更</a>
+                        <d target_id="<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
+"></d>
             <?php }?>
             <?php if ($_smarty_tpl->tpl_vars['foo']->value['status'] < 3) {?>
             <a href="<?php echo smarty_function_site_url(array('url'=>'project/deal/end_deal'),$_smarty_tpl);?>
 /<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
-/0" class="btn btn-sm btn-danger"  >终止</a>
+/0" class="btn btn-sm btn-danger"  >合约终止</a>
             <?php }?>
 					</td>
         </tr>
@@ -237,15 +253,14 @@ $foreach_row_Sav = $_smarty_tpl->tpl_vars['row'];
 /<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
 /<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
 /" class="btn btn-sm btn-info">执行</a>
-            <a href="<?php echo smarty_function_site_url(array('url'=>'project/deal/change'),$_smarty_tpl);?>
-/<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
-" class="btn btn-sm btn-primary">变更</a>
+            <d target_id="<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
+"></d>
             <?php }?>
             <?php if ($_smarty_tpl->tpl_vars['row']->value['status'] < 3) {?>
             <a href="<?php echo smarty_function_site_url(array('url'=>'project/deal/end_deal'),$_smarty_tpl);?>
 /<?php echo $_smarty_tpl->tpl_vars['foo']->value['id'];?>
 /<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
-/" class="btn btn-sm btn-danger"  >终止</a>
+/" class="btn btn-sm btn-danger">合约终止</a>
             <?php }?>
           </td>
         </tr>
@@ -278,12 +293,19 @@ $_smarty_tpl->tpl_vars['foo'] = $foreach_foo_Sav;
 
 <?php echo '<script'; ?>
 >
-
   $('.pagination').find('a').click(function(){
     url = $(this).attr('href')
     $('#page_form').attr('action',url)
     $('#page_form').submit()
     return false;
+  })
+
+  $('table').each(function(i){
+    id = $(this).find('tbody tr').last().find('d').attr('target_id')
+    url = '<?php echo smarty_function_site_url(array('url'=>"project/deal/change"),$_smarty_tpl);?>
+/' + id;
+    a = '<a href="' + url + '" class="btn btn-sm btn-primary">变更</a>'
+    $(this).find('tbody tr').last().find('d').html(a)
   })
 <?php echo '</script'; ?>
 ><?php }

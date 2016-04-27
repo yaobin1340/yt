@@ -16,18 +16,11 @@
     </div>
     <!-- 面包屑导航 end -->
   
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>
-		{{if $lastnewsid!=-1}}
-      <a href="{{site_url url='project/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
-      {{else}}
-      {{$lastnews}}
-      {{/if}}
-	</span>
+  <!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">合约管理</span>
     </div>
-    <!-- 公告 end -->
+<!-- 返回栏 end -->
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -43,7 +36,7 @@
 					</div>
 					<div class="form-group">
 						<label for="heyuebiaoti" class="col-sm-2 control-label">合约标题</label>
-						<div class="col-sm-9">
+						<div class="col-sm-9 text_t">
 							{{$data['mian']['title']}}
 							<input type="hidden" name="pid" value="{{$data['mian']['id']}}">
 						</div>					
@@ -58,12 +51,12 @@
 					{{foreach from=$data['line'] item=foo}}
 					<div class="form-group">
 						<div class="col-sm-2"></div>			
-						<div class="col-sm-3">
+						<div class="col-sm-3 text_t">
 							{{$foo['mname']}}
 							<input type="hidden" name="mid[]" value="{{$foo['mid']}}">
 						</div>
 						<div class="col-sm-3"><input type="text" class="form-control " name="qty[]"  placeholder="数字"></div>
-						<div class="col-sm-3">
+						<div class="col-sm-3 text_t">
 							<input type="hidden" name="uid[]" value="{{$foo['uid']}}">
 							{{$foo['uname']}}
 						</div>				
@@ -76,7 +69,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="tupianshangchuan" class="col-sm-2 control-label">传变更合约</label>
+						<label for="tupianshangchuan" class="col-sm-2 control-label">上传变更合约</label>
 						<div class="col-sm-1">
 							<button type="button" class="btn btn-primary btn-md btn-raised btn-block ink" id="btnUploadImg">上传</button>
 						</div>

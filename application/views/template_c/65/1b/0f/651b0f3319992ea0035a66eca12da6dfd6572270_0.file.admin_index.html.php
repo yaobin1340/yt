@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-23 19:58:05
+<?php /* Smarty version 3.1.24, created on 2016-04-27 09:06:43
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_index.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:22781571b634dc97895_86116009%%*/
+/*%%SmartyHeaderCode:9547572010a312a666_34524002%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,27 +9,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '651b0f3319992ea0035a66eca12da6dfd6572270' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_index.html',
-      1 => 1461412680,
+      1 => 1461717326,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '22781571b634dc97895_86116009',
+  'nocache_hash' => '9547572010a312a666_34524002',
   'variables' => 
   array (
+    'lastnewsid' => 0,
     'lastnews' => 0,
     'data' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_571b634dd4e593_58835068',
+  'unifunc' => 'content_572010a32246c2_87177298',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_571b634dd4e593_58835068')) {
-function content_571b634dd4e593_58835068 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_572010a32246c2_87177298')) {
+function content_572010a32246c2_87177298 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '22781571b634dc97895_86116009';
+$_smarty_tpl->properties['nocache_hash'] = '9547572010a312a666_34524002';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -44,18 +45,27 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
   <div id="main">
   
     <!-- 面包屑导航 -->
-    <div id="breadcrumb">
+<!--    <div id="breadcrumb">
       <ol class="breadcrumb">
         <li class="active">首页</li>
       </ol>
-    </div>
+    </div>-->
     <!-- 面包屑导航 end -->
   
     <!-- 公告 -->
     <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
-</span>
+      <strong>公告</strong> <span>
+       <?php if ($_smarty_tpl->tpl_vars['lastnewsid']->value != -1) {?>
+      <a href="<?php echo smarty_function_site_url(array('url'=>'admin/push/show_push'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['lastnewsid']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
+</a>
+      <?php } else { ?>
+      <?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
+
+      <?php }?>
+    </span>
     </div>
     <!-- 公告 end -->
 
@@ -167,13 +177,13 @@ $_smarty_tpl->tpl_vars['row'] = $foreach_row_Sav;
       
 		<ul>
       <li>
-        <b>技术QQ：</b>	<span>123456789</span>
+        <b>技术QQ：</b>	<span>949037358</span>
       </li>
       <li>
-        <b>电话联系：</b>	<span>12345678941</span>
+        <b>电话联系：</b>	<span>0512-57908655</span>
       </li>
       <li>
-        <b>邮箱：</b>	<span><a href="mail:qqq@qqq.com">qqq@qqq.com</a></span>
+        <b>邮箱：</b>	<span><a href="mail:qqq@qqq.com">949037358@qq.com</a></span>
       </li>
 		</ul>
       

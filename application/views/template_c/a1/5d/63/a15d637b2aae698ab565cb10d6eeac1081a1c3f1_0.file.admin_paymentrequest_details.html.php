@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-21 19:55:29
+<?php /* Smarty version 3.1.24, created on 2016-04-27 09:09:51
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_paymentrequest_details.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:8725718bfb1526092_37620711%%*/
+/*%%SmartyHeaderCode:45645720115f668e00_00017997%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,25 +9,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a15d637b2aae698ab565cb10d6eeac1081a1c3f1' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_paymentrequest_details.html',
-      1 => 1461239695,
+      1 => 1461719382,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8725718bfb1526092_37620711',
+  'nocache_hash' => '45645720115f668e00_00017997',
   'variables' => 
   array (
-    'lastnews' => 0,
     'data' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5718bfb15dcd98_80932043',
+  'unifunc' => 'content_5720115f6f1982_22736605',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5718bfb15dcd98_80932043')) {
-function content_5718bfb15dcd98_80932043 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5720115f6f1982_22736605')) {
+function content_5720115f6f1982_22736605 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '8725718bfb1526092_37620711';
+$_smarty_tpl->properties['nocache_hash'] = '45645720115f668e00_00017997';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -44,20 +43,17 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <!-- 面包屑导航 -->
     <div id="breadcrumb">
       <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
+		  <li class="active">首页</li>
+		  <li class="active">申请付款</li>
       </ol>
     </div>
     <!-- 面包屑导航 end -->
   
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
-</span>
+    <!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">申请付款</span>
     </div>
-    <!-- 公告 end -->
+    <!-- 返回栏 end -->
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -92,7 +88,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 
 						<div class="form-group">
 							<label  class="col-sm-2 control-label">材料名称</label>
-							<div class="col-sm-3">
+							<div class="col-sm-2">
                                 <p class="form-control-static"><?php echo $_smarty_tpl->tpl_vars['data']->value['ex']['m_name'];?>
 </p>
 
@@ -106,14 +102,16 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 						<div class="form-group">
 							<label  class="col-sm-2 control-label">采购数量</label>
 							<div class="col-sm-3">
-                                <p class="form-control-static"><?php echo $_smarty_tpl->tpl_vars['data']->value['ex']['num'];?>
+                                <p class="form-control-static"><?php echo $_smarty_tpl->tpl_vars['data']->value['ex']['num'];
+echo $_smarty_tpl->tpl_vars['data']->value['ex']['u_name'];?>
 </p>
 							</div>
-							<label  class="col-sm-3 control-label">材料单价</label>
-							<div class="col-sm-3">
+							<label  class="col-sm-2 control-label">材料单价</label>
+							<div class="col-sm-2">
                                 <p class="form-control-static"><?php echo $_smarty_tpl->tpl_vars['data']->value['ex']['price'];?>
-</p>
+元</p>
 							</div>
+							
 						</div>
 
 						<div class="form-group">

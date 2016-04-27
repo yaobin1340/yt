@@ -16,18 +16,11 @@
     </div>
     <!-- 面包屑导航 end -->
   
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>
-        {{if $lastnewsid!=-1}}
-      <a href="{{site_url url='project/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
-      {{else}}
-      {{$lastnews}}
-      {{/if}}
-    </span>
+  <!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">合约管理</span>
     </div>
-    <!-- 公告 end -->
+<!-- 返回栏 end -->
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -79,17 +72,13 @@
 							<div class="col-sm-2">
                                 <input type="text" class="form-control" id="num" name="num" >
 							</div>
-                            <div class="col-sm-1" style=" vertical-align:bottom;">
-                                <span id="unit" style=" vertical-align:bottom;"></span>
                                 <input type="hidden" id="unit_id" name="u_id">
-                            </div>
+                            <label  id="unit" class="col-sm-1 control-label" style="text-align:left; font-weight:lighter"></label>
 							<label for="price"  class="col-sm-3 control-label">材料单价</label>
 							<div class="col-sm-2">
 								<input type="text" class="form-control" name="price" id="price" >
 							</div>
-                            <div class="col-sm-1" style=" vertical-align:bottom;">
-                               <span style=" vertical-align:bottom;">元</span>
-                            </div>
+							<label class="col-sm-1 control-label" style="text-align:left; font-weight:lighter">元</label>
 						</div>
 
 						<div class="form-group">
@@ -184,8 +173,8 @@
                 {{foreach from=$data['details'] item=foo}}
                 case "{{$foo['de_id']}}":
                     $("#price").val("{{$foo['de_price']}}");
-                        $("#unit").html("{{$foo['u_name']}}");
-                        $("#unit_id").val("{{$foo['u_id']}}")
+                    $("#unit").html("{{$foo['u_name']}}");
+                    $("#unit_id").val("{{$foo['u_id']}}")
                     break;
                 {{/foreach}}
                 default:

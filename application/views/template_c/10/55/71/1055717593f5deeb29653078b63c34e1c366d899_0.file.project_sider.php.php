@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-23 20:06:00
+<?php /* Smarty version 3.1.24, created on 2016-04-27 08:57:52
          compiled from "D:/amp/Apache/htdocs/yt/application/views/project/project_sider.php" */ ?>
 <?php
-/*%%SmartyHeaderCode:26500571b6528495954_93768752%%*/
+/*%%SmartyHeaderCode:1409457200e90b09a04_16119502%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,25 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1055717593f5deeb29653078b63c34e1c366d899' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/project/project_sider.php',
-      1 => 1461413151,
+      1 => 1461717328,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '26500571b6528495954_93768752',
+  'nocache_hash' => '1409457200e90b09a04_16119502',
   'variables' => 
   array (
     'type' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_571b652850f754_05668666',
+  'unifunc' => 'content_57200e90c26cf0_39494477',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_571b652850f754_05668666')) {
-function content_571b652850f754_05668666 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_57200e90c26cf0_39494477')) {
+function content_57200e90c26cf0_39494477 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '26500571b6528495954_93768752';
+$_smarty_tpl->properties['nocache_hash'] = '1409457200e90b09a04_16119502';
 ?>
 <!-- 侧栏 -->
   <div id="sider">

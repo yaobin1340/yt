@@ -15,19 +15,11 @@
       </ol>
     </div>
     <!-- 面包屑导航 end -->
-  
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>
-		{{if $lastnewsid!=-1}}
-      <a href="{{site_url url='project/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
-      {{else}}
-      {{$lastnews}}
-      {{/if}}
-	</span>
+  <!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">合约管理</span>
     </div>
-    <!-- 公告 end -->
+<!-- 返回栏 end -->
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -45,7 +37,7 @@
 					  <input type="file" id="fileup" style="visibility:hidden;">
 				  </div>
 				  <div class="col-sm-4  control-label">
-					  <button type="button" class="btn btn-primary btn-md btn-raised btn-block ink" id="btnUploadImg">上传</button>
+					  <button type="button" class="btn btn-primary btn-md btn-raised btn-block ink" id="btnUploadImg">上传合约图片</button>
 
 				  </div>
 			  </div>
@@ -96,9 +88,10 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-2"></div>
-									<div class="col-sm-3">
+									<div class="col-sm-2">
 										<input type="text" class="form-control" placeholder="材料单价" id="price" name="price[]">
 									</div>
+									<label class="col-sm-1 control-label" style="text-align:left; font-weight:lighter;">元</label>
 									<div class="col-sm-3" style="padding-right:0;">
 										<input type="text" class="form-control border_rnone"  placeholder="数字" id="line_num" name="line_num[]"></div>
 									<div class="col-sm-3 padd_none">
@@ -124,9 +117,10 @@
 						</div>
 						<div class="form-group">
 							<label for="total" class="col-sm-2 control-label">总金额</label>
-							<div class="col-sm-9">
+							<div class="col-sm-8">
 								<input type="text" class="form-control" name="total" id="total" >
 							</div>
+							<label class="col-sm-1 control-label" style="text-align:left; font-weight:lighter;">万元</label>
 						</div>
 					
 						<div class="form-group">

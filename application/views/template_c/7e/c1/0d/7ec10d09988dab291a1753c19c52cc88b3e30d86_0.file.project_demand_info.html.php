@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-18 13:10:41
+<?php /* Smarty version 3.1.24, created on 2016-04-27 09:13:24
          compiled from "D:/amp/Apache/htdocs/yt/application/views/project/project_demand_info.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:122857146c5195b097_48243496%%*/
+/*%%SmartyHeaderCode:17905720123483da02_54161029%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,13 +9,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7ec10d09988dab291a1753c19c52cc88b3e30d86' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/project/project_demand_info.html',
-      1 => 1460948288,
+      1 => 1461717328,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '122857146c5195b097_48243496',
+  'nocache_hash' => '17905720123483da02_54161029',
   'variables' => 
   array (
+    'lastnewsid' => 0,
+    'lastnews' => 0,
     'size' => 0,
     'num' => 0,
     's_date' => 0,
@@ -31,14 +33,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_57146c51b4f093_93663914',
+  'unifunc' => 'content_5720123495eb06_40836202',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57146c51b4f093_93663914')) {
-function content_57146c51b4f093_93663914 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5720123495eb06_40836202')) {
+function content_5720123495eb06_40836202 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '122857146c5195b097_48243496';
+$_smarty_tpl->properties['nocache_hash'] = '17905720123483da02_54161029';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -55,19 +57,33 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
     <!-- 面包屑导航 -->
     <div id="breadcrumb">
       <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
+		  <li class="active">首页</li>
+		  <li class="active">需求信息管理</li>
       </ol>
     </div>
     <!-- 面包屑导航 end -->
   
     <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
+<!--    <div class="alert alert-warning alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始裕腾集团XXX项目材料采购招标正式开始</span>
-    </div>
+      <strong>公告</strong> <span>
+		<?php if ($_smarty_tpl->tpl_vars['lastnewsid']->value != -1) {?>
+      <a href="<?php echo smarty_function_site_url(array('url'=>'project/notice/show_push'),$_smarty_tpl);?>
+/<?php echo $_smarty_tpl->tpl_vars['lastnewsid']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
+</a>
+      <?php } else { ?>
+      <?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
+
+      <?php }?>
+	</span>
+    </div>-->
     <!-- 公告 end -->
+<!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">信息列表</span>
+    </div>
+<!-- 返回栏 end -->
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -93,21 +109,19 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 ">
 						</div>
 					</div>
-			<div class="form-group">
-				<label for="unit" class="col-sm-2 control-label">单位</label>
-				<div class="col-sm-9">
-					<select class="form-control" name="unit" id="unit">
-						<option value="0">请选择</option>
-					</select>
-				</div>
-			</div>
 					<div class="form-group">
 						<label for="num" class="col-sm-2 control-label">材料数量</label>
-						<div class="col-sm-9">
+						<div class="col-sm-4">
 							<input type="text" class="form-control"
 								   onkeyup="this.value=this.value.replace(/\D/g,'')" onblur = "this.value = this.value.replace(/\D+/g, '')"
 								   id="num" name="num" value="<?php echo $_smarty_tpl->tpl_vars['num']->value;?>
 ">
+						</div>
+						<label for="unit" class="col-sm-1 control-label" style="text-align:center;">单位</label>
+						<div class="col-sm-4">
+							<select class="form-control" name="unit" id="unit">
+								<option value="0">请选择</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
@@ -167,6 +181,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
 					<input type="hidden" id="hidImgName" name="pic" value="<?php echo $_smarty_tpl->tpl_vars['pic']->value;?>
 " />
 				</div>
+				<label class="col-sm-2 control-label" style="font-weight:lighter;text-align:left;">（图片格式jpg）</label>
 				<div class="col-sm-4  control-label">
 					<img style="width: 250px" id="imgShow" <?php if ($_smarty_tpl->tpl_vars['pic']->value != '') {?>  src="/uploadimages/<?php echo $_smarty_tpl->tpl_vars['pic']->value;?>
 "<?php }?>>

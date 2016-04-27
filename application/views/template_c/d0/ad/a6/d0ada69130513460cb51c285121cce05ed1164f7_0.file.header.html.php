@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-22 04:48:45
+<?php /* Smarty version 3.1.24, created on 2016-04-27 08:57:52
          compiled from "D:/amp/Apache/htdocs/yt/application/views/common/header.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:103175719ad2d9fb052_72616454%%*/
+/*%%SmartyHeaderCode:1460157200e9079aa25_40025323%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd0ada69130513460cb51c285121cce05ed1164f7' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/common/header.html',
-      1 => 1461297907,
+      1 => 1461717326,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '103175719ad2d9fb052_72616454',
+  'nocache_hash' => '1460157200e9079aa25_40025323',
   'variables' => 
   array (
     'web_title' => 0,
@@ -21,14 +21,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_5719ad2daa6e59_43042723',
+  'unifunc' => 'content_57200e9095be50_00332133',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5719ad2daa6e59_43042723')) {
-function content_5719ad2daa6e59_43042723 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_57200e9095be50_00332133')) {
+function content_57200e9095be50_00332133 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '103175719ad2d9fb052_72616454';
+$_smarty_tpl->properties['nocache_hash'] = '1460157200e9079aa25_40025323';
 ?>
 <!DOCTYPE html>
 <html>
@@ -86,7 +86,8 @@ $_smarty_tpl->properties['nocache_hash'] = '103175719ad2d9fb052_72616454';
     <ul id="header_userarea" class="pull-right">
       <li id="scroll_to_top"><a class="header_btn" data-toggle="tooltip" data-placement="bottom" title="返回顶部"><i class="material-icons">&#xe255;</i></a></li>
       <li id="header_user">
-        <a class="header_btn" data-toggle="dropdown"><img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="帅气的梦田君"> <?php echo $_smarty_tpl->tpl_vars['head_name']->value;?>
+        <a class="header_btn" data-toggle="dropdown"><?php if ($_smarty_tpl->tpl_vars['head_name']->value != '') {?><img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="帅气的梦田君"> <?php }
+echo $_smarty_tpl->tpl_vars['head_name']->value;?>
 </a>
         <ul class="dropdown-menu">
           <!--<li><a href="#"><i class="material-icons">&#xe85d;</i>详细资料</a></li>

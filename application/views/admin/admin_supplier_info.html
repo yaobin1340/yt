@@ -15,20 +15,12 @@
       </ol>
     </div>
     <!-- 面包屑导航 end -->
-  
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>
-		  {{if $lastnewsid!=-1}}
-      <a href="{{site_url url='admin/push/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
-      {{else}}
-      {{$lastnews}}
-      {{/if}}
-	</span>
-    </div>
-    <!-- 公告 end -->
 
+    <!-- 返回栏 -->
+    <div class="pagetool form_card card z_depth-1">
+        <a href="javascript:history.go(-1)" class="goback btn btn-primary btn-raised ink">返回</a><span class="title">供应商</span>
+    </div>
+    <!-- 返回栏 end -->
     
 <!---->
     <div class="form_card card z_depth-1">
@@ -64,9 +56,10 @@
 						</div>
 						<div class="form-group">
 							<label for="sup_total" class="col-sm-2 control-label">注册资金</label>
-							<div class="col-sm-10">
+							<div class="col-sm-9">
 								<input type="text" class="form-control" id="sup_total" name="sup_total" value="{{if $data}}{{$data['total']}}{{/if}}" disabled>
 							</div>
+							<label class="col-sm-1 control-label" style="font-weight:lighter; text-align:left;">万元</label>
 						</div>
 						<div class="form-group">
 							<label for="sup_allow" class="col-sm-2 control-label">经营范围</label>
@@ -87,7 +80,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="sup_card" class="col-sm-2 control-label">单位账号</label>
+							<label for="sup_card" class="col-sm-2 control-label">开户账号</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="sup_card" name="sup_card"  value="{{if $data}}{{$data['card']}}{{/if}}" disabled>
 							</div>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2016-04-24 12:11:38
+<?php /* Smarty version 3.1.24, created on 2016-04-27 09:11:14
          compiled from "D:/amp/Apache/htdocs/yt/application/views/admin/admin_supplier.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:5450571c477ae02b84_14105913%%*/
+/*%%SmartyHeaderCode:24445572011b2284c83_72923572%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,28 +9,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9fdf213f054648a64f1c11982157b2b7e65599de' => 
     array (
       0 => 'D:/amp/Apache/htdocs/yt/application/views/admin/admin_supplier.html',
-      1 => 1461471056,
+      1 => 1461717326,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5450571c477ae02b84_14105913',
+  'nocache_hash' => '24445572011b2284c83_72923572',
   'variables' => 
   array (
-    'lastnews' => 0,
     'data' => 0,
     'foo' => 0,
     'pager' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_571c477aed9937_09456443',
+  'unifunc' => 'content_572011b241b083_90570187',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_571c477aed9937_09456443')) {
-function content_571c477aed9937_09456443 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_572011b241b083_90570187')) {
+function content_572011b241b083_90570187 ($_smarty_tpl) {
 if (!is_callable('smarty_function_site_url')) require_once 'D:/amp/Apache/htdocs/yt/application/libraries/smarty/plugins/function.site_url.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '5450571c477ae02b84_14105913';
+$_smarty_tpl->properties['nocache_hash'] = '24445572011b2284c83_72923572';
 echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
@@ -52,16 +51,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
       </ol>
     </div>
     <!-- 面包屑导航 end -->
-  
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span><?php echo $_smarty_tpl->tpl_vars['lastnews']->value;?>
-</span>
-    </div>
-    <!-- 公告 end -->
 
-    
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -86,6 +76,7 @@ echo $_smarty_tpl->getSubTemplate ("common/header.html", $_smarty_tpl->cache_id,
         <tr>
 
           <th class="">名称</th>
+            <th class="">注册邮箱</th>
           <th class="">创建时间</th>
           <th class="">操作</th>
         </tr>
@@ -116,6 +107,8 @@ $foreach_foo_Sav = $_smarty_tpl->tpl_vars['foo'];
 "><?php echo $_smarty_tpl->tpl_vars['foo']->value['name'];?>
 </a>
           </td>
+          <td class="small"><?php echo $_smarty_tpl->tpl_vars['foo']->value['username'];?>
+</td>
           <td class="small"><?php echo $_smarty_tpl->tpl_vars['foo']->value['cdate'];?>
 </td>
           <td class="bloc">

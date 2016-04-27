@@ -16,18 +16,7 @@
     </div>
     <!-- 面包屑导航 end -->
   
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>
-         {{if $lastnewsid!=-1}}
-      <a href="{{site_url url='admin/push/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
-      {{else}}
-      {{$lastnews}}
-      {{/if}}
-    </span>
-    </div>
-    <!-- 公告 end -->
+
 
     
 <!---->
@@ -40,7 +29,7 @@
 		<form id="page_form" class="form-horizontal" method="post" action="{{site_url url='admin/payment/list_task'}}">
 			<div class="form-group">				
 				<div class="col-sm-7">
-					<input type="text" class="form-control" id="title" name="title" value="{{$data['title']}}">
+					<input type="text" class="form-control" id="title" name="title" value="{{$data['title']}}" placeholder="请输入关键词">
 				</div>
 
 			</div>
@@ -73,7 +62,7 @@
       <tr>
 
           <td class="">
-              <a href="{{site_url url='admin/payment/get_ex'}}/{{$foo['ex_id']}}" class="btn btn-sm btn-default">{{$foo['con_title']}}</a>
+              <a href="{{site_url url='admin/payment/get_ex'}}/{{$foo['ex_id']}}" >{{$foo['con_title']}}</a>
           </td>
           <td class="small">{{$foo['pro_name']}}</td>
           <td class="bloc">

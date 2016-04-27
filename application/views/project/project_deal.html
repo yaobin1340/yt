@@ -15,19 +15,7 @@
       </ol>
     </div>
     <!-- 面包屑导航 end -->
-  
-    <!-- 公告 -->
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>公告</strong> <span>
-      {{if $lastnewsid!=-1}}
-      <a href="{{site_url url='project/notice/show_push'}}/{{$lastnewsid}}">{{$lastnews}}</a>
-      {{else}}
-      {{$lastnews}}
-      {{/if}}
-    </span>
-    </div>
-    <!-- 公告 end -->
+
 <!---->
     <div class="form_card card z_depth-1">
       <h2 class="form_card_title">
@@ -36,17 +24,16 @@
       <div class="form_card_box">
       
 		<form id="page_form" class="form-horizontal" method="post" action="{{site_url url='project/deal/list_deal'}}">
-          <div class="form-group">
-            {{foreach from=$data['deal_model'] item=model}}
-            <div class="col-sm-2">
-              <a href="{{site_url url='project/deal/download'}}/{{$model['id']}}" class="btn btn-primary btn-raised" >{{$model['dealname']}}</a>
-            </div>
-            {{/foreach}}
-          </div>
 			<div class="form-group">
 				<div class="col-sm-1">
 					<a href="{{site_url url='project/deal/info'}}" class="btn btn-primary btn-raised" >新增</a>
-				</div>				
+				</div>
+              {{foreach from=$data['deal_model'] item=model}}
+              <div class="col-sm-1">
+                <a href="{{site_url url='project/deal/download'}}/{{$model['id']}}" class="btn btn-primary btn-raised" >{{$model['dealname']}}</a>
+              </div>
+              {{/foreach}}
+
 				<div class="col-sm-6">
 					<input type="text" class="form-control" id="sousuo" name="title" value="{{$data['title']}}">
 				</div>
@@ -111,7 +98,7 @@
                         <d target_id="{{$foo['id']}}"></d>
             {{/if}}
             {{if $foo['status'] < 3}}
-            <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/0" class="btn btn-sm btn-danger"  >终止</a>
+            <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/0" class="btn btn-sm btn-danger"  >合约终止</a>
             {{/if}}
 					</td>
         </tr>
@@ -153,7 +140,7 @@
             <d target_id="{{$foo['id']}}"></d>
             {{/if}}
             {{if $row['status'] < 3}}
-            <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/{{$row['id']}}/" class="btn btn-sm btn-danger"  >终止</a>
+            <a href="{{site_url url='project/deal/end_deal'}}/{{$foo['id']}}/{{$row['id']}}/" class="btn btn-sm btn-danger">合约终止</a>
             {{/if}}
           </td>
         </tr>

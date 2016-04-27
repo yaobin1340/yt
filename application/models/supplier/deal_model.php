@@ -28,13 +28,13 @@ class Deal_model extends MY_Model
         $sqlstr="select count(1) num from (
                        (
                             select  id,status,title,cdate,'1' as flag from `contract_main` a 
-                            where a.sid = {$row['id']}
+                            where a.sid = {$row['id']} and status > 1
                         )
                      UNION
                      (
                           select c.id,c.status,a.title,c.cdate,'2' as flag from `contract_main` a 
                       JOIN `change` c on c.pid = a.id
-                   where c.sid = {$row['id']} 
+                   where c.sid = {$row['id']} and c.status > 1
                  )
               ) as aa {$where} ORDER BY aa.cdate desc";
         $num=$this->db->query($sqlstr)->row_array();
@@ -44,13 +44,13 @@ class Deal_model extends MY_Model
         $sqlstr1="select * from (
                        (
                             select id,status,title,cdate,'1' as flag from `contract_main` a 
-                            where a.sid = {$row['id']} 
+                            where a.sid = {$row['id']} and status > 1
                         )
                      UNION
                      (
                           select c.id,c.status, a.title,c.cdate,'2' as flag from `contract_main` a 
                       JOIN `change` c on c.pid = a.id
-                   where c.sid = {$row['id']}  
+                   where c.sid = {$row['id']}  and c.status > 1
                  )
               ) as aa {$where} ORDER BY aa.cdate desc limit {$offset},{$limit}";
         $data['items']=$this->db->query($sqlstr1)->result_array();

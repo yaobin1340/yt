@@ -52,11 +52,8 @@
           {{if $foo['status'] == 1}}
          <span class="label label-default">审核中</span>
           {{/if}}
-          {{if $foo['status'] == 2}}
-        <span class="label label-success">审核通过</span>
-          {{/if}}
-          {{if $foo['status'] == 3}}
-        <span class="label label-danger">待终止</span>
+          {{if $foo['status'] == 2 || $foo['status'] == 3}}
+        <span class="label label-success">已签约</span>
           {{/if}}
             {{if $foo['status'] == 4}}
             <span class="label label-primary">已终止</span>

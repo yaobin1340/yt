@@ -56,7 +56,9 @@
       <thead class="backbg">
         <tr>
           <th class=""></th>
-          <th class="">{{$foo['title']}}</th>
+          <th class="">
+            <flag></flag>
+            {{$foo['title']}}</th>
 					<th class=""></th>
 					<th class=""></th>
           <th class=""><a href="{{site_url url='project/deal/end_all_deal'}}/{{$foo['id']}}" class="btn btn-sm btn-danger"  >合约终止</a></th>
@@ -175,5 +177,17 @@
     url = '{{site_url url="project/deal/change"}}/' + id;
     a = '<a href="' + url + '" class="btn btn-sm btn-primary">变更</a>'
     $(this).find('tbody tr').last().find('d').html(a)
+  })
+
+  $("table").each(function (i) {
+    var flag=0
+           $(this).find('tbody tr td span').each(function () {
+             if ($(this).html()!="已终止"){
+               flag=1;
+             }
+           })
+    if(flag==0){
+      $(this).find('flag').html("<span class='label label-primary'>已终止</span> ")
+    }
   })
 </script>

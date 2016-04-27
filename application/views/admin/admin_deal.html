@@ -49,7 +49,9 @@
               <thead class="backbg">
               <tr>
                   <th class=""></th>
-                  <th class="">{{$foo['title']}}</th>
+                  <th class="">
+                      <flag></flag>
+                      {{$foo['title']}}</th>
                   <th class=""></th>
                   <th class=""></th>
                   <th class="">
@@ -178,5 +180,17 @@
         $('#page_form').attr('action',url)
         $('#page_form').submit()
         return false;
+    })
+
+    $("table").each(function (i) {
+        var flag=0
+        $(this).find('tbody tr td span').each(function () {
+            if ($(this).html()!="已终止"){
+                flag=1;
+            }
+        })
+        if(flag==0){
+            $(this).find('flag').html("<span class='label label-primary'>已终止</span> ")
+        }
     })
 </script>

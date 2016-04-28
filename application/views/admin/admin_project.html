@@ -63,7 +63,7 @@
               <a href="{{site_url url='admin/project/reset_password'}}/{{$foo['userid']}}" class="btn btn-sm btn-danger" >密码重置</a>
 
               {{if $foo['status']==1}}  <a href="{{site_url url='admin/project/chenge_status'}}/{{$foo['userid']}}" class="btn btn-sm btn-info" >审核</a>{{/if}}
-              {{if $foo['status']==2}} <a href="javascript:void(0)" class="btn btn-sm btn-info" >通过</a>{{/if}}
+              {{if $foo['status']==2}} <a href="javascript:void(0)" class="btn btn-sm btn-info" style="display:none;">通过</a>{{/if}}
 
 
           </td>

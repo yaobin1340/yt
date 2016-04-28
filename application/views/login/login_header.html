@@ -32,7 +32,7 @@
 <script src="/res/js/respond.min.js"></script>
 <![endif]-->
 </head>
-<body class="fixed_header" >
+<body class="fixed_header login" style="background-image:url(/tmp_res/img/login_bg.jpg);background-color: #01375d;" >
 <div id="loader"></div>
 
 <!-- 头部 -->
@@ -44,15 +44,18 @@
 
     <ul id="header_userarea" class="pull-right">
       <li id="scroll_to_top"><a class="header_btn" data-toggle="tooltip" data-placement="bottom" title="返回顶部"><i class="material-icons">&#xe255;</i></a></li>
+{{if $head_name!=""}}
       <li id="header_user">
-        <a class="header_btn" data-toggle="dropdown">{{if $head_name!=""}}<img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="{{$head_name}}"> {{/if}}{{$head_name}}</a>
+        <a class="header_btn" data-toggle="dropdown"><img id="header_avatar" class="img-circle" src="/tmp_res/img/avatar_demo02.jpg" alt="{{$head_name}}">{{$head_name}}</a>
         <ul class="dropdown-menu">
           <!--<li><a href="#"><i class="material-icons">&#xe85d;</i>详细资料</a></li>
           <li role="separator" class="divider"></li>-->
           <li><a href="{{site_url url='index/logout'}}"><i class="material-icons">&#xe879;</i>退出</a></li>
         </ul>
       </li>
-
+{{/if}}
+			<li><a href="/login" class="header_btn">登录</a></li>
+      <li id="header_reg"><a href="/reg/index" class="header_btn">注册</a></li>
       <!--<li class="divider"></li>-->
       <li>
         <a href="#" class="header_btn" data-toggle="dropdown"><i class="material-icons">&#xe8b8;</i></a>

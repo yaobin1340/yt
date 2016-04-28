@@ -73,7 +73,7 @@ body.login .copyright a {
 
 #header .navbar-brand {
   position: relative;
-  min-width: 350px;
+  min-width: 400px;
 	background-position: left;
 	background-repeat: no-repeat;
 	background-size: auto 100%;
@@ -108,14 +108,13 @@ body.login .copyright a {
 }
 #header_userarea > li {
   display: inline-block;
-  height: 50px;
+  min-height: 50px;
   line-height: 50px;
   vertical-align: initial;
   position: relative;
   min-width: 50px;
   text-align: center;
   float: left;
-  max-width: 220px;
 }
 #header_userarea > li:hover {
   background-color: #F3F3F3;
@@ -132,13 +131,9 @@ body.login .copyright a {
   padding-left: 15px;
   padding-right: 15px;
   color: #333;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 #header_userarea > li > a .material-icons {
   color: #7b7e85;
-  cursor: pointer;
 }
 #header_userarea > li:hover > a .material-icons {
   color: #333;
@@ -268,7 +263,6 @@ body.login .copyright a {
   vertical-align: middle;
   opacity: .2;
   -webkit-transition: all 0.3s;
-  cursor: pointer;
 }
 .sider_expand span {
   opacity: .2;
@@ -354,8 +348,7 @@ body.login .copyright a {
 
 .sider_group .sider_group_list .list-group-item {
   margin-bottom: 0;
-  /*min-height: 40px;*/
-  height: 40px;
+  min-height: 40px;
   line-height: 40px;
   padding: 0 12px;/* 15px */
   border: none;
@@ -387,7 +380,6 @@ body.login .copyright a {
   display: inline-block;
   white-space: nowrap;
   -webkit-transition: all 0.3s;
-  font-size: 16px;
 }
 
 .sider_group .sider_group_list .list-group-item span:after {
@@ -420,10 +412,7 @@ body.login .copyright a {
   position: absolute;
   top: 11px;
   right: 10px;
-  color: #fff;
 }
-
-
 
 
 /** 窄侧栏 折叠 **/
@@ -547,7 +536,9 @@ body.login .copyright a {
 /** 仪表盘 **/
 
 .dashboard_area {
-  margin: 20px -5px;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-bottom: 20px;
 }
 
 .dashboard_card_wrap {
@@ -625,75 +616,7 @@ body.login .copyright a {
 }
 
 
-/** 仪表概述页 企业/个人名片区 **/
 
-.index_vcard {
-  
-}
-
-.index_vcard_card {
-  text-align: center;
-}
-.index_vcard_main {
-  padding: 20px;
-  position: relative;
-  display: block;
-}
-.index_vcard_authorize {
-  background-color: #f4f6f9;
-  padding: 20px;
-}
-.index_vcard_main .set {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  opacity: 0;
-}
-.index_vcard_main:hover .set {
-  opacity: 1;
-}
-
-.index_vcard_logo {
-  background-color: #999;
-  padding-top: 36.5%;
-  margin-bottom: 10px;
-}
-.index_vcard_main .title {
-  font-size: 18px;
-  font-weight: bold;
-}
-.index_vcard_main .text {
-  color: #7b7e85;
-}
-
-.index_vcard_authorize .text {
-  color: #7b7e85;
-}
-
-.index_vcard_authorize .text .num {
-  color: #5cb85c;
-  font-weight: bold;
-}
-.index_vcard_authorize .text .num.danger {
-  color: #d9534f;
-  padding: 0 5px;
-}
-
-.index_vcard_authorize .btn {
-  margin-top: 10px;
-}
-
-/** 页面返回等按钮 **/
-.pagetool {
-  margin-bottom: 10px;
-  padding: 5px;
-  color: #777;
-}
-.pagetool .title {
-	margin-left: 10px;
-	color: #337AB7;
-	font-size: 16px;
-}
 
 
 /** 通用胶囊导航 **/
@@ -1090,8 +1013,6 @@ label.check {
   padding-top: 20px;
 }
 
-.text_t{
-	margin-top:7px;}
 
 
 
